@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:00:00.000Z",
+  "updatedAt": "2026-10-31T04:10:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -409,6 +409,57 @@
       "notes": "regressive 与 autoregressive 的关系是词形上的包含关系，不是同义词。autoregressive generation 通常逐个 token 顺序生成，简称 AR。",
       "createdAt": "2026-10-31T04:00:00.000Z",
       "updatedAt": "2026-10-31T04:00:00.000Z"
+    },
+    {
+      "id": "entry-attend-20261031",
+      "term": "attend",
+      "phonetic": "/əˈtend/",
+      "status": "learning",
+      "tags": ["NLP", "RNN", "attention", "例句语法"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-attend-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "verb",
+          "definitionEn": "To be present at an event, class, meeting, or other organized activity.",
+          "definitionZh": "出席、参加活动、课程或会议。",
+          "url": "",
+          "examples": [
+            {
+              "en": "She attends a machine translation seminar every Friday.",
+              "zh": "她每周五参加一个机器翻译研讨会。"
+            }
+          ]
+        },
+        {
+          "id": "definition-attend-to-20261031",
+          "dictionary": "短语 attend to · 学习整理",
+          "partOfSpeech": "phrasal verb",
+          "definitionEn": "To direct one's attention toward something or deal with it.",
+          "definitionZh": "注意、关注或处理某事。本句的 attends to 表示模型把注意力放在某些词上。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The decoder attends to the most relevant source words while producing each output token.",
+              "zh": "解码器在生成每个输出 token 时，会关注最相关的源语言单词。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-attend-20261031",
+          "en": "As a result, during the generation of “Ik hou van lama’s,” the RNN keeps track of the words it mostly attends to perform the translation.",
+          "zh": "因此，在生成“Ik hou van lama’s”（荷兰语，意为“我喜欢羊驼”）的过程中，RNN 会跟踪它在完成翻译时最关注的词。",
+          "source": "用户提供的 RNN / attention 例句",
+          "encounteredAt": "2026-10-31",
+          "note": "本句的 attends to 是“关注、注意”的短语动词。原句把 attends to 和 perform the translation 连在一起，读起来略有歧义；更自然的写法是：the words it mostly attends to when performing the translation，或 the words it focuses on most when performing the translation。"
+        }
+      ],
+      "notes": "attend、attention 和 attentive 同源：attend 是动词，attention 是名词“注意力”，attentive 是形容词“专注的”。不要把句中的 attends to 误读成“出席”。",
+      "createdAt": "2026-10-31T04:10:00.000Z",
+      "updatedAt": "2026-10-31T04:10:00.000Z"
     }
   ]
 }
