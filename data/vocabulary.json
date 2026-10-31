@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:40:00.000Z",
+  "updatedAt": "2026-10-31T04:49:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -715,6 +715,108 @@
       "notes": "feedforward 也常写作 feed-forward，缩写为 FFN（feed-forward network）。在 Transformer 中，FFN 通常为 Linear → 激活函数 → Linear，并应用到每个 token 位置。consist of 必须带介词 of，不能用 consists 单独表示“由……组成”。",
       "createdAt": "2026-10-31T04:40:00.000Z",
       "updatedAt": "2026-10-31T04:40:00.000Z"
+    },
+    {
+      "id": "entry-revolve-20261031",
+      "term": "revolve",
+      "phonetic": "/rɪˈvɒlv/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "学术英语", "语法"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-revolve-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "verb",
+          "definitionEn": "To move in a circular path around a central point or axis.",
+          "definitionZh": "围绕中心点或轴旋转、运转。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The Earth revolves around the Sun.",
+              "zh": "地球围绕太阳运转。"
+            }
+          ]
+        },
+        {
+          "id": "definition-revolve-around-20261031",
+          "dictionary": "短语 revolve around · 学习整理",
+          "partOfSpeech": "phrasal verb · figurative",
+          "definitionEn": "To have something as the central subject, purpose, or basis; to be centered on it.",
+          "definitionZh": "以某事物为中心、核心或基础。本句中的 revolve around attention 表示编码器和解码器块都以注意力机制为核心。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The new architecture revolves around attention rather than recurrence.",
+              "zh": "这种新架构以注意力机制为核心，而不是以循环结构为核心。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-revolve-20261031",
+          "en": "Now, both the encoder and decoder blocks would revolve around attention instead of leveraging an RNN with attention features.",
+          "zh": "现在，编码器块和解码器块都将以注意力机制为核心，而不是利用带有注意力特征的 RNN。",
+          "source": "用户提供的 Transformer 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "revolve around 在这里不是“旋转”，而是比喻义“以……为核心/围绕……展开”。instead of leveraging an RNN with attention features 是对 attention 的对比补充：新架构以注意力为核心，而不是把注意力作为附加功能加在 RNN 上。"
+        }
+      ],
+      "notes": "revolve around 后接名词或名词短语。句法主干为 both the encoder and decoder blocks would revolve around attention [instead of leveraging ...]；both ... and ... 连接两个并列主语，因此 blocks 使用复数。",
+      "createdAt": "2026-10-31T04:48:00.000Z",
+      "updatedAt": "2026-10-31T04:48:00.000Z"
+    },
+    {
+      "id": "entry-leveraging-20261031",
+      "term": "leveraging",
+      "phonetic": "/ˈlevərɪdʒɪŋ/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "学术英语", "语法"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-leveraging-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "verb · present participle / gerund",
+          "definitionEn": "Using an existing resource, capability, or advantage to achieve a particular result.",
+          "definitionZh": "利用现有资源、能力或优势来取得某个结果；发挥其作用。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The system leverages parallel computation to reduce training time.",
+              "zh": "该系统利用并行计算来减少训练时间。"
+            }
+          ]
+        },
+        {
+          "id": "definition-leveraging-nlp-20261031",
+          "dictionary": "AI 与技术写作语境 · 学习整理",
+          "partOfSpeech": "gerund",
+          "definitionEn": "Employing a model, method, or feature as a component for a technical purpose.",
+          "definitionZh": "在技术方案中采用、借助某种模型、方法或特征；本句指使用一种带有注意力功能的 RNN，而不是直接以注意力作为核心结构。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Instead of leveraging recurrent layers, the Transformer uses self-attention.",
+              "zh": "Transformer 没有利用循环层，而是使用自注意力。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-leveraging-20261031",
+          "en": "Now, both the encoder and decoder blocks would revolve around attention instead of leveraging an RNN with attention features.",
+          "zh": "现在，编码器块和解码器块都将以注意力机制为核心，而不是利用带有注意力特征的 RNN。",
+          "source": "用户提供的 Transformer 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "leveraging 位于介词 of 后面，所以使用动名词形式；instead of leveraging 表示“而不是利用”。leveraging 在这里不是主要谓语，主要谓语是 would revolve。"
+        }
+      ],
+      "notes": "原形是 leverage，既可表示一般意义上的“利用”，也可用于金融领域的“杠杆”。技术写作中 use 更中性，leverage 更强调借助已有能力或优势。an RNN 使用 an，因为 RNN 的读音以元音音素开头。",
+      "createdAt": "2026-10-31T04:49:00.000Z",
+      "updatedAt": "2026-10-31T04:49:00.000Z"
     }
   ]
 }
