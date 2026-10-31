@@ -68,6 +68,13 @@
       <symbol id="icon-chevron" viewBox="0 0 24 24">
         <path d="m9 18 6-6-6-6"></path>
       </symbol>
+      <symbol id="icon-volume" viewBox="0 0 24 24">
+        <path d="M11 5 6.5 9H3v6h3.5l4.5 4V5Z"></path>
+        <path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"></path>
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"></path>
+      </symbol>
     </svg>
 
     <div class="app-shell">
@@ -159,6 +166,11 @@
                 <button class="filter-pill" type="button" data-status="mastered">已掌握</button>
               </div>
               <div class="tag-cloud" id="tagCloud" aria-label="按标签筛选"></div>
+              <button class="review-filter-button" id="reviewFilterButton" type="button">
+                <svg><use href="#icon-star"></use></svg>
+                <span>复习标签</span>
+                <span class="review-filter-count" id="reviewFilterCount">0</span>
+              </button>
             </div>
 
             <div class="list-meta">
@@ -217,6 +229,16 @@
             <div class="detail-toolbar">
               <span class="detail-breadcrumb" id="detailBreadcrumb">术语库 / 词汇</span>
               <div class="detail-actions">
+                <div class="font-size-control" aria-label="调整释义和例句字号">
+                  <span class="font-size-label">Aa</span>
+                  <button id="fontDecreaseButton" type="button" aria-label="缩小字号">A−</button>
+                  <button class="font-scale-value" id="fontResetButton" type="button" aria-label="恢复默认字号">100%</button>
+                  <button id="fontIncreaseButton" type="button" aria-label="放大字号">A+</button>
+                </div>
+                <button class="secondary-button review-toggle-button" id="reviewToggleButton" type="button">
+                  <svg><use href="#icon-star"></use></svg>
+                  <span id="reviewToggleText">加入复习</span>
+                </button>
                 <button class="secondary-button" id="editEntryButton" type="button">
                   <svg><use href="#icon-edit"></use></svg>
                   编辑
@@ -231,10 +253,23 @@
               <div class="detail-status-line">
                 <span class="status-badge" id="detailStatus"></span>
                 <div class="detail-tags" id="detailTags"></div>
+                <div class="detail-review-tags" id="detailReviewTags"></div>
               </div>
               <div class="headword-line">
                 <h2 id="detailHeadword"></h2>
-                <span class="phonetic" id="detailPhonetic"></span>
+                <div class="pronunciation-group" id="pronunciationGroup">
+                  <span class="phonetic" id="detailPhonetic"></span>
+                  <div class="pronunciation-actions" aria-label="播放单词发音">
+                    <button class="pronounce-button" type="button" data-speak-accent="uk" aria-label="播放英式发音">
+                      <svg><use href="#icon-volume"></use></svg>
+                      <span>英</span>
+                    </button>
+                    <button class="pronounce-button" type="button" data-speak-accent="us" aria-label="播放美式发音">
+                      <svg><use href="#icon-volume"></use></svg>
+                      <span>美</span>
+                    </button>
+                  </div>
+                </div>
               </div>
               <p class="updated-at" id="detailUpdatedAt"></p>
             </header>
@@ -329,6 +364,15 @@
               <label class="field field-span-2">
                 <span>标签</span>
                 <input name="tags" type="text" placeholder="AI, NLP, 论文  （用逗号分隔）" autocomplete="off" />
+              </label>
+              <label class="field field-span-2">
+                <span>复习标签</span>
+                <input
+                  name="reviewTags"
+                  type="text"
+                  placeholder="高频复习, 易混, 重点例句  （用逗号分隔）"
+                  autocomplete="off"
+                />
               </label>
             </div>
           </section>

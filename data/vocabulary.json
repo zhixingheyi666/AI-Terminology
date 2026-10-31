@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T00:00:00.000Z",
+  "updatedAt": "2026-10-31T03:18:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -8,6 +8,7 @@
       "phonetic": "/ˈɡraʊndɪŋ/",
       "status": "learning",
       "tags": ["AI", "LLM", "NLP"],
+      "reviewTags": [],
       "definitions": [
         {
           "id": "seed-grounding-definition-1",
@@ -58,6 +59,7 @@
       "phonetic": "/vəˈkæbjələri/",
       "status": "learning",
       "tags": ["NLP", "词袋模型", "AI"],
+      "reviewTags": ["复习"],
       "definitions": [
         {
           "id": "definition-vocabulary-general-20261031",
@@ -99,8 +101,8 @@
         }
       ],
       "notes": "词袋模型关心词的出现次数和词表映射，通常会忽略句子中的词序。",
-      "createdAt": "2026-10-31T00:00:00.000Z",
-      "updatedAt": "2026-10-31T00:00:00.000Z"
+      "createdAt": "2026-10-31T03:17:00.000Z",
+      "updatedAt": "2026-10-31T03:17:00.000Z"
     },
     {
       "id": "entry-literally-20261031",
@@ -108,6 +110,7 @@
       "phonetic": "/ˈlɪtərəli/",
       "status": "learning",
       "tags": ["语义", "强调", "NLP"],
+      "reviewTags": ["复习"],
       "definitions": [
         {
           "id": "definition-literally-general-20261031",
@@ -149,8 +152,8 @@
         }
       ],
       "notes": "quite literally 在这里既加强了语气，也保留了“字面意义上”的含义。",
-      "createdAt": "2026-10-31T00:00:00.000Z",
-      "updatedAt": "2026-10-31T00:00:00.000Z"
+      "createdAt": "2026-10-31T03:18:00.000Z",
+      "updatedAt": "2026-10-31T03:18:00.000Z"
     }
   ]
 }

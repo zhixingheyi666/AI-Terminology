@@ -4,6 +4,7 @@ import {
   collectTags,
   filterEntries,
   normalizeTags,
+  sortEntriesByCreated,
   validateData,
 } from "../assets/model.js";
 
@@ -18,6 +19,7 @@ function validData() {
         phonetic: "/ˈɡraʊndɪŋ/",
         status: "learning",
         tags: ["AI", "NLP"],
+        reviewTags: ["高频复习"],
         definitions: [
           {
             id: "definition-1",
@@ -63,13 +65,28 @@ test("searches dictionary definitions and personal source", () => {
   const entries = validData().entries;
   assert.equal(filterEntries(entries, { query: "现实" }).length, 1);
   assert.equal(filterEntries(entries, { query: "paper retrieval" }).length, 1);
+  assert.equal(filterEntries(entries, { query: "高频复习" }).length, 1);
   assert.equal(filterEntries(entries, { query: "unrelated" }).length, 0);
 });
 
 test("filters status and tag", () => {
   const entries = validData().entries;
   assert.equal(filterEntries(entries, { status: "learning", tag: "ai" }).length, 1);
+  assert.equal(filterEntries(entries, { tag: "高频复习" }).length, 1);
+  assert.equal(filterEntries(entries, { reviewOnly: true }).length, 1);
   assert.equal(filterEntries(entries, { status: "mastered" }).length, 0);
+});
+
+test("orders entries by their original input time", () => {
+  const entries = [
+    { createdAt: "2026-10-31T00:00:00.000Z", term: "first" },
+    { createdAt: "2026-10-31T03:18:00.000Z", term: "latest" },
+    { createdAt: "2026-10-31T03:17:00.000Z", term: "middle" },
+  ];
+  assert.deepEqual(
+    sortEntriesByCreated(entries).map((entry) => entry.term),
+    ["latest", "middle", "first"],
+  );
 });
 
 test("normalizes and deduplicates tags", () => {

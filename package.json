@@ -1,6 +1,6 @@
 {
   "name": "ai-terminology",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "A portable, GitHub-backed personal English terminology library.",

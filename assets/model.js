@@ -58,6 +58,7 @@ export function createEntry(values = {}) {
     phonetic: stringValue(values.phonetic),
     status: STATUS_VALUES.includes(values.status) ? values.status : "learning",
     tags: normalizeTags(values.tags),
+    reviewTags: normalizeTags(values.reviewTags),
     definitions: Array.isArray(values.definitions)
       ? values.definitions.map(normalizeDefinition)
       : [createDefinition()],
@@ -99,6 +100,7 @@ export function normalizeEntry(raw) {
     phonetic: stringValue(source.phonetic),
     status: STATUS_VALUES.includes(source.status) ? source.status : "learning",
     tags: normalizeTags(source.tags),
+    reviewTags: normalizeTags(source.reviewTags),
     definitions: Array.isArray(source.definitions)
       ? source.definitions.map(normalizeDefinition)
       : [],
@@ -194,6 +196,14 @@ export function validateData(raw) {
       errors.push(`${path}.tags 必须是字符串数组。`);
     }
 
+    if (
+      entry.reviewTags !== undefined &&
+      (!Array.isArray(entry.reviewTags) ||
+        entry.reviewTags.some((tag) => typeof tag !== "string"))
+    ) {
+      errors.push(`${path}.reviewTags 必须是字符串数组。`);
+    }
+
     const normalizedTerm = stringValue(entry.term).toLocaleLowerCase();
     if (normalizedTerm) {
       if (terms.has(normalizedTerm)) {
@@ -255,15 +265,22 @@ export function filterEntries(entries, filters = {}) {
   const queryTokens = normalizeSearch(filters.query).split(/\s+/).filter(Boolean);
   const status = filters.status || "all";
   const tag = normalizeSearch(filters.tag);
+  const reviewOnly = Boolean(filters.reviewOnly);
 
   return entries.filter((entry) => {
     if (status !== "all" && entry.status !== status) {
       return false;
     }
 
+    if (reviewOnly && !(entry.reviewTags?.length > 0)) {
+      return false;
+    }
+
     if (
       tag &&
-      !entry.tags.some((entryTag) => normalizeSearch(entryTag) === tag)
+      ![...entry.tags, ...(entry.reviewTags || [])].some(
+        (entryTag) => normalizeSearch(entryTag) === tag,
+      )
     ) {
       return false;
     }
@@ -304,6 +321,7 @@ export function entrySearchText(entry) {
     entry.term,
     entry.phonetic,
     ...(Array.isArray(entry.tags) ? entry.tags : []),
+    ...(Array.isArray(entry.reviewTags) ? entry.reviewTags : []),
     ...definitions,
     ...personalExamples,
     entry.notes,
@@ -333,6 +351,13 @@ export function collectTags(entries) {
 export function sortEntriesByUpdated(entries) {
   return [...entries].sort((a, b) => {
     const dateCompare = Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
+    return dateCompare || a.term.localeCompare(b.term, "en");
+  });
+}
+
+export function sortEntriesByCreated(entries) {
+  return [...entries].sort((a, b) => {
+    const dateCompare = Date.parse(b.createdAt) - Date.parse(a.createdAt);
     return dateCompare || a.term.localeCompare(b.term, "en");
   });
 }

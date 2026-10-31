@@ -13,7 +13,7 @@ import {
   normalizeSearch,
   normalizeTags,
   nowIso,
-  sortEntriesByUpdated,
+  sortEntriesByCreated,
   validateData,
 } from "./model.js";
 
@@ -23,6 +23,7 @@ const STORAGE = Object.freeze({
   tokenPersistent: "citrace.github-token.local.v1",
   backup: "citrace.library-backup.v1",
   theme: "citrace.theme.v1",
+  readingScale: "citrace.reading-scale.v1",
 });
 
 const GITHUB_API = "https://api.github.com";
@@ -44,6 +45,8 @@ const state = {
   query: "",
   status: "all",
   tag: "",
+  reviewOnly: false,
+  readingScale: loadReadingScale(),
   selectedId: initialHashEntryId,
   editor: null,
   editingId: "",
@@ -64,6 +67,8 @@ const elements = {
   clearFilters: document.querySelector("#clearFilters"),
   tagCloud: document.querySelector("#tagCloud"),
   statusFilters: document.querySelector("#statusFilters"),
+  reviewFilterButton: document.querySelector("#reviewFilterButton"),
+  reviewFilterCount: document.querySelector("#reviewFilterCount"),
   searchInput: document.querySelector("#searchInput"),
   welcomeState: document.querySelector("#welcomeState"),
   noResultsState: document.querySelector("#noResultsState"),
@@ -71,13 +76,20 @@ const elements = {
   detailBreadcrumb: document.querySelector("#detailBreadcrumb"),
   detailStatus: document.querySelector("#detailStatus"),
   detailTags: document.querySelector("#detailTags"),
+  detailReviewTags: document.querySelector("#detailReviewTags"),
   detailHeadword: document.querySelector("#detailHeadword"),
   detailPhonetic: document.querySelector("#detailPhonetic"),
+  pronunciationGroup: document.querySelector("#pronunciationGroup"),
   detailUpdatedAt: document.querySelector("#detailUpdatedAt"),
   definitionCount: document.querySelector("#definitionCount"),
   definitionList: document.querySelector("#definitionList"),
   personalExampleList: document.querySelector("#personalExampleList"),
   personalExampleEmpty: document.querySelector("#personalExampleEmpty"),
+  fontDecreaseButton: document.querySelector("#fontDecreaseButton"),
+  fontIncreaseButton: document.querySelector("#fontIncreaseButton"),
+  fontResetButton: document.querySelector("#fontResetButton"),
+  reviewToggleButton: document.querySelector("#reviewToggleButton"),
+  reviewToggleText: document.querySelector("#reviewToggleText"),
   notesSection: document.querySelector("#notesSection"),
   detailNotes: document.querySelector("#detailNotes"),
   welcomeEntryCount: document.querySelector("#welcomeEntryCount"),
@@ -112,8 +124,10 @@ const elements = {
 
 let toastTimer;
 let syncTimer;
+const pronunciationAudioCache = new Map();
 
 initializeTheme();
+applyReadingScale();
 bindEvents();
 loadLibrary();
 registerServiceWorker();
@@ -425,6 +439,13 @@ function renderFilters(filteredCount) {
     button.classList.toggle("is-active", button.dataset.status === state.status);
   }
 
+  const reviewCount = state.data.entries.filter(
+    (entry) => entry.reviewTags.length > 0,
+  ).length;
+  elements.reviewFilterButton.classList.toggle("is-active", state.reviewOnly);
+  elements.reviewFilterButton.setAttribute("aria-pressed", String(state.reviewOnly));
+  elements.reviewFilterCount.textContent = String(reviewCount);
+
   const tags = collectTags(state.data.entries);
   elements.tagCloud.innerHTML = tags
     .slice(0, 16)
@@ -443,14 +464,22 @@ function renderFilters(filteredCount) {
   const total = state.data.entries.length;
   elements.resultCount.textContent =
     filteredCount === total ? `${total} 个词条` : `${filteredCount} / ${total} 个词条`;
-  elements.clearFilters.hidden = !(state.query || state.status !== "all" || state.tag);
+  elements.clearFilters.hidden = !(
+    state.query ||
+    state.status !== "all" ||
+    state.tag ||
+    state.reviewOnly
+  );
 }
 
 function renderEntryList(entries) {
   elements.entryList.innerHTML = entries
     .map((entry) => {
       const personalCount = entry.personalExamples.filter((example) => example.en).length;
-      const tags = entry.tags.slice(0, 2).join(" · ");
+      const tags = [...entry.reviewTags, ...entry.tags].slice(0, 2).join(" · ");
+      const reviewMark = entry.reviewTags.length
+        ? `<span class="entry-review-mark" title="${escapeAttribute(entry.reviewTags.join("、"))}">★</span>`
+        : "";
       return `
         <button
           class="entry-card${entry.id === state.selectedId ? " is-active" : ""}"
@@ -467,8 +496,11 @@ function renderEntryList(entries) {
           </span>
           <span class="entry-snippet">${escapeHtml(displayEntrySnippet(entry))}</span>
           <span class="entry-card-foot">
-            <span>${entry.definitions.length} 个来源${personalCount ? ` · ${personalCount} 段语境` : ""}</span>
-            <span class="entry-mini-tags">${escapeHtml(tags)}</span>
+            <span class="entry-foot-meta">
+              <span class="entry-date">${escapeHtml(formatEntryDate(entry.createdAt))} 录入</span>
+              <span>${entry.definitions.length} 个来源${personalCount ? ` · ${personalCount} 段语境` : ""}</span>
+            </span>
+            <span class="entry-mini-tags">${reviewMark}${escapeHtml(tags)}</span>
           </span>
         </button>
       `;
@@ -528,10 +560,24 @@ function renderEntryDetail(entry) {
   elements.detailTags.innerHTML = entry.tags
     .map((tag) => `<span>${escapeHtml(tag)}</span>`)
     .join("");
+  elements.detailReviewTags.innerHTML = entry.reviewTags
+    .map((tag) => `<span class="detail-review-tag">${escapeHtml(tag)}</span>`)
+    .join("");
   elements.detailHeadword.textContent = entry.term;
   elements.detailPhonetic.textContent = entry.phonetic || "";
   elements.detailPhonetic.hidden = !entry.phonetic;
-  elements.detailUpdatedAt.textContent = `最后更新于 ${formatDateTime(entry.updatedAt)}`;
+  elements.detailUpdatedAt.textContent =
+    `录入于 ${formatDateTime(entry.createdAt)} · 最后更新于 ${formatDateTime(entry.updatedAt)}`;
+
+  const hasReviewTags = entry.reviewTags.length > 0;
+  elements.reviewToggleButton.classList.toggle("is-active", hasReviewTags);
+  elements.reviewToggleButton.setAttribute("aria-pressed", String(hasReviewTags));
+  elements.reviewToggleButton.title = hasReviewTags
+    ? "编辑这个词条的复习标签"
+    : "把词条加入复习清单";
+  elements.reviewToggleText.textContent = hasReviewTags
+    ? `复习标签 ${entry.reviewTags.length}`
+    : "加入复习";
 
   elements.definitionCount.textContent = `· ${entry.definitions.length} 个来源`;
   elements.definitionList.innerHTML = entry.definitions
@@ -548,6 +594,7 @@ function renderEntryDetail(entry) {
 
   elements.notesSection.hidden = !entry.notes;
   elements.detailNotes.textContent = entry.notes || "";
+  applyReadingScale();
 }
 
 function renderDefinitionCard(definition, index) {
@@ -581,7 +628,16 @@ function renderDefinitionCard(definition, index) {
                 .map(
                   (example) => `
                     <div class="dictionary-example">
-                      ${example.en ? `<p>${escapeHtml(example.en)}</p>` : ""}
+              ${
+                example.en
+                  ? `<div class="example-en-row">
+                      <p>${escapeHtml(example.en)}</p>
+                      <button class="inline-speak-button" type="button" data-speak-text="${escapeAttribute(example.en)}" data-speak-accent="uk" aria-label="朗读例句">
+                        <svg><use href="#icon-volume"></use></svg>
+                      </button>
+                    </div>`
+                  : ""
+              }
                       ${example.zh ? `<p>${escapeHtml(example.zh)}</p>` : ""}
                     </div>
                   `,
@@ -599,7 +655,16 @@ function renderEncounterCard(example, index) {
     <article class="encounter-card">
       <span class="encounter-index">${String(index + 1).padStart(2, "0")}</span>
       <div class="encounter-body">
-        <blockquote>${escapeHtml(example.en || example.note || "（未填写原句）")}</blockquote>
+        <div class="encounter-quote-row">
+          <blockquote>${escapeHtml(example.en || example.note || "（未填写原句）")}</blockquote>
+          ${
+            example.en
+              ? `<button class="inline-speak-button" type="button" data-speak-text="${escapeAttribute(example.en)}" data-speak-accent="us" aria-label="朗读这段真实语境">
+                  <svg><use href="#icon-volume"></use></svg>
+                </button>`
+              : ""
+          }
+        </div>
         ${example.zh ? `<p class="encounter-translation">${escapeHtml(example.zh)}</p>` : ""}
         <div class="encounter-meta">
           <span>${escapeHtml(example.source || "未记录出处")}</span>
@@ -624,11 +689,12 @@ function setSync(mode, text) {
 }
 
 function getFilteredEntries() {
-  return sortEntriesByUpdated(
+  return sortEntriesByCreated(
     filterEntries(state.data.entries, {
       query: state.query,
       status: state.status,
       tag: state.tag,
+      reviewOnly: state.reviewOnly,
     }),
   );
 }
@@ -646,6 +712,7 @@ function clearAllFilters() {
   state.query = "";
   state.status = "all";
   state.tag = "";
+  state.reviewOnly = false;
   elements.searchInput.value = "";
   render();
 }
@@ -667,13 +734,18 @@ function openEntryEditor(entry = null, options = {}) {
   elements.entryForm.elements.namedItem("phonetic").value = state.editor.phonetic || "";
   elements.entryForm.elements.namedItem("status").value = state.editor.status || "learning";
   elements.entryForm.elements.namedItem("tags").value = (state.editor.tags || []).join(", ");
+  elements.entryForm.elements.namedItem("reviewTags").value = (
+    state.editor.reviewTags || []
+  ).join(", ");
   elements.entryForm.elements.namedItem("notes").value = state.editor.notes || "";
   renderDefinitionEditors();
   renderPersonalExampleEditors();
   elements.entryDialog.showModal();
 
   requestAnimationFrame(() => {
-    if (options.focusEncounter && state.editor.personalExamples.length) {
+    if (options.focusReview) {
+      elements.entryForm.elements.namedItem("reviewTags").focus();
+    } else if (options.focusEncounter && state.editor.personalExamples.length) {
       elements.personalExampleEditorList
         .querySelector('[data-personal-field="en"]')
         ?.focus();
@@ -816,6 +888,7 @@ function captureEditorFromForm() {
   state.editor.phonetic = fieldValue("phonetic");
   state.editor.status = fieldValue("status") || "learning";
   state.editor.tags = normalizeTags(fieldValue("tags"));
+  state.editor.reviewTags = normalizeTags(fieldValue("reviewTags"));
   state.editor.notes = fieldValue("notes");
   state.editor.definitions = [...elements.definitionEditorList.querySelectorAll("[data-definition-id]")].map(
     (card) => ({
@@ -984,7 +1057,7 @@ async function deleteCurrentEntry() {
     updatedAt: nowIso(),
     entries: remaining,
   };
-  state.selectedId = sortEntriesByUpdated(remaining)[0]?.id || "";
+  state.selectedId = sortEntriesByCreated(remaining)[0]?.id || "";
   state.dirty = true;
   state.revision += 1;
   saveLocalBackup();
@@ -1026,7 +1099,7 @@ async function importLibrary(file) {
     ...parsed,
     updatedAt: nowIso(),
   });
-  state.selectedId = sortEntriesByUpdated(state.data.entries)[0]?.id || "";
+  state.selectedId = sortEntriesByCreated(state.data.entries)[0]?.id || "";
   state.dirty = true;
   state.revision += 1;
   saveLocalBackup();
@@ -1418,6 +1491,19 @@ function formatDateTime(value) {
   }).format(date);
 }
 
+function formatEntryDate(value) {
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) {
+    return "时间未知";
+  }
+  return new Intl.DateTimeFormat("zh-CN", {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+}
+
 function formatDateOnly(value) {
   if (!value) {
     return "";
@@ -1501,6 +1587,182 @@ function initializeTheme() {
   applyTheme(storedTheme);
 }
 
+function loadReadingScale() {
+  const storedScale = Number(readStorage(localStorage, STORAGE.readingScale));
+  if (!Number.isFinite(storedScale)) {
+    return 1;
+  }
+  return Math.min(1.4, Math.max(0.85, storedScale));
+}
+
+function applyReadingScale() {
+  const scale = state.readingScale;
+  elements.definitionList.style.fontSize = `${scale}rem`;
+  elements.personalExampleList.style.fontSize = `${1.35 * scale}rem`;
+  elements.fontResetButton.textContent = `${Math.round(scale * 100)}%`;
+  elements.fontDecreaseButton.disabled = scale <= 0.85;
+  elements.fontIncreaseButton.disabled = scale >= 1.4;
+}
+
+function setReadingScale(nextScale) {
+  const roundedScale = Math.round(Math.min(1.4, Math.max(0.85, nextScale)) * 100) / 100;
+  state.readingScale = roundedScale;
+  try {
+    localStorage.setItem(STORAGE.readingScale, String(roundedScale));
+  } catch {
+    // Font-size persistence is optional.
+  }
+  applyReadingScale();
+}
+
+function changeReadingScale(delta) {
+  setReadingScale(state.readingScale + delta);
+}
+
+function speakText(text, accent = "uk", button = null) {
+  const value = String(text || "").trim();
+  if (!value) {
+    return false;
+  }
+  if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+    return false;
+  }
+
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(value);
+  const language = accent === "us" ? "en-US" : "en-GB";
+  utterance.lang = language;
+  utterance.rate = value.split(/\s+/).length > 5 ? 0.88 : 0.8;
+  utterance.pitch = 1;
+
+  const voices = window.speechSynthesis.getVoices();
+  const normalizedLanguage = language.toLowerCase();
+  const voice =
+    voices.find(
+      (candidate) =>
+        candidate.lang.replace("_", "-").toLowerCase() === normalizedLanguage &&
+        candidate.localService,
+    ) ||
+    voices.find(
+      (candidate) =>
+        candidate.lang.replace("_", "-").toLowerCase() === normalizedLanguage,
+    ) ||
+    voices.find((candidate) => candidate.lang.toLowerCase().startsWith("en"));
+  if (voice) {
+    utterance.voice = voice;
+  }
+
+  const clearSpeaking = () => button?.classList.remove("is-speaking");
+  utterance.addEventListener("start", () => button?.classList.add("is-speaking"));
+  utterance.addEventListener("end", clearSpeaking);
+  utterance.addEventListener("error", clearSpeaking);
+  window.speechSynthesis.speak(utterance);
+  return true;
+}
+
+async function lookupPronunciationAudio(term, accent) {
+  const key = `${normalizeSearch(term)}:${accent}`;
+  if (pronunciationAudioCache.has(key)) {
+    return pronunciationAudioCache.get(key);
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 4500);
+    const response = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(term)}`,
+      { signal: controller.signal },
+    );
+    window.clearTimeout(timeout);
+    if (!response.ok) {
+      pronunciationAudioCache.set(key, "");
+      return "";
+    }
+    const entries = await response.json();
+    const audioUrls = entries
+      .flatMap((entry) => entry.phonetics || [])
+      .map((phonetic) => phonetic.audio)
+      .filter(Boolean);
+    const exact = audioUrls.find((url) =>
+      new RegExp(`[-_]${accent}\\.(mp3|ogg|wav)(?:\\?|$)`, "i").test(url),
+    );
+    const audioUrl = exact || "";
+    pronunciationAudioCache.set(key, audioUrl);
+    return audioUrl;
+  } catch {
+    pronunciationAudioCache.set(key, "");
+    return "";
+  }
+}
+
+async function playDictionaryAudio(audioUrl, button) {
+  if (!audioUrl) {
+    return false;
+  }
+
+  try {
+    const audio = new Audio(audioUrl);
+    audio.preload = "auto";
+    button?.classList.add("is-speaking");
+    const clearSpeaking = () => button?.classList.remove("is-speaking");
+    audio.addEventListener("ended", clearSpeaking, { once: true });
+    audio.addEventListener("error", clearSpeaking, { once: true });
+    await audio.play();
+    return true;
+  } catch {
+    button?.classList.remove("is-speaking");
+    return false;
+  }
+}
+
+async function playSelectedEntryPronunciation(accent, button) {
+  const entry = state.data.entries.find((item) => item.id === state.selectedId);
+  if (!entry) {
+    return;
+  }
+
+  if (speakText(entry.term, accent, button)) {
+    return;
+  }
+
+  button.disabled = true;
+  try {
+    const audioUrl = await lookupPronunciationAudio(entry.term, accent);
+    if (await playDictionaryAudio(audioUrl, button)) {
+      return;
+    }
+    showToast(
+      "暂时无法播放发音。请检查网络，或使用支持系统语音的新版 Chrome / Edge。",
+      "error",
+    );
+  } finally {
+    button.disabled = false;
+  }
+}
+
+function toggleReviewForSelected() {
+  const entry = state.data.entries.find((item) => item.id === state.selectedId);
+  if (!entry) {
+    return;
+  }
+
+  if (entry.reviewTags.length > 0) {
+    openEntryEditor(entry, { focusReview: true });
+    return;
+  }
+
+  const timestamp = nowIso();
+  entry.reviewTags = ["复习"];
+  entry.updatedAt = timestamp;
+  state.data.updatedAt = timestamp;
+  state.dirty = true;
+  state.revision += 1;
+  saveLocalBackup();
+  render();
+  showToast(state.token ? "已加入复习并准备同步到 GitHub。" : "已加入复习标签。");
+  scheduleSync(`加入复习 ${entry.term}`);
+}
+
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   elements.themeToggle.setAttribute(
@@ -1576,6 +1838,11 @@ function bindEvents() {
     render();
   });
 
+  elements.reviewFilterButton.addEventListener("click", () => {
+    state.reviewOnly = !state.reviewOnly;
+    render();
+  });
+
   elements.entryList.addEventListener("click", (event) => {
     const card = event.target.closest("[data-entry-id]");
     if (card) {
@@ -1594,6 +1861,25 @@ function bindEvents() {
     }
   });
   document.querySelector("#deleteEntryButton").addEventListener("click", deleteCurrentEntry);
+  elements.reviewToggleButton.addEventListener("click", toggleReviewForSelected);
+  elements.fontDecreaseButton.addEventListener("click", () => changeReadingScale(-0.1));
+  elements.fontIncreaseButton.addEventListener("click", () => changeReadingScale(0.1));
+  elements.fontResetButton.addEventListener("click", () => setReadingScale(1));
+  elements.entryDetail.addEventListener("click", (event) => {
+    const speakButton = event.target.closest("[data-speak-accent]");
+    if (!speakButton) {
+      return;
+    }
+    const accent = speakButton.dataset.speakAccent;
+    const text = speakButton.dataset.speakText;
+    if (text) {
+      if (!speakText(text, accent, speakButton)) {
+        showToast("当前浏览器不支持例句朗读，请换用新版 Chrome 或 Edge。", "error");
+      }
+    } else {
+      playSelectedEntryPronunciation(accent, speakButton);
+    }
+  });
   document.querySelector("#addEncounterButton").addEventListener("click", () => {
     const entry = state.data.entries.find((item) => item.id === state.selectedId);
     if (!entry) {

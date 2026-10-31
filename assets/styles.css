@@ -507,6 +507,45 @@ html[data-theme="dark"] .theme-icon-sun {
   color: var(--accent-ink);
 }
 
+.review-filter-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.44rem 0.62rem;
+  border: 1px dashed color-mix(in srgb, var(--warm) 55%, var(--line));
+  border-radius: 0.45rem;
+  background: color-mix(in srgb, var(--warm-pale) 38%, transparent);
+  color: var(--warm-ink);
+  font-size: 0.67rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.review-filter-button:hover,
+.review-filter-button.is-active {
+  border-style: solid;
+  border-color: var(--warm);
+  background: var(--warm-pale);
+}
+
+.review-filter-button svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.review-filter-count {
+  min-width: 1.2rem;
+  margin-left: auto;
+  padding: 0.05rem 0.34rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--warm) 18%, transparent);
+  text-align: center;
+}
+
 .list-meta {
   display: flex;
   min-height: 1.8rem;
@@ -653,6 +692,25 @@ html[data-theme="dark"] .theme-icon-sun {
   margin-top: 0.2rem;
   color: var(--ink-faint);
   font-size: 0.62rem;
+}
+
+.entry-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  white-space: nowrap;
+}
+
+.entry-foot-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.7rem;
+}
+
+.entry-review-mark {
+  margin-right: 0.35rem;
+  color: var(--warm-ink);
+  font-weight: 700;
 }
 
 .entry-mini-tags {
@@ -998,10 +1056,11 @@ html[data-theme="dark"] .theme-icon-sun {
 .detail-toolbar {
   display: flex;
   min-height: 2.7rem;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px solid var(--line);
+  padding: 0.15rem 0 0.8rem;
 }
 
 .detail-breadcrumb {
@@ -1015,6 +1074,8 @@ html[data-theme="dark"] .theme-icon-sun {
 .detail-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 0.42rem;
 }
 
@@ -1026,6 +1087,61 @@ html[data-theme="dark"] .theme-icon-sun {
 .detail-actions .icon-button {
   width: 2.15rem;
   height: 2.15rem;
+}
+
+.font-size-control {
+  display: inline-flex;
+  height: 2.15rem;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.48rem;
+  background: var(--surface);
+}
+
+.font-size-control button {
+  display: grid;
+  height: 100%;
+  min-width: 1.85rem;
+  place-items: center;
+  padding: 0 0.42rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.64rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.font-size-control button:hover:not(:disabled) {
+  background: var(--accent-pale);
+  color: var(--accent-ink);
+}
+
+.font-size-label {
+  padding: 0 0.42rem 0 0.55rem;
+  color: var(--ink-faint);
+  font-family: var(--serif);
+  font-size: 0.76rem;
+}
+
+.font-size-control .font-scale-value {
+  min-width: 2.45rem;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+}
+
+.review-toggle-button.is-active {
+  border-color: color-mix(in srgb, var(--warm) 60%, var(--line));
+  background: var(--warm-pale);
+  color: var(--warm-ink);
+}
+
+.review-toggle-button.is-active svg {
+  fill: currentColor;
 }
 
 .detail-header {
@@ -1086,6 +1202,30 @@ html[data-theme="dark"] .theme-icon-sun {
   content: "#";
 }
 
+.detail-review-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.detail-review-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--warm) 42%, var(--line));
+  border-radius: 999px;
+  background: var(--warm-pale);
+  color: var(--warm-ink);
+  font-size: 0.62rem;
+  font-weight: 650;
+}
+
+.detail-review-tag::before {
+  content: "★";
+  font-size: 0.55rem;
+}
+
 .headword-line {
   display: flex;
   align-items: baseline;
@@ -1109,6 +1249,58 @@ html[data-theme="dark"] .theme-icon-sun {
   font-family: var(--serif);
   font-size: 1.1rem;
   font-style: italic;
+}
+
+.pronunciation-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pronunciation-actions {
+  display: inline-flex;
+  gap: 0.32rem;
+}
+
+.pronounce-button {
+  display: inline-flex;
+  height: 1.85rem;
+  align-items: center;
+  gap: 0.24rem;
+  padding: 0 0.48rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.pronounce-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-pale);
+  transform: translateY(-1px);
+}
+
+.pronounce-button.is-speaking svg {
+  animation: speaker-pulse 700ms ease-in-out infinite alternate;
+}
+
+.pronounce-button svg {
+  width: 0.88rem;
+  height: 0.88rem;
+}
+
+@keyframes speaker-pulse {
+  to {
+    transform: scale(1.14);
+  }
 }
 
 .updated-at {
@@ -1159,6 +1351,7 @@ html[data-theme="dark"] .theme-icon-sun {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.8rem;
+  font-size: 1rem;
 }
 
 .definition-card {
@@ -1216,21 +1409,21 @@ html[data-theme="dark"] .theme-icon-sun {
   margin: 0 0 0.55rem;
   color: var(--warm-ink);
   font-family: var(--serif);
-  font-size: 0.78rem;
+  font-size: 0.78em;
   font-style: italic;
 }
 
 .definition-en {
   margin: 0 0 0.65rem;
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 1em;
   line-height: 1.55;
 }
 
 .definition-zh {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.78rem;
+  font-size: 0.78em;
   line-height: 1.7;
 }
 
@@ -1251,7 +1444,7 @@ html[data-theme="dark"] .theme-icon-sun {
   margin: 0;
   color: var(--ink-soft);
   font-family: var(--serif);
-  font-size: 0.78rem;
+  font-size: 0.82em;
   line-height: 1.55;
 }
 
@@ -1259,7 +1452,53 @@ html[data-theme="dark"] .theme-icon-sun {
   margin-top: 0.24rem;
   color: var(--ink-faint);
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.72em;
+}
+
+.example-en-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.example-en-row p {
+  flex: 1;
+}
+
+.inline-speak-button {
+  display: inline-grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.inline-speak-button:hover,
+.inline-speak-button.is-speaking {
+  border-color: var(--accent);
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+
+.inline-speak-button svg {
+  width: 0.78rem;
+  height: 0.78rem;
+}
+
+.dictionary-example > p {
+  padding-left: 0.7rem;
+  color: var(--ink-faint);
+  font-family: var(--sans);
+  font-size: 0.72em;
 }
 
 .encounter-section {
@@ -1269,6 +1508,7 @@ html[data-theme="dark"] .theme-icon-sun {
 .encounter-list {
   display: grid;
   gap: 1rem;
+  font-size: 1.35rem;
 }
 
 .encounter-card {
@@ -1308,17 +1548,25 @@ html[data-theme="dark"] .theme-icon-sun {
   min-width: 0;
 }
 
+.encounter-quote-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
 .encounter-body blockquote {
+  min-width: 0;
+  flex: 1;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-size: 1em;
   line-height: 1.55;
 }
 
 .encounter-translation {
   margin: 0.65rem 0 0;
   color: var(--ink-soft);
-  font-size: 0.84rem;
+  font-size: 0.62em;
   line-height: 1.75;
 }
 
@@ -1351,7 +1599,7 @@ html[data-theme="dark"] .theme-icon-sun {
   border-radius: 0.35rem;
   background: color-mix(in srgb, var(--paper) 58%, transparent);
   color: var(--ink-soft);
-  font-size: 0.75rem;
+  font-size: 0.55em;
   line-height: 1.7;
 }
 
@@ -2005,6 +2253,17 @@ html[data-theme="dark"] .theme-icon-sun {
     padding-top: 0.8rem;
   }
 
+  .detail-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .detail-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .detail-header {
     padding: 2.5rem 0 2.2rem;
   }
@@ -2118,15 +2377,15 @@ html[data-theme="dark"] .theme-icon-sun {
   }
 
   .detail-toolbar {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
   .detail-actions {
     width: 100%;
   }
 
-  .detail-actions .secondary-button {
-    margin-right: auto;
+  .review-toggle-button {
+    flex: 1 1 auto;
   }
 
   .welcome-stats {
