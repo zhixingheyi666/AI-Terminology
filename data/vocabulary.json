@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:30:00.000Z",
+  "updatedAt": "2026-10-31T04:40:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -664,6 +664,57 @@
       "notes": "solely based on = only based on = exclusively based on。注意 solely 修饰 based，并不是修饰 Transformer 或 attention mechanism。",
       "createdAt": "2026-10-31T04:30:00.000Z",
       "updatedAt": "2026-10-31T04:30:00.000Z"
+    },
+    {
+      "id": "entry-feedforward-20261031",
+      "term": "feedforward",
+      "phonetic": "/ˈfiːdfɔːrwərd/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "深度学习"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-feedforward-general-20261031",
+          "dictionary": "通用技术释义 · 学习整理",
+          "partOfSpeech": "adjective / noun",
+          "definitionEn": "Passing information in one direction from input toward output, without using a feedback loop.",
+          "definitionZh": "信息从输入向输出单向传递的前馈式结构；不使用反馈回路。",
+          "url": "",
+          "examples": [
+            {
+              "en": "A feedforward control system responds to its current input without continually feeding output back into the controller.",
+              "zh": "前馈控制系统根据当前输入作出响应，而不会持续把输出反馈给控制器。"
+            }
+          ]
+        },
+        {
+          "id": "definition-feedforward-transformer-20261031",
+          "dictionary": "Transformer 语境释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Relating to the position-wise feed-forward neural network in a Transformer block, which transforms each token representation independently after self-attention.",
+          "definitionZh": "指 Transformer 块中的前馈神经网络：它在自注意力之后，对每个 token 的表示分别进行相同的非线性变换，通常由线性层、激活函数和另一线性层组成。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The feedforward network in a Transformer processes each token position independently.",
+              "zh": "Transformer 中的前馈网络会独立处理每一个 token 位置。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-feedforward-20261031",
+          "en": "The encoder block in the Transformer consists of two parts, self-attention and a feedforward neural network, which are shown in Figure 1-17.",
+          "zh": "Transformer 中的编码器块由两部分组成：自注意力和前馈神经网络，如图 1-17 所示。",
+          "source": "用户提供的 Transformer 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "句中 consists of 表示“由……组成”；self-attention and a feedforward neural network 是对 two parts 的具体说明；which are shown in Figure 1-17 是修饰这两个部分的非限制性定语从句，因此用复数 are。"
+        }
+      ],
+      "notes": "feedforward 也常写作 feed-forward，缩写为 FFN（feed-forward network）。在 Transformer 中，FFN 通常为 Linear → 激活函数 → Linear，并应用到每个 token 位置。consist of 必须带介词 of，不能用 consists 单独表示“由……组成”。",
+      "createdAt": "2026-10-31T04:40:00.000Z",
+      "updatedAt": "2026-10-31T04:40:00.000Z"
     }
   ]
 }
