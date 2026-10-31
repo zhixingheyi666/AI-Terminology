@@ -1505,7 +1505,7 @@ html[data-theme="dark"] .theme-icon-sun {
 .encounter-list {
   display: grid;
   gap: 1rem;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
 }
 
 .encounter-card {
@@ -1563,7 +1563,7 @@ html[data-theme="dark"] .theme-icon-sun {
 .encounter-translation {
   margin: 0.65rem 0 0;
   color: var(--ink);
-  font-size: 0.68em;
+  font-size: 0.76em;
   font-weight: 500;
   line-height: 1.75;
 }
@@ -1581,7 +1581,7 @@ html[data-theme="dark"] .theme-icon-sun {
   border-radius: 999px;
   background: color-mix(in srgb, var(--warm-pale) 58%, transparent);
   color: var(--warm-ink);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 650;
   cursor: pointer;
 }
@@ -1593,18 +1593,18 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .example-analysis {
   margin-top: 1rem;
-  padding: 1rem 1.05rem;
+  padding: 1.15rem 1.2rem;
   border: 1px solid var(--line);
   border-radius: 0.55rem;
   background: color-mix(in srgb, var(--surface) 72%, transparent);
-  font-size: 0.82rem;
+  font-size: 1rem;
 }
 
 .example-analysis h4 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
   color: var(--accent);
   font-family: var(--sans);
-  font-size: 0.64rem;
+  font-size: 0.8rem;
   font-weight: 750;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1619,8 +1619,8 @@ html[data-theme="dark"] .theme-icon-sun {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 0.73rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.75;
   white-space: pre-wrap;
 }
 
@@ -1641,7 +1641,7 @@ html[data-theme="dark"] .theme-icon-sun {
 .grammar-part dt {
   color: var(--accent);
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   font-weight: 650;
   overflow-wrap: anywhere;
 }
@@ -1649,8 +1649,8 @@ html[data-theme="dark"] .theme-icon-sun {
 .grammar-part dd {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.78rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 .grammar-summary {
@@ -1663,7 +1663,7 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .grammar-summary > span {
   color: var(--ink-faint);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -1673,8 +1673,8 @@ html[data-theme="dark"] .theme-icon-sun {
   margin: 0;
   color: var(--ink-soft);
   font-family: var(--serif);
-  font-size: 0.86rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.85;
 }
 
 .grammar-rewrite p {
@@ -1714,7 +1714,7 @@ html[data-theme="dark"] .theme-icon-sun {
   border-radius: 0.35rem;
   background: color-mix(in srgb, var(--paper) 58%, transparent);
   color: var(--ink-soft);
-  font-size: 0.55em;
+  font-size: 0.66em;
   line-height: 1.7;
 }
 
@@ -2470,8 +2470,8 @@ html[data-theme="dark"] .theme-icon-sun {
   }
 
   .example-analysis {
-    padding: 0.85rem;
-    font-size: 0.78rem;
+    padding: 1rem;
+    font-size: 1rem;
   }
 
   .grammar-part {

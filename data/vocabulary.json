@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T05:00:00.000Z",
+  "updatedAt": "2026-10-31T05:15:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -742,7 +742,32 @@
           "zh": "Transformer 中的编码器块由两部分组成：自注意力和前馈神经网络，如图 1-17 所示。",
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "句中 consists of 表示“由……组成”；self-attention and a feedforward neural network 是对 two parts 的具体说明；which are shown in Figure 1-17 是修饰这两个部分的非限制性定语从句，因此用复数 are。"
+          "note": "feedforward 也常写作 feed-forward，缩写为 FFN。",
+          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "contextAnalysis": "这句话拆开了 Transformer 编码器块的两个核心组件：自注意力负责建模 token 之间的关系，前馈神经网络负责逐位置进行非线性变换。both parts 由 which are... 的复数谓语共同修饰。",
+          "grammarAnalysis": {
+            "structure": "The encoder block in the Transformer /\nconsists of two parts, [\n  self-attention\n  and\n  a feedforward neural network\n], /\nwhich are shown in Figure 1-17.",
+            "parts": [
+              {
+                "label": "The encoder block in the Transformer",
+                "explanation": "主句主语：“Transformer 中的编码器块”。"
+              },
+              {
+                "label": "consists of",
+                "explanation": "谓语：“由……组成”。consist of 是固定搭配，of 不可省略。"
+              },
+              {
+                "label": "two parts",
+                "explanation": "介词 of 的宾语；后面的 self-attention and a feedforward neural network 是解释其内容的同位语。"
+              },
+              {
+                "label": "which are shown in Figure 1-17",
+                "explanation": "非限制性定语从句，修饰前面的两部分；which 指代两个组件，因此谓语用复数 are。"
+              }
+            ],
+            "core": "The encoder block in the Transformer consists of self-attention and a feedforward neural network.",
+            "rewrite": "As shown in Figure 1-17, the Transformer’s encoder block comprises self-attention and a feed-forward neural network."
+          }
         }
       ],
       "notes": "feedforward 也常写作 feed-forward，缩写为 FFN（feed-forward network）。在 Transformer 中，FFN 通常为 Linear → 激活函数 → Linear，并应用到每个 token 位置。consist of 必须带介词 of，不能用 consists 单独表示“由……组成”。",
@@ -793,7 +818,36 @@
           "zh": "现在，编码器块和解码器块都将以注意力机制为核心，而不是利用带有注意力特征的 RNN。",
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "revolve around 在这里不是“旋转”，而是比喻义“以……为核心/围绕……展开”。instead of leveraging an RNN with attention features 是对 attention 的对比补充：新架构以注意力为核心，而不是把注意力作为附加功能加在 RNN 上。"
+          "note": "an RNN 使用 an，因为 RNN 的读音以元音音素开头。",
+          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "contextAnalysis": "这句话比较两种设计思路：新架构把 attention 放在中心位置；旧方案则是在 RNN 上附加 attention features。revolve around 在这里表示“围绕……展开、以……为核心”，不是物理旋转。",
+          "grammarAnalysis": {
+            "structure": "Now, /\nboth the encoder and decoder blocks /\nwould revolve around attention /\ninstead of leveraging an RNN\nwith attention features.",
+            "parts": [
+              {
+                "label": "Now",
+                "explanation": "时间状语：“现在”。"
+              },
+              {
+                "label": "both the encoder and decoder blocks",
+                "explanation": "并列主语：“编码器块和解码器块”；both ... and ... 连接复数主语。"
+              },
+              {
+                "label": "would revolve around attention",
+                "explanation": "谓语部分：“将以注意力机制为核心”；revolve around 使用比喻义。"
+              },
+              {
+                "label": "instead of leveraging an RNN",
+                "explanation": "对比/替代状语：“而不是利用一个 RNN”；of 后面接动名词 leveraging。"
+              },
+              {
+                "label": "with attention features",
+                "explanation": "介词短语修饰 RNN，表示“带有注意力功能的 RNN”。"
+              }
+            ],
+            "core": "Both encoder and decoder blocks would revolve around attention instead of leveraging an RNN.",
+            "rewrite": "Instead of adding attention features to an RNN, both the encoder and decoder blocks would be centered on attention."
+          }
         }
       ],
       "notes": "revolve around 后接名词或名词短语。句法主干为 both the encoder and decoder blocks would revolve around attention [instead of leveraging ...]；both ... and ... 连接两个并列主语，因此 blocks 使用复数。",
@@ -844,7 +898,36 @@
           "zh": "现在，编码器块和解码器块都将以注意力机制为核心，而不是利用带有注意力特征的 RNN。",
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "leveraging 位于介词 of 后面，所以使用动名词形式；instead of leveraging 表示“而不是利用”。leveraging 在这里不是主要谓语，主要谓语是 would revolve。"
+          "note": "leveraging 位于介词 of 后面，所以使用动名词形式；这里不是主要谓语，主要谓语是 would revolve。",
+          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "contextAnalysis": "这里把旧的 RNN + attention features 方案与以注意力为核心的新架构进行对比。instead of 后的 leveraging 表示“利用”，而 revolve around 表示“以……为核心”，两者共同突出设计重心的变化。",
+          "grammarAnalysis": {
+            "structure": "Now, /\nboth the encoder and decoder blocks /\nwould revolve around attention /\ninstead of leveraging an RNN\nwith attention features.",
+            "parts": [
+              {
+                "label": "Now",
+                "explanation": "时间状语：“现在”。"
+              },
+              {
+                "label": "both the encoder and decoder blocks",
+                "explanation": "并列主语：“编码器块和解码器块”；both ... and ... 连接复数主语。"
+              },
+              {
+                "label": "would revolve around attention",
+                "explanation": "谓语部分：“将以注意力机制为核心”；revolve around 使用比喻义。"
+              },
+              {
+                "label": "instead of leveraging an RNN",
+                "explanation": "对比/替代状语：“而不是利用一个 RNN”；of 后面接动名词 leveraging。"
+              },
+              {
+                "label": "with attention features",
+                "explanation": "介词短语修饰 RNN，表示“带有注意力功能的 RNN”。"
+              }
+            ],
+            "core": "Both encoder and decoder blocks would revolve around attention instead of leveraging an RNN.",
+            "rewrite": "Instead of adding attention features to an RNN, both the encoder and decoder blocks would be centered on attention."
+          }
         }
       ],
       "notes": "原形是 leverage，既可表示一般意义上的“利用”，也可用于金融领域的“杠杆”。技术写作中 use 更中性，leverage 更强调借助已有能力或优势。an RNN 使用 an，因为 RNN 的读音以元音音素开头。",
