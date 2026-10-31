@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T05:35:00.000Z",
+  "updatedAt": "2026-10-31T05:45:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1059,6 +1059,56 @@
       "notes": "at a steady pace = 以稳定的速度、稳步地；pace 在这里不是动词“踱步”。larger and larger 用比较级的重复表示“越来越大”。",
       "createdAt": "2026-10-31T05:35:00.000Z",
       "updatedAt": "2026-10-31T05:35:00.000Z"
+    },
+    {
+      "id": "entry-fine-tuning-20261031",
+      "term": "fine-tuning",
+      "phonetic": "/ˌfaɪnˈtjuːnɪŋ/",
+      "status": "learning",
+      "tags": ["LLM", "模型训练", "fine-tuning"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-fine-tuning-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "noun / present participle",
+          "definitionEn": "The process of making small, careful adjustments to improve something's performance or suitability.",
+          "definitionZh": "对事物进行细微、谨慎的调整，以改善其表现或适用性；微调。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The team made a few fine-tuning adjustments to the system.",
+              "zh": "团队对系统做了几处细微调整。"
+            }
+          ]
+        },
+        {
+          "id": "definition-fine-tuning-llm-20261031",
+          "dictionary": "LLM 训练语境释义 · 学习整理",
+          "partOfSpeech": "noun",
+          "definitionEn": "Additional training of a pretrained model on a narrower dataset or objective so it can better perform specific tasks or follow instructions.",
+          "definitionZh": "在预训练模型的基础上，使用较窄的数据集或特定目标继续训练，使模型更擅长特定任务或更能够遵循指令。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Instruction tuning is a form of fine-tuning that teaches a model to follow user requests.",
+              "zh": "指令微调是一种教会模型遵循用户请求的微调方式。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-fine-tuning-20261031",
+          "en": "By fine-tuning these models, we can create instruct or chat models that can follow directions.",
+          "zh": "通过微调这些模型，我们可以创建能够遵循指令的 instruct 模型或 chat 模型。",
+          "source": "用户提供的 LLM 训练例句",
+          "encounteredAt": "2026-10-31"
+        }
+      ],
+      "notes": "fine-tuning 常写作带连字符的复合名词；动词形式是 fine-tune a model。instruction tuning（指令微调）是让模型学会遵循任务指令的一种常见 fine-tuning 方法。",
+      "createdAt": "2026-10-31T05:45:00.000Z",
+      "updatedAt": "2026-10-31T05:45:00.000Z"
     }
   ]
 }
