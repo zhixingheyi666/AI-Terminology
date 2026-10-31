@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T05:15:00.000Z",
+  "updatedAt": "2026-10-31T05:25:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -933,6 +933,82 @@
       "notes": "原形是 leverage，既可表示一般意义上的“利用”，也可用于金融领域的“杠杆”。技术写作中 use 更中性，leverage 更强调借助已有能力或优势。an RNN 使用 an，因为 RNN 的读音以元音音素开头。",
       "createdAt": "2026-10-31T04:49:00.000Z",
       "updatedAt": "2026-10-31T04:49:00.000Z"
+    },
+    {
+      "id": "entry-stack-20261031",
+      "term": "stack",
+      "phonetic": "/stæk/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "BERT", "网络架构"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-stack-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "verb / noun",
+          "definitionEn": "To arrange things one on top of another; a pile or arranged set of things.",
+          "definitionZh": "把事物一层层堆放、叠放；作名词时表示“一叠、堆叠而成的一组事物”。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The books are stacked beside the desk.",
+              "zh": "书被叠放在桌边。"
+            }
+          ]
+        },
+        {
+          "id": "definition-stack-transformer-20261031",
+          "dictionary": "Transformer 语境释义 · 学习整理",
+          "partOfSpeech": "verb / noun",
+          "definitionEn": "To arrange multiple neural-network blocks as successive layers; as a noun, the complete layered arrangement.",
+          "definitionZh": "把多个神经网络块按先后层次组合起来；作名词时表示由多层 block 构成的堆叠结构，如 decoder stack、encoder stack。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The decoder stacks multiple blocks to form a deeper network.",
+              "zh": "解码器堆叠多个块，构成更深的网络。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-stack-20261031",
+          "en": "As shown in Figure 1-24, it stacks decoder blocks similar to the encoder-stacked architecture of BERT.",
+          "zh": "如图 1-24 所示，它像 BERT 的编码器堆叠架构那样，将多个解码器块堆叠起来。",
+          "source": "用户提供的 Transformer / BERT 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "这里的 stack 是动词“堆叠、把多个 block 按层组合”。encoder-stacked architecture 表示“由编码器逐层堆叠而成的架构”；连字符让 encoder-stacked 作为复合形容词修饰 architecture。",
+          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "contextAnalysis": "句子把当前模型堆叠 decoder blocks 的方式，与 BERT 堆叠 encoder layers 的结构进行类比。这里的 it 指代前文正在讨论的模型；仅凭这一句无法确定具体模型。",
+          "grammarAnalysis": {
+            "structure": "As shown in Figure 1-24, /\nit /\nstacks decoder blocks /\nsimilar to the encoder-stacked architecture of BERT.",
+            "parts": [
+              {
+                "label": "As shown in Figure 1-24",
+                "explanation": "方式/参照状语，可理解为 As it is shown in Figure 1-24：“如图 1-24 所示”。"
+              },
+              {
+                "label": "it",
+                "explanation": "主句主语，指前文讨论的模型；仅凭本句不能确定具体指哪个模型。"
+              },
+              {
+                "label": "stacks decoder blocks",
+                "explanation": "谓语和宾语：“将多个解码器块堆叠起来”；stack 在这里是动词。"
+              },
+              {
+                "label": "similar to the encoder-stacked architecture of BERT",
+                "explanation": "形容词/介词短语，说明堆叠方式与 BERT 的编码器堆叠架构相似，修饰前面的动作或整体结构。"
+              }
+            ],
+            "core": "It stacks decoder blocks similar to BERT’s encoder-stacked architecture.",
+            "rewrite": "As shown in Figure 1-24, it stacks decoder blocks in a way similar to BERT’s stacked encoder architecture."
+          }
+        }
+      ],
+      "notes": "stack 可作名词和动词。技术语境中的 a stack of layers 指“按层堆叠起来的一组网络层”；BERT 是 encoder-only 架构，而这里讨论的模型堆叠的是 decoder blocks。",
+      "createdAt": "2026-10-31T05:25:00.000Z",
+      "updatedAt": "2026-10-31T05:25:00.000Z"
     }
   ]
 }
