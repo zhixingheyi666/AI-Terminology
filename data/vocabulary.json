@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T03:50:00.000Z",
+  "updatedAt": "2026-10-31T04:00:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -358,6 +358,57 @@
       "notes": "achieved 是 achieve 的过去式和过去分词；achieved through 比 achieved by 更强调“借助某种方法或机制而实现”。",
       "createdAt": "2026-10-31T03:50:00.000Z",
       "updatedAt": "2026-10-31T03:50:00.000Z"
+    },
+    {
+      "id": "entry-regressive-20261031",
+      "term": "regressive",
+      "phonetic": "/rɪˈɡresɪv/",
+      "status": "learning",
+      "tags": ["NLP", "LLM", "自回归", "词根辨析"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-regressive-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Moving backward, returning to an earlier state, or becoming less advanced.",
+          "definitionZh": "倒退的；回归到较早状态的；变得不那么先进的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The policy was criticized for having a regressive effect on lower-income families.",
+              "zh": "这项政策因对低收入家庭产生倒退性影响而受到批评。"
+            }
+          ]
+        },
+        {
+          "id": "definition-regressive-autoregressive-20261031",
+          "dictionary": "LLM 语境与词形辨析 · 学习整理",
+          "partOfSpeech": "adjective · word root",
+          "definitionEn": "In machine learning, more precisely found inside the compound 'autoregressive': using values previously produced in a sequence to predict the next value.",
+          "definitionZh": "在机器学习语境中，本句实际使用的是复合词 autoregressive（自回归的）：用序列中此前已经产生的值来预测下一个值。单独的 regressive 通常表示“倒退的”，不能直接等同于 autoregressive。",
+          "url": "",
+          "examples": [
+            {
+              "en": "An autoregressive model predicts each next token from the tokens generated before it.",
+              "zh": "自回归模型根据此前生成的 token 来预测每一个后续 token。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-regressive-20261031",
+          "en": "Each step in this architecture is autoregressive. When generating the next word, this architecture needs to consume all previously generated words, as shown in Figure 1-12.",
+          "zh": "这个架构中的每一步都是自回归的。在生成下一个词时，该架构需要接收并使用所有此前已经生成的词，如图 1-12 所示。",
+          "source": "用户提供的 LLM 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "本句真正的词是 autoregressive，不是单独的 regressive。auto- 表示“自身”：模型把此前生成的词作为上下文，逐步预测下一个词。这里的 consume 指“作为模型输入接收并利用”，不是日常意义上的消耗。"
+        }
+      ],
+      "notes": "regressive 与 autoregressive 的关系是词形上的包含关系，不是同义词。autoregressive generation 通常逐个 token 顺序生成，简称 AR。",
+      "createdAt": "2026-10-31T04:00:00.000Z",
+      "updatedAt": "2026-10-31T04:00:00.000Z"
     }
   ]
 }
