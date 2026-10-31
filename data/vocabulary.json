@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T05:25:00.000Z",
+  "updatedAt": "2026-10-31T05:35:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1009,6 +1009,56 @@
       "notes": "stack 可作名词和动词。技术语境中的 a stack of layers 指“按层堆叠起来的一组网络层”；BERT 是 encoder-only 架构，而这里讨论的模型堆叠的是 decoder blocks。",
       "createdAt": "2026-10-31T05:25:00.000Z",
       "updatedAt": "2026-10-31T05:25:00.000Z"
+    },
+    {
+      "id": "entry-pace-20261031",
+      "term": "pace",
+      "phonetic": "/peɪs/",
+      "status": "learning",
+      "tags": ["LLM", "模型发展", "学术英语"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-pace-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "noun",
+          "definitionEn": "The speed or rate at which something happens, develops, or moves.",
+          "definitionZh": "事物发生、发展或移动的速度、节奏。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The project is progressing at a steady pace.",
+              "zh": "这个项目正在稳步推进。"
+            }
+          ]
+        },
+        {
+          "id": "definition-pace-llm-20261031",
+          "dictionary": "技术与 LLM 语境 · 学习整理",
+          "partOfSpeech": "noun",
+          "definitionEn": "The rate at which new models, capabilities, or research results are announced and made available.",
+          "definitionZh": "新模型、能力或研究成果被发布和提供的速度；本句指规模越来越大的模型以稳定的速度不断发布。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Large language models are being released at a remarkable pace.",
+              "zh": "大型语言模型正以惊人的速度发布。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-pace-20261031",
+          "en": "Keeping this in mind, we saw larger and larger models being released at a steady pace.",
+          "zh": "考虑到这一点，我们看到规模越来越大的模型正以稳定的速度不断发布。",
+          "source": "用户提供的 LLM 阅读例句",
+          "encounteredAt": "2026-10-31"
+        }
+      ],
+      "notes": "at a steady pace = 以稳定的速度、稳步地；pace 在这里不是动词“踱步”。larger and larger 用比较级的重复表示“越来越大”。",
+      "createdAt": "2026-10-31T05:35:00.000Z",
+      "updatedAt": "2026-10-31T05:35:00.000Z"
     }
   ]
 }
