@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T03:41:00.000Z",
+  "updatedAt": "2026-10-31T03:50:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -307,6 +307,57 @@
       "notes": "cluster 既可作名词“簇、群组”，也可作动词“聚集”；clustering 这里作为方法/任务名称使用。",
       "createdAt": "2026-10-31T03:41:00.000Z",
       "updatedAt": "2026-10-31T03:41:00.000Z"
+    },
+    {
+      "id": "entry-achieved-20261031",
+      "term": "achieved",
+      "phonetic": "/əˈtʃiːvd/",
+      "status": "learning",
+      "tags": ["NLP", "RNN", "学术英语"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-achieved-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "verb · past tense / past participle",
+          "definitionEn": "Successfully reached, completed, or accomplished a result through effort or a particular method.",
+          "definitionZh": "通过努力或某种方法成功达到、完成或实现某个结果。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The researchers achieved a major improvement in model accuracy.",
+              "zh": "研究人员在模型准确率上取得了重大提升。"
+            }
+          ]
+        },
+        {
+          "id": "definition-achieved-nlp-20261031",
+          "dictionary": "AI 与 NLP 语境释义 · 学习整理",
+          "partOfSpeech": "verb · passive construction",
+          "definitionEn": "Was accomplished or carried out by means of a specified method or model.",
+          "definitionZh": "通过某种特定方法或模型得以完成、实现；本句的 was achieved through RNNs 表示编码过程的一个步骤是通过 RNN 完成的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Sequence modeling was achieved through recurrent neural networks.",
+              "zh": "序列建模是通过循环神经网络实现的。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-achieved-20261031",
+          "en": "A step in encoding this text was achieved through recurrent neural networks (RNNs).",
+          "zh": "对这段文本进行编码的一个步骤是通过循环神经网络（RNN）完成的。",
+          "source": "用户提供的 RNN 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "was achieved through 是被动结构，核心含义是“通过……实现/完成”。句子主语是 A step，完成方式是 recurrent neural networks (RNNs)。"
+        }
+      ],
+      "notes": "achieved 是 achieve 的过去式和过去分词；achieved through 比 achieved by 更强调“借助某种方法或机制而实现”。",
+      "createdAt": "2026-10-31T03:50:00.000Z",
+      "updatedAt": "2026-10-31T03:50:00.000Z"
     }
   ]
 }
