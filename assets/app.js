@@ -23,7 +23,6 @@ const STORAGE = Object.freeze({
   tokenPersistent: "citrace.github-token.local.v1",
   backup: "citrace.library-backup.v1",
   theme: "citrace.theme.v1",
-  readingScale: "citrace.reading-scale.v1",
 });
 
 const GITHUB_API = "https://api.github.com";
@@ -46,7 +45,6 @@ const state = {
   status: "all",
   tag: "",
   reviewOnly: false,
-  readingScale: loadReadingScale(),
   selectedId: initialHashEntryId,
   editor: null,
   editingId: "",
@@ -85,9 +83,6 @@ const elements = {
   definitionList: document.querySelector("#definitionList"),
   personalExampleList: document.querySelector("#personalExampleList"),
   personalExampleEmpty: document.querySelector("#personalExampleEmpty"),
-  fontDecreaseButton: document.querySelector("#fontDecreaseButton"),
-  fontIncreaseButton: document.querySelector("#fontIncreaseButton"),
-  fontResetButton: document.querySelector("#fontResetButton"),
   reviewToggleButton: document.querySelector("#reviewToggleButton"),
   reviewToggleText: document.querySelector("#reviewToggleText"),
   notesSection: document.querySelector("#notesSection"),
@@ -127,7 +122,6 @@ let syncTimer;
 const pronunciationAudioCache = new Map();
 
 initializeTheme();
-applyReadingScale();
 bindEvents();
 loadLibrary();
 registerServiceWorker();
@@ -594,7 +588,6 @@ function renderEntryDetail(entry) {
 
   elements.notesSection.hidden = !entry.notes;
   elements.detailNotes.textContent = entry.notes || "";
-  applyReadingScale();
 }
 
 function renderDefinitionCard(definition, index) {
@@ -1587,42 +1580,6 @@ function initializeTheme() {
   applyTheme(storedTheme);
 }
 
-function loadReadingScale() {
-  const storedValue = readStorage(localStorage, STORAGE.readingScale);
-  if (!storedValue) {
-    return 1;
-  }
-  const storedScale = Number(storedValue);
-  if (!Number.isFinite(storedScale)) {
-    return 1;
-  }
-  return Math.min(1.4, Math.max(0.85, storedScale));
-}
-
-function applyReadingScale() {
-  const scale = state.readingScale;
-  elements.definitionList.style.fontSize = `${scale}rem`;
-  elements.personalExampleList.style.fontSize = `${1.35 * scale}rem`;
-  elements.fontResetButton.textContent = `${Math.round(scale * 100)}%`;
-  elements.fontDecreaseButton.disabled = scale <= 0.85;
-  elements.fontIncreaseButton.disabled = scale >= 1.4;
-}
-
-function setReadingScale(nextScale) {
-  const roundedScale = Math.round(Math.min(1.4, Math.max(0.85, nextScale)) * 100) / 100;
-  state.readingScale = roundedScale;
-  try {
-    localStorage.setItem(STORAGE.readingScale, String(roundedScale));
-  } catch {
-    // Font-size persistence is optional.
-  }
-  applyReadingScale();
-}
-
-function changeReadingScale(delta) {
-  setReadingScale(state.readingScale + delta);
-}
-
 function speakText(text, accent = "uk", button = null) {
   const value = String(text || "").trim();
   if (!value) {
@@ -1866,9 +1823,6 @@ function bindEvents() {
   });
   document.querySelector("#deleteEntryButton").addEventListener("click", deleteCurrentEntry);
   elements.reviewToggleButton.addEventListener("click", toggleReviewForSelected);
-  elements.fontDecreaseButton.addEventListener("click", () => changeReadingScale(-0.1));
-  elements.fontIncreaseButton.addEventListener("click", () => changeReadingScale(0.1));
-  elements.fontResetButton.addEventListener("click", () => setReadingScale(1));
   elements.entryDetail.addEventListener("click", (event) => {
     const speakButton = event.target.closest("[data-speak-accent]");
     if (!speakButton) {

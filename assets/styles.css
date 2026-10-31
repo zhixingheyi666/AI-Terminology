@@ -370,6 +370,7 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .library-heading {
   display: flex;
+  flex: 0 0 auto;
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
@@ -386,6 +387,7 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .search-box {
   display: grid;
+  flex: 0 0 auto;
   min-height: 3rem;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
@@ -444,6 +446,7 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .filters {
   display: grid;
+  flex: 0 0 auto;
   gap: 0.72rem;
   margin-bottom: 0.9rem;
 }
@@ -549,6 +552,7 @@ html[data-theme="dark"] .theme-icon-sun {
 .list-meta {
   display: flex;
   min-height: 1.8rem;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: space-between;
   padding: 0 0.35rem;
@@ -573,8 +577,11 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .entry-list {
   display: grid;
+  flex: 1 1 0;
   min-height: 0;
   gap: 0.4rem;
+  align-content: start;
+  grid-auto-rows: max-content;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 0.08rem 0.25rem 1rem 0.1rem;
@@ -585,6 +592,8 @@ html[data-theme="dark"] .theme-icon-sun {
 .entry-card {
   position: relative;
   display: grid;
+  min-height: 5.35rem;
+  align-self: start;
   gap: 0.45rem;
   width: 100%;
   padding: 0.9rem 0.95rem;
@@ -755,6 +764,7 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .sidebar-footer {
   display: grid;
+  flex: 0 0 auto;
   grid-template-columns: 1fr 1fr;
   gap: 0.45rem;
   padding: 0.8rem 0.25rem 0;
@@ -1089,51 +1099,6 @@ html[data-theme="dark"] .theme-icon-sun {
   height: 2.15rem;
 }
 
-.font-size-control {
-  display: inline-flex;
-  height: 2.15rem;
-  align-items: center;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0.48rem;
-  background: var(--surface);
-}
-
-.font-size-control button {
-  display: grid;
-  height: 100%;
-  min-width: 1.85rem;
-  place-items: center;
-  padding: 0 0.42rem;
-  border: 0;
-  border-left: 1px solid var(--line);
-  background: transparent;
-  color: var(--ink-soft);
-  font-size: 0.64rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.font-size-control button:hover:not(:disabled) {
-  background: var(--accent-pale);
-  color: var(--accent-ink);
-}
-
-.font-size-label {
-  padding: 0 0.42rem 0 0.55rem;
-  color: var(--ink-faint);
-  font-family: var(--serif);
-  font-size: 0.76rem;
-}
-
-.font-size-control .font-scale-value {
-  min-width: 2.45rem;
-  color: var(--ink-faint);
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  font-weight: 500;
-}
-
 .review-toggle-button.is-active {
   border-color: color-mix(in srgb, var(--warm) 60%, var(--line));
   background: var(--warm-pale);
@@ -1351,14 +1316,14 @@ html[data-theme="dark"] .theme-icon-sun {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.8rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .definition-card {
   display: flex;
   min-width: 0;
   flex-direction: column;
-  padding: 1.25rem;
+  padding: 1.35rem;
   border: 1px solid var(--line);
   border-radius: 0.72rem;
   background: color-mix(in srgb, var(--surface) 92%, transparent);
@@ -1414,17 +1379,18 @@ html[data-theme="dark"] .theme-icon-sun {
 }
 
 .definition-en {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.8rem;
   font-family: var(--serif);
   font-size: 1em;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .definition-zh {
   margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.78em;
-  line-height: 1.7;
+  color: var(--ink);
+  font-size: 0.92em;
+  font-weight: 500;
+  line-height: 1.75;
 }
 
 .dictionary-examples {
@@ -1496,9 +1462,9 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .dictionary-example > p {
   padding-left: 0.7rem;
-  color: var(--ink-faint);
+  color: var(--ink-soft);
   font-family: var(--sans);
-  font-size: 0.72em;
+  font-size: 0.84em;
 }
 
 .encounter-section {
@@ -1565,8 +1531,9 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .encounter-translation {
   margin: 0.65rem 0 0;
-  color: var(--ink-soft);
-  font-size: 0.62em;
+  color: var(--ink);
+  font-size: 0.68em;
+  font-weight: 500;
   line-height: 1.75;
 }
 
