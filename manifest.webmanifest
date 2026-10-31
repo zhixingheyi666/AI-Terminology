@@ -1,0 +1,19 @@
+{
+  "name": "词迹 · 我的 AI 术语库",
+  "short_name": "词迹",
+  "description": "把词典释义、例句和真实语境收进同一个可搜索的个人英语术语库。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f1e8",
+  "theme_color": "#f4f1e8",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-31T00:00:00.000Z",
+  "entries": [
+    {
+      "id": "seed-grounding",
+      "term": "grounding",
+      "phonetic": "/ˈɡraʊndɪŋ/",
+      "status": "learning",
+      "tags": ["AI", "LLM", "NLP"],
+      "definitions": [
+        {
+          "id": "seed-grounding-definition-1",
+          "dictionary": "Oxford English Dictionary · 义项摘述",
+          "partOfSpeech": "noun",
+          "definitionEn": "The process of giving something a firm basis or connection to reality.",
+          "definitionZh": "使某事物建立在可靠基础之上，或与现实建立联系的过程。",
+          "url": "https://www.oed.com/",
+          "examples": [
+            {
+              "en": "The theory needs stronger grounding in evidence.",
+              "zh": "这一理论需要在证据上有更坚实的基础。"
+            }
+          ]
+        },
+        {
+          "id": "seed-grounding-definition-2",
+          "dictionary": "我的 AI 语境释义",
+          "partOfSpeech": "noun · machine learning",
+          "definitionEn": "Connecting a model's output to verifiable sources, retrieved context, or real-world data.",
+          "definitionZh": "把模型输出连接到可验证来源、检索上下文或现实数据，以减少脱离事实的生成。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Retrieval grounding can reduce hallucination, but it does not eliminate it.",
+              "zh": "检索增强的事实依据可以减少幻觉，但并不能彻底消除幻觉。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "seed-grounding-encounter-1",
+          "en": "RAG improves factual grounding by conditioning generation on retrieved documents.",
+          "zh": "RAG 通过让模型基于检索到的文档进行生成，来提升事实依据。",
+          "source": "一篇关于 Retrieval-Augmented Generation 的论文",
+          "encounteredAt": "2026-10-30",
+          "note": "这里的 grounding 不是电路里的“接地”，而是让生成结果有外部依据。"
+        }
+      ],
+      "notes": "这是示例词条，可以直接编辑或删除。建议在“我遇见它的句子”中保留阅读上下文。",
+      "createdAt": "2026-10-31T00:00:00.000Z",
+      "updatedAt": "2026-10-31T00:00:00.000Z"
+    },
+    {
+      "id": "entry-vocabulary-20261031",
+      "term": "vocabulary",
+      "phonetic": "/vəˈkæbjələri/",
+      "status": "learning",
+      "tags": ["NLP", "词袋模型", "AI"],
+      "definitions": [
+        {
+          "id": "definition-vocabulary-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "noun",
+          "definitionEn": "The set of words used in a language, subject, or by a particular person.",
+          "definitionZh": "一种语言、一个学科领域或某个人所使用的词汇集合；也可指词汇量。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Reading widely gradually expands your vocabulary.",
+              "zh": "广泛阅读会逐渐扩大你的词汇量。"
+            }
+          ]
+        },
+        {
+          "id": "definition-vocabulary-nlp-20261031",
+          "dictionary": "AI 与 NLP 语境释义 · 学习整理",
+          "partOfSpeech": "noun",
+          "definitionEn": "The set of tokens or words recognized by a language model or used by a text-processing method.",
+          "definitionZh": "语言模型能够识别的 token 或单词集合，也可以是某种文本处理方法使用的词表；在词袋模型中，它就是统计词频所依据的词表。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Each document is represented by counts over the training vocabulary.",
+              "zh": "每篇文档都用训练词表中各个词的计数来表示。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-vocabulary-20261031",
+          "en": "Using our vocabulary, we simply count how often a word in each sentence appears, quite literally creating a bag of words.",
+          "zh": "使用我们的词表，我们只是统计每个句子中某个词出现了多少次；这实际上就是在字面意义上构建一个词袋。",
+          "source": "用户提供的 NLP / bag-of-words 例句",
+          "encounteredAt": "2026-10-31",
+          "note": "这里的 vocabulary 指用于统计的“词表 / 词汇集合”，不是人的“词汇量”。"
+        }
+      ],
+      "notes": "词袋模型关心词的出现次数和词表映射，通常会忽略句子中的词序。",
+      "createdAt": "2026-10-31T00:00:00.000Z",
+      "updatedAt": "2026-10-31T00:00:00.000Z"
+    },
+    {
+      "id": "entry-literally-20261031",
+      "term": "literally",
+      "phonetic": "/ˈlɪtərəli/",
+      "status": "learning",
+      "tags": ["语义", "强调", "NLP"],
+      "definitions": [
+        {
+          "id": "definition-literally-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adverb",
+          "definitionEn": "In the most basic or exact meaning of a word or phrase; in a literal sense.",
+          "definitionZh": "按照词语最基本的、字面的意义；确实地、不夸张地。",
+          "url": "",
+          "examples": [
+            {
+              "en": "He translated the phrase literally rather than idiomatically.",
+              "zh": "他按字面意义翻译了这个短语，而没有采用习语译法。"
+            }
+          ]
+        },
+        {
+          "id": "definition-literally-emphasis-20261031",
+          "dictionary": "口语用法 · 学习整理",
+          "partOfSpeech": "adverb",
+          "definitionEn": "Used informally to emphasize a statement, sometimes even when it is not literally true.",
+          "definitionZh": "口语中用来加强语气，表示“简直、确实、真的”，有时并不表示严格意义上的字面含义。",
+          "url": "",
+          "examples": [
+            {
+              "en": "There were literally hundreds of examples in the appendix.",
+              "zh": "附录里真的有好几百个例子。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-literally-20261031",
+          "en": "Using our vocabulary, we simply count how often a word in each sentence appears, quite literally creating a bag of words.",
+          "zh": "使用我们的词表，我们只是统计每个句子中某个词出现了多少次；这实际上就是在字面意义上构建一个词袋。",
+          "source": "用户提供的 NLP / bag-of-words 例句",
+          "encounteredAt": "2026-10-31",
+          "note": "这里的 literally 用来强调 “bag of words” 不只是比喻性名称：模型确实把句子表示成一袋词频。"
+        }
+      ],
+      "notes": "quite literally 在这里既加强了语气，也保留了“字面意义上”的含义。",
+      "createdAt": "2026-10-31T00:00:00.000Z",
+      "updatedAt": "2026-10-31T00:00:00.000Z"
+    }
+  ]
+}
