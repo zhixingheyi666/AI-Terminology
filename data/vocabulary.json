@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T03:30:00.000Z",
+  "updatedAt": "2026-10-31T03:41:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -205,6 +205,108 @@
       "notes": "semantic 是形容词，名词形式是 semantics（语义学），副词形式是 semantically（在语义上）。",
       "createdAt": "2026-10-31T03:30:00.000Z",
       "updatedAt": "2026-10-31T03:30:00.000Z"
+    },
+    {
+      "id": "entry-utilized-20261031",
+      "term": "utilized",
+      "phonetic": "/ˈjuːtəlaɪzd/",
+      "status": "learning",
+      "tags": ["NLP", "embeddings", "学术英语"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-utilized-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "verb · past tense / past participle",
+          "definitionEn": "Made practical or effective use of something; used it for a particular purpose.",
+          "definitionZh": "利用、使用；把某物用于特定目的并发挥其作用。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The team utilized the available data to improve the system.",
+              "zh": "团队利用现有数据改进了系统。"
+            }
+          ]
+        },
+        {
+          "id": "definition-utilized-nlp-20261031",
+          "dictionary": "AI 与 NLP 语境释义 · 学习整理",
+          "partOfSpeech": "verb · passive use",
+          "definitionEn": "Applied or employed as an input, method, or component in a computational workflow or downstream task.",
+          "definitionZh": "在计算流程或下游任务中被采用、应用，作为输入、方法或组件；本句中指词嵌入被用于分类、聚类和语义检索等任务。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Token embeddings are utilized as features for classification models.",
+              "zh": "Token 嵌入被用作分类模型的特征。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-utilized-20261031",
+          "en": "Throughout the book, embeddings will take on a central role as they are utilized in many use cases, such as classification (see Chapter 4), clustering (see Chapter 5), and semantic search and retrieval-augmented generation (see Chapter 8). In Chapter 2, we will take our first deep dive into token embeddings.",
+          "zh": "在整本书中，嵌入将扮演核心角色，因为它们会被用于许多用例，例如分类（见第4章）、聚类（见第5章），以及语义搜索和检索增强生成（见第8章）。在第2章中，我们将首次深入探讨 token 嵌入。",
+          "source": "用户提供的 LLM 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "are utilized 是被动语态，核心意思是 embeddings are used in many use cases，即嵌入被用于多种下游任务。"
+        }
+      ],
+      "notes": "utilized 是 utilize 的过去式和过去分词，比 use 更正式；常见结构为 be utilized in / as / for。",
+      "createdAt": "2026-10-31T03:40:00.000Z",
+      "updatedAt": "2026-10-31T03:40:00.000Z"
+    },
+    {
+      "id": "entry-clustering-20261031",
+      "term": "clustering",
+      "phonetic": "/ˈklʌstərɪŋ/",
+      "status": "learning",
+      "tags": ["NLP", "机器学习", "embeddings"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-clustering-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "noun / gerund",
+          "definitionEn": "The act or process of grouping similar people, things, or data points together.",
+          "definitionZh": "把相似的人、事物或数据点归为一组的行为或过程；聚类。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The clustering of related topics made the document easier to navigate.",
+              "zh": "把相关主题聚集在一起，使文档更容易浏览。"
+            }
+          ]
+        },
+        {
+          "id": "definition-clustering-ml-20261031",
+          "dictionary": "机器学习语境释义 · 学习整理",
+          "partOfSpeech": "noun · unsupervised learning",
+          "definitionEn": "An unsupervised learning task that groups examples according to similarity, often by clustering their embedding vectors.",
+          "definitionZh": "一种无监督学习任务：根据相似性将样本分组，通常通过聚类它们的嵌入向量来发现语义相近的文本或数据。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Clustering nearby embeddings can reveal groups of semantically related documents.",
+              "zh": "对彼此接近的嵌入进行聚类，可以揭示语义相关的文档组。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-clustering-20261031",
+          "en": "Throughout the book, embeddings will take on a central role as they are utilized in many use cases, such as classification (see Chapter 4), clustering (see Chapter 5), and semantic search and retrieval-augmented generation (see Chapter 8). In Chapter 2, we will take our first deep dive into token embeddings.",
+          "zh": "在整本书中，嵌入将扮演核心角色，因为它们会被用于许多用例，例如分类（见第4章）、聚类（见第5章），以及语义搜索和检索增强生成（见第8章）。在第2章中，我们将首次深入探讨 token 嵌入。",
+          "source": "用户提供的 LLM 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "这里的 clustering 是嵌入的一种下游用途：利用向量之间的相似度，把语义相近的样本自动归组。"
+        }
+      ],
+      "notes": "cluster 既可作名词“簇、群组”，也可作动词“聚集”；clustering 这里作为方法/任务名称使用。",
+      "createdAt": "2026-10-31T03:41:00.000Z",
+      "updatedAt": "2026-10-31T03:41:00.000Z"
     }
   ]
 }
