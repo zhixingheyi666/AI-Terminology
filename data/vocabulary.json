@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:10:00.000Z",
+  "updatedAt": "2026-10-31T04:20:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -460,6 +460,57 @@
       "notes": "attend、attention 和 attentive 同源：attend 是动词，attention 是名词“注意力”，attentive 是形容词“专注的”。不要把句中的 attends to 误读成“出席”。",
       "createdAt": "2026-10-31T04:10:00.000Z",
       "updatedAt": "2026-10-31T04:10:00.000Z"
+    },
+    {
+      "id": "entry-sequential-20261031",
+      "term": "sequential",
+      "phonetic": "/sɪˈkwenʃəl/",
+      "status": "learning",
+      "tags": ["NLP", "attention", "句法", "教材例句"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-sequential-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Happening or arranged in a particular order, one item or step after another.",
+          "definitionZh": "按某个顺序发生的；依次排列的；序列的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The instructions must be completed in sequential order.",
+              "zh": "这些指令必须按顺序依次完成。"
+            }
+          ]
+        },
+        {
+          "id": "definition-sequential-nlp-20261031",
+          "dictionary": "AI 与 NLP 语境释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Preserving or relating to the order and progression of tokens or units in a sequence.",
+          "definitionZh": "与 token 或文本单位的先后顺序和连续发展有关的；文本的 sequential nature 指词序、词与词之间的先后关系及序列结构。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Attention mechanisms can represent sequential relationships without processing tokens recursively.",
+              "zh": "注意力机制无需递归处理 token，也能表示序列中的顺序关系。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-sequential-20261031",
+          "en": "Compared to word2vec, this architecture allows for representing the sequential nature of text and the context in which it appears by “attending” to the entire sentence.",
+          "zh": "与 word2vec 相比，这种架构通过“关注”整个句子，使得表示文本的顺序性以及文本所处的上下文成为可能。",
+          "source": "用户提供的 LLM 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "句法主干：this architecture allows for representing A and B [by attending to the entire sentence]。Compared to word2vec 是状语；A = the sequential nature of text；B = the context in which it appears，其中 in which it appears 是修饰 context 的定语从句，it 指 text；by “attending” to the entire sentence 是方式状语，说明如何表示 A 和 B。"
+        }
+      ],
+      "notes": "allow for 表示“使……成为可能、允许……”。原句语法成立，但更自然的技术写作可以改为 this architecture can represent A and B by attending to the entire sentence，或 allows the model to represent A and B。in which it appears 中 it 的所指从语法上有一定歧义，但按语境显然指 text。",
+      "createdAt": "2026-10-31T04:20:00.000Z",
+      "updatedAt": "2026-10-31T04:20:00.000Z"
     }
   ]
 }
