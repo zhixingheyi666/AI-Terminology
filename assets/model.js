@@ -47,6 +47,25 @@ export function createPersonalExample(values = {}) {
     source: stringValue(values.source),
     encounteredAt: stringValue(values.encounteredAt),
     note: stringValue(values.note),
+    exampleTags: normalizeTags(values.exampleTags),
+    contextAnalysis: stringValue(values.contextAnalysis),
+    grammarAnalysis: normalizeGrammarAnalysis(values.grammarAnalysis),
+  };
+}
+
+export function createGrammarPart(values = {}) {
+  return {
+    label: stringValue(values.label),
+    explanation: stringValue(values.explanation),
+  };
+}
+
+export function createGrammarAnalysis(values = {}) {
+  return {
+    structure: stringValue(values.structure),
+    parts: Array.isArray(values.parts) ? values.parts.map(createGrammarPart) : [],
+    core: stringValue(values.core),
+    rewrite: stringValue(values.rewrite),
   };
 }
 
@@ -131,6 +150,11 @@ export function normalizeDefinition(raw) {
 export function normalizePersonalExample(raw) {
   const source = raw && typeof raw === "object" ? raw : {};
   return createPersonalExample(source);
+}
+
+export function normalizeGrammarAnalysis(raw) {
+  const source = raw && typeof raw === "object" ? raw : {};
+  return createGrammarAnalysis(source);
 }
 
 export function normalizeTags(tags) {
@@ -265,6 +289,7 @@ export function filterEntries(entries, filters = {}) {
   const queryTokens = normalizeSearch(filters.query).split(/\s+/).filter(Boolean);
   const status = filters.status || "all";
   const tag = normalizeSearch(filters.tag);
+  const exampleTag = normalizeSearch(filters.exampleTag);
   const reviewOnly = Boolean(filters.reviewOnly);
 
   return entries.filter((entry) => {
@@ -280,6 +305,17 @@ export function filterEntries(entries, filters = {}) {
       tag &&
       ![...entry.tags, ...(entry.reviewTags || [])].some(
         (entryTag) => normalizeSearch(entryTag) === tag,
+      )
+    ) {
+      return false;
+    }
+
+    if (
+      exampleTag &&
+      !entry.personalExamples.some((example) =>
+        (example.exampleTags || []).some(
+          (tagName) => normalizeSearch(tagName) === exampleTag,
+        ),
       )
     ) {
       return false;
@@ -314,6 +350,17 @@ export function entrySearchText(entry) {
         example.source,
         example.note,
         example.encounteredAt,
+        ...(Array.isArray(example.exampleTags) ? example.exampleTags : []),
+        example.contextAnalysis,
+        example.grammarAnalysis?.structure,
+        example.grammarAnalysis?.core,
+        example.grammarAnalysis?.rewrite,
+        ...(Array.isArray(example.grammarAnalysis?.parts)
+          ? example.grammarAnalysis.parts.flatMap((part) => [
+              part.label,
+              part.explanation,
+            ])
+          : []),
       ])
     : [];
 
@@ -340,6 +387,26 @@ export function collectTags(entries) {
         label: current?.label || tag,
         count: (current?.count || 0) + 1,
       });
+    }
+  }
+
+  return [...tags.values()].sort(
+    (a, b) => b.count - a.count || a.label.localeCompare(b.label, "zh-CN"),
+  );
+}
+
+export function collectExampleTags(entries) {
+  const tags = new Map();
+  for (const entry of entries) {
+    for (const example of entry.personalExamples || []) {
+      for (const tag of example.exampleTags || []) {
+        const key = normalizeSearch(tag);
+        const current = tags.get(key);
+        tags.set(key, {
+          label: current?.label || tag,
+          count: (current?.count || 0) + 1,
+        });
+      }
     }
   }
 
@@ -454,11 +521,58 @@ function validatePersonalExample(example, path, allIds, errors) {
   }
 
   if (
+    example.exampleTags !== undefined &&
+    (!Array.isArray(example.exampleTags) ||
+      example.exampleTags.some((tag) => typeof tag !== "string"))
+  ) {
+    errors.push(`${path}.exampleTags 必须是字符串数组。`);
+  }
+
+  if (
+    example.contextAnalysis !== undefined &&
+    typeof example.contextAnalysis !== "string"
+  ) {
+    errors.push(`${path}.contextAnalysis 必须是字符串。`);
+  }
+
+  if (example.grammarAnalysis !== undefined) {
+    validateGrammarAnalysis(example.grammarAnalysis, `${path}.grammarAnalysis`, errors);
+  }
+
+  if (
     example.encounteredAt &&
     !/^\d{4}-\d{2}-\d{2}$/.test(example.encounteredAt)
   ) {
     errors.push(`${path}.encounteredAt 必须使用 YYYY-MM-DD 格式。`);
   }
+}
+
+function validateGrammarAnalysis(analysis, path, errors) {
+  if (!analysis || typeof analysis !== "object" || Array.isArray(analysis)) {
+    errors.push(`${path} 必须是对象。`);
+    return;
+  }
+
+  for (const field of ["structure", "core", "rewrite"]) {
+    if (analysis[field] !== undefined && typeof analysis[field] !== "string") {
+      errors.push(`${path}.${field} 必须是字符串。`);
+    }
+  }
+
+  if (!Array.isArray(analysis.parts)) {
+    errors.push(`${path}.parts 必须是数组。`);
+    return;
+  }
+
+  analysis.parts.forEach((part, index) => {
+    if (!part || typeof part !== "object" || Array.isArray(part)) {
+      errors.push(`${path}.parts[${index}] 必须是对象。`);
+      return;
+    }
+    if (typeof part.label !== "string" || typeof part.explanation !== "string") {
+      errors.push(`${path}.parts[${index}] 的 label 和 explanation 必须是字符串。`);
+    }
+  });
 }
 
 function registerUniqueId(value, path, allIds, errors) {

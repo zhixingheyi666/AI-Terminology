@@ -11,8 +11,8 @@
     <title>词迹 · 我的 AI 术语库</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css?v=1.1.1" />
-    <script type="module" src="./assets/app.js?v=1.1.1"></script>
+    <link rel="stylesheet" href="./assets/styles.css?v=1.2.1" />
+    <script type="module" src="./assets/app.js?v=1.2.1"></script>
   </head>
   <body>
     <a class="skip-link" href="#searchInput">跳到词汇搜索</a>
@@ -165,7 +165,11 @@
                 <button class="filter-pill" type="button" data-status="review">待复习</button>
                 <button class="filter-pill" type="button" data-status="mastered">已掌握</button>
               </div>
-              <div class="tag-cloud" id="tagCloud" aria-label="按标签筛选"></div>
+              <div class="tag-mode-switch" id="tagModeSwitch" role="group" aria-label="选择标签类型">
+                <button class="is-active" type="button" data-tag-mode="word">单词标签</button>
+                <button type="button" data-tag-mode="example">例句标签</button>
+              </div>
+              <div class="tag-cloud" id="tagCloud" aria-label="按单词标签筛选"></div>
               <button class="review-filter-button" id="reviewFilterButton" type="button">
                 <svg><use href="#icon-star"></use></svg>
                 <span>复习标签</span>

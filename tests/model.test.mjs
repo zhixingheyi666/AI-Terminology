@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   collectTags,
+  collectExampleTags,
   filterEntries,
   normalizeTags,
   sortEntriesByCreated,
@@ -38,7 +39,20 @@ function validData() {
             zh: "检索改善了事实依据。",
             source: "paper",
             encounteredAt: "2026-10-30",
-            note: "",
+            note: "Pay attention to the passive voice.",
+            exampleTags: ["句法分析", "教材例句"],
+            contextAnalysis: "The word describes factual support in retrieval.",
+            grammarAnalysis: {
+              structure: "Retrieval / improves / factual grounding.",
+              parts: [
+                {
+                  label: "Retrieval",
+                  explanation: "主语：检索。"
+                }
+              ],
+              core: "Retrieval improves grounding.",
+              rewrite: ""
+            },
           },
         ],
         notes: "",
@@ -66,6 +80,8 @@ test("searches dictionary definitions and personal source", () => {
   assert.equal(filterEntries(entries, { query: "现实" }).length, 1);
   assert.equal(filterEntries(entries, { query: "paper retrieval" }).length, 1);
   assert.equal(filterEntries(entries, { query: "高频复习" }).length, 1);
+  assert.equal(filterEntries(entries, { query: "factual support" }).length, 1);
+  assert.equal(filterEntries(entries, { query: "主语" }).length, 1);
   assert.equal(filterEntries(entries, { query: "unrelated" }).length, 0);
 });
 
@@ -74,6 +90,8 @@ test("filters status and tag", () => {
   assert.equal(filterEntries(entries, { status: "learning", tag: "ai" }).length, 1);
   assert.equal(filterEntries(entries, { tag: "高频复习" }).length, 1);
   assert.equal(filterEntries(entries, { reviewOnly: true }).length, 1);
+  assert.equal(filterEntries(entries, { exampleTag: "句法分析" }).length, 1);
+  assert.equal(filterEntries(entries, { exampleTag: "不存在的标签" }).length, 0);
   assert.equal(filterEntries(entries, { status: "mastered" }).length, 0);
 });
 
@@ -99,6 +117,23 @@ test("normalizes and deduplicates tags", () => {
     [
       { label: "AI", count: 2 },
       { label: "NLP", count: 1 },
+    ],
+  );
+});
+
+test("collects example tags with counts", () => {
+  assert.deepEqual(
+    collectExampleTags([
+      {
+        personalExamples: [
+          { exampleTags: ["句法分析", "教材例句"] },
+          { exampleTags: ["句法分析"] },
+        ],
+      },
+    ]),
+    [
+      { label: "句法分析", count: 2 },
+      { label: "教材例句", count: 1 },
     ],
   );
 });

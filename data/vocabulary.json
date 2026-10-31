@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:49:00.000Z",
+  "updatedAt": "2026-10-31T05:00:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -505,12 +505,45 @@
           "zh": "与 word2vec 相比，这种架构通过“关注”整个句子，使得表示文本的顺序性以及文本所处的上下文成为可能。",
           "source": "用户提供的 LLM 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "句法主干：this architecture allows for representing A and B [by attending to the entire sentence]。Compared to word2vec 是状语；A = the sequential nature of text；B = the context in which it appears，其中 in which it appears 是修饰 context 的定语从句，it 指 text；by “attending” to the entire sentence 是方式状语，说明如何表示 A 和 B。"
+          "note": "引号中的 attending 是 NLP/attention 技术用语，相当于“对整句分配注意力”，不是“参加”。",
+          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "contextAnalysis": "这里把该架构与 word2vec 对比：word2vec 主要基于静态词向量，而该架构通过关注完整句子，同时表示文本中 token 的先后顺序及其所处上下文。allow for representing 的写法较抽象，重点不是“允许”，而是使这种表示方式成为可能。",
+          "grammarAnalysis": {
+            "structure": "Compared to word2vec, /\nthis architecture /\nallows for representing [\n  the sequential nature of text\n  and\n  the context in which it appears\n] /\nby “attending” to the entire sentence.",
+            "parts": [
+              {
+                "label": "Compared to word2vec",
+                "explanation": "比较状语：“与 word2vec 相比”。"
+              },
+              {
+                "label": "this architecture",
+                "explanation": "主句主语：“这种架构”。"
+              },
+              {
+                "label": "allows for representing…",
+                "explanation": "谓语部分，意思是“使表示……成为可能”；representing 是动名词。"
+              },
+              {
+                "label": "representing",
+                "explanation": "后面接两个并列宾语：the sequential nature of text 和 the context in which it appears。"
+              },
+              {
+                "label": "in which it appears",
+                "explanation": "修饰 context 的定语从句；it 按语义指前面的 text。"
+              },
+              {
+                "label": "by “attending” to the entire sentence",
+                "explanation": "方式状语，说明通过“关注整句”来实现上述表示。"
+              }
+            ],
+            "core": "This architecture allows for representing A and B by attending to the entire sentence.",
+            "rewrite": "Compared with word2vec, this architecture allows the model to represent both the sequential structure of text and the context surrounding it by attending to the entire sentence."
+          }
         }
       ],
       "notes": "allow for 表示“使……成为可能、允许……”。原句语法成立，但更自然的技术写作可以改为 this architecture can represent A and B by attending to the entire sentence，或 allows the model to represent A and B。in which it appears 中 it 的所指从语法上有一定歧义，但按语境显然指 text。",
       "createdAt": "2026-10-31T04:20:00.000Z",
-      "updatedAt": "2026-10-31T04:20:00.000Z"
+      "updatedAt": "2026-10-31T05:00:00.000Z"
     },
     {
       "id": "entry-tremendously-20261031",

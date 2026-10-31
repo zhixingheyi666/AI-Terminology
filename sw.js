@@ -1,4 +1,4 @@
-const CACHE_NAME = "citrace-static-v4";
+const CACHE_NAME = "citrace-static-v6";
 const APP_SHELL = [
   "./",
   "./index.html",

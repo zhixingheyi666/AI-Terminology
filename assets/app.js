@@ -1,9 +1,12 @@
 import {
   STATUS_LABELS,
+  collectExampleTags,
   collectTags,
   createDefinition,
   createDefinitionExample,
   createEntry,
+  createGrammarAnalysis,
+  createGrammarPart,
   createPersonalExample,
   displayEntrySnippet,
   filterEntries,
@@ -15,7 +18,7 @@ import {
   nowIso,
   sortEntriesByCreated,
   validateData,
-} from "./model.js";
+} from "./model.js?v=1.2.1";
 
 const STORAGE = Object.freeze({
   settings: "citrace.settings.v1",
@@ -44,6 +47,8 @@ const state = {
   query: "",
   status: "all",
   tag: "",
+  tagMode: "word",
+  exampleTag: "",
   reviewOnly: false,
   selectedId: initialHashEntryId,
   editor: null,
@@ -64,6 +69,7 @@ const elements = {
   resultCount: document.querySelector("#resultCount"),
   clearFilters: document.querySelector("#clearFilters"),
   tagCloud: document.querySelector("#tagCloud"),
+  tagModeSwitch: document.querySelector("#tagModeSwitch"),
   statusFilters: document.querySelector("#statusFilters"),
   reviewFilterButton: document.querySelector("#reviewFilterButton"),
   reviewFilterCount: document.querySelector("#reviewFilterCount"),
@@ -440,16 +446,32 @@ function renderFilters(filteredCount) {
   elements.reviewFilterButton.setAttribute("aria-pressed", String(state.reviewOnly));
   elements.reviewFilterCount.textContent = String(reviewCount);
 
-  const tags = collectTags(state.data.entries);
+  for (const button of elements.tagModeSwitch.querySelectorAll("[data-tag-mode]")) {
+    const active = button.dataset.tagMode === state.tagMode;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  }
+
+  const tags =
+    state.tagMode === "example"
+      ? collectExampleTags(state.data.entries)
+      : collectTags(state.data.entries);
+  const selectedTag =
+    state.tagMode === "example" ? state.exampleTag : state.tag;
+  elements.tagCloud.setAttribute(
+    "aria-label",
+    state.tagMode === "example" ? "按例句标签筛选" : "按单词标签筛选",
+  );
   elements.tagCloud.innerHTML = tags
     .slice(0, 16)
     .map(
       (tag) => `
         <button
-          class="tag-chip${normalizeSearch(tag.label) === normalizeSearch(state.tag) ? " is-active" : ""}"
+          class="tag-chip${normalizeSearch(tag.label) === normalizeSearch(selectedTag) ? " is-active" : ""}"
           type="button"
           data-tag="${escapeAttribute(tag.label)}"
-          aria-pressed="${normalizeSearch(tag.label) === normalizeSearch(state.tag)}"
+          data-tag-type="${state.tagMode}"
+          aria-pressed="${normalizeSearch(tag.label) === normalizeSearch(selectedTag)}"
         >#${escapeHtml(tag.label)}</button>
       `,
     )
@@ -462,6 +484,7 @@ function renderFilters(filteredCount) {
     state.query ||
     state.status !== "all" ||
     state.tag ||
+    state.exampleTag ||
     state.reviewOnly
   );
 }
@@ -644,10 +667,35 @@ function renderDefinitionCard(definition, index) {
 }
 
 function renderEncounterCard(example, index) {
+  const grammar = example.grammarAnalysis || createGrammarAnalysis();
+  const parts = (grammar.parts || []).filter(
+    (part) => part.label || part.explanation,
+  );
+  const hasGrammar =
+    grammar.structure || parts.length || grammar.core || grammar.rewrite;
+  const contextText = example.contextAnalysis || example.note;
+  const showAdditionalNote =
+    example.contextAnalysis && example.note && example.note !== example.contextAnalysis;
+
   return `
     <article class="encounter-card">
       <span class="encounter-index">${String(index + 1).padStart(2, "0")}</span>
       <div class="encounter-body">
+        ${
+          example.exampleTags.length
+            ? `<div class="example-tag-row">
+                ${example.exampleTags
+                  .map(
+                    (tag) => `
+                      <button class="example-tag-chip" type="button" data-filter-example-tag="${escapeAttribute(tag)}">
+                        #${escapeHtml(tag)}
+                      </button>
+                    `,
+                  )
+                  .join("")}
+              </div>`
+            : ""
+        }
         <div class="encounter-quote-row">
           <blockquote>${escapeHtml(example.en || example.note || "（未填写原句）")}</blockquote>
           ${
@@ -659,11 +707,67 @@ function renderEncounterCard(example, index) {
           }
         </div>
         ${example.zh ? `<p class="encounter-translation">${escapeHtml(example.zh)}</p>` : ""}
+        ${
+          hasGrammar
+            ? `<section class="example-analysis grammar-analysis">
+                <h4>语法拆解</h4>
+                ${
+                  grammar.structure
+                    ? `<pre class="grammar-structure">${escapeHtml(grammar.structure)}</pre>`
+                    : ""
+                }
+                ${
+                  parts.length
+                    ? `<dl class="grammar-part-list">
+                        ${parts
+                          .map(
+                            (part) => `
+                              <div class="grammar-part">
+                                <dt>${escapeHtml(part.label)}</dt>
+                                <dd>${escapeHtml(part.explanation)}</dd>
+                              </div>
+                            `,
+                          )
+                          .join("")}
+                      </dl>`
+                    : ""
+                }
+                ${
+                  grammar.core
+                    ? `<div class="grammar-summary">
+                        <span>核心主干</span>
+                        <p>${escapeHtml(grammar.core)}</p>
+                      </div>`
+                    : ""
+                }
+                ${
+                  grammar.rewrite
+                    ? `<div class="grammar-summary grammar-rewrite">
+                        <span>更自然的表达</span>
+                        <p>${escapeHtml(grammar.rewrite)}</p>
+                      </div>`
+                    : ""
+                }
+              </section>`
+            : ""
+        }
+        ${
+          contextText
+            ? `<section class="example-analysis context-analysis">
+                <h4>语境分析</h4>
+                <p>${escapeHtml(contextText)}</p>
+              </section>`
+            : ""
+        }
         <div class="encounter-meta">
           <span>${escapeHtml(example.source || "未记录出处")}</span>
           ${example.encounteredAt ? `<span>${escapeHtml(formatDateOnly(example.encounteredAt))}</span>` : ""}
         </div>
-        ${example.note ? `<p class="encounter-note">${escapeHtml(example.note)}</p>` : ""}
+        ${
+          showAdditionalNote
+            ? `<p class="encounter-note"><strong>补充笔记：</strong>${escapeHtml(example.note)}</p>`
+            : ""
+        }
       </div>
     </article>
   `;
@@ -687,6 +791,7 @@ function getFilteredEntries() {
       query: state.query,
       status: state.status,
       tag: state.tag,
+      exampleTag: state.exampleTag,
       reviewOnly: state.reviewOnly,
     }),
   );
@@ -705,6 +810,7 @@ function clearAllFilters() {
   state.query = "";
   state.status = "all";
   state.tag = "";
+  state.exampleTag = "";
   state.reviewOnly = false;
   elements.searchInput.value = "";
   render();
@@ -862,10 +968,62 @@ function renderPersonalExampleEditors() {
               <input type="date" data-personal-field="encounteredAt" value="${escapeAttribute(example.encounteredAt)}" />
             </label>
             <label class="dynamic-field dynamic-field-span-2">
+              <span>例句标签</span>
+              <input
+                data-personal-field="exampleTags"
+                value="${escapeAttribute((example.exampleTags || []).join(", "))}"
+                placeholder="Transformer, 句法, 教材例句（用逗号分隔）"
+              />
+            </label>
+            <label class="dynamic-field dynamic-field-span-2">
               <span>语境笔记</span>
               <textarea data-personal-field="note" rows="2" placeholder="为什么这个词在这里重要？它与哪些词形成对比？">${escapeHtml(example.note)}</textarea>
             </label>
           </div>
+          <details class="example-analysis-editor" ${hasExampleAnalysis(example) ? "open" : ""}>
+            <summary>添加典型句语法与语境分析</summary>
+            <div class="analysis-editor-grid">
+              <label class="dynamic-field dynamic-field-span-2">
+                <span>断句与句法结构</span>
+                <textarea data-personal-field="grammarStructure" rows="5" placeholder="Compared to word2vec, /\nthis architecture /\nallows for representing […]">${escapeHtml(example.grammarAnalysis?.structure)}</textarea>
+              </label>
+              <div class="grammar-parts-editor">
+                <div class="sub-examples-label">
+                  <span>成分拆解</span>
+                  <button class="link-button" type="button" data-action="add-grammar-part">+ 添加语法成分</button>
+                </div>
+                ${
+                  (example.grammarAnalysis?.parts || []).length
+                    ? example.grammarAnalysis.parts
+                        .map(
+                          (part, partIndex) => `
+                            <div class="grammar-part-editor" data-grammar-part-index="${partIndex}">
+                              <input data-grammar-field="label" value="${escapeAttribute(part.label)}" placeholder="Compared to word2vec" />
+                              <input data-grammar-field="explanation" value="${escapeAttribute(part.explanation)}" placeholder="比较状语：与 word2vec 相比" />
+                              <button class="remove-dynamic" type="button" data-action="remove-grammar-part" data-grammar-index="${partIndex}" aria-label="删除这个语法成分">
+                                <svg><use href="#icon-x"></use></svg>
+                              </button>
+                            </div>
+                          `,
+                        )
+                        .join("")
+                    : '<div class="analysis-empty">还没有分项语法说明。</div>'
+                }
+              </div>
+              <label class="dynamic-field dynamic-field-span-2">
+                <span>核心主干</span>
+                <textarea data-personal-field="grammarCore" rows="2" placeholder="This architecture allows for representing A and B.">${escapeHtml(example.grammarAnalysis?.core)}</textarea>
+              </label>
+              <label class="dynamic-field dynamic-field-span-2">
+                <span>更自然的改写</span>
+                <textarea data-personal-field="grammarRewrite" rows="3" placeholder="可选：给出语法更清楚或更地道的表达。">${escapeHtml(example.grammarAnalysis?.rewrite)}</textarea>
+              </label>
+              <label class="dynamic-field dynamic-field-span-2">
+                <span>语境分析</span>
+                <textarea data-personal-field="contextAnalysis" rows="4" placeholder="这个词在句子和专业知识中具体承担什么作用？">${escapeHtml(example.contextAnalysis)}</textarea>
+              </label>
+            </div>
+          </details>
         </div>
       `,
     )
@@ -907,6 +1065,23 @@ function captureEditorFromForm() {
     source: card.querySelector('[data-personal-field="source"]')?.value || "",
     encounteredAt: card.querySelector('[data-personal-field="encounteredAt"]')?.value || "",
     note: card.querySelector('[data-personal-field="note"]')?.value || "",
+    exampleTags: normalizeTags(
+      card.querySelector('[data-personal-field="exampleTags"]')?.value || "",
+    ),
+    contextAnalysis:
+      card.querySelector('[data-personal-field="contextAnalysis"]')?.value || "",
+    grammarAnalysis: {
+      structure:
+        card.querySelector('[data-personal-field="grammarStructure"]')?.value || "",
+      parts: [...card.querySelectorAll("[data-grammar-part-index]")].map((part) => ({
+        label: part.querySelector('[data-grammar-field="label"]')?.value || "",
+        explanation:
+          part.querySelector('[data-grammar-field="explanation"]')?.value || "",
+      })),
+      core: card.querySelector('[data-personal-field="grammarCore"]')?.value || "",
+      rewrite:
+        card.querySelector('[data-personal-field="grammarRewrite"]')?.value || "",
+    },
   }));
 }
 
@@ -950,6 +1125,30 @@ function handleEntryFormClick(event) {
     state.editor.personalExamples = state.editor.personalExamples.filter(
       (item) => item.id !== id,
     );
+    renderPersonalExampleEditors();
+  }
+
+  if (action === "add-grammar-part" && personalCard) {
+    const id = personalCard.dataset.personalId;
+    const example = state.editor.personalExamples.find((item) => item.id === id);
+    if (example) {
+      example.grammarAnalysis ||= createGrammarAnalysis();
+      example.grammarAnalysis.parts.push(createGrammarPart());
+      renderPersonalExampleEditors();
+      const updatedPersonalCard = [
+        ...elements.personalExampleEditorList.querySelectorAll("[data-personal-id]"),
+      ].find((item) => item.dataset.personalId === id);
+      updatedPersonalCard
+        ?.querySelector(".grammar-part-editor:last-child [data-grammar-field='label']")
+        ?.focus();
+    }
+  }
+
+  if (action === "remove-grammar-part" && personalCard) {
+    const id = personalCard.dataset.personalId;
+    const example = state.editor.personalExamples.find((item) => item.id === id);
+    const partIndex = Number(actionButton.dataset.grammarIndex);
+    example?.grammarAnalysis?.parts.splice(partIndex, 1);
     renderPersonalExampleEditors();
   }
 }
@@ -1466,7 +1665,21 @@ function isBlankPersonalExample(example) {
     !example.zh &&
     !example.source &&
     !example.encounteredAt &&
-    !example.note
+    !example.note &&
+    !example.exampleTags?.length &&
+    !example.contextAnalysis &&
+    !hasExampleAnalysis(example)
+  );
+}
+
+function hasExampleAnalysis(example) {
+  const grammar = example.grammarAnalysis;
+  return Boolean(
+    grammar?.structure ||
+      grammar?.core ||
+      grammar?.rewrite ||
+      grammar?.parts?.some((part) => part.label || part.explanation) ||
+      example.contextAnalysis,
   );
 }
 
@@ -1795,7 +2008,28 @@ function bindEvents() {
       return;
     }
     const selectedTag = button.dataset.tag;
-    state.tag = normalizeSearch(state.tag) === normalizeSearch(selectedTag) ? "" : selectedTag;
+    if (button.dataset.tagType === "example") {
+      state.exampleTag =
+        normalizeSearch(state.exampleTag) === normalizeSearch(selectedTag)
+          ? ""
+          : selectedTag;
+    } else {
+      state.tag =
+        normalizeSearch(state.tag) === normalizeSearch(selectedTag)
+          ? ""
+          : selectedTag;
+    }
+    render();
+  });
+
+  elements.tagModeSwitch.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-tag-mode]");
+    if (!button || button.dataset.tagMode === state.tagMode) {
+      return;
+    }
+    state.tagMode = button.dataset.tagMode;
+    state.tag = "";
+    state.exampleTag = "";
     render();
   });
 
@@ -1824,6 +2058,15 @@ function bindEvents() {
   document.querySelector("#deleteEntryButton").addEventListener("click", deleteCurrentEntry);
   elements.reviewToggleButton.addEventListener("click", toggleReviewForSelected);
   elements.entryDetail.addEventListener("click", (event) => {
+    const exampleTagButton = event.target.closest("[data-filter-example-tag]");
+    if (exampleTagButton) {
+      state.tagMode = "example";
+      state.tag = "";
+      state.exampleTag = exampleTagButton.dataset.filterExampleTag;
+      render();
+      return;
+    }
+
     const speakButton = event.target.closest("[data-speak-accent]");
     if (!speakButton) {
       return;
