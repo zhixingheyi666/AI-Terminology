@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T03:18:00.000Z",
+  "updatedAt": "2026-10-31T03:30:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -154,6 +154,57 @@
       "notes": "quite literally 在这里既加强了语气，也保留了“字面意义上”的含义。",
       "createdAt": "2026-10-31T03:18:00.000Z",
       "updatedAt": "2026-10-31T03:18:00.000Z"
+    },
+    {
+      "id": "entry-semantic-20261031",
+      "term": "semantic",
+      "phonetic": "/sɪˈmæntɪk/",
+      "status": "learning",
+      "tags": ["NLP", "word2vec", "词向量"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-semantic-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Relating to meaning in language or logic, rather than to form or sound.",
+          "definitionZh": "与语言或逻辑中的意义、含义有关的，而不是与形式或声音有关的；语义的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The distinction between the two labels is largely semantic.",
+              "zh": "这两个标签之间的区别主要在于语义。"
+            }
+          ]
+        },
+        {
+          "id": "definition-semantic-nlp-20261031",
+          "dictionary": "AI 与 NLP 语境释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Relating to meaning that is represented computationally, such as the semantic properties captured in word embeddings.",
+          "definitionZh": "指以计算方式表示的语义，例如词嵌入中捕捉到的词义属性和语义关系。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Words with similar semantic properties tend to have nearby vector representations.",
+              "zh": "具有相似语义属性的词，往往会有彼此接近的向量表示。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-semantic-20261031",
+          "en": "To do so, word2vec learns semantic representations of words by training on vast amounts of textual data, like the entirety of Wikipedia.",
+          "zh": "为此，word2vec 通过在海量文本数据（例如整个维基百科）上训练，来学习单词的语义表示。",
+          "source": "用户提供的 word2vec 例句",
+          "encounteredAt": "2026-10-31",
+          "note": "这里的 semantic representations 指用向量表示的词义或语义特征，而不是词形、拼写或声音信息。"
+        }
+      ],
+      "notes": "semantic 是形容词，名词形式是 semantics（语义学），副词形式是 semantically（在语义上）。",
+      "createdAt": "2026-10-31T03:30:00.000Z",
+      "updatedAt": "2026-10-31T03:30:00.000Z"
     }
   ]
 }
