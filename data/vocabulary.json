@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:20:00.000Z",
+  "updatedAt": "2026-10-31T04:30:00.000Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -511,6 +511,159 @@
       "notes": "allow for 表示“使……成为可能、允许……”。原句语法成立，但更自然的技术写作可以改为 this architecture can represent A and B by attending to the entire sentence，或 allows the model to represent A and B。in which it appears 中 it 的所指从语法上有一定歧义，但按语境显然指 text。",
       "createdAt": "2026-10-31T04:20:00.000Z",
       "updatedAt": "2026-10-31T04:20:00.000Z"
+    },
+    {
+      "id": "entry-tremendously-20261031",
+      "term": "tremendously",
+      "phonetic": "/trəˈmendəsli/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "学术英语", "程度副词"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-tremendously-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adverb",
+          "definitionEn": "Extremely; to a very great degree or extent.",
+          "definitionZh": "极大地；非常；在很大程度上。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The new training method improved model performance tremendously.",
+              "zh": "新的训练方法极大地提升了模型性能。"
+            }
+          ]
+        },
+        {
+          "id": "definition-tremendously-context-20261031",
+          "dictionary": "技术写作搭配 · 学习整理",
+          "partOfSpeech": "adverb · degree",
+          "definitionEn": "Used to emphasize that a change or improvement is very large in magnitude.",
+          "definitionZh": "用于强调变化、提升或效果的程度非常大。本句中 tremendously 修饰动词短语 sped up，表示训练速度被大幅提升。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Parallel computation tremendously reduced the time required for training.",
+              "zh": "并行计算极大地减少了训练所需的时间。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-tremendously-20261031",
+          "en": "The authors proposed a network architecture called the Transformer, which was solely based on the attention mechanism and removed the recurrence network that we saw previously. Compared to the recurrence network, the Transformer could be trained in parallel, which tremendously sped up training.",
+          "zh": "作者提出了一种名为 Transformer 的网络架构，它完全基于注意力机制，并移除了我们先前看到的循环网络。与循环网络相比，Transformer 可以并行训练，这极大地加快了训练速度。",
+          "source": "用户提供的 Transformer 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "tremendously 是程度副词，修饰 sped up；常见搭配是 speed up something tremendously，强调提升幅度非常大，不等同于“完美”或“从根本上解决”。"
+        }
+      ],
+      "notes": "tremendous 是形容词“巨大的、极好的”，tremendously 是对应的副词。原句中的 recurrence network 更常见的技术表达是 recurrent network 或 recurrent neural network (RNN)。",
+      "createdAt": "2026-10-31T04:28:00.000Z",
+      "updatedAt": "2026-10-31T04:28:00.000Z"
+    },
+    {
+      "id": "entry-parallel-20261031",
+      "term": "parallel",
+      "phonetic": "/ˈpærəlel/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "并行计算"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-parallel-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Side by side and separated by the same distance; similar in important respects.",
+          "definitionZh": "平行的；并行的；在重要方面相似的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The two research paths developed in parallel.",
+              "zh": "这两条研究路径平行发展。"
+            }
+          ]
+        },
+        {
+          "id": "definition-parallel-computing-20261031",
+          "dictionary": "计算与 Transformer 语境 · 学习整理",
+          "partOfSpeech": "adjective / adverbial phrase in parallel",
+          "definitionEn": "Performed at the same time rather than sequentially; in machine learning, computations over multiple positions can be processed simultaneously.",
+          "definitionZh": "同时执行的、并行的；在机器学习中表示多个位置或计算任务可以同时处理，而不必像循环网络那样逐步依赖前一步。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Transformer layers can process sequence positions in parallel during training.",
+              "zh": "在训练过程中，Transformer 层可以并行处理序列中的各个位置。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-parallel-20261031",
+          "en": "The authors proposed a network architecture called the Transformer, which was solely based on the attention mechanism and removed the recurrence network that we saw previously. Compared to the recurrence network, the Transformer could be trained in parallel, which tremendously sped up training.",
+          "zh": "作者提出了一种名为 Transformer 的网络架构，它完全基于注意力机制，并移除了我们先前看到的循环网络。与循环网络相比，Transformer 可以并行训练，这极大地加快了训练速度。",
+          "source": "用户提供的 Transformer 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "句中使用的是 in parallel，整体作为方式状语，表示“并行地、同时地”。它与 sequentially（顺序地、逐步地）相对，核心优势是减少循环依赖。"
+        }
+      ],
+      "notes": "parallel 可作形容词、名词和动词；in parallel 是常用固定搭配。注意 parallel 本身不一定表示“速度更快”，是否更快取决于任务能否有效并行化以及硬件条件。",
+      "createdAt": "2026-10-31T04:29:00.000Z",
+      "updatedAt": "2026-10-31T04:29:00.000Z"
+    },
+    {
+      "id": "entry-solely-20261031",
+      "term": "solely",
+      "phonetic": "/ˈsəʊlli/",
+      "status": "learning",
+      "tags": ["NLP", "Transformer", "学术英语"],
+      "reviewTags": ["复习"],
+      "definitions": [
+        {
+          "id": "definition-solely-general-20261031",
+          "dictionary": "通用学习释义 · 学习整理",
+          "partOfSpeech": "adverb",
+          "definitionEn": "Only; exclusively; not involving or considering anyone or anything else.",
+          "definitionZh": "仅仅；完全；单独地；排他地。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The decision should not be based solely on cost.",
+              "zh": "这个决定不应仅仅基于成本。"
+            }
+          ]
+        },
+        {
+          "id": "definition-solely-transformer-20261031",
+          "dictionary": "Transformer 语境释义 · 学习整理",
+          "partOfSpeech": "adverb",
+          "definitionEn": "Exclusively, with no reliance on another mechanism; in the sentence, the Transformer relied only on attention rather than recurrence.",
+          "definitionZh": "完全地、只依赖某一种机制；本句指 Transformer 完全基于注意力机制，不依赖循环网络。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The original Transformer was based solely on attention mechanisms.",
+              "zh": "最初的 Transformer 完全基于注意力机制。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-solely-20261031",
+          "en": "The authors proposed a network architecture called the Transformer, which was solely based on the attention mechanism and removed the recurrence network that we saw previously. Compared to the recurrence network, the Transformer could be trained in parallel, which tremendously sped up training.",
+          "zh": "作者提出了一种名为 Transformer 的网络架构，它完全基于注意力机制，并移除了我们先前看到的循环网络。与循环网络相比，Transformer 可以并行训练，这极大地加快了训练速度。",
+          "source": "用户提供的 Transformer 教材例句",
+          "encounteredAt": "2026-10-31",
+          "note": "solely 修饰基于注意力的结构 was solely based on the attention mechanism，表示 Transformer 只以注意力机制为基础；这里不是“唯一作者”或“单独完成”的意思。"
+        }
+      ],
+      "notes": "solely based on = only based on = exclusively based on。注意 solely 修饰 based，并不是修饰 Transformer 或 attention mechanism。",
+      "createdAt": "2026-10-31T04:30:00.000Z",
+      "updatedAt": "2026-10-31T04:30:00.000Z"
     }
   ]
 }
