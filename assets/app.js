@@ -1588,7 +1588,11 @@ function initializeTheme() {
 }
 
 function loadReadingScale() {
-  const storedScale = Number(readStorage(localStorage, STORAGE.readingScale));
+  const storedValue = readStorage(localStorage, STORAGE.readingScale);
+  if (!storedValue) {
+    return 1;
+  }
+  const storedScale = Number(storedValue);
   if (!Number.isFinite(storedScale)) {
     return 1;
   }
