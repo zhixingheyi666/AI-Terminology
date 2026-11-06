@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T09:45:39.653Z",
+  "updatedAt": "2026-11-06T10:11:05.922Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1825,7 +1825,7 @@
       "personalExamples": [
         {
           "id": "encounter-5f8dd801-3811-4e80-b523-7b4701d0e1c6",
-          "en": " We will look at some of the main intuitions of how LLMs that use the Transformer architecture work.",
+          "en": "We will look at some of the main intuitions of how LLMs that use the Transformer architecture work.",
           "zh": "我们将探讨一些主要直觉，以理解使用 Transformer 架构的大语言模型是如何工作的。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -1846,6 +1846,115 @@
       "notes": "复数形式为 intuitions，指具体的直觉或直观理解；本句中指对 LLM 工作原理的几种直观认识。",
       "createdAt": "2026-11-06T09:45:39.653Z",
       "updatedAt": "2026-11-06T09:45:39.653Z"
+    },
+    {
+      "id": "entry-7955c164-5153-4fe6-b6ab-9317cc9b1984",
+      "term": "grasping",
+      "phonetic": "/ˈɡræspɪŋ/",
+      "status": "learning",
+      "tags": [
+        "认知",
+        "语义",
+        "学术英语"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
+      "definitions": [
+        {
+          "id": "definition-a87a9e2c-801a-4c27-a9ed-fef2504e3c28",
+          "dictionary": "Open English WordNet 2025 · grasp · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "get the meaning of something",
+          "definitionZh": "理解某事物的含义",
+          "url": "https://en-word.net/view/lemma/grasp",
+          "senseGuide": {
+            "sentence": "Grasping the concept is easier with an example.",
+            "usage": "本句中 grasping 表示“理解、领会（概念）”，正对应词典中 grasp 作动词“get the meaning of something”的义项。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "verb",
+                "definitionEn": "hold firmly",
+                "definitionZh": "紧紧握住"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "understanding of the nature or meaning or quality or magnitude of something",
+                "definitionZh": "对某事物性质、意义或程度的理解"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "an intellectual hold or understanding",
+                "definitionZh": "智力上的掌握或理解力"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the limit of capability",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the act of grasping",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "Do you comprehend the meaning of this letter?",
+              "zh": "你明白这封信的意思吗？"
+            }
+          ]
+        },
+        {
+          "id": "definition-5eba4450-6537-4190-a1bd-f7c748094b97",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "getting the meaning of something; understanding",
+          "definitionZh": "理解；领会（某概念）",
+          "url": "",
+          "examples": [
+            {
+              "en": "Grasping a new grammar rule takes practice, but examples help.",
+              "zh": "掌握一条新的语法规则需要练习，不过例子会有帮助。"
+            },
+            {
+              "en": "She had trouble grasping the main idea of the article at first.",
+              "zh": "她一开始难以领会这篇文章的主旨。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-c036db36-8f5f-459d-9770-c3b8f03b5062",
+          "en": "Grasping the concept is easier with an example.",
+          "zh": "借助例子，理解这个概念会更容易。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "认知"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "此处是动词 grasp 的 -ing 形式，作动名词短语开头，表示“理解、领会”。不要与形容词 grasping（贪婪的）混淆。",
+      "createdAt": "2026-11-06T10:11:05.922Z",
+      "updatedAt": "2026-11-06T10:11:05.922Z"
     }
   ]
 }
