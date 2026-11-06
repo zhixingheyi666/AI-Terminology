@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T13:41:55.471Z",
+  "updatedAt": "2026-11-06T13:45:13.397Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -2326,6 +2326,65 @@
       "notes": "此处 picture 是比喻用法，指“了解、认识”；常见搭配 a picture of...。",
       "createdAt": "2026-11-06T13:41:55.471Z",
       "updatedAt": "2026-11-06T13:41:55.471Z"
+    },
+    {
+      "id": "entry-16226def-3363-4626-b58e-45677bcc183f",
+      "term": "autoregressive",
+      "phonetic": "/ˌɔːtoʊrɪˈɡrɛsɪv/",
+      "status": "learning",
+      "tags": [
+        "自回归",
+        "AI",
+        "LLM",
+        "NLP",
+        "模型架构"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-0d822d81-7aaa-4a14-87c1-ad56915793ce",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Describing a model that generates each output element based on its own previously generated elements.",
+          "definitionZh": "指根据自身先前生成的元素来逐个生成输出的模型。",
+          "url": "",
+          "examples": [
+            {
+              "en": "An autoregressive model predicts the next token from the tokens before it.",
+              "zh": "自回归模型根据前面的词元预测下一个词元。"
+            },
+            {
+              "en": "The chatbot is built on an autoregressive language model.",
+              "zh": "这个聊天机器人是基于自回归语言模型构建的。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-b7227c18-12a9-4966-8733-c83de2925a21",
+          "en": " That is why you’ll hear text generation LLMs being called autoregressive models. ",
+          "zh": "这就是为什么你会听到文本生成的大语言模型被称为自回归模型。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "AI",
+            "LLM",
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "autoregressive 常与 model 搭配，指模型按顺序逐步生成内容，此词是由 auto- 和 regressive 组合而成的技术术语。",
+      "createdAt": "2026-11-06T13:45:13.397Z",
+      "updatedAt": "2026-11-06T13:45:13.397Z"
     }
   ]
 }
