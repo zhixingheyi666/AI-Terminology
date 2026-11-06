@@ -77,6 +77,7 @@ export async function returnDraft({ env = process.env, githubImpl = github, spaw
   const draftPath = path.join(directory, `vocabulary-draft-${routing.requestId}.json`);
   let text;
   let success = false;
+  let validationStage;
   try {
     if (env.GITHUB_SHA !== routing.headSha) throw new Error("STALE_HEAD");
     let request;
@@ -90,7 +91,9 @@ export async function returnDraft({ env = process.env, githubImpl = github, spaw
     });
     if (result.error?.code === "ETIMEDOUT" || result.signal) throw new Error("TIMEOUT");
     if (result.error || result.status !== 0) {
-      const code = /^DRAFT_ERROR:([A-Z_]+)\s*$/u.exec(result.stderr || "")?.[1];
+      const stage = /^STAGE:(OUTPUT_LIMIT|STOP_REASON|JSON|TARGET_SPELLING_OR_ORDER|DICTIONARY_INDEX|TARGET_COUNT|TRANSLATION|TAGS|PHONETIC|EXAMPLE_FIELD|GRAMMAR|WORD_FIELDS)$/mu.exec(result.stderr || "")?.[1];
+      validationStage = stage;
+      const code = /^DRAFT_ERROR:([A-Z_]+)\s*$/mu.exec(result.stderr || "")?.[1];
       throw new Error(SAFE_ERRORS.has(code) ? code : "GENERATION_FAILED");
     }
     if ((await stat(draftPath)).size > 512000) throw new Error("OUTPUT_TOO_LARGE");
@@ -103,6 +106,7 @@ export async function returnDraft({ env = process.env, githubImpl = github, spaw
     const code = [...SAFE_ERRORS, "STALE_HEAD", "OUTPUT_TOO_LARGE", "INVALID_REQUEST"].includes(error.message)
       ? error.message : "GENERATION_FAILED";
     text = errorText(code, routing);
+    if (validationStage) text = JSON.stringify({ ...JSON.parse(text), stage: validationStage });
   } finally { await unlink(draftPath).catch(() => {}); }
   await publishDraft(text, routing, env, success, githubImpl);
   return { success };

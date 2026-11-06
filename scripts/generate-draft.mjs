@@ -149,9 +149,12 @@ async function requestModel(input, senses, knownTags, options) {
     if (body.length > 350000) throw new Error();
     choice = JSON.parse(body)?.choices?.[0];
   } catch { throw new DraftError("INVALID_RESPONSE", "DeepSeek 未返回有效响应。"); }
-  if (choice?.finish_reason !== "stop") throw new DraftError("INVALID_RESPONSE", "DeepSeek 的输出未完成，请重试。");
+  if (choice?.finish_reason !== "stop") {
+    console.error(choice?.finish_reason === "length" ? "STAGE:OUTPUT_LIMIT" : "STAGE:STOP_REASON");
+    throw new DraftError("INVALID_RESPONSE", "DeepSeek 的输出未完成，请重试。");
+  }
   try { return JSON.parse(choice.message.content); }
-  catch { throw new DraftError("INVALID_RESPONSE", "DeepSeek 输出格式无效，请重试。"); }
+  catch { console.error("STAGE:JSON"); throw new DraftError("INVALID_RESPONSE", "DeepSeek 输出格式无效，请重试。"); }
 }
 
 function aiExamples(value) {
@@ -270,7 +273,21 @@ export async function generateDraft(raw, { apiKey, model = "deepseek-flash", fet
   }));
   const generated = await requestModel(input, sources, knownTags, { apiKey, model, fetchImpl });
   try { return assembleDraft(input, sources, generated, now); }
-  catch { throw new DraftError("INVALID_RESPONSE", "生成的词条未通过词库校验。"); }
+  catch (error) {
+    const stages = [
+      [/词序/, "TARGET_SPELLING_OR_ORDER"],
+      [/词典义项/, "DICTIONARY_INDEX"],
+      [/生成词条/, "TARGET_COUNT"],
+      [/原句翻译/, "TRANSLATION"],
+      [/标签|Tags/, "TAGS"],
+      [/Phonetic/, "PHONETIC"],
+      [/例句|example/i, "EXAMPLE_FIELD"],
+      [/结构|自然改写|Grammar|Analysis|Sentence/, "GRAMMAR"],
+    ];
+    const stage = stages.find(([rule]) => rule.test(error.message))?.[1] || "WORD_FIELDS";
+    console.error("STAGE:" + stage);
+    throw new DraftError("INVALID_RESPONSE", "生成的词条未通过词库校验。");
+  }
 }
 
 function assembleDraft(input, sources, generated, now) {
