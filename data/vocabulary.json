@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T14:06:05.186Z",
+  "updatedAt": "2026-11-06T14:33:36.059Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1975,7 +1975,7 @@
           "definitionZh": "计算机科学的一个子领域，研究能从数据中学习并做出预测的算法。",
           "url": "https://en-word.net/view/lemma/machine%20learning",
           "senseGuide": {
-            "sentence": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+            "sentence": "Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
             "usage": "本句 machine-learning 作定语修饰 speak，指“机器学习的说法/行话”。",
             "fit": "general",
             "alsoBasic": true,
@@ -2010,7 +2010,7 @@
       "personalExamples": [
         {
           "id": "encounter-8a35f68a-99bd-403e-9c01-e8fe4ea4eedc",
-          "en": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+          "en": "Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
           "zh": "每一次词元生成步骤都是模型的一次前向传递（这是机器学习用语，指输入进入神经网络，并流经计算图另一端产生输出所需的各项计算）。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -2077,7 +2077,7 @@
           "definitionZh": "用言语表达。",
           "url": "https://en-word.net/view/lemma/speak",
           "senseGuide": {
-            "sentence": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+            "sentence": "Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
             "usage": "本句 speak 是名词，指“行话、说法”，不是动词“说话”。",
             "fit": "general",
             "alsoBasic": true,
@@ -2137,7 +2137,7 @@
       "personalExamples": [
         {
           "id": "encounter-94914262-59f6-4029-b751-00c86b96b931",
-          "en": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+          "en": "Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
           "zh": "每一次词元生成步骤都是模型的一次前向传递（这是机器学习用语，指输入进入神经网络，并流经计算图另一端产生输出所需的各项计算）。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -2204,7 +2204,7 @@
           "definitionZh": "清晰而能说明问题的心理意象；对事物的理解。",
           "url": "https://en-word.net/view/lemma/picture",
           "senseGuide": {
-            "sentence": "This gives us a more accurate picture of the model as it is simply predicting the next token based on an input prompt. ",
+            "sentence": "This gives us a more accurate picture of the model as it is simply predicting the next token based on an input prompt.",
             "usage": "本句中 picture 意为“对模型的理解/印象”，是比喻性的心理画面，不是真实的图像。",
             "fit": "contextual",
             "alsoBasic": true,
@@ -2306,7 +2306,7 @@
       "personalExamples": [
         {
           "id": "encounter-581a2b6b-3d64-4885-8f10-81f3befb913e",
-          "en": "This gives us a more accurate picture of the model as it is simply predicting the next token based on an input prompt. ",
+          "en": "This gives us a more accurate picture of the model as it is simply predicting the next token based on an input prompt.",
           "zh": "这让我们对模型有了更准确的认识，因为它只是根据输入提示预测下一个词元。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -2363,7 +2363,7 @@
       "personalExamples": [
         {
           "id": "encounter-b7227c18-12a9-4966-8733-c83de2925a21",
-          "en": " That is why you’ll hear text generation LLMs being called autoregressive models. ",
+          "en": "That is why you’ll hear text generation LLMs being called autoregressive models.",
           "zh": "这就是为什么你会听到文本生成的大语言模型被称为自回归模型。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -2497,6 +2497,86 @@
       "notes": "常缩写为 FFN 或 FNN；与循环神经网络（RNN）相对，强调信息单向流动。",
       "createdAt": "2026-11-06T14:06:05.186Z",
       "updatedAt": "2026-11-06T14:06:05.186Z"
+    },
+    {
+      "id": "entry-ab4094d7-c190-4e24-900b-d85ba0d08c7d",
+      "term": "statisticians",
+      "phonetic": "/ˌstætɪˈstɪʃənz/",
+      "status": "learning",
+      "tags": [
+        "统计学",
+        "学术英语",
+        "数学"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
+      "definitions": [
+        {
+          "id": "definition-e94a8801-c2a1-4bcf-9be3-e70c0099e2ac",
+          "dictionary": "Open English WordNet 2025 · statistician · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a mathematician who specializes in statistics",
+          "definitionZh": "专门研究统计学的数学家。",
+          "url": "https://en-word.net/view/lemma/statistician",
+          "senseGuide": {
+            "sentence": "The idea here is to basically sample from the probability distribution based on the probability score, as the statisticians would say.  ",
+            "usage": "本句指统计学家，即专门从事统计学研究的数学家。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "someone versed in the collection and interpretation of numerical data (especially someone who uses statistics to calculate insurance premiums)",
+                "definitionZh": "精通数据收集与解释的人（尤指用统计计算保险费的人）。"
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-51f8a82a-7196-4d89-bfbd-7f05a83f50fb",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "People who are experts in statistics, especially in the collection and interpretation of numerical data.",
+          "definitionZh": "统计学家；专门从事数据收集与解释的专家。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Statisticians often use probability distributions to model uncertainty.",
+              "zh": "统计学家常用概率分布来建模不确定性。"
+            },
+            {
+              "en": "The report was reviewed by statisticians before publication.",
+              "zh": "这份报告在发表前由统计学家审阅。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-a5e0741d-6f42-439d-b81c-a32b3c7cda0d",
+          "en": "The idea here is to basically sample from the probability distribution based on the probability score, as the statisticians would say.  ",
+          "zh": "这里的思路基本上是，按照统计学家会说的那样，根据概率分数从概率分布中采样。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "statisticians 是 statistician 的复数形式，此处用“as the statisticians would say”表示“就像统计学家会说的那样”，带有类比或行话色彩。",
+      "createdAt": "2026-11-06T14:33:36.059Z",
+      "updatedAt": "2026-11-06T14:33:36.059Z"
     }
   ]
 }
