@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T09:43:40.879Z",
+  "updatedAt": "2026-11-06T09:45:39.653Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1789,6 +1789,63 @@
       "notes": "本句中是 negative sampling（负采样）的组成部分；sampling 为不可数名词。",
       "createdAt": "2026-11-06T09:40:34.966Z",
       "updatedAt": "2026-11-06T09:40:34.966Z"
+    },
+    {
+      "id": "entry-f6c8575f-3a91-4542-90d5-0fbc16d41051",
+      "term": "intuition",
+      "phonetic": "/ˌɪntjuˈɪʃən/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "LLM",
+        "学术英语",
+        "认知"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-423072a1-4e70-444d-8039-c4d9f4720977",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "a natural ability to understand or know something without conscious reasoning; an instinctive understanding",
+          "definitionZh": "直觉；直觉理解：无需有意识推理就能理解或知道某事的能力",
+          "url": "",
+          "examples": [
+            {
+              "en": "Her intuition told her that something was wrong with the model's output.",
+              "zh": "她的直觉告诉她，模型的输出有问题。"
+            },
+            {
+              "en": "Good researchers often rely on intuition when choosing which experiments to run first.",
+              "zh": "优秀的研究人员常常凭直觉决定先做哪些实验。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-5f8dd801-3811-4e80-b523-7b4701d0e1c6",
+          "en": " We will look at some of the main intuitions of how LLMs that use the Transformer architecture work.",
+          "zh": "我们将探讨一些主要直觉，以理解使用 Transformer 架构的大语言模型是如何工作的。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "AI",
+            "LLM"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "复数形式为 intuitions，指具体的直觉或直观理解；本句中指对 LLM 工作原理的几种直观认识。",
+      "createdAt": "2026-11-06T09:45:39.653Z",
+      "updatedAt": "2026-11-06T09:45:39.653Z"
     }
   ]
 }
