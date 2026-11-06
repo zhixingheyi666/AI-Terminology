@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T09:21:18.706Z",
+  "updatedAt": "2026-11-06T09:29:01.936Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1418,6 +1418,154 @@
       "notes": "scheme 作名词常指“方案、体系、计划”，技术语境中多指某种系统化的方法。",
       "createdAt": "2026-11-06T09:21:18.706Z",
       "updatedAt": "2026-11-06T09:21:18.706Z"
+    },
+    {
+      "id": "entry-174987fb-17c4-4c23-9fe4-dbde8bd2ebcc",
+      "term": "contextualized",
+      "phonetic": "/kənˈtekstʃuəlaɪzd/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "embeddings",
+        "语义",
+        "词向量"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-0f1ecaa2-76f8-4750-a045-bf823bfde759",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "(of a word representation) shaped by the surrounding context rather than fixed for the word alone",
+          "definitionZh": "（词表示）由上下文语境决定的，而非仅由单词本身固定的",
+          "url": "",
+          "examples": [
+            {
+              "en": "In a contextualized representation, the same word can get different vectors in different sentences.",
+              "zh": "在语境化表示中，同一个词在不同句子里可以得到不同的向量。"
+            },
+            {
+              "en": "The model produces contextualized features for every token in the input.",
+              "zh": "该模型为输入中的每个词元生成语境化特征。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-7118d464-de2b-4cd3-86ff-5a9d2128503f",
+          "en": "Language models are also creators of high-quality contextualized token embeddings that improve on raw static embeddings.",
+          "zh": "语言模型也是高质量语境化词元嵌入的创造者，这种嵌入优于原始的静态嵌入。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "教材例句"
+          ],
+          "contextAnalysis": "句中作定语修饰 token embeddings，说明这些嵌入是依据上下文动态生成的，这正是与 raw static embeddings 对比的关键。",
+          "grammarAnalysis": {
+            "structure": "Language models / are / also / creators of high-quality contextualized token embeddings / that improve on raw static embeddings.",
+            "parts": [
+              {
+                "label": "主语",
+                "explanation": "Language models 是复数名词短语，作全句主语。"
+              },
+              {
+                "label": "系动词与状语",
+                "explanation": "are … also 构成系表结构，also 表示“此外、也”，把本句与上文并列。"
+              },
+              {
+                "label": "表语",
+                "explanation": "creators of … embeddings 是名词短语作表语，说明语言模型的角色。"
+              },
+              {
+                "label": "定语从句",
+                "explanation": "that improve on raw static embeddings 修饰 embeddings，说明其优势所在。"
+              }
+            ],
+            "core": "Language models are creators of embeddings that improve on raw static embeddings.",
+            "rewrite": "Language models also produce high-quality token embeddings that are shaped by context and outperform raw static embeddings."
+          }
+        }
+      ],
+      "notes": "由 contextualize 加 -ed 构成的形容词，强调表示随上下文变化，与 static 相对。",
+      "createdAt": "2026-11-06T09:29:01.936Z",
+      "updatedAt": "2026-11-06T09:29:01.936Z"
+    },
+    {
+      "id": "entry-94874bab-f02a-498b-849e-209d59cd93db",
+      "term": "raw",
+      "phonetic": "/rɔː/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "模型训练",
+        "分词",
+        "技术方案"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-37400432-bfc4-444d-8bb5-5520fef30932",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "in an unprocessed or basic state, before any transformation or enrichment",
+          "definitionZh": "未经处理的、原始的，尚未经过转换或加工的",
+          "url": "",
+          "examples": [
+            {
+              "en": "Raw text must be cleaned and tokenized before training.",
+              "zh": "原始文本在训练前必须经过清洗和分词。"
+            },
+            {
+              "en": "The experiment compares raw features with refined ones.",
+              "zh": "该实验把原始特征与精炼后的特征进行比较。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-45f33a5e-b99f-49a1-8eb4-ce25a0095db3",
+          "en": "Language models are also creators of high-quality contextualized token embeddings that improve on raw static embeddings.",
+          "zh": "语言模型也是高质量语境化词元嵌入的创造者，这种嵌入优于原始的静态嵌入。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "教材例句"
+          ],
+          "contextAnalysis": "修饰 static embeddings，指未经过上下文加工的静态词向量，与前面的 contextualized 形成鲜明对照。",
+          "grammarAnalysis": {
+            "structure": "Language models / are / also / creators of high-quality contextualized token embeddings / that improve on raw static embeddings.",
+            "parts": [
+              {
+                "label": "主语",
+                "explanation": "Language models 是复数名词短语，作全句主语。"
+              },
+              {
+                "label": "系动词与状语",
+                "explanation": "are … also 构成系表结构，also 表示“此外、也”，把本句与上文并列。"
+              },
+              {
+                "label": "表语",
+                "explanation": "creators of … embeddings 是名词短语作表语，说明语言模型的角色。"
+              },
+              {
+                "label": "定语从句",
+                "explanation": "that improve on raw static embeddings 修饰 embeddings，说明其优势所在。"
+              }
+            ],
+            "core": "Language models are creators of embeddings that improve on raw static embeddings.",
+            "rewrite": "Language models also produce high-quality token embeddings that are shaped by context and outperform raw static embeddings."
+          }
+        }
+      ],
+      "notes": "此处并非“生的、未煮熟的”本义，而是技术语境中“未加工的”，常与 processed 相对。",
+      "createdAt": "2026-11-06T09:29:01.936Z",
+      "updatedAt": "2026-11-06T09:29:01.936Z"
     }
   ]
 }
