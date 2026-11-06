@@ -1,13 +1,17 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T05:45:00.000Z",
+  "updatedAt": "2026-11-06T09:21:18.706Z",
   "entries": [
     {
       "id": "seed-grounding",
       "term": "grounding",
       "phonetic": "/ˈɡraʊndɪŋ/",
       "status": "learning",
-      "tags": ["AI", "LLM", "NLP"],
+      "tags": [
+        "AI",
+        "LLM",
+        "NLP"
+      ],
       "reviewTags": [],
       "definitions": [
         {
@@ -46,7 +50,15 @@
           "zh": "RAG 通过让模型基于检索到的文档进行生成，来提升事实依据。",
           "source": "一篇关于 Retrieval-Augmented Generation 的论文",
           "encounteredAt": "2026-10-30",
-          "note": "这里的 grounding 不是电路里的“接地”，而是让生成结果有外部依据。"
+          "note": "这里的 grounding 不是电路里的“接地”，而是让生成结果有外部依据。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "这是示例词条，可以直接编辑或删除。建议在“我遇见它的句子”中保留阅读上下文。",
@@ -58,8 +70,14 @@
       "term": "vocabulary",
       "phonetic": "/vəˈkæbjələri/",
       "status": "learning",
-      "tags": ["NLP", "词袋模型", "AI"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "词袋模型",
+        "AI"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-vocabulary-general-20261031",
@@ -97,7 +115,15 @@
           "zh": "使用我们的词表，我们只是统计每个句子中某个词出现了多少次；这实际上就是在字面意义上构建一个词袋。",
           "source": "用户提供的 NLP / bag-of-words 例句",
           "encounteredAt": "2026-10-31",
-          "note": "这里的 vocabulary 指用于统计的“词表 / 词汇集合”，不是人的“词汇量”。"
+          "note": "这里的 vocabulary 指用于统计的“词表 / 词汇集合”，不是人的“词汇量”。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "词袋模型关心词的出现次数和词表映射，通常会忽略句子中的词序。",
@@ -109,8 +135,14 @@
       "term": "literally",
       "phonetic": "/ˈlɪtərəli/",
       "status": "learning",
-      "tags": ["语义", "强调", "NLP"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "语义",
+        "强调",
+        "NLP"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-literally-general-20261031",
@@ -148,7 +180,15 @@
           "zh": "使用我们的词表，我们只是统计每个句子中某个词出现了多少次；这实际上就是在字面意义上构建一个词袋。",
           "source": "用户提供的 NLP / bag-of-words 例句",
           "encounteredAt": "2026-10-31",
-          "note": "这里的 literally 用来强调 “bag of words” 不只是比喻性名称：模型确实把句子表示成一袋词频。"
+          "note": "这里的 literally 用来强调 “bag of words” 不只是比喻性名称：模型确实把句子表示成一袋词频。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "quite literally 在这里既加强了语气，也保留了“字面意义上”的含义。",
@@ -160,8 +200,14 @@
       "term": "semantic",
       "phonetic": "/sɪˈmæntɪk/",
       "status": "learning",
-      "tags": ["NLP", "word2vec", "词向量"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "word2vec",
+        "词向量"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-semantic-general-20261031",
@@ -199,7 +245,15 @@
           "zh": "为此，word2vec 通过在海量文本数据（例如整个维基百科）上训练，来学习单词的语义表示。",
           "source": "用户提供的 word2vec 例句",
           "encounteredAt": "2026-10-31",
-          "note": "这里的 semantic representations 指用向量表示的词义或语义特征，而不是词形、拼写或声音信息。"
+          "note": "这里的 semantic representations 指用向量表示的词义或语义特征，而不是词形、拼写或声音信息。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "semantic 是形容词，名词形式是 semantics（语义学），副词形式是 semantically（在语义上）。",
@@ -211,8 +265,14 @@
       "term": "utilized",
       "phonetic": "/ˈjuːtəlaɪzd/",
       "status": "learning",
-      "tags": ["NLP", "embeddings", "学术英语"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "embeddings",
+        "学术英语"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-utilized-general-20261031",
@@ -250,7 +310,15 @@
           "zh": "在整本书中，嵌入将扮演核心角色，因为它们会被用于许多用例，例如分类（见第4章）、聚类（见第5章），以及语义搜索和检索增强生成（见第8章）。在第2章中，我们将首次深入探讨 token 嵌入。",
           "source": "用户提供的 LLM 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "are utilized 是被动语态，核心意思是 embeddings are used in many use cases，即嵌入被用于多种下游任务。"
+          "note": "are utilized 是被动语态，核心意思是 embeddings are used in many use cases，即嵌入被用于多种下游任务。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "utilized 是 utilize 的过去式和过去分词，比 use 更正式；常见结构为 be utilized in / as / for。",
@@ -262,8 +330,14 @@
       "term": "clustering",
       "phonetic": "/ˈklʌstərɪŋ/",
       "status": "learning",
-      "tags": ["NLP", "机器学习", "embeddings"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "机器学习",
+        "embeddings"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-clustering-general-20261031",
@@ -301,7 +375,15 @@
           "zh": "在整本书中，嵌入将扮演核心角色，因为它们会被用于许多用例，例如分类（见第4章）、聚类（见第5章），以及语义搜索和检索增强生成（见第8章）。在第2章中，我们将首次深入探讨 token 嵌入。",
           "source": "用户提供的 LLM 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "这里的 clustering 是嵌入的一种下游用途：利用向量之间的相似度，把语义相近的样本自动归组。"
+          "note": "这里的 clustering 是嵌入的一种下游用途：利用向量之间的相似度，把语义相近的样本自动归组。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "cluster 既可作名词“簇、群组”，也可作动词“聚集”；clustering 这里作为方法/任务名称使用。",
@@ -313,8 +395,14 @@
       "term": "achieved",
       "phonetic": "/əˈtʃiːvd/",
       "status": "learning",
-      "tags": ["NLP", "RNN", "学术英语"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "RNN",
+        "学术英语"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-achieved-general-20261031",
@@ -352,7 +440,15 @@
           "zh": "对这段文本进行编码的一个步骤是通过循环神经网络（RNN）完成的。",
           "source": "用户提供的 RNN 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "was achieved through 是被动结构，核心含义是“通过……实现/完成”。句子主语是 A step，完成方式是 recurrent neural networks (RNNs)。"
+          "note": "was achieved through 是被动结构，核心含义是“通过……实现/完成”。句子主语是 A step，完成方式是 recurrent neural networks (RNNs)。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "achieved 是 achieve 的过去式和过去分词；achieved through 比 achieved by 更强调“借助某种方法或机制而实现”。",
@@ -364,8 +460,15 @@
       "term": "regressive",
       "phonetic": "/rɪˈɡresɪv/",
       "status": "learning",
-      "tags": ["NLP", "LLM", "自回归", "词根辨析"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "LLM",
+        "自回归",
+        "词根辨析"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-regressive-general-20261031",
@@ -403,7 +506,15 @@
           "zh": "这个架构中的每一步都是自回归的。在生成下一个词时，该架构需要接收并使用所有此前已经生成的词，如图 1-12 所示。",
           "source": "用户提供的 LLM 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "本句真正的词是 autoregressive，不是单独的 regressive。auto- 表示“自身”：模型把此前生成的词作为上下文，逐步预测下一个词。这里的 consume 指“作为模型输入接收并利用”，不是日常意义上的消耗。"
+          "note": "本句真正的词是 autoregressive，不是单独的 regressive。auto- 表示“自身”：模型把此前生成的词作为上下文，逐步预测下一个词。这里的 consume 指“作为模型输入接收并利用”，不是日常意义上的消耗。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "regressive 与 autoregressive 的关系是词形上的包含关系，不是同义词。autoregressive generation 通常逐个 token 顺序生成，简称 AR。",
@@ -415,8 +526,15 @@
       "term": "attend",
       "phonetic": "/əˈtend/",
       "status": "learning",
-      "tags": ["NLP", "RNN", "attention", "例句语法"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "RNN",
+        "attention",
+        "例句语法"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-attend-general-20261031",
@@ -454,7 +572,15 @@
           "zh": "因此，在生成“Ik hou van lama’s”（荷兰语，意为“我喜欢羊驼”）的过程中，RNN 会跟踪它在完成翻译时最关注的词。",
           "source": "用户提供的 RNN / attention 例句",
           "encounteredAt": "2026-10-31",
-          "note": "本句的 attends to 是“关注、注意”的短语动词。原句把 attends to 和 perform the translation 连在一起，读起来略有歧义；更自然的写法是：the words it mostly attends to when performing the translation，或 the words it focuses on most when performing the translation。"
+          "note": "本句的 attends to 是“关注、注意”的短语动词。原句把 attends to 和 perform the translation 连在一起，读起来略有歧义；更自然的写法是：the words it mostly attends to when performing the translation，或 the words it focuses on most when performing the translation。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "attend、attention 和 attentive 同源：attend 是动词，attention 是名词“注意力”，attentive 是形容词“专注的”。不要把句中的 attends to 误读成“出席”。",
@@ -466,8 +592,15 @@
       "term": "sequential",
       "phonetic": "/sɪˈkwenʃəl/",
       "status": "learning",
-      "tags": ["NLP", "attention", "句法", "教材例句"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "attention",
+        "句法",
+        "教材例句"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-sequential-general-20261031",
@@ -506,7 +639,11 @@
           "source": "用户提供的 LLM 教材例句",
           "encounteredAt": "2026-10-31",
           "note": "引号中的 attending 是 NLP/attention 技术用语，相当于“对整句分配注意力”，不是“参加”。",
-          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "exampleTags": [
+            "Transformer",
+            "句法分析",
+            "教材例句"
+          ],
           "contextAnalysis": "这里把该架构与 word2vec 对比：word2vec 主要基于静态词向量，而该架构通过关注完整句子，同时表示文本中 token 的先后顺序及其所处上下文。allow for representing 的写法较抽象，重点不是“允许”，而是使这种表示方式成为可能。",
           "grammarAnalysis": {
             "structure": "Compared to word2vec, /\nthis architecture /\nallows for representing [\n  the sequential nature of text\n  and\n  the context in which it appears\n] /\nby “attending” to the entire sentence.",
@@ -550,8 +687,15 @@
       "term": "tremendously",
       "phonetic": "/trəˈmendəsli/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "学术英语", "程度副词"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "学术英语",
+        "程度副词"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-tremendously-general-20261031",
@@ -589,7 +733,15 @@
           "zh": "作者提出了一种名为 Transformer 的网络架构，它完全基于注意力机制，并移除了我们先前看到的循环网络。与循环网络相比，Transformer 可以并行训练，这极大地加快了训练速度。",
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "tremendously 是程度副词，修饰 sped up；常见搭配是 speed up something tremendously，强调提升幅度非常大，不等同于“完美”或“从根本上解决”。"
+          "note": "tremendously 是程度副词，修饰 sped up；常见搭配是 speed up something tremendously，强调提升幅度非常大，不等同于“完美”或“从根本上解决”。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "tremendous 是形容词“巨大的、极好的”，tremendously 是对应的副词。原句中的 recurrence network 更常见的技术表达是 recurrent network 或 recurrent neural network (RNN)。",
@@ -601,8 +753,14 @@
       "term": "parallel",
       "phonetic": "/ˈpærəlel/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "并行计算"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "并行计算"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-parallel-general-20261031",
@@ -640,7 +798,15 @@
           "zh": "作者提出了一种名为 Transformer 的网络架构，它完全基于注意力机制，并移除了我们先前看到的循环网络。与循环网络相比，Transformer 可以并行训练，这极大地加快了训练速度。",
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "句中使用的是 in parallel，整体作为方式状语，表示“并行地、同时地”。它与 sequentially（顺序地、逐步地）相对，核心优势是减少循环依赖。"
+          "note": "句中使用的是 in parallel，整体作为方式状语，表示“并行地、同时地”。它与 sequentially（顺序地、逐步地）相对，核心优势是减少循环依赖。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "parallel 可作形容词、名词和动词；in parallel 是常用固定搭配。注意 parallel 本身不一定表示“速度更快”，是否更快取决于任务能否有效并行化以及硬件条件。",
@@ -652,8 +818,14 @@
       "term": "solely",
       "phonetic": "/ˈsəʊlli/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "学术英语"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "学术英语"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-solely-general-20261031",
@@ -691,7 +863,15 @@
           "zh": "作者提出了一种名为 Transformer 的网络架构，它完全基于注意力机制，并移除了我们先前看到的循环网络。与循环网络相比，Transformer 可以并行训练，这极大地加快了训练速度。",
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
-          "note": "solely 修饰基于注意力的结构 was solely based on the attention mechanism，表示 Transformer 只以注意力机制为基础；这里不是“唯一作者”或“单独完成”的意思。"
+          "note": "solely 修饰基于注意力的结构 was solely based on the attention mechanism，表示 Transformer 只以注意力机制为基础；这里不是“唯一作者”或“单独完成”的意思。",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "solely based on = only based on = exclusively based on。注意 solely 修饰 based，并不是修饰 Transformer 或 attention mechanism。",
@@ -703,8 +883,14 @@
       "term": "feedforward",
       "phonetic": "/ˈfiːdfɔːrwərd/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "深度学习"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "深度学习"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-feedforward-general-20261031",
@@ -743,7 +929,11 @@
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
           "note": "feedforward 也常写作 feed-forward，缩写为 FFN。",
-          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "exampleTags": [
+            "Transformer",
+            "句法分析",
+            "教材例句"
+          ],
           "contextAnalysis": "这句话拆开了 Transformer 编码器块的两个核心组件：自注意力负责建模 token 之间的关系，前馈神经网络负责逐位置进行非线性变换。both parts 由 which are... 的复数谓语共同修饰。",
           "grammarAnalysis": {
             "structure": "The encoder block in the Transformer /\nconsists of two parts, [\n  self-attention\n  and\n  a feedforward neural network\n], /\nwhich are shown in Figure 1-17.",
@@ -779,8 +969,15 @@
       "term": "revolve",
       "phonetic": "/rɪˈvɒlv/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "学术英语", "语法"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "学术英语",
+        "语法"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-revolve-general-20261031",
@@ -819,7 +1016,11 @@
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
           "note": "an RNN 使用 an，因为 RNN 的读音以元音音素开头。",
-          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "exampleTags": [
+            "Transformer",
+            "句法分析",
+            "教材例句"
+          ],
           "contextAnalysis": "这句话比较两种设计思路：新架构把 attention 放在中心位置；旧方案则是在 RNN 上附加 attention features。revolve around 在这里表示“围绕……展开、以……为核心”，不是物理旋转。",
           "grammarAnalysis": {
             "structure": "Now, /\nboth the encoder and decoder blocks /\nwould revolve around attention /\ninstead of leveraging an RNN\nwith attention features.",
@@ -859,8 +1060,15 @@
       "term": "leveraging",
       "phonetic": "/ˈlevərɪdʒɪŋ/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "学术英语", "语法"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "学术英语",
+        "语法"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-leveraging-general-20261031",
@@ -899,7 +1107,11 @@
           "source": "用户提供的 Transformer 教材例句",
           "encounteredAt": "2026-10-31",
           "note": "leveraging 位于介词 of 后面，所以使用动名词形式；这里不是主要谓语，主要谓语是 would revolve。",
-          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "exampleTags": [
+            "Transformer",
+            "句法分析",
+            "教材例句"
+          ],
           "contextAnalysis": "这里把旧的 RNN + attention features 方案与以注意力为核心的新架构进行对比。instead of 后的 leveraging 表示“利用”，而 revolve around 表示“以……为核心”，两者共同突出设计重心的变化。",
           "grammarAnalysis": {
             "structure": "Now, /\nboth the encoder and decoder blocks /\nwould revolve around attention /\ninstead of leveraging an RNN\nwith attention features.",
@@ -939,8 +1151,15 @@
       "term": "stack",
       "phonetic": "/stæk/",
       "status": "learning",
-      "tags": ["NLP", "Transformer", "BERT", "网络架构"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "NLP",
+        "Transformer",
+        "BERT",
+        "网络架构"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-stack-general-20261031",
@@ -979,7 +1198,11 @@
           "source": "用户提供的 Transformer / BERT 教材例句",
           "encounteredAt": "2026-10-31",
           "note": "这里的 stack 是动词“堆叠、把多个 block 按层组合”。encoder-stacked architecture 表示“由编码器逐层堆叠而成的架构”；连字符让 encoder-stacked 作为复合形容词修饰 architecture。",
-          "exampleTags": ["Transformer", "句法分析", "教材例句"],
+          "exampleTags": [
+            "Transformer",
+            "句法分析",
+            "教材例句"
+          ],
           "contextAnalysis": "句子把当前模型堆叠 decoder blocks 的方式，与 BERT 堆叠 encoder layers 的结构进行类比。这里的 it 指代前文正在讨论的模型；仅凭这一句无法确定具体模型。",
           "grammarAnalysis": {
             "structure": "As shown in Figure 1-24, /\nit /\nstacks decoder blocks /\nsimilar to the encoder-stacked architecture of BERT.",
@@ -1015,8 +1238,14 @@
       "term": "pace",
       "phonetic": "/peɪs/",
       "status": "learning",
-      "tags": ["LLM", "模型发展", "学术英语"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "LLM",
+        "模型发展",
+        "学术英语"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-pace-general-20261031",
@@ -1053,7 +1282,16 @@
           "en": "Keeping this in mind, we saw larger and larger models being released at a steady pace.",
           "zh": "考虑到这一点，我们看到规模越来越大的模型正以稳定的速度不断发布。",
           "source": "用户提供的 LLM 阅读例句",
-          "encounteredAt": "2026-10-31"
+          "encounteredAt": "2026-10-31",
+          "note": "",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "at a steady pace = 以稳定的速度、稳步地；pace 在这里不是动词“踱步”。larger and larger 用比较级的重复表示“越来越大”。",
@@ -1065,8 +1303,14 @@
       "term": "fine-tuning",
       "phonetic": "/ˌfaɪnˈtjuːnɪŋ/",
       "status": "learning",
-      "tags": ["LLM", "模型训练", "fine-tuning"],
-      "reviewTags": ["复习"],
+      "tags": [
+        "LLM",
+        "模型训练",
+        "fine-tuning"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-fine-tuning-general-20261031",
@@ -1103,12 +1347,77 @@
           "en": "By fine-tuning these models, we can create instruct or chat models that can follow directions.",
           "zh": "通过微调这些模型，我们可以创建能够遵循指令的 instruct 模型或 chat 模型。",
           "source": "用户提供的 LLM 训练例句",
-          "encounteredAt": "2026-10-31"
+          "encounteredAt": "2026-10-31",
+          "note": "",
+          "exampleTags": [],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "fine-tuning 常写作带连字符的复合名词；动词形式是 fine-tune a model。instruction tuning（指令微调）是让模型学会遵循任务指令的一种常见 fine-tuning 方法。",
       "createdAt": "2026-10-31T05:45:00.000Z",
       "updatedAt": "2026-10-31T05:45:00.000Z"
+    },
+    {
+      "id": "entry-712385ea-a9e1-40e3-a7e2-e388fabaecf1",
+      "term": "schemes",
+      "phonetic": "/skiːmz/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "NLP",
+        "分词",
+        "技术方案"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-7c59a40b-ccb7-4c26-b94f-a5012262b7f7",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "organized plans or systems for doing something, here referring to different methods or approaches for tokenizing text",
+          "definitionZh": "方案；体系（此处指对文本进行分词的不同方法或做法）",
+          "url": "",
+          "examples": [
+            {
+              "en": "Different tokenization schemes suit different languages and tasks.",
+              "zh": "不同的分词方案适合不同的语言和任务。"
+            },
+            {
+              "en": "The team compared several encoding schemes before choosing one.",
+              "zh": "团队在选定一种编码方案之前比较了好几种。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-a18ce82a-afb9-4da6-80f7-dda653534e91",
+          "en": "Common tokenization schemes include breaking text down into words, subword tokens, characters, or bytes, depending on the specific requirements of a given application.",
+          "zh": "常见的分词方案包括将文本切分为词、子词词元、字符或字节，具体取决于特定应用的要求。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "scheme 作名词常指“方案、体系、计划”，技术语境中多指某种系统化的方法。",
+      "createdAt": "2026-11-06T09:21:18.706Z",
+      "updatedAt": "2026-11-06T09:21:18.706Z"
     }
   ]
 }
