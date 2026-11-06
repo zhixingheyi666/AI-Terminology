@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T10:11:05.922Z",
+  "updatedAt": "2026-11-06T13:40:07.060Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1955,6 +1955,234 @@
       "notes": "此处是动词 grasp 的 -ing 形式，作动名词短语开头，表示“理解、领会”。不要与形容词 grasping（贪婪的）混淆。",
       "createdAt": "2026-11-06T10:11:05.922Z",
       "updatedAt": "2026-11-06T10:11:05.922Z"
+    },
+    {
+      "id": "entry-526dc366-e84f-4c04-98f9-ace2d9d23b03",
+      "term": "machine-learning",
+      "phonetic": "/məˈʃiːn ˈlɜːnɪŋ/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "AI"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-7ba5f65a-d31f-4fff-b398-48c31b9c7a78",
+          "dictionary": "Open English WordNet 2025 · machine learning · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a subfield of computer science that explores the study and construction of algorithms that can learn from and make predictions on data.",
+          "definitionZh": "计算机科学的一个子领域，研究能从数据中学习并做出预测的算法。",
+          "url": "https://en-word.net/view/lemma/machine%20learning",
+          "senseGuide": {
+            "sentence": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+            "usage": "本句 machine-learning 作定语修饰 speak，指“机器学习的说法/行话”。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "As a scientific endeavour, machine learning grew out of the quest for artificial intelligence.",
+              "zh": "作为一项科学事业，机器学习源于对人工智能的探索。"
+            }
+          ]
+        },
+        {
+          "id": "definition-be1dd993-8fc4-48b8-adb6-5f7cb6c6c24c",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun (attributive)",
+          "definitionEn": "Relating to the subfield of computer science that builds algorithms which learn from data.",
+          "definitionZh": "机器学习的；与机器学习有关的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "She works on machine-learning models that classify images.",
+              "zh": "她研究用于图像分类的机器学习模型。"
+            },
+            {
+              "en": "The article explains machine-learning concepts in plain language.",
+              "zh": "这篇文章用通俗的语言解释机器学习概念。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-8a35f68a-99bd-403e-9c01-e8fe4ea4eedc",
+          "en": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+          "zh": "每一次词元生成步骤都是模型的一次前向传递（这是机器学习用语，指输入进入神经网络，并流经计算图另一端产生输出所需的各项计算）。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "AI",
+            "模型训练"
+          ],
+          "contextAnalysis": "machine-learning 在本句中是复合形容词，修饰 speak，表示“机器学习领域的说法”，即用机器学习的行话来解释前向传递。",
+          "grammarAnalysis": {
+            "structure": "Each token generation step / is / one forward pass through the model\n(that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+            "parts": [
+              {
+                "label": "Each token generation step",
+                "explanation": "主语，指每一次词元生成的步骤。"
+              },
+              {
+                "label": "is",
+                "explanation": "系动词，连接主语和表语。"
+              },
+              {
+                "label": "one forward pass through the model",
+                "explanation": "表语，说明每一步就是一次前向传递。"
+              },
+              {
+                "label": "that’s machine-learning speak for ...",
+                "explanation": "插入语，用通俗说法解释前向传递的含义。"
+              },
+              {
+                "label": "the inputs going into the neural network and flowing through the computations ...",
+                "explanation": "介词 for 的宾语，说明“机器学习用语”所指的内容。"
+              },
+              {
+                "label": "it needs to produce an output on the other end of the computation graph",
+                "explanation": "定语从句，修饰 computations，说明这些计算是用来产生输出的。"
+              }
+            ],
+            "core": "Each step is one forward pass.",
+            "rewrite": "Each token generation step is a single forward pass through the model; in machine-learning terms, this means the inputs enter the neural network and flow through the computations needed to produce an output at the other end of the computation graph."
+          }
+        }
+      ],
+      "notes": "machine-learning 作定语修饰 speak，表示“机器学习的说法”。",
+      "createdAt": "2026-11-06T13:40:07.060Z",
+      "updatedAt": "2026-11-06T13:40:07.060Z"
+    },
+    {
+      "id": "entry-0bd4bdaa-5d6b-451c-94b4-5d77158bebc6",
+      "term": "speak",
+      "phonetic": "/spiːk/",
+      "status": "learning",
+      "tags": [
+        "语言",
+        "行话",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-b8ffcedd-9599-4f64-85e1-20cf89be833a",
+          "dictionary": "Open English WordNet 2025 · speak · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "express in speech",
+          "definitionZh": "用言语表达。",
+          "url": "https://en-word.net/view/lemma/speak",
+          "senseGuide": {
+            "sentence": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+            "usage": "本句 speak 是名词，指“行话、说法”，不是动词“说话”。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "exchange thoughts; talk with",
+                "definitionZh": "交换想法；与……交谈。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "use language",
+                "definitionZh": "使用语言。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "give a speech to",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "make a characteristic or natural sound",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "She talks a lot of nonsense",
+              "zh": "她胡说八道了一大堆。"
+            }
+          ]
+        },
+        {
+          "id": "definition-39c4d703-9ec2-4005-9228-9f831c9e4b3d",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The language or jargon characteristic of a particular field or group.",
+          "definitionZh": "（某领域或群体的）行话，说法。",
+          "url": "",
+          "examples": [
+            {
+              "en": "In tech speak, “the cloud” just means remote servers.",
+              "zh": "用科技行话来说，“云”不过是指远程服务器。"
+            },
+            {
+              "en": "That’s legal speak for “we don’t know yet.”",
+              "zh": "那是法律行话，意思是“我们还不知道”。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-94914262-59f6-4029-b751-00c86b96b931",
+          "en": " Each token generation step is one forward pass through the model (that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+          "zh": "每一次词元生成步骤都是模型的一次前向传递（这是机器学习用语，指输入进入神经网络，并流经计算图另一端产生输出所需的各项计算）。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "技术方案",
+            "AI"
+          ],
+          "contextAnalysis": "speak 在本句中是名词，与 machine-learning 构成复合名词，表示“机器学习的行话”，即用该领域的术语来解释前向传递。",
+          "grammarAnalysis": {
+            "structure": "Each token generation step / is / one forward pass through the model\n(that’s machine-learning speak for the inputs going into the neural network and flowing through the computations it needs to produce an output on the other end of the computation graph).",
+            "parts": [
+              {
+                "label": "Each token generation step",
+                "explanation": "主语，指每一次词元生成的步骤。"
+              },
+              {
+                "label": "is",
+                "explanation": "系动词，连接主语和表语。"
+              },
+              {
+                "label": "one forward pass through the model",
+                "explanation": "表语，说明每一步就是一次前向传递。"
+              },
+              {
+                "label": "that’s machine-learning speak for ...",
+                "explanation": "插入语，用通俗说法解释前向传递的含义。"
+              },
+              {
+                "label": "the inputs going into the neural network and flowing through the computations ...",
+                "explanation": "介词 for 的宾语，说明“机器学习用语”所指的内容。"
+              },
+              {
+                "label": "it needs to produce an output on the other end of the computation graph",
+                "explanation": "定语从句，修饰 computations，说明这些计算是用来产生输出的。"
+              }
+            ],
+            "core": "Each step is one forward pass.",
+            "rewrite": "Each token generation step is a single forward pass through the model; in machine-learning terms, this means the inputs enter the neural network and flow through the computations needed to produce an output at the other end of the computation graph."
+          }
+        }
+      ],
+      "notes": "speak 在此作名词，常与领域词连用，如 machine-learning speak，表示该领域的行话。",
+      "createdAt": "2026-11-06T13:40:07.060Z",
+      "updatedAt": "2026-11-06T13:40:07.060Z"
     }
   ]
 }
