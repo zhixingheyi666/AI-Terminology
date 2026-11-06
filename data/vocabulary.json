@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T09:29:01.936Z",
+  "updatedAt": "2026-11-06T09:34:20.948Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1566,6 +1566,116 @@
       "notes": "此处并非“生的、未煮熟的”本义，而是技术语境中“未加工的”，常与 processed 相对。",
       "createdAt": "2026-11-06T09:29:01.936Z",
       "updatedAt": "2026-11-06T09:29:01.936Z"
+    },
+    {
+      "id": "entry-0b6e1093-8978-4e2f-afea-ae58bacfba4e",
+      "term": "entity",
+      "phonetic": "/ˈentəti/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "NLP",
+        "语义"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-9d34e50d-724f-4357-87df-5772d0d0f84d",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "something that exists as a distinct, identifiable thing, especially in text such as a named person, organization, or place",
+          "definitionZh": "独立存在且可识别的实体，尤指文本中的人名、机构名、地名等命名实体",
+          "url": "",
+          "examples": [
+            {
+              "en": "The NER model flagged each entity in the news article, including the company name and its CEO.",
+              "zh": "该NER模型标出了新闻文章中的每个实体，包括公司名称及其首席执行官。"
+            },
+            {
+              "en": "Before classification, the system replaced every entity with a placeholder token.",
+              "zh": "在分类之前，系统把每个实体替换成占位词元。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-fb49b2a5-c2d0-4f47-8180-04ea88804a51",
+          "en": "Those contextualized token embeddings are what’s used for tasks including named-entity recognition (NER), extractive text summarization, and text classification.",
+          "zh": "那些经过上下文处理的词元嵌入，正是用于命名实体识别（NER）、抽取式文本摘要和文本分类等任务的东西。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "技术语境中常与 named 连用；named entity 指有专名的实体，entity 本身强调可单独指认的对象。",
+      "createdAt": "2026-11-06T09:34:20.948Z",
+      "updatedAt": "2026-11-06T09:34:20.948Z"
+    },
+    {
+      "id": "entry-ea25c000-7651-4ea4-969d-a9a9c3ec0c4f",
+      "term": "extractive",
+      "phonetic": "/ɪkˈstræktɪv/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "技术方案",
+        "语义"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-aa2b5cf9-a092-463d-ab4c-c2008f5561f6",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "relating to a method that selects and copies existing pieces of text rather than generating new wording",
+          "definitionZh": "指抽取式的，即从原文中选取并摘出已有片段而非生成新措辞的方法",
+          "url": "",
+          "examples": [
+            {
+              "en": "Extractive summarization keeps the original sentences, while abstractive methods rewrite them.",
+              "zh": "抽取式摘要保留原句，而生成式方法则对原句进行改写。"
+            },
+            {
+              "en": "The extractive approach scored highly because it never invented facts.",
+              "zh": "这种抽取式方法得分很高，因为它从不杜撰事实。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-8ddeb8d4-c2cb-4c1f-92eb-dbd1fb75c957",
+          "en": "Those contextualized token embeddings are what’s used for tasks including named-entity recognition (NER), extractive text summarization, and text classification.",
+          "zh": "那些经过上下文处理的词元嵌入，正是用于命名实体识别（NER）、抽取式文本摘要和文本分类等任务的东西。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常与 summarization 搭配，与 abstractive（生成式）相对；描述方法而非具体事物。",
+      "createdAt": "2026-11-06T09:34:20.948Z",
+      "updatedAt": "2026-11-06T09:34:20.948Z"
     }
   ]
 }
