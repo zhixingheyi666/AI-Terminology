@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T09:34:20.948Z",
+  "updatedAt": "2026-11-06T09:40:34.966Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1676,6 +1676,119 @@
       "notes": "常与 summarization 搭配，与 abstractive（生成式）相对；描述方法而非具体事物。",
       "createdAt": "2026-11-06T09:34:20.948Z",
       "updatedAt": "2026-11-06T09:34:20.948Z"
+    },
+    {
+      "id": "entry-a4ec4257-3c4f-48a3-bc3e-c3c5dbc7e4c4",
+      "term": "skip-gram",
+      "phonetic": "/ˈskɪp ɡræm/",
+      "status": "learning",
+      "tags": [
+        "word2vec",
+        "NLP",
+        "词向量",
+        "模型架构"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-52fba471-a6b4-4d80-a238-fd9ba415033a",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A word2vec model architecture that predicts context words from a given center word.",
+          "definitionZh": "一种 word2vec 模型结构，用给定的中心词来预测其上下文词。",
+          "url": "",
+          "examples": [
+            {
+              "en": "In a skip-gram model, each center word is used to predict several surrounding words.",
+              "zh": "在 skip-gram 模型中，每个中心词被用来预测若干个周围的词。"
+            },
+            {
+              "en": "Skip-gram tends to work well for infrequent words because each word provides many training examples.",
+              "zh": "skip-gram 对低频词往往效果较好，因为每个词都能提供许多训练样本。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-fa68029c-d04b-4bbd-b15e-6a9c658839db",
+          "en": "The word2vec algorithm relies on two main ideas: skip-gram and negative sampling. ",
+          "zh": "word2vec 算法依赖两个主要思想：skip-gram 和负采样。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常写作 skip-gram，与 CBOW 相对；中间连字符不可省略。",
+      "createdAt": "2026-11-06T09:40:34.966Z",
+      "updatedAt": "2026-11-06T09:40:34.966Z"
+    },
+    {
+      "id": "entry-d7eb9745-1902-4795-8c5a-6d1b0640c3aa",
+      "term": "sampling",
+      "phonetic": "/ˈsɑːmplɪŋ/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "模型训练",
+        "负采样",
+        "word2vec"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-2145636e-806e-4b19-bc4c-b1dea8832b6c",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The process of selecting a subset of items, here negative examples, from a larger set.",
+          "definitionZh": "从较大集合中选取一部分项目（此处指负样本）的过程。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Negative sampling speeds up training by updating only a small number of weights per step.",
+              "zh": "负采样通过每一步只更新少量权重来加快训练速度。"
+            },
+            {
+              "en": "The quality of sampling strongly affects how well the model learns word relationships.",
+              "zh": "采样质量在很大程度上影响模型学习词与词关系的好坏。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-1ccc028f-5018-485f-a7fa-0506c231bca1",
+          "en": "The word2vec algorithm relies on two main ideas: skip-gram and negative sampling. ",
+          "zh": "word2vec 算法依赖两个主要思想：skip-gram 和负采样。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "模型训练"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "本句中是 negative sampling（负采样）的组成部分；sampling 为不可数名词。",
+      "createdAt": "2026-11-06T09:40:34.966Z",
+      "updatedAt": "2026-11-06T09:40:34.966Z"
     }
   ]
 }
