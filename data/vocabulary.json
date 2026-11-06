@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T13:40:07.060Z",
+  "updatedAt": "2026-11-06T13:41:55.471Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -2183,6 +2183,149 @@
       "notes": "speak 在此作名词，常与领域词连用，如 machine-learning speak，表示该领域的行话。",
       "createdAt": "2026-11-06T13:40:07.060Z",
       "updatedAt": "2026-11-06T13:40:07.060Z"
+    },
+    {
+      "id": "entry-5f3f566d-dd12-4de8-94f3-95c2c96b693f",
+      "term": "picture",
+      "phonetic": "/ˈpɪktʃər/",
+      "status": "learning",
+      "tags": [
+        "认知",
+        "语义",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-75fa94e3-91f6-4b4c-9ab0-134c244abeeb",
+          "dictionary": "Open English WordNet 2025 · picture · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a clear and telling mental image",
+          "definitionZh": "清晰而能说明问题的心理意象；对事物的理解。",
+          "url": "https://en-word.net/view/lemma/picture",
+          "senseGuide": {
+            "sentence": "This gives us a more accurate picture of the model as it is simply predicting the next token based on an input prompt. ",
+            "usage": "本句中 picture 意为“对模型的理解/印象”，是比喻性的心理画面，不是真实的图像。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a visual representation (of an object or scene or person or abstraction) produced on a surface",
+                "definitionZh": "在表面上产生的（物体、场景、人物或抽象概念的）视觉表现；图画。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a situation treated as an observable object",
+                "definitionZh": "被视为可观察对象的情况或局面。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "graphic art consisting of an artistic composition made by applying paints to a surface",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "illustrations used to decorate or explain a text",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a form of entertainment that enacts a story by sound and a sequence of images giving the illusion of continuous movement",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the visible part of a television transmission",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a graphic or vivid verbal description",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a typical example of some state or quality",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a representation of a person or scene in the form of a print or transparent slide or in digital format",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "imagine; conceive of; see in one's mind",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "show in, or as in, a picture",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "he described his mental picture of his assailant",
+              "zh": "他描述了自己对袭击者的心理画面。"
+            }
+          ]
+        },
+        {
+          "id": "definition-d1036896-19a4-4bd2-a118-66f196345b9e",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A mental image or understanding of a situation; an overall impression.",
+          "definitionZh": "对情况的心理印象或整体理解。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The survey gives a clear picture of how students study.",
+              "zh": "这项调查清晰地展示了学生的学习方式。"
+            },
+            {
+              "en": "We need a fuller picture before making a decision.",
+              "zh": "在做决定之前，我们需要更全面的了解。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-581a2b6b-3d64-4885-8f10-81f3befb913e",
+          "en": "This gives us a more accurate picture of the model as it is simply predicting the next token based on an input prompt. ",
+          "zh": "这让我们对模型有了更准确的认识，因为它只是根据输入提示预测下一个词元。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "认知"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "此处 picture 是比喻用法，指“了解、认识”；常见搭配 a picture of...。",
+      "createdAt": "2026-11-06T13:41:55.471Z",
+      "updatedAt": "2026-11-06T13:41:55.471Z"
     }
   ]
 }
