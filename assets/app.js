@@ -19,8 +19,8 @@ import {
   sortEntriesByCreated,
   validateData,
 } from "./model.js?v=1.4.0";
-import { createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.0";
-import { generateDraft } from "./draft-client.js";
+import { createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.1";
+import { generateDraft } from "./draft-client.js?v=1.4.1";
 import { prepareDrafts, mergeDraftBatch } from "./draft-library.js?v=1.4.0";
 
 const STORAGE = Object.freeze({
@@ -130,24 +130,20 @@ let toastTimer;
 let syncTimer;
 const pronunciationAudioCache = new Map();
 
-let draftTarget = "";
-let draftOriginalTerms = new Map();
 const intake = createIntakeUI({
   openSettings,
   async generate(input, options) {
     const target = repositoryTargetKey(state.settings);
     const draft = await generateDraft(state.settings, state.token, input, options);
     if (target !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新自动填写。");
-    draftTarget = target;
-    draftOriginalTerms = new Map(draft.entries.map(entry => [entry.id, normalizeSearch(entry.term)]));
-    return { ...draft, entries: prepareDrafts(state.data, draft.entries) };
+    return { ...draft, saveTarget: target, entries: prepareDrafts(state.data, draft.entries) };
   },
-  save(drafts) {
-    if (draftTarget !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新生成草稿。");
+  save(drafts, { saveTarget, originalTerms }) {
+    if (saveTarget !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新生成草稿。");
     if (!state.loadSource || state.loadSource === "empty") throw new Error("请先成功读取词库，再保存草稿。");
-    for (const entry of drafts) {
+    for (const [index, entry] of drafts.entries()) {
       const key = normalizeSearch(entry.term);
-      if (key !== draftOriginalTerms.get(entry.id) && state.data.entries.some(old => normalizeSearch(old.term) === key)) {
+      if (key !== normalizeSearch(originalTerms[index]) && state.data.entries.some(old => normalizeSearch(old.term) === key)) {
         throw new Error(`「${entry.term}」是已有词条。请用该词重新生成，以便核对已有笔记和学习状态。`);
       }
     }

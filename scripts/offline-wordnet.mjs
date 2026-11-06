@@ -61,8 +61,23 @@ export async function lookupOfflineWordnet(term) {
   if (typeof term !== "string" || term.length > 120 || !term.trim() || /[\u0000-\u001f\/\\?#]/u.test(term)) return [];
   const word = term.normalize("NFKC").trim().toLowerCase().replaceAll("_", " ").replace(/\s+/gu, " ");
   const data = await loadDatabase();
+  const forms = formsFor(word, data);
+  // Hyphenated compounds can be spelled as open compounds in WNDB. Only add
+  // an alternative when the requested surface is absent, and only after it
+  // resolves to a real indexed lemma. Keep the requested entry spelling intact.
+  if (!Object.hasOwn(data.entries, word)) {
+    for (const alternate of new Set([word.replace(/[-\u2010\u2011]+/gu, " ").replace(/\s+/gu, " "),
+      word.replace(/\s+/gu, "-")])) {
+      if (alternate === word) continue;
+      for (const [form, parts] of formsFor(alternate, data)) {
+        const previous = forms.find(([value]) => value === form);
+        if (previous) for (const pos of parts) previous[1].add(pos);
+        else forms.push([form, parts]);
+      }
+    }
+  }
   const senses = [];
-  for (const [form, matchedParts] of formsFor(word, data)) {
+  for (const [form, matchedParts] of forms) {
     // Once morphology is validated for a real lemma/POS, keep that lemma's
     // other genuine parts too. The matching POS comes first (grasping -> grasp
     // verb), followed by the same lemma's noun senses for the basic-meaning view.

@@ -69,7 +69,7 @@ export function extractSenses(records, form, onLimit = () => {}) {
   return [...senses.values()];
 }
 
-export async function lookupDictionary(term, fetchImpl = fetch, onLimit = () => {}) {
+async function lookupSurface(term, fetchImpl, onLimit) {
   let surface = [];
   const alternatives = [];
   const exact = term.trim().toLowerCase();
@@ -114,4 +114,36 @@ export async function lookupDictionary(term, fetchImpl = fetch, onLimit = () => 
   const glossKey = (sense) => sense.partOfSpeech + "|" + sense.definitionEn;
   const baseGlosses = new Set(alternatives.map(glossKey));
   return [...surface.filter((sense) => !baseGlosses.has(glossKey(sense))), ...alternatives];
+}
+
+function isCrossReference(sense) {
+  return /^(?:(?:an?\s+)?(?:alternative|alternate|nonstandard|obsolete|archaic|rare|dated)\s+(?:spelling|form)\s+of|(?:the\s+)?(?:plural|present participle|past participle|simple past|third-person singular|gerund)\s+(?:form\s+)?of)\b/iu.test(sense.definitionEn);
+}
+
+export async function lookupDictionary(term, fetchImpl = fetch, onLimit = () => {}) {
+  const exact = term.trim().toLowerCase();
+  const surfaces = [...new Set([exact,
+    exact.replace(/[_\-\u2010\u2011]+/gu, " ").replace(/\s+/gu, " "),
+    exact.replace(/[\s_]+/gu, "-")])];
+  const all = [];
+  for (const surface of surfaces) {
+    let rateLimited = false;
+    const found = await lookupSurface(surface, fetchImpl, (notice) => {
+      if (notice === "在线词典暂时限制请求。") rateLimited = true;
+      onLimit(notice);
+    });
+    // Each result carries its verified record spelling and matching source URL.
+    // An alternate compound spelling is a lookup candidate, never a license to
+    // attribute its gloss to the originally requested spelling.
+    all.push(...found);
+    if (rateLimited) break;
+    if (found.some((sense) => !isCrossReference(sense))) break;
+  }
+  const seen = new Set();
+  return all.filter((sense) => {
+    const key = [sense.form, sense.url, sense.license, sense.partOfSpeech, sense.definitionEn].join("\u0000");
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }

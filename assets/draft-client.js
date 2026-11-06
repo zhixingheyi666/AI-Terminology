@@ -1,3 +1,5 @@
+import { normalizeSearch } from "./model.js?v=1.4.0";
+
 const API = "https://api.github.com";
 const API_VERSION = "2022-11-28";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
@@ -11,6 +13,13 @@ const ERROR_MESSAGES = Object.freeze({
   RATE_LIMIT: "DeepSeek 请求过于频繁，请稍后重试。",
   TIMEOUT: "DeepSeek 生成超时，请稍后重试。",
   INVALID_RESPONSE: "AI 返回的数据不完整，请重新生成。",
+  MODEL_TRUNCATED: "模型的回答超出了长度限制。可分批录入目标词，或缩短原句后再试。",
+  MODEL_JSON: "模型回复未形成完整的 JSON，无法读取草稿。请再次自动填写。",
+  MODEL_FORMAT: "模型回复的结构无法解析。可分批录入，或稍后再试。",
+  TERM_MISMATCH: "模型返回的词与请求未能对应。请检查目标词拼写；多词短语可用双引号括起来。",
+  WORD_FIELDS: "模型没有给出可保存的词汇释义等必填信息。可单独录入该词，并保留能说明用法的原句。",
+  SHARED_TRANSLATION: "模型未给出有效的原句翻译。请检查英文原句是否完整后再试。",
+  GRAMMAR_FIELDS: "详细语法分析的必填内容不完整。可再试一次，或选择“只翻译原句”。",
   GENERATION_FAILED: "AI 起草失败，请稍后重试。",
   WORKFLOW_FAILED: "后台起草任务未能完成，请检查 GitHub Actions 后重试。",
   STALE_HEAD: "等待期间仓库已更新，请重新生成草稿。",
@@ -34,6 +43,7 @@ export function validateDraftInput(input) {
   if (!input || !Array.isArray(input.terms) || input.terms.length < 1 || input.terms.length > 8 ||
       typeof input.detailed !== "boolean") throw new Error("每次请输入 1–8 个单词。");
   const terms = input.terms.map((value) => stringField(value, 120, true).trim());
+  if (new Set(terms.map(normalizeSearch)).size !== terms.length) throw new Error("目标词有重复，请检查后再试。");
   if (terms.some((term) => /[\r\n]/u.test(term))) throw new Error("每个单词应单独填写，不能包含换行。");
   const result = { terms, sentence: stringField(input.sentence, 10000, true),
     source: stringField(input.source ?? "", 1500), detailed: input.detailed };
@@ -41,6 +51,28 @@ export function validateDraftInput(input) {
     throw new Error("本次输入过长，请缩短原句后重试。");
   }
   return result;
+}
+
+// A partial draft must account for every requested word exactly once.
+export function checkDraftCoverage(result, requestedTerms) {
+  const missing = result?.missingTerms === undefined ? [] : result.missingTerms;
+  const entries = result?.entries;
+  const invalid = () => new Error("返回的词条和待补录清单与请求不符，暂时无法采用这批草稿。");
+  if (!Array.isArray(entries) || !entries.length || !Array.isArray(missing) ||
+      entries.length + missing.length > 8 || !Array.isArray(result.warnings) ||
+      result.warnings.some(warning => typeof warning !== "string")) throw invalid();
+  const received = entries.map(entry => entry?.term);
+  const names = [...received, ...missing];
+  if (names.some(term => typeof term !== "string" || !term.trim() || term.length > 120) ||
+      new Set(names.map(normalizeSearch)).size !== names.length) throw invalid();
+  if (!requestedTerms) return;
+  const missingKeys = new Set(missing.map(normalizeSearch));
+  const successfulTerms = requestedTerms.filter(term => !missingKeys.has(normalizeSearch(term)));
+  const missingTerms = requestedTerms.filter(term => missingKeys.has(normalizeSearch(term)));
+  const aligned = (expected, actual) => expected.length === actual.length &&
+    expected.every((term, i) => normalizeSearch(term) === normalizeSearch(actual[i]));
+  if (!aligned(successfulTerms, received) || !aligned(missingTerms, missing)) throw invalid();
+  return { successfulTerms, missingTerms };
 }
 
 function base64(bytes) {
@@ -65,12 +97,16 @@ export function matchesDraftCheck(check, requestId, headSha) {
     check?.head_sha === headSha && check?.app?.slug === "github-actions";
 }
 
-export async function decodeDraftResponse(text, { key, repository, requestId, headSha }) {
+export async function decodeDraftResponse(text, { key, repository, requestId, headSha, requestedTerms }) {
   if (typeof text !== "string" || text.length > 64000) throw new Error("后台草稿返回过大，请减少单词后重试。");
   let envelope;
   try { envelope = JSON.parse(text); } catch { throw new Error("后台草稿格式无效，请重新生成。"); }
   if (envelope?.version !== 1 || envelope.request_id !== requestId) throw new Error("后台草稿与本次请求不匹配。");
-  if (envelope.error) throw new Error(ERROR_MESSAGES[envelope.error] || ERROR_MESSAGES.WORKFLOW_FAILED);
+  if (envelope.error) {
+    const code = typeof envelope.error === "string" && Object.hasOwn(ERROR_MESSAGES, envelope.error)
+      ? envelope.error : "WORKFLOW_FAILED";
+    throw Object.assign(new Error(ERROR_MESSAGES[code]), { code });
+  }
   if (envelope.encoding !== "gzip+aes-256-gcm") throw new Error("后台草稿加密版本不兼容，请刷新页面。");
   const iv = bytes64(envelope.iv, 20);
   if (iv.length !== 12) throw new Error("后台草稿的加密格式无效。");
@@ -83,6 +119,7 @@ export async function decodeDraftResponse(text, { key, repository, requestId, he
   const reader = new Blob([compressed]).stream().pipeThrough(new DecompressionStream("gzip")).getReader();
   const chunks = [];
   let length = 0;
+  let result;
   try {
     while (true) {
       const { done, value } = await reader.read();
@@ -94,14 +131,11 @@ export async function decodeDraftResponse(text, { key, repository, requestId, he
     const bytes = new Uint8Array(length);
     let offset = 0;
     for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
-    const result = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
-    if (!Array.isArray(result.entries) || !result.entries.length || result.entries.length > 8 ||
-        !Array.isArray(result.warnings) || result.warnings.some((warning) => typeof warning !== "string")) {
-      throw new Error("shape");
-    }
-    return result;
+    result = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
   } catch { throw new Error("后台草稿内容不完整或过大，请重新生成。"); }
   finally { reader.releaseLock(); }
+  checkDraftCoverage(result, requestedTerms);
+  return result;
 }
 
 async function githubRequest(path, { token = "", signal, method = "GET", body } = {}) {
@@ -212,10 +246,10 @@ export async function generateDraft(settings, token, input, { onProgress = () =>
       const check = checks.check_runs.find((value) => matchesDraftCheck(value, requestId, headSha) && value.status === "completed");
       if (!check) continue;
       checkAbort(signal);
-      const result = await decodeDraftResponse(check.output?.text, { key, repository, requestId, headSha });
+      const result = await decodeDraftResponse(check.output?.text, { key, repository, requestId, headSha, requestedTerms: request.terms });
       checkAbort(signal);
       if (check.conclusion !== "success") throw new Error(ERROR_MESSAGES.WORKFLOW_FAILED);
-      onProgress("草稿已生成，请检查后保存。");
+      onProgress(result.missingTerms?.length ? "部分词条已生成，请核对待补录清单。" : "草稿已生成，请检查后保存。");
       return result;
     }
     throw new Error("等待草稿超时。请检查仓库是否已启用 draft.yml 工作流，以及 Actions 的运行状态后重试。");

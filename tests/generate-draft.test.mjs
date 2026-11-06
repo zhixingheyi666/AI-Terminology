@@ -107,6 +107,55 @@ test("detailed mode shares a complete grammar analysis and keeps word-specific c
   assert.ok(entries[1].personalExamples[0].exampleTags.includes("定语从句"));
 });
 
+test("the production prompt shows the complete JSON shape for precisely the requested mode", async () => {
+  for (const detailed of [false, true]) {
+    const options = mock();
+    await generateDraft({ ...input, detailed }, options);
+    const call = options.calls.find((c) => c.url.startsWith("https://api.deepseek.com/"));
+    const prompt = JSON.parse(call.options.body).messages[0].content;
+    const example = JSON.parse(prompt.slice(prompt.indexOf("\n{\n") + 1));
+    assert.ok(example.translation && example.words[0].term);
+    assert.equal("grammarAnalysis" in example, detailed);
+    assert.equal("contextAnalysis" in example.words[0], detailed);
+    if (detailed) {
+      assert.deepEqual(Object.keys(example.grammarAnalysis).sort(), ["core", "parts", "rewrite", "structure"]);
+      assert.ok(example.grammarAnalysis.parts.every((part) => part.label && part.explanation));
+    }
+  }
+});
+
+test("recovers one shared analysis or agreeing word analyses, including an array of sentence segments", async () => {
+  for (const shape of ["shared", "nested"]) {
+    const options = mock({ mutate: (r) => {
+      const alternate = { ...r.grammarAnalysis, structure: ["We", "routed", "the signals."] };
+      delete r.grammarAnalysis.structure;
+      if (shape === "shared") r.shared = { grammarAnalysis: alternate };
+      else r.words.forEach((w) => { w.analysis = { grammarAnalysis: alternate }; });
+    } });
+    const { entries, warnings } = await generateDraft({ ...input, detailed: true }, options);
+    assert.deepEqual(warnings, []);
+    assert.equal(entries[0].personalExamples[0].grammarAnalysis.structure, "We\nrouted\nthe signals.");
+    assert.equal(options.calls.filter((c) => c.url.startsWith("https://api.deepseek.com/")).length, 1);
+  }
+});
+
+test("conflicting nested analyses retain only their agreed fields and preserve the successful words", async () => {
+  const options = mock({ mutate: (r) => {
+    delete r.grammarAnalysis;
+    r.words[0].grammarAnalysis = { ...grammar, structure: "A breakdown.", rewrite: "" };
+    r.words[1].grammarAnalysis = { ...grammar, structure: "Conflicting breakdown.", core: "" };
+  } });
+  const { entries, warnings } = await generateDraft({ ...input, detailed: true }, options);
+  assert.equal(entries.length, 2);
+  const actual = entries[0].personalExamples[0].grammarAnalysis;
+  assert.equal(actual.structure, "");
+  assert.equal(actual.core, "");
+  assert.equal(actual.rewrite, "");
+  assert.deepEqual(actual.parts, grammar.parts);
+  assert.match(warnings.join(" "), /断句、主干、改写.*多个不同版本/);
+  assert.equal(options.calls.filter((c) => c.url.startsWith("https://api.deepseek.com/")).length, 1);
+});
+
 test("missing sourced senses or missing real examples never create invented dictionary text", async () => {
   const options = mock({ dictionary: (term) => term === "routed" ? record(term) : new Response(null, { status: 429 }),
     mutate: (r) => { r.words[0].dictionary.index = 0; } });
@@ -141,7 +190,7 @@ test("preserves a sourced general sense and its real example when the model cann
   }
   assert.equal(entries[0].definitions[0].definitionZh, "");
   assert.equal(entries[0].definitions[0].examples[0].zh, "");
-  assert.match(warnings[0], /routed.*中文翻译/);
+  assert.ok(warnings.some((w) => /routed.*中文翻译/.test(w)));
   assert.equal(entries[1].definitions[0].definitionZh, "义项的翻译。");
   assert.match(entries[1].definitions[0].dictionary, /中文为 AI 翻译/);
 });
@@ -342,17 +391,26 @@ test("incompressible dictionary text conforms to the encrypted result limit even
   assert.ok(draft.entries.every((e) => e.definitions[0].senseGuide.senses.filter((s) => s.role === "common").length === 2));
 });
 
-test("rejects invalid input, incomplete results, missing examples, missing analyses and invalid source selection", async () => {
+test("rejects invalid input and retains useful detailed fields when optional fields are incomplete", async () => {
   for (const patch of [{ terms: [] }, { terms: ["UP", "up"] }, { terms: ["../secret"] }, { terms: ["one\ntwo"] },
     { terms: Array.from({ length: 9 }, (_, i) => "term" + i) }, { sentence: "" }, { detailed: "yes" }]) {
     assert.throws(() => parseDraftRequest({ ...input, ...patch }));
   }
-  for (const mutate of [
-    (r) => r.words.pop(), (r) => { r.words[1].term = "wrong"; },
-    (r) => { r.words[0].tags = []; },
-    (r) => { r.grammarAnalysis.core = ""; }, (r) => { r.grammarAnalysis.rewrite = ""; },
-    (r) => { r.words[0].examples[0].zh = ""; }, (r) => { r.words[0].dictionary.index = 50; },
-  ]) await assert.rejects(generateDraft({ ...input, detailed: true }, mock({ mutate })));
+  const options = mock({ mutate: (r) => {
+    r.words[0].tags = [];
+    r.words[0].examples[0].zh = "";
+    delete r.words[0].phonetic;
+    delete r.words[0].contextAnalysis;
+    r.grammarAnalysis.rewrite = "";
+  } });
+  const { entries, warnings } = await generateDraft({ ...input, detailed: true }, options);
+  assert.equal(entries.length, 2);
+  assert.equal(entries[0].definitions[1].examples[0].en, "An independent learning example.");
+  assert.equal(entries[0].definitions[1].examples[0].zh, "");
+  assert.equal(entries[1].personalExamples[0].grammarAnalysis.core, grammar.core);
+  assert.match(warnings.join(" "), /改写/);
+  assert.match(warnings.join(" "), /详细语境分析/);
+  assert.equal(options.calls.filter((c) => c.url.startsWith("https://api.deepseek.com/")).length, 1);
   await assert.rejects(generateDraft(input, mock({ completion: "length" })), /输出未完成/);
   await assert.rejects(generateDraft(input, mock({ fail: true })), (e) => !e.message.includes("SECRET"));
 });
@@ -386,6 +444,6 @@ test("reports only stable public error codes for failed providers or missing cre
     await assert.rejects(generateDraft(input, { ...options, fetchImpl }), (error) => draftErrorCode(error) === code);
   }
   await assert.rejects(generateDraft(input, { ...options, apiKey: "" }), (error) => draftErrorCode(error) === "MISSING_KEY");
-  await assert.rejects(generateDraft(input, mock({ mutate: (r) => r.words.pop() })), (error) => draftErrorCode(error) === "INVALID_RESPONSE");
+  await assert.rejects(generateDraft(input, mock({ mutate: (r) => { r.words = []; } })), (error) => draftErrorCode(error) === "TERM_MISMATCH");
   assert.equal(draftErrorCode(new Error("SECRET")), "GENERATION_FAILED");
 });

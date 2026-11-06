@@ -2406,6 +2406,19 @@ details.sense-group > summary {
   line-height: 1.6;
 }
 
+.intake-partial {
+  padding: 0.85rem 1.5rem;
+  border-left: 0.25rem solid var(--warm);
+  background: var(--warm-pale);
+  color: var(--warm-ink);
+  overflow-wrap: anywhere;
+  line-height: 1.55;
+}
+
+.intake-partial p {
+  margin: 0.2rem 0;
+}
+
 .intake-draft {
   min-width: 0;
   border: 1px solid var(--line);

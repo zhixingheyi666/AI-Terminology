@@ -76,7 +76,9 @@ test("check response must come from GitHub Actions for the specific request and 
 });
 
 test("safe errors give useful feedback while unknown server content stays hidden", async () => {
-  const cases = { MISSING_KEY: /DEEPSEEK_API_KEY/, AUTH: /密钥无效/, BALANCE: /余额不足/, RATE_LIMIT: /频繁/, TIMEOUT: /超时/ };
+  const cases = { MISSING_KEY: /DEEPSEEK_API_KEY/, AUTH: /密钥无效/, BALANCE: /余额不足/, RATE_LIMIT: /频繁/, TIMEOUT: /超时/,
+    MODEL_TRUNCATED: /长度限制/, MODEL_JSON: /JSON/, MODEL_FORMAT: /结构/, TERM_MISMATCH: /拼写/,
+    WORD_FIELDS: /释义/, SHARED_TRANSLATION: /原句翻译/, GRAMMAR_FIELDS: /详细语法/ };
   for (const [error, message] of Object.entries(cases)) {
     await assert.rejects(decodeDraftResponse(JSON.stringify({ version: 1, request_id: ID, error }), { requestId: ID }), message);
   }
@@ -115,7 +117,9 @@ test("backend runs generator with minimal env, publishes ciphertext only, and re
 
 test("backend maps only fixed child-process error codes and never returns raw stderr", async (t) => {
   const settings = await fixture(t);
-  for (const [stderr, expected] of [["DRAFT_ERROR:AUTH\n", "AUTH"], ["secret model text", "GENERATION_FAILED"]]) {
+  const codes = ["AUTH", "MODEL_TRUNCATED", "MODEL_JSON", "MODEL_FORMAT", "TERM_MISMATCH", "WORD_FIELDS", "SHARED_TRANSLATION", "GRAMMAR_FIELDS"];
+  const errorCases = codes.map(code => [`DRAFT_ERROR:${code}\n`, code]);
+  for (const [stderr, expected] of [...errorCases, ["DRAFT_ERROR:MODEL_JSON\nsecret model text", "GENERATION_FAILED"]]) {
     let post;
     const githubImpl = async (_url, _token, options) => {
       if (options?.method === "POST") { post = JSON.parse(options.body); return {}; }
@@ -125,6 +129,40 @@ test("backend maps only fixed child-process error codes and never returns raw st
     assert.equal(post.conclusion, "failure");
     assert.equal(JSON.parse(post.output.text).error, expected);
     assert.doesNotMatch(JSON.stringify(post), /secret model text/);
+  }
+});
+
+test("partial check results privately count every requested word, in order", async (t) => {
+  const settings = await fixture(t);
+  const request = event();
+  const requestedTerms = ["privateAlpha", "privateBeta", "privateGamma"];
+  request.client_payload.request = { ...input, terms: requestedTerms };
+  await writeFile(settings.GITHUB_EVENT_PATH, JSON.stringify(request));
+  const partial = { entries: [{ term: requestedTerms[0] }, { term: requestedTerms[2] }],
+    warnings: ["private warning"], missingTerms: [requestedTerms[1]] };
+  const options = { key: await cryptoKey(), repository: routing.repository, requestId: ID, headSha: SHA, requestedTerms };
+  async function deliver(value) {
+    let publicCheck;
+    await writeFile(path.join(settings.RUNNER_TEMP, `vocabulary-draft-${ID}.json`), JSON.stringify(value));
+    await returnDraft({ env: settings,
+      githubImpl: async (_url, _token, data) => {
+        if (data?.method === "POST") { publicCheck = JSON.parse(data.body); return {}; }
+        return { check_runs: [] };
+      }, spawnImpl: () => ({ status: 0, stdout: "private model text", stderr: "" }) });
+    assert.doesNotMatch(JSON.stringify(publicCheck), /privateAlpha|privateBeta|privateGamma|private warning|private model text|The model uses/);
+    return publicCheck;
+  }
+  const post = await deliver(partial);
+  assert.equal(post.conclusion, "success");
+  assert.deepEqual(await decodeDraftResponse(post.output.text, options), partial);
+  for (const invalid of [
+    { ...partial, missingTerms: undefined }, { ...partial, missingTerms: ["foreign"] },
+    { ...partial, entries: partial.entries.toReversed() }, { ...partial, missingTerms: [requestedTerms[0]] },
+    { ...partial, entries: [], missingTerms: requestedTerms }, { ...partial, missingTerms: null },
+  ]) {
+    const rejected = await deliver(invalid);
+    assert.deepEqual(JSON.parse(rejected.output.text), { version: 1, request_id: ID, error: "TERM_MISMATCH" });
+    await assert.rejects(decodeDraftResponse(encodeDraft(invalid, routing), options), /清单与请求不符/);
   }
 });
 

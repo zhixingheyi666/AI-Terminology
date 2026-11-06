@@ -2,6 +2,7 @@ import {
   STATUS_LABELS, createDefinition, createDefinitionExample, createGrammarAnalysis,
   createGrammarPart, normalizeSearch, normalizeTags,
 } from "./model.js?v=1.4.0";
+import { checkDraftCoverage } from "./draft-client.js?v=1.4.1";
 
 const separators = /[\s,，、;；]/u;
 
@@ -265,14 +266,11 @@ function entryCard(entry, detailed, index) {
   return card;
 }
 
-function prepareDraft(result, request) {
-  if (!Array.isArray(result?.entries) || result.entries.length !== request.terms.length) {
-    throw new Error("返回的词条数量与目标词不符，请重新生成。");
-  }
+export function prepareDraft(result, request) {
+  const { successfulTerms, missingTerms } = checkDraftCoverage(result, request.terms);
   const entries = structuredClone(result.entries);
-  const wanted = new Set(request.terms.map(normalizeSearch));
   for (const entry of entries) {
-    if (!wanted.delete(normalizeSearch(entry.term)) || entry.personalExamples?.length !== 1 ||
+    if (entry.personalExamples?.length !== 1 ||
         !Array.isArray(entry.definitions) || !entry.personalExamples[0]?.zh?.trim()) {
       throw new Error("返回的词条或例句不完整，请重新生成。");
     }
@@ -280,15 +278,43 @@ function prepareDraft(result, request) {
   }
   const first = entries[0].personalExamples[0];
   return {
-    entries, detailed: request.detailed, warnings: result.warnings || [],
+    entries, detailed: request.detailed, warnings: result.warnings, saveTarget: result.saveTarget,
+    requestedTerms: [...request.terms], successfulTerms, missingTerms,
     shared: { en: request.sentence, zh: first.zh, source: request.source,
       encounteredAt: first.encounteredAt, grammarAnalysis: createGrammarAnalysis(first.grammarAnalysis) },
   };
 }
 
-function renderReview(container, draft) {
+export function mergeRepair(previous, repaired) {
+  if (previous.saveTarget !== repaired.saveTarget) throw new Error("仓库已切换，不能合并两次草稿。请返回原仓库或重新生成全部词条。");
+  if (previous.detailed !== repaired.detailed || previous.shared.en !== repaired.shared.en ||
+      previous.shared.source.trim() !== repaired.shared.source.trim()) throw new Error("两次草稿的输入不同，无法合并。");
+  const wanted = new Set(previous.missingTerms.map(normalizeSearch));
+  if (repaired.requestedTerms.some(term => !wanted.has(normalizeSearch(term)))) {
+    throw new Error("补录结果包含不在待补录清单中的词。");
+  }
+  // Use the submitted terms as identities. The displayed headwords may already be edited.
+  const byTerm = new Map();
+  for (const batch of [previous, repaired]) {
+    batch.successfulTerms.forEach((term, index) => byTerm.set(normalizeSearch(term), batch.entries[index]));
+  }
+  const successfulTerms = previous.requestedTerms.filter(term => byTerm.has(normalizeSearch(term)));
+  return { ...previous, successfulTerms, entries: successfulTerms.map(term => byTerm.get(normalizeSearch(term))),
+    missingTerms: previous.requestedTerms.filter(term => !byTerm.has(normalizeSearch(term))),
+    warnings: [...new Set([...previous.warnings, ...repaired.warnings])] };
+}
+
+function renderReview(container, draft, beginRepair) {
   const { shared, detailed, entries, warnings } = draft;
   container.replaceChildren();
+  if (draft.missingTerms.length) {
+    const summary = el("section", "intake-partial");
+    summary.setAttribute("aria-label", "部分词条待补录");
+    summary.append(el("strong", "", "已生成 " + entries.length + " / " + draft.requestedTerms.length + " 个词条"),
+      el("p", "", "待补录 " + draft.missingTerms.length + " 个：" + draft.missingTerms.join("、")),
+      action("只补录缺少的词", beginRepair));
+    container.append(summary);
+  }
   if (warnings.length) {
     const list = el("ul", "intake-warnings");
     list.setAttribute("aria-label", "生成提示");
@@ -357,11 +383,12 @@ export function createIntakeUI({ generate, save, openSettings }) {
   let saving = false;
   let pending = null;
   let editedDraft = false;
-  let initial = { terms: "", sentence: "", source: "" };
+  let repairing = false;
+  let initial = { terms: "", sentence: "", source: "", detailed: false };
 
   function hasUnsavedInput() {
     return draft || pending || controls.terms.value !== initial.terms || controls.sentence.value !== initial.sentence ||
-      controls.source.value !== initial.source || controls.analysis.value === "detailed";
+      controls.source.value !== initial.source || (controls.analysis.value === "detailed") !== initial.detailed;
   }
 
   function clearError() {
@@ -381,6 +408,9 @@ export function createIntakeUI({ generate, save, openSettings }) {
   function refresh() {
     inputPanel.hidden = review;
     inputPanel.disabled = review || Boolean(pending);
+    controls.sentence.readOnly = repairing;
+    controls.source.readOnly = repairing;
+    inputPanel.querySelector(".intake-mode").disabled = repairing;
     reviewPanel.hidden = !review;
     reviewPanel.inert = saving;
     back.hidden = review || pending || !draft;
@@ -388,9 +418,12 @@ export function createIntakeUI({ generate, save, openSettings }) {
     stop.hidden = !pending;
     find("Close").disabled = saving;
     submit.disabled = saving || Boolean(pending);
-    submit.textContent = review
-      ? (saving ? "正在保存…" : "保存全部 " + draft.entries.length + " 个词条")
-      : (pending ? "自动填写中…" : draft ? "重新生成草稿" : "自动填写");
+    if (review) {
+      const label = draft.missingTerms.length ? "保存已生成的 " : "保存全部 ";
+      submit.textContent = saving ? "正在保存…" : label + draft.entries.length + " 个词条";
+    } else {
+      submit.textContent = pending ? "自动填写中…" : repairing ? "补录缺少的词" : draft ? "重新生成草稿" : "自动填写";
+    }
     find("Title").textContent = review ? "核对词条草稿" : "记录新词";
   }
   function switchView(showReview) {
@@ -449,14 +482,22 @@ export function createIntakeUI({ generate, save, openSettings }) {
     refresh();
     controls.terms.focus();
   });
-  revise.addEventListener("click", () => {
-    controls.terms.value = draft.entries.map(entry => formatTerm(entry.term)).join(", ");
+  function editRequest(onlyMissing) {
+    repairing = onlyMissing;
+    const currentNames = new Map(draft.successfulTerms.map((term, i) => [normalizeSearch(term), draft.entries[i].term]));
+    const terms = onlyMissing ? draft.missingTerms : draft.requestedTerms.map(term => currentNames.get(normalizeSearch(term)) || term);
+    controls.terms.value = terms.map(formatTerm).join(", ");
     controls.sentence.value = draft.shared.en;
     controls.source.value = draft.shared.source;
     controls.analysis.value = draft.detailed ? "detailed" : "ordinary";
     switchView(false);
+    if (onlyMissing) status("补录使用同一条原句，已有草稿和修改会保留。");
+  }
+  revise.addEventListener("click", () => editRequest(false));
+  back.addEventListener("click", () => {
+    repairing = false;
+    switchView(true);
   });
-  back.addEventListener("click", () => switchView(true));
   find("Settings").addEventListener("click", () => openSettings?.());
 
   async function fill() {
@@ -470,7 +511,12 @@ export function createIntakeUI({ generate, save, openSettings }) {
       controls.sentence.focus();
       throw new Error("请粘贴希望录入的英文原句。");
     }
-    if (draft && editedDraft && !window.confirm("重新生成会覆盖已修改的草稿。确定继续？")) return;
+    if (repairing) {
+      const wanted = new Set(draft.missingTerms.map(normalizeSearch));
+      if (request.terms.some(term => !wanted.has(normalizeSearch(term)))) {
+        throw new Error("补录时请使用清单中的目标词。要更改整批输入，请先返回现有草稿。");
+      }
+    } else if (draft && editedDraft && !window.confirm("重新生成会覆盖已修改的草稿。确定继续？")) return;
     const job = new AbortController();
     pending = job;
     refresh();
@@ -483,18 +529,20 @@ export function createIntakeUI({ generate, save, openSettings }) {
         },
       });
       if (pending !== job || !dialog.open) return;
-      const nextDraft = prepareDraft(result, request);
+      const generated = prepareDraft(result, request);
+      const nextDraft = repairing ? mergeRepair(draft, generated) : generated;
       const preview = document.createDocumentFragment();
-      renderReview(preview, nextDraft);
+      renderReview(preview, nextDraft, () => editRequest(true));
       reviewPanel.replaceChildren(preview);
       draft = nextDraft;
-      editedDraft = false;
+      if (!repairing) editedDraft = false;
+      repairing = false;
       pending = null;
       switchView(true);
     } catch (error) {
       if (pending === job) {
         status("");
-        showError(error, true);
+        showError(error, !error.code);
       }
     } finally {
       if (pending === job) {
@@ -508,13 +556,32 @@ export function createIntakeUI({ generate, save, openSettings }) {
     const entries = entriesForSave(draft);
     saving = true;
     refresh();
-    status("正在保存全部词条…");
+    status("正在保存 " + entries.length + " 个词条…");
     try {
-      await save(entries);
-      dialog.close();
+      await save(entries, { saveTarget: draft.saveTarget, originalTerms: draft.successfulTerms });
+      if (!draft.missingTerms.length) {
+        dialog.close();
+        status("");
+        return;
+      }
+      // Leave the original sentence and only the unrecorded words ready for the next request.
+      initial = { terms: draft.missingTerms.map(formatTerm).join(", "), sentence: draft.shared.en,
+        source: draft.shared.source, detailed: draft.detailed };
+      controls.terms.value = initial.terms;
+      controls.sentence.value = initial.sentence;
+      controls.source.value = initial.source;
+      controls.analysis.value = initial.detailed ? "detailed" : "ordinary";
+      draft = null;
+      editedDraft = false;
+      repairing = false;
+      reviewPanel.replaceChildren();
+      switchView(false);
+      status("已保存 " + entries.length + " 个词条。剩余目标词和原句已填好，可以继续录入。");
+    } catch (error) {
+      status("");
+      throw error;
     } finally {
       saving = false;
-      status("");
       refresh();
     }
   }
@@ -538,9 +605,10 @@ export function createIntakeUI({ generate, save, openSettings }) {
       abortWait();
       draft = null;
       editedDraft = false;
+      repairing = false;
       saving = false;
       reviewPanel.replaceChildren();
-      initial = { terms: formatTerm(term), sentence, source };
+      initial = { terms: formatTerm(term), sentence, source, detailed: false };
       controls.terms.value = initial.terms;
       controls.sentence.value = sentence;
       controls.source.value = source;

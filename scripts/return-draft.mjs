@@ -4,11 +4,12 @@ import { gzipSync } from "node:zlib";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { validateDraftInput } from "../assets/draft-client.js";
+import { validateDraftInput, checkDraftCoverage } from "../assets/draft-client.js";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const SHA = /^[0-9a-f]{40}$/;
-const SAFE_ERRORS = new Set(["MISSING_KEY", "AUTH", "BALANCE", "RATE_LIMIT", "TIMEOUT", "INVALID_RESPONSE", "GENERATION_FAILED"]);
+const SAFE_ERRORS = new Set(["MISSING_KEY", "AUTH", "BALANCE", "RATE_LIMIT", "TIMEOUT", "INVALID_RESPONSE", "GENERATION_FAILED",
+  "MODEL_TRUNCATED", "MODEL_JSON", "MODEL_FORMAT", "TERM_MISMATCH", "WORD_FIELDS", "SHARED_TRANSLATION", "GRAMMAR_FIELDS"]);
 
 export function validateDispatch(event, env) {
   const repository = env.GITHUB_REPOSITORY;
@@ -77,7 +78,6 @@ export async function returnDraft({ env = process.env, githubImpl = github, spaw
   const draftPath = path.join(directory, `vocabulary-draft-${routing.requestId}.json`);
   let text;
   let success = false;
-  let validationStage;
   try {
     if (env.GITHUB_SHA !== routing.headSha) throw new Error("STALE_HEAD");
     let request;
@@ -91,22 +91,18 @@ export async function returnDraft({ env = process.env, githubImpl = github, spaw
     });
     if (result.error?.code === "ETIMEDOUT" || result.signal) throw new Error("TIMEOUT");
     if (result.error || result.status !== 0) {
-      const stage = /^STAGE:(OUTPUT_LIMIT|STOP_REASON|JSON|TARGET_SPELLING_OR_ORDER|DICTIONARY_INDEX|TARGET_COUNT|TRANSLATION|TAGS|PHONETIC|EXAMPLE_FIELD|GRAMMAR|WORD_FIELDS)$/mu.exec(result.stderr || "")?.[1];
-      validationStage = stage;
-      const code = /^DRAFT_ERROR:([A-Z_]+)\s*$/mu.exec(result.stderr || "")?.[1];
+      const code = /^DRAFT_ERROR:([A-Z_]+)\s*$/u.exec(result.stderr || "")?.[1];
       throw new Error(SAFE_ERRORS.has(code) ? code : "GENERATION_FAILED");
     }
     if ((await stat(draftPath)).size > 512000) throw new Error("OUTPUT_TOO_LARGE");
     const draft = JSON.parse(await readFile(draftPath, "utf8"));
-    if (!Array.isArray(draft?.entries) || !draft.entries.length || draft.entries.length > 8 ||
-        !Array.isArray(draft.warnings) || draft.warnings.some((value) => typeof value !== "string")) throw new Error("INVALID_RESPONSE");
+    try { checkDraftCoverage(draft, request.terms); } catch { throw new Error("TERM_MISMATCH"); }
     text = encodeDraft(draft, routing);
     success = true;
   } catch (error) {
     const code = [...SAFE_ERRORS, "STALE_HEAD", "OUTPUT_TOO_LARGE", "INVALID_REQUEST"].includes(error.message)
       ? error.message : "GENERATION_FAILED";
     text = errorText(code, routing);
-    if (validationStage) text = JSON.stringify({ ...JSON.parse(text), stage: validationStage });
   } finally { await unlink(draftPath).catch(() => {}); }
   await publishDraft(text, routing, env, success, githubImpl);
   return { success };

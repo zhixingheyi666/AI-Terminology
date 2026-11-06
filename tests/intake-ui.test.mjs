@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createEntry, createGrammarAnalysis, createPersonalExample } from "../assets/model.js";
-import { entriesForSave, groupGuideSenses, orderedDefinitions, parseTargetTerms } from "../assets/intake-ui.js";
+import { entriesForSave, groupGuideSenses, mergeRepair, orderedDefinitions, parseTargetTerms, prepareDraft } from "../assets/intake-ui.js";
 
 test("target input preserves phrases and hyphens across mixed separators", () => {
   assert.deepEqual(parseTargetTerms('fine-tuning FINE-TUNING，pace、"language model";\n“context window”'),
@@ -86,4 +86,28 @@ test("confirming a corrected shared sentence keeps its dictionary guide on the s
   assert.equal(saved.definitions[1].senseGuide.sentence, saved.personalExamples[0].en);
   assert.equal(saved.definitions[1].senseGuide.usage, "这里的用法");
   assert.equal(draft.entries[0].definitions[1].senseGuide.sentence, "Original input.");
+});
+
+test("partial drafts retain original identities, request order and learner edits during repair", () => {
+  const { entries, shared } = fixture(false);
+  const input = { terms: ["final", "absent", "sentence"], sentence: shared.en, source: shared.source, detailed: false };
+  const initial = prepareDraft({ entries, missingTerms: ["absent"], warnings: [], saveTarget: "repo" }, input);
+  assert.deepEqual(initial.missingTerms, ["absent"]);
+  initial.entries[0].term = "edited headword";
+  initial.entries[1].notes = "Keep these edits.";
+  initial.shared.zh = "人工核对译文";
+  assert.deepEqual(entriesForSave(initial).map(entry => entry.term), ["edited headword", "sentence"]);
+  const recovered = createEntry({ ...entries[0], id: "recovered-entry", term: "absent" });
+  const repaired = prepareDraft({ entries: [recovered], warnings: ["已补充"], saveTarget: "repo" },
+    { ...input, terms: ["absent"] });
+  const complete = mergeRepair(initial, repaired);
+  assert.deepEqual(complete.successfulTerms, input.terms);
+  assert.deepEqual(complete.missingTerms, []);
+  assert.deepEqual(complete.entries.map(entry => entry.id), [entries[0].id, recovered.id, entries[1].id]);
+  const saved = entriesForSave(complete);
+  assert.deepEqual(saved.map(entry => entry.term), ["edited headword", "absent", "sentence"]);
+  assert.equal(saved[2].notes, "Keep these edits.");
+  assert.ok(saved.every(entry => entry.personalExamples[0].zh === "人工核对译文"));
+  assert.throws(() => mergeRepair(initial, { ...repaired, saveTarget: "different-repo" }), /仓库/);
+  assert.throws(() => mergeRepair(initial, { ...repaired, requestedTerms: ["final"] }), /待补录/);
 });
