@@ -18,10 +18,10 @@ import {
   nowIso,
   sortEntriesByCreated,
   validateData,
-} from "./model.js?v=1.2.1";
-import { createIntakeUI } from "./intake-ui.js";
+} from "./model.js?v=1.4.0";
+import { createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.0";
 import { generateDraft } from "./draft-client.js";
-import { prepareDrafts, mergeDraftBatch } from "./draft-library.js";
+import { prepareDrafts, mergeDraftBatch } from "./draft-library.js?v=1.4.0";
 
 const STORAGE = Object.freeze({
   settings: "citrace.settings.v1",
@@ -635,9 +635,12 @@ function renderEntryDetail(entry) {
     : "加入复习";
 
   elements.definitionCount.textContent = `· ${entry.definitions.length} 个来源`;
-  elements.definitionList.innerHTML = entry.definitions
+  const definitions = orderedDefinitions(entry.definitions);
+  elements.definitionList.innerHTML = definitions
     .map((definition, index) => renderDefinitionCard(definition, index))
     .join("");
+  mountSenseGuides(elements.definitionList, definitions);
+  renderSenseCompletion(entry);
 
   const personalExamples = entry.personalExamples.filter(
     (example) => example.en || example.zh || example.source || example.note,
@@ -651,15 +654,51 @@ function renderEntryDetail(entry) {
   elements.detailNotes.textContent = entry.notes || "";
 }
 
+function mountSenseGuides(list, definitions, editable = false) {
+  const byId = new Map(definitions.map(item => [item.id, item]));
+  for (const holder of list.querySelectorAll("[data-sense-guide-id]")) {
+    holder.append(senseGuidePanel(byId.get(holder.dataset.senseGuideId), { editable }));
+  }
+}
+
+function renderSenseCompletion(entry) {
+  const heading = elements.definitionCount.closest(".section-heading");
+  heading.querySelector(".sense-completion")?.remove();
+  const covered = new Set(entry.definitions.filter(item => item.senseGuide)
+    .map(item => item.senseGuide.sentence.trim()));
+  const candidates = entry.personalExamples.filter(item => item.en.trim() && !covered.has(item.en.trim()));
+  if (!candidates.length) return;
+
+  const tools = document.createElement("div");
+  tools.className = "sense-completion";
+  const select = document.createElement("select");
+  if (candidates.length > 1) {
+    select.setAttribute("aria-label", "选择要补全义项的原句");
+    candidates.forEach((item, index) => select.add(new Option(item.en, String(index))));
+    tools.append(select);
+  }
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "small-outline-button";
+  button.textContent = "补全词典义项";
+  button.addEventListener("click", () => {
+    const example = candidates[Number(select.value) || 0];
+    intake.open({ term: entry.term, sentence: example.en, source: example.source });
+  });
+  tools.append(button);
+  heading.append(tools);
+}
+
 function renderDefinitionCard(definition, index) {
   const safeUrl = safeWebUrl(definition.url);
   const examples = definition.examples.filter((example) => example.en || example.zh);
   return `
-    <article class="definition-card">
+    <article class="definition-card${definition.senseGuide ? " guided-definition-card" : ""}">
       <div class="definition-card-head">
         <span class="dictionary-name" title="${escapeAttribute(definition.dictionary)}">
           ${escapeHtml(definition.dictionary || `词典来源 ${index + 1}`)}
         </span>
+        ${definition.dictionary.includes("Open English WordNet") ? `<a class="dictionary-license" href="https://github.com/globalwordnet/english-wordnet/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">数据许可</a>` : ""}
         ${
           safeUrl
             ? `<a class="source-link" href="${escapeAttribute(safeUrl)}" target="_blank" rel="noopener noreferrer" aria-label="打开词典来源">
@@ -668,13 +707,13 @@ function renderDefinitionCard(definition, index) {
             : ""
         }
       </div>
-      ${
+      ${definition.senseGuide ? `<div data-sense-guide-id="${escapeAttribute(definition.id)}"></div>` : ` ${
         definition.partOfSpeech
           ? `<p class="part-of-speech">${escapeHtml(definition.partOfSpeech)}</p>`
           : ""
       }
       ${definition.definitionEn ? `<p class="definition-en">${escapeHtml(definition.definitionEn)}</p>` : ""}
-      ${definition.definitionZh ? `<p class="definition-zh">${escapeHtml(definition.definitionZh)}</p>` : ""}
+      ${definition.definitionZh ? `<p class="definition-zh">${escapeHtml(definition.definitionZh)}</p>` : ""}`}
       ${
         examples.length
           ? `<div class="dictionary-examples">
@@ -884,7 +923,7 @@ function openEntryEditor(entry, options = {}) {
 }
 
 function renderDefinitionEditors() {
-  const definitions = state.editor.definitions || [];
+  const definitions = orderedDefinitions(state.editor.definitions || []);
   if (definitions.length === 0) {
     elements.definitionEditorList.innerHTML =
       '<div class="empty-dynamic">还没有词典来源。点击上方“添加来源”开始记录。</div>';
@@ -894,6 +933,7 @@ function renderDefinitionEditors() {
   elements.definitionEditorList.innerHTML = definitions
     .map((definition, index) => definitionEditorMarkup(definition, index))
     .join("");
+  mountSenseGuides(elements.definitionEditorList, definitions, true);
 }
 
 function definitionEditorMarkup(definition, index) {
@@ -911,7 +951,7 @@ function definitionEditorMarkup(definition, index) {
           <span>来源名称 *</span>
           <input data-definition-field="dictionary" value="${escapeAttribute(definition.dictionary)}" placeholder="例如：Oxford Learner's Dictionaries" />
         </label>
-        <label class="dynamic-field">
+        ${definition.senseGuide ? "" : `<label class="dynamic-field">
           <span>词性</span>
           <input data-definition-field="partOfSpeech" value="${escapeAttribute(definition.partOfSpeech)}" placeholder="noun / verb / adj." />
         </label>
@@ -922,12 +962,13 @@ function definitionEditorMarkup(definition, index) {
         <label class="dynamic-field dynamic-field-span-2">
           <span>中文解释</span>
           <textarea data-definition-field="definitionZh" rows="2" placeholder="补充中文理解">${escapeHtml(definition.definitionZh)}</textarea>
-        </label>
+        </label>`}
         <label class="dynamic-field dynamic-field-span-2">
           <span>来源网址（可选）</span>
           <input type="url" data-definition-field="url" value="${escapeAttribute(definition.url)}" placeholder="https://…" />
         </label>
       </div>
+      ${definition.senseGuide ? `<div data-sense-guide-id="${escapeAttribute(definition.id)}"></div>` : ""}
       <div class="sub-examples">
         <div class="sub-examples-label">
           <span>此来源的例句</span>
@@ -1070,8 +1111,10 @@ function captureEditorFromForm() {
   state.editor.tags = normalizeTags(fieldValue("tags"));
   state.editor.reviewTags = normalizeTags(fieldValue("reviewTags"));
   state.editor.notes = fieldValue("notes");
+  const previousDefinitions = new Map(state.editor.definitions.map(definition => [definition.id, definition]));
   state.editor.definitions = [...elements.definitionEditorList.querySelectorAll("[data-definition-id]")].map(
     (card) => ({
+      ...previousDefinitions.get(card.dataset.definitionId),
       id: card.dataset.definitionId,
       dictionary: card.querySelector('[data-definition-field="dictionary"]')?.value || "",
       partOfSpeech: card.querySelector('[data-definition-field="partOfSpeech"]')?.value || "",

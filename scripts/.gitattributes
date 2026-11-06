@@ -1,0 +1,4 @@
+# Preserve the exact upstream license bytes used by the reproducible build.
+offline-wordnet-LICENSE.txt -text
+offline-wordnet-WNDB-LICENSE.txt -text
+offline-wordnet-2025.json.gz binary

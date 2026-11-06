@@ -1,4 +1,4 @@
-const CACHE_NAME = "citrace-static-v9";
+const CACHE_NAME = "citrace-static-v10";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -57,7 +57,7 @@ async function networkFirst(request) {
     }
     return response;
   } catch {
-    const cached = await cache.match(request);
+    const cached = await cache.match(request, { ignoreSearch: true });
     if (cached) {
       return cached;
     }

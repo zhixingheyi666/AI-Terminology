@@ -1432,6 +1432,151 @@ html[data-theme="dark"] .theme-icon-sun {
   border-top: 1px dashed var(--line);
 }
 
+.guided-definition-card {
+  grid-column: 1 / -1;
+}
+
+.guided-definition-card .dictionary-name {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.dictionary-license {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.sense-guide,
+.sense-text {
+  display: grid;
+  min-width: 0;
+  gap: 0.45rem;
+}
+
+.sense-guide {
+  gap: 1rem;
+}
+
+.sense-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.sense-primary:only-child {
+  grid-column: 1 / -1;
+}
+
+.sense-heading {
+  margin: 0 0 0.55rem;
+  color: var(--accent-ink);
+  font: 650 0.9rem/1.45 var(--sans);
+}
+
+.sense-usage {
+  min-width: 0;
+  padding: 0.75rem 0.95rem;
+  border-left: 3px solid var(--warm);
+  border-radius: 0 0.45rem 0.45rem 0;
+  background: color-mix(in srgb, var(--warm-pale) 45%, transparent);
+}
+
+.sense-sentence {
+  margin: 0 0 0.6rem;
+  color: var(--ink-soft);
+  font: italic 0.94rem/1.5 var(--serif);
+  overflow-wrap: anywhere;
+}
+
+.sense-usage-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.sense-usage-credit {
+  margin-left: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+.sense-basic-note {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: var(--warm-ink);
+  font: 650 0.78rem var(--sans);
+}
+
+.sense-group {
+  min-width: 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+details.sense-group > summary {
+  cursor: pointer;
+}
+
+.sense-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding-left: 1.45rem;
+}
+
+.sense-list > li::marker {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.sense-text p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.sense-guide-editor .field > span {
+  font-size: 0.78rem;
+}
+
+.dynamic-card > [data-sense-guide-id] {
+  margin-top: 0.9rem;
+}
+
+.section-heading .sense-completion {
+  display: flex;
+  min-width: 0;
+  max-width: min(100%, 24rem);
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sense-completion select {
+  width: min(100%, 13rem);
+  min-height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.84rem;
+}
+
+@media (max-width: 680px) {
+  .sense-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sense-completion select {
+    width: 100%;
+  }
+}
+
 .dictionary-example {
   padding-left: 0.7rem;
   border-left: 2px solid var(--line-strong);

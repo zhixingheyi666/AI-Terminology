@@ -141,9 +141,25 @@ export function normalizeDefinition(raw) {
     definitionEn: stringValue(source.definitionEn),
     definitionZh: stringValue(source.definitionZh),
     url: stringValue(source.url),
+    ...(source.senseGuide ? { senseGuide: normalizeSenseGuide(source.senseGuide) } : {}),
     examples: Array.isArray(source.examples)
       ? source.examples.map(createDefinitionExample)
       : [],
+  };
+}
+
+function normalizeSenseGuide(guide) {
+  return {
+    sentence: stringValue(guide.sentence),
+    usage: stringValue(guide.usage),
+    fit: guide.fit,
+    alsoBasic: guide.alsoBasic,
+    senses: Array.isArray(guide.senses) ? guide.senses.map(sense => ({
+      role: sense.role,
+      partOfSpeech: stringValue(sense.partOfSpeech),
+      definitionEn: stringValue(sense.definitionEn),
+      definitionZh: stringValue(sense.definitionZh),
+    })) : [],
   };
 }
 
@@ -337,6 +353,9 @@ export function entrySearchText(entry) {
         definition.partOfSpeech,
         definition.definitionEn,
         definition.definitionZh,
+        definition.senseGuide?.sentence,
+        definition.senseGuide?.usage,
+        ...(definition.senseGuide?.senses || []).flatMap(sense => [sense.partOfSpeech, sense.definitionEn, sense.definitionZh]),
         ...(Array.isArray(definition.examples)
           ? definition.examples.flatMap((example) => [example.en, example.zh])
           : []),
@@ -464,6 +483,9 @@ function validateDefinition(definition, path, allIds, errors) {
 
   registerUniqueId(definition.id, `${path}.id`, allIds, errors);
   requireString(definition.dictionary, `${path}.dictionary`, errors);
+  if (definition.senseGuide !== undefined) {
+    validateSenseGuide(definition.senseGuide, `${path}.senseGuide`, errors);
+  }
 
   for (const field of ["partOfSpeech", "definitionEn", "definitionZh"]) {
     if (definition[field] !== undefined && typeof definition[field] !== "string") {
@@ -503,6 +525,32 @@ function validateDefinition(definition, path, allIds, errors) {
       errors.push(`${path}.examples[${exampleIndex}] 的 en 和 zh 必须是字符串。`);
     }
   });
+}
+
+function validateSenseGuide(guide, path, errors) {
+  if (!guide || typeof guide !== "object" || Array.isArray(guide)) {
+    errors.push(`${path} 必须是对象。`);
+    return;
+  }
+  requireString(guide.sentence, `${path}.sentence`, errors);
+  requireString(guide.usage, `${path}.usage`, errors);
+  if (!["contextual", "general"].includes(guide.fit) || typeof guide.alsoBasic !== "boolean" || !Array.isArray(guide.senses)) {
+    errors.push(`${path} 的义项类型或列表无效。`);
+    return;
+  }
+  let basics = guide.alsoBasic ? 1 : 0;
+  let common = 0;
+  for (const sense of guide.senses) {
+    if (!sense || !["basic", "common", "other"].includes(sense.role) ||
+        typeof sense.partOfSpeech !== "string" || typeof sense.definitionZh !== "string" ||
+        typeof sense.definitionEn !== "string" || !sense.definitionEn.trim()) {
+      errors.push(`${path} 中的每个义项都需要有效的分类和英文释义。`);
+      return;
+    }
+    if (sense.role === "basic") basics++;
+    if (sense.role === "common") common++;
+  }
+  if (basics > 1 || common > 2) errors.push(`${path} 最多包含一个常用基本义和两个其他常见义项。`);
 }
 
 function validatePersonalExample(example, path, allIds, errors) {

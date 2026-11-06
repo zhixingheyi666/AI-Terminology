@@ -1,4 +1,4 @@
-import { normalizeSearch, normalizeTags, nowIso, validateData } from "./model.js";
+import { normalizeSearch, normalizeTags, nowIso, validateData } from "./model.js?v=1.4.0";
 
 // The editable fields on a known word start with the learner's own choices.
 export function prepareDrafts(library, drafts) {
@@ -18,6 +18,11 @@ export function prepareDrafts(library, drafts) {
 }
 
 function definitionKey(definition) {
+  if (definition.senseGuide) {
+    // Each reading belongs to its sentence; a new encounter can use another sense.
+    return JSON.stringify(["guide", normalizeSearch(definition.url || definition.dictionary),
+      definition.senseGuide.sentence.trim()]);
+  }
   return JSON.stringify([definition.dictionary, definition.url, definition.partOfSpeech, definition.definitionEn || definition.definitionZh].map(normalizeSearch));
 }
 
@@ -25,12 +30,19 @@ function mergeDefinitions(previous, incoming) {
   const merged = new Map(previous.map((definition) => [definitionKey(definition), definition]));
   for (const definition of incoming) {
     const key = definitionKey(definition);
-    const existing = merged.get(key);
+    let existing = merged.get(key);
+    if (!existing && definition.senseGuide) {
+      const oldKey = definitionKey({ ...definition, senseGuide: undefined });
+      existing = merged.get(oldKey);
+      if (existing) merged.delete(oldKey);
+    }
     if (!existing) {
       merged.set(key, definition);
       continue;
     }
-    const examples = new Map([...existing.examples, ...definition.examples].map((example) => [normalizeSearch(example.en), example]));
+    const previousExamples = normalizeSearch(existing.definitionEn) === normalizeSearch(definition.definitionEn)
+      ? existing.examples : [];
+    const examples = new Map([...previousExamples, ...definition.examples].map((example) => [normalizeSearch(example.en), example]));
     merged.set(key, { ...definition, id: existing.id, examples: [...examples.values()] });
   }
   return [...merged.values()];

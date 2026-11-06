@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createEntry, createEmptyData, validateData } from "../assets/model.js";
+import { createEntry, createEmptyData, filterEntries, normalizeData, validateData } from "../assets/model.js";
 import { prepareDrafts, mergeDraftBatch } from "../assets/draft-library.js";
 
 function word(term, sentence) {
@@ -8,6 +8,38 @@ function word(term, sentence) {
     definitions: [{ dictionary: "DeepSeek", definitionEn: "A learning definition.", examples: [] }],
     personalExamples: [{ en: sentence, zh: "译文" }] });
 }
+
+test("ranked dictionary readings survive export, reload, enrichment and a different sentence", () => {
+  const firstSentence = "The model is trained on a corpus.";
+  const existing = word("model", firstSentence);
+  const dictionary = { dictionary: "Open English WordNet", url: "https://en-word.net/view/lemma/model",
+    partOfSpeech: "noun", definitionEn: "A representation.", definitionZh: "表示", examples: [] };
+  existing.definitions = [createEntry({definitions: [dictionary]}).definitions[0]];
+  const oldDefinitionId = existing.definitions[0].id;
+  function reading(sentence, primary) {
+    const draft = word("model", sentence);
+    draft.definitions = createEntry({definitions: [{ ...dictionary, definitionEn: primary,
+      senseGuide: { sentence, usage: "解释词在原句中的意思", fit: "contextual", alsoBasic: false,
+        senses: [
+          { role: "basic", partOfSpeech: "noun", definitionEn: "A physical representation.", definitionZh: "缩小的模型" },
+          { role: "other", partOfSpeech: "noun", definitionEn: "An exemplar.", definitionZh: "典范" },
+        ] } }]}).definitions;
+    return draft;
+  }
+  let data = { ...createEmptyData(), entries: [existing] };
+  data = mergeDraftBatch(data, [reading(firstSentence, dictionary.definitionEn)]).data;
+  assert.equal(data.entries[0].definitions.length, 1);
+  assert.equal(data.entries[0].definitions[0].id, oldDefinitionId);
+  data = mergeDraftBatch(data, [reading("She built a model.", "A scale copy.")]).data;
+  data = mergeDraftBatch(data, [reading(firstSentence, "A statistical representation.")]).data;
+  assert.equal(data.entries[0].definitions.length, 2);
+  const restored = normalizeData(JSON.parse(JSON.stringify(data)));
+  assert.deepEqual(restored, data);
+  assert.equal(filterEntries(restored.entries, {query: "典范"}).length, 1);
+  const guide = restored.entries[0].definitions[0].senseGuide;
+  guide.alsoBasic = true;
+  assert.equal(validateData(restored).valid, false);
+});
 
 test("a reviewed batch preserves known words and atomically adds shared encounters", () => {
   const old = word("token", "An earlier example.");

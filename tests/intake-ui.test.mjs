@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createEntry, createGrammarAnalysis, createPersonalExample } from "../assets/model.js";
-import { entriesForSave, parseTargetTerms } from "../assets/intake-ui.js";
+import { entriesForSave, groupGuideSenses, orderedDefinitions, parseTargetTerms } from "../assets/intake-ui.js";
 
 test("target input preserves phrases and hyphens across mixed separators", () => {
   assert.deepEqual(parseTargetTerms('fine-tuning FINE-TUNING，pace、"language model";\n“context window”'),
@@ -59,4 +59,31 @@ test("a malformed source or duplicate headword prevents saving the entire batch"
   assert.throws(() => entriesForSave(draft), /来源网址/);
   draft.entries[1].term = draft.entries[0].term;
   assert.throws(() => entriesForSave(draft), /重复/);
+});
+
+test("guided dictionaries lead without changing stored order or discarding homographs", () => {
+  const otherSense = (role, pos, en) => ({ role, partOfSpeech: pos, definitionEn: en, definitionZh: "" });
+  const guided = { definitionEn: "a turn", partOfSpeech: "noun", senseGuide: { alsoBasic: false, senses: [
+    otherSense("basic", "noun", "a turn"), otherSense("common", "noun", "one"),
+    otherSense("common", "noun", "two"), otherSense("common", "noun", "three"),
+    otherSense("other", "verb", "a turn"),
+  ] } };
+  const entries = [{ dictionary: "DeepSeek（AI 生成，待核对）" }, guided, { dictionary: "旧词典" }];
+  assert.deepEqual(orderedDefinitions(entries), [guided, entries[2], entries[0]]);
+  assert.equal(entries[1], guided);
+  const groups = groupGuideSenses(guided);
+  assert.equal(groups.alsoBasic, true);
+  assert.deepEqual(groups.basic, []);
+  assert.deepEqual(groups.common.map(x => x.definitionEn), ["one", "two"]);
+  assert.deepEqual(groups.more.map(x => x.definitionEn), ["three", "a turn"]);
+});
+
+test("confirming a corrected shared sentence keeps its dictionary guide on the same sentence", () => {
+  const draft = fixture(false);
+  draft.entries[0].definitions[1].senseGuide = { sentence: "Original input.", usage: "这里的用法",
+    fit: "general", alsoBasic: true, senses: [] };
+  const [saved] = entriesForSave(draft);
+  assert.equal(saved.definitions[1].senseGuide.sentence, saved.personalExamples[0].en);
+  assert.equal(saved.definitions[1].senseGuide.usage, "这里的用法");
+  assert.equal(draft.entries[0].definitions[1].senseGuide.sentence, "Original input.");
 });

@@ -1,7 +1,7 @@
 import {
   STATUS_LABELS, createDefinition, createDefinitionExample, createGrammarAnalysis,
   createGrammarPart, normalizeSearch, normalizeTags,
-} from "./model.js";
+} from "./model.js?v=1.4.0";
 
 const separators = /[\s,，、;；]/u;
 
@@ -115,18 +115,113 @@ function pair(firstField, secondField, remove) {
   return row;
 }
 
+export function orderedDefinitions(definitions) {
+  if (!definitions.some(definition => definition.senseGuide)) return definitions;
+  const rank = definition => definition.senseGuide ? 0 : /deepseek|AI\s*生成/iu.test(definition.dictionary) ? 2 : 1;
+  return [...definitions].sort((a, b) => rank(a) - rank(b));
+}
+
+// The leading sense is already stored on the definition itself.
+export function groupGuideSenses(definition) {
+  const guide = definition.senseGuide;
+  const key = sense => {
+    const gloss = normalizeSearch(sense.definitionEn || sense.definitionZh);
+    return gloss ? normalizeSearch(sense.partOfSpeech) + "\n" + gloss : "";
+  };
+  const primaryKey = key(definition);
+  const seen = new Set([primaryKey]);
+  const basic = [], common = [], other = [];
+  let alsoBasic = guide.alsoBasic;
+  for (const sense of guide.senses) {
+    const id = key(sense);
+    if (id === primaryKey && sense.role === "basic") alsoBasic = true;
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    if (sense.role === "basic") basic.push(sense);
+    else if (sense.role === "common") common.push(sense);
+    else other.push(sense);
+  }
+  return { basic, common: common.slice(0, 2), more: [...common.slice(2), ...other], alsoBasic };
+}
+
+function senseText(sense, editable, primary = false) {
+  const block = el("div", "sense-text");
+  for (const [key, label, cls] of [
+    ["partOfSpeech", "词性", "part-of-speech"], ["definitionEn", "英文释义", "definition-en"],
+    ["definitionZh", "中文释义", "definition-zh"],
+  ]) {
+    if (editable) {
+      const item = field(label, sense, key, key === "partOfSpeech" ? {} : { rows: 2 });
+      if (primary) item.lastElementChild.dataset.definitionField = key;
+      block.append(item);
+    } else if (sense[key]) block.append(el("p", cls, sense[key]));
+  }
+  return block;
+}
+
+// Detail view and both editors follow the same sense order. API text never becomes HTML.
+export function senseGuidePanel(definition, { editable = false } = {}) {
+  const guide = definition.senseGuide;
+  const { basic, common, more, alsoBasic } = groupGuideSenses(definition);
+  const section = el("div", "sense-guide" + (editable ? " sense-guide-editor" : ""));
+  const firstRow = el("div", "sense-overview");
+  const primary = el("section", "sense-primary");
+  const title = guide.fit === "contextual" ? "本句最相关的词典义项" : "词典通用义项";
+  primary.append(el("h4", "sense-heading", title));
+  if (alsoBasic) primary.append(el("span", "sense-basic-note", "亦为基本义"));
+  primary.append(senseText(definition, editable, true));
+  firstRow.append(primary);
+  if (editable || guide.usage || guide.sentence) {
+    const usage = el("section", "sense-usage");
+    const heading = el("h4", "sense-heading", "本句用法");
+    heading.append(el("small", "sense-usage-credit", "AI 辅助解读"));
+    usage.append(heading);
+    if (guide.sentence) usage.append(el("blockquote", "sense-sentence", guide.sentence));
+    if (editable) usage.append(field("用法说明", guide, "usage", { rows: 3 }));
+    else if (guide.usage) usage.append(el("p", "sense-usage-text", guide.usage));
+    firstRow.append(usage);
+  }
+  section.append(firstRow);
+
+  function addGroup(group, label, collapsed = false) {
+    if (!group.length) return;
+    const wrap = el(collapsed ? "details" : "section", "sense-group");
+    wrap.append(el(collapsed ? "summary" : "h4", "sense-heading", label));
+    function showItems() {
+      const list = el("ol", "sense-list");
+      for (const sense of group) {
+        const row = el("li");
+        row.append(senseText(sense, editable));
+        list.append(row);
+      }
+      wrap.append(list);
+    }
+    if (collapsed) {
+      // A large entry can have hundreds of senses. Build their fields on demand.
+      wrap.addEventListener("toggle", () => { if (wrap.open && !wrap.querySelector("ol")) showItems(); });
+    } else showItems();
+    section.append(wrap);
+  }
+  addGroup(basic, "常用基本义");
+  addGroup(common, "其他常见义");
+  addGroup(more, "其余 " + more.length + " 个义项", true);
+  return section;
+}
+
 function sourceCard(definition, remove) {
-  const isAI = /deepseek|AI\s*生成/iu.test(definition.dictionary);
+  const isAI = !definition.senseGuide && /deepseek|AI\s*生成/iu.test(definition.dictionary);
   const card = el("section", "intake-source intake-stack" + (isAI ? " intake-source-ai" : ""));
   const header = el("div", "intake-repeat-head");
   header.append(el("strong", "", isAI ? "AI 释义" : "词典释义"), remove);
-  card.append(header, grid(
-    field("来源名称", definition, "dictionary", { readOnly: isAI }),
-    field("词性", definition, "partOfSpeech"),
-    field("来源网址", definition, "url", { type: "url", wide: true }),
-    field("英文释义", definition, "definitionEn", { rows: 3 }),
-    field("中文释义", definition, "definitionZh", { rows: 3 }),
-  ));
+  const name = field("来源名称", definition, "dictionary", { readOnly: isAI });
+  const url = field("来源网址", definition, "url", { type: "url", wide: !definition.senseGuide });
+  if (definition.senseGuide) {
+    card.append(header, grid(name, url), senseGuidePanel(definition, { editable: true }));
+  } else {
+    card.append(header, grid(name, field("词性", definition, "partOfSpeech"), url,
+      field("英文释义", definition, "definitionEn", { rows: 3 }),
+      field("中文释义", definition, "definitionZh", { rows: 3 })));
+  }
   card.append(editableList("来源例句", definition.examples, createDefinitionExample,
     (example, removeExample) => pair(field("英文例句", example, "en", { rows: 2 }),
       field("中文翻译", example, "zh", { rows: 2 }), removeExample), "添加例句"));
@@ -181,6 +276,7 @@ function prepareDraft(result, request) {
         !Array.isArray(entry.definitions) || !entry.personalExamples[0]?.zh?.trim()) {
       throw new Error("返回的词条或例句不完整，请重新生成。");
     }
+    entry.definitions = orderedDefinitions(entry.definitions);
   }
   const first = entries[0].personalExamples[0];
   return {
@@ -199,12 +295,14 @@ function renderReview(container, draft) {
     warnings.forEach(text => list.append(el("li", "", text)));
     container.append(list);
   }
+  const cards = el("section", "form-section intake-stack");
   const sharedEditor = el("section", "form-section form-section-personal intake-stack");
   sharedEditor.append(el("h3", "intake-subheading", "共用例句"),
-    field("英文原句", shared, "en", { rows: 3 }), field("中文翻译", shared, "zh", { rows: 2 }),
+    field("英文原句", shared, "en", { rows: 3, update: value => {
+      cards.querySelectorAll(".sense-sentence").forEach(quote => { quote.textContent = value; });
+    } }), field("中文翻译", shared, "zh", { rows: 2 }),
     grid(field("出处", shared, "source"), field("遇见日期", shared, "encounteredAt", { type: "date" })));
   if (detailed) sharedEditor.append(grammarEditor(shared.grammarAnalysis));
-  const cards = el("section", "form-section intake-stack");
   cards.append(el("h3", "intake-subheading", "词条草稿 · " + entries.length));
   entries.forEach((entry, index) => cards.append(entryCard(entry, detailed, index)));
   container.append(sharedEditor, cards);
@@ -226,6 +324,7 @@ export function entriesForSave(draft) {
       throw new Error("请为「" + entry.term + "」补全来源名称和释义。");
     }
     for (const definition of entry.definitions) {
+      if (definition.senseGuide) definition.senseGuide.sentence = shared.en;
       if (!definition.url.trim()) continue;
       if (!URL.canParse(definition.url) || !["https:", "http:"].includes(new URL(definition.url).protocol)) {
         throw new Error("请检查「" + entry.term + "」的来源网址，使用包含 https:// 或 http:// 的完整地址。");
@@ -258,11 +357,11 @@ export function createIntakeUI({ generate, save, openSettings }) {
   let saving = false;
   let pending = null;
   let editedDraft = false;
-  let initialTerms = "";
+  let initial = { terms: "", sentence: "", source: "" };
 
   function hasUnsavedInput() {
-    return draft || pending || controls.terms.value !== initialTerms || controls.sentence.value.trim() ||
-      controls.source.value.trim() || controls.analysis.value === "detailed";
+    return draft || pending || controls.terms.value !== initial.terms || controls.sentence.value !== initial.sentence ||
+      controls.source.value !== initial.source || controls.analysis.value === "detailed";
   }
 
   function clearError() {
@@ -433,7 +532,7 @@ export function createIntakeUI({ generate, save, openSettings }) {
   });
 
   return {
-    open({ term = "" } = {}) {
+    open({ term = "", sentence = "", source = "" } = {}) {
       if (dialog.open) return;
       form.reset();
       abortWait();
@@ -441,8 +540,10 @@ export function createIntakeUI({ generate, save, openSettings }) {
       editedDraft = false;
       saving = false;
       reviewPanel.replaceChildren();
-      initialTerms = formatTerm(term);
-      controls.terms.value = initialTerms;
+      initial = { terms: formatTerm(term), sentence, source };
+      controls.terms.value = initial.terms;
+      controls.sentence.value = sentence;
+      controls.source.value = source;
       dialog.showModal();
       switchView(false);
     },

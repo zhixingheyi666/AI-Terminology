@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "edition": "Open English WordNet 2025",
+  "sourceUrl": "https://en-word.net/downloads/english-wordnet-2025.zip",
+  "sourceSha256": "38b16326159f51853626b7d24a44c453fa88ab33f06fce5ec8fc5996d1c2be93",
+  "sourceBytes": 9616299,
+  "sourceCodeCommit": "dc343f2683279ecbb13fab4e2fd778d7b162d287",
+  "file": "offline-wordnet-2025.json.gz",
+  "sha256": "3195860a7635868456605b4a634a0fb761634c0d8730d5090be1daa31512c616",
+  "bytes": 4895738,
+  "uncompressedBytes": 15816151,
+  "entries": 127311,
+  "synsets": 107519,
+  "licenses": [
+    {
+      "file": "offline-wordnet-LICENSE.txt",
+      "sha256": "672cc8b5663e8dc74c4b07a9dcf477193853575b119908fd3dc0aeeb60a9dbbb",
+      "source": "https://raw.githubusercontent.com/globalwordnet/english-wordnet/dc343f2683279ecbb13fab4e2fd778d7b162d287/LICENSE.md"
+    },
+    {
+      "file": "offline-wordnet-WNDB-LICENSE.txt",
+      "sha256": "df30ec18fbabcdaf031b79ea026d3e6b959010cffe6dd7be9ac137822175b904",
+      "source": "https://raw.githubusercontent.com/globalwordnet/english-wordnet/dc343f2683279ecbb13fab4e2fd778d7b162d287/WNDB_License.txt"
+    }
+  ]
+}
