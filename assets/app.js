@@ -19,6 +19,9 @@ import {
   sortEntriesByCreated,
   validateData,
 } from "./model.js?v=1.2.1";
+import { createIntakeUI } from "./intake-ui.js";
+import { generateDraft } from "./draft-client.js";
+import { prepareDrafts, mergeDraftBatch } from "./draft-library.js";
 
 const STORAGE = Object.freeze({
   settings: "citrace.settings.v1",
@@ -126,6 +129,41 @@ const elements = {
 let toastTimer;
 let syncTimer;
 const pronunciationAudioCache = new Map();
+
+let draftTarget = "";
+let draftOriginalTerms = new Map();
+const intake = createIntakeUI({
+  openSettings,
+  async generate(input, options) {
+    const target = repositoryTargetKey(state.settings);
+    const draft = await generateDraft(state.settings, state.token, input, options);
+    if (target !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新自动填写。");
+    draftTarget = target;
+    draftOriginalTerms = new Map(draft.entries.map(entry => [entry.id, normalizeSearch(entry.term)]));
+    return { ...draft, entries: prepareDrafts(state.data, draft.entries) };
+  },
+  save(drafts) {
+    if (draftTarget !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新生成草稿。");
+    if (!state.loadSource || state.loadSource === "empty") throw new Error("请先成功读取词库，再保存草稿。");
+    for (const entry of drafts) {
+      const key = normalizeSearch(entry.term);
+      if (key !== draftOriginalTerms.get(entry.id) && state.data.entries.some(old => normalizeSearch(old.term) === key)) {
+        throw new Error(`「${entry.term}」是已有词条。请用该词重新生成，以便核对已有笔记和学习状态。`);
+      }
+    }
+    const { data, firstId } = mergeDraftBatch(state.data, drafts);
+    // Keep every part of the batch editable if this device cannot save it.
+    writeLocalBackup(data, true);
+    state.data = data;
+    state.selectedId = firstId;
+    state.dirty = true;
+    state.revision += 1;
+    clearAllFilters();
+    closeMobileSidebar();
+    showToast(`已在本机保存 ${drafts.length} 个词条。`);
+    scheduleSync(`录入 ${drafts.length} 个词条`);
+  },
+});
 
 initializeTheme();
 bindEvents();
@@ -816,19 +854,14 @@ function clearAllFilters() {
   render();
 }
 
-function openEntryEditor(entry = null, options = {}) {
-  state.editingId = entry?.id || "";
-  state.editor = entry
-    ? clone(entry)
-    : createEntry({
-        definitions: [createDefinition()],
-        personalExamples: [createPersonalExample()],
-      });
+function openEntryEditor(entry, options = {}) {
+  state.editingId = entry.id;
+  state.editor = clone(entry);
 
   elements.entryForm.reset();
   elements.entryFormError.textContent = "";
-  elements.entryDialogEyebrow.textContent = entry ? "EDIT ENTRY" : "NEW ENTRY";
-  elements.entryDialogTitle.textContent = entry ? "编辑词条" : "记录新词";
+  elements.entryDialogEyebrow.textContent = "EDIT ENTRY";
+  elements.entryDialogTitle.textContent = "编辑词条";
   elements.entryForm.elements.namedItem("term").value = state.editor.term || "";
   elements.entryForm.elements.namedItem("phonetic").value = state.editor.phonetic || "";
   elements.entryForm.elements.namedItem("status").value = state.editor.status || "learning";
@@ -844,10 +877,6 @@ function openEntryEditor(entry = null, options = {}) {
   requestAnimationFrame(() => {
     if (options.focusReview) {
       elements.entryForm.elements.namedItem("reviewTags").focus();
-    } else if (options.focusEncounter && state.editor.personalExamples.length) {
-      elements.personalExampleEditorList
-        .querySelector('[data-personal-field="en"]')
-        ?.focus();
     } else {
       elements.entryForm.elements.namedItem("term").focus();
     }
@@ -901,7 +930,7 @@ function definitionEditorMarkup(definition, index) {
       </div>
       <div class="sub-examples">
         <div class="sub-examples-label">
-          <span>这本词典的例句</span>
+          <span>此来源的例句</span>
           <button class="link-button" type="button" data-action="add-definition-example">+ 添加例句</button>
         </div>
         ${
@@ -1195,9 +1224,7 @@ async function saveEntry(event) {
     updatedAt: timestamp,
   });
 
-  const entries = state.editingId
-    ? state.data.entries.map((entry) => (entry.id === state.editingId ? candidateEntry : entry))
-    : [...state.data.entries, candidateEntry];
+  const entries = state.data.entries.map((entry) => entry.id === state.editingId ? candidateEntry : entry);
 
   const candidateData = {
     schemaVersion: 1,
@@ -1210,7 +1237,6 @@ async function saveEntry(event) {
     return;
   }
 
-  const wasNew = !state.editingId;
   state.data = normalizeData(candidateData);
   state.selectedId = candidateEntry.id;
   state.dirty = true;
@@ -1218,14 +1244,8 @@ async function saveEntry(event) {
   saveLocalBackup();
   elements.entryDialog.close();
   render();
-  showToast(
-    wasNew
-      ? state.token
-        ? "词条已保存，正在同步到 GitHub。"
-        : "词条已保存在本机。连接 GitHub 后才能跨设备同步。"
-      : "词条修改已保存。",
-  );
-  scheduleSync(`${wasNew ? "新增" : "更新"} ${candidateEntry.term}`);
+  showToast("词条修改已保存。");
+  scheduleSync(`更新 ${candidateEntry.term}`);
 }
 
 async function deleteCurrentEntry() {
@@ -1448,11 +1468,11 @@ async function askForConfirmation({ title, message, actionLabel }) {
   });
 }
 
-function saveLocalBackup() {
+function writeLocalBackup(data, dirty) {
   const payload = {
     version: 1,
-    data: state.data,
-    dirty: state.dirty,
+    data,
+    dirty,
     baseSha: state.baseSha,
     target: repositoryTargetKey(state.settings),
     savedAt: nowIso(),
@@ -1460,6 +1480,14 @@ function saveLocalBackup() {
 
   try {
     localStorage.setItem(STORAGE.backup, JSON.stringify(payload));
+  } catch {
+    throw new Error("当前浏览器无法保存词库，请检查存储空间和浏览器设置后重试。");
+  }
+}
+
+function saveLocalBackup() {
+  try {
+    writeLocalBackup(state.data, state.dirty);
   } catch {
     showToast("浏览器无法保存本地备份；请立即导出 JSON，避免刷新后丢失修改。", "error", 8000);
   }
@@ -2047,8 +2075,8 @@ function bindEvents() {
 
   elements.clearFilters.addEventListener("click", clearAllFilters);
   document.querySelector("#clearResultsButton").addEventListener("click", clearAllFilters);
-  document.querySelector("#newEntryButton").addEventListener("click", () => openEntryEditor());
-  document.querySelector("#welcomeAddButton").addEventListener("click", () => openEntryEditor());
+  document.querySelector("#newEntryButton").addEventListener("click", () => intake.open());
+  document.querySelector("#welcomeAddButton").addEventListener("click", () => intake.open());
   document.querySelector("#editEntryButton").addEventListener("click", () => {
     const entry = state.data.entries.find((item) => item.id === state.selectedId);
     if (entry) {
@@ -2086,9 +2114,7 @@ function bindEvents() {
     if (!entry) {
       return;
     }
-    const draft = clone(entry);
-    draft.personalExamples.push(createPersonalExample());
-    openEntryEditor(draft, { focusEncounter: true });
+    intake.open({ term: entry.term });
   });
 
   document.querySelector("#addDefinitionButton").addEventListener("click", () => {
@@ -2132,7 +2158,7 @@ function bindEvents() {
     button.addEventListener("click", () => button.closest("dialog")?.close());
   });
 
-  for (const dialog of document.querySelectorAll("dialog")) {
+  for (const dialog of document.querySelectorAll("dialog:not(#intakeDialog)")) {
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) {
         const bounds = dialog.getBoundingClientRect();
@@ -2181,7 +2207,7 @@ function bindEvents() {
 
     if (!dialogOpen && !isTyping && !event.metaKey && !event.ctrlKey && event.key.toLowerCase() === "n") {
       event.preventDefault();
-      openEntryEditor();
+      intake.open();
     }
   });
 

@@ -2171,6 +2171,191 @@ html[data-theme="dark"] .theme-icon-sun {
   background: color-mix(in srgb, var(--surface) 76%, transparent);
 }
 
+.intake-dialog {
+  width: min(54rem, calc(100vw - 2rem));
+}
+
+.intake-inputs,
+.intake-mode {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+}
+
+.intake-inputs,
+.intake-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.intake-inputs .field small {
+  color: var(--ink-soft);
+  font-size: 0.77rem;
+  line-height: 1.5;
+}
+
+.intake-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding: 0;
+  font-size: 0.87rem;
+}
+
+.intake-mode legend {
+  margin-bottom: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.intake-mode label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0;
+  cursor: pointer;
+}
+
+.intake-mode input {
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.intake-dialog .field > span {
+  font-size: 0.8rem;
+}
+
+.intake-dialog .field :is(input, select, textarea) {
+  font-size: 0.92rem;
+}
+
+.intake-notice {
+  margin: 0;
+  padding: 0.6rem 1.5rem;
+  border-top: 1px solid var(--line);
+  background: var(--accent-pale);
+  color: var(--accent-ink);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.intake-error {
+  max-height: 6rem;
+  overflow: auto;
+  background: var(--danger-pale);
+  color: var(--danger);
+}
+
+.intake-error button {
+  margin-left: 0.6rem;
+}
+
+.intake-warnings {
+  margin: 0;
+  padding: 0.85rem 1.5rem 0.85rem 2.8rem;
+  background: var(--warm-pale);
+  color: var(--warm-ink);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.intake-draft {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: var(--surface);
+}
+
+.intake-draft > summary {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.intake-draft > summary strong {
+  margin-right: 0.75rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+}
+
+.intake-draft[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.intake-draft-body {
+  padding: 1rem;
+}
+
+.intake-subheading {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.04rem;
+}
+
+.intake-repeat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+}
+
+.intake-repeat-head .link-button {
+  font-size: 0.8rem;
+}
+
+.intake-source {
+  min-width: 0;
+  padding: 0.8rem;
+  border-left: 3px solid var(--accent);
+  background: var(--paper);
+}
+
+.intake-source-ai {
+  border-color: var(--warm);
+}
+
+.intake-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 0.5rem;
+}
+
+.intake-footer {
+  flex-wrap: wrap;
+}
+
+.intake-footer .link-button {
+  margin-right: auto;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 600px) {
+  .intake-dialog {
+    width: calc(100vw - 1rem);
+  }
+
+  .intake-draft-body,
+  .intake-source {
+    padding: 0.7rem;
+  }
+
+  .intake-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intake-pair button {
+    justify-self: end;
+  }
+
+  .intake-dialog .field :is(input, textarea, select) {
+    font-size: 1rem;
+  }
+}
+
 .settings-number {
   color: var(--warm);
   font-family: var(--mono);

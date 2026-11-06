@@ -1,10 +1,13 @@
-const CACHE_NAME = "citrace-static-v8";
+const CACHE_NAME = "citrace-static-v9";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./assets/styles.css",
   "./assets/app.js",
+  "./assets/intake-ui.js",
+  "./assets/draft-client.js",
+  "./assets/draft-library.js",
   "./assets/model.js",
   "./assets/icon.svg",
   "./data/vocabulary.json",

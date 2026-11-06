@@ -98,9 +98,8 @@
 发音优先使用在线词典音频，浏览器无法取得音频时会回退到系统语音合成。
 例句朗读使用浏览器提供的英语语音；新版 Chrome、Edge 和 Safari 通常已经内置。
 
-上面的完整结构展示了可选的详细分析字段。普通录入只保存单词、释义、英文原句、
-中文翻译和词条级笔记 `notes`；个人例句的 `note`、`exampleTags`、`contextAnalysis`
-以及 `grammarAnalysis` 中的内容保持为空。只有明确选择详细分析时才填写这些字段。
+上面的结构展示了详细模式的可选字段。普通模式保留整句翻译与标签，断句、
+成分和语境解读由详细模式填写。
 
 ## 第一次部署
 
@@ -112,65 +111,18 @@
 
 仓库自带部署工作流。以后只要 `main` 分支有提交，Actions 会自动校验数据并重新发布。
 
-## 用 DeepSeek 自动录入词汇
+## 在网页中批量录入
 
-配置完成后，在电脑或手机上填写 GitHub 表单即可录入：
+1. 在[词迹](https://zhixingheyi666.github.io/AI-Terminology/)点「＋」。输入多个目标词，并粘贴它们共用的原句。一次最多录 8 个词，空格、逗号、分号、顿号和换行都可分词。用双引号包住短语，例如 `token, predict, "language model"`。
+2. 点「自动填写」。普通模式的原文部分只有整句翻译。详细模式增加断句、成分、主干、改写和语境说明。两种模式都会生成词条笔记、标签、复习标签和双语例句。
+3. 在同一张表单里核对共享原文、翻译和各词的资料。DeepSeek 提供符合语境的释义和原创例句；独立词典卡引用查到的 Wiktionary 资料，保留来源链接和署名。词典没有收录或查询失败时，草稿会说明缺少哪一项。
+4. 修改后点击「保存全部」。整批词合并为一次词库更新，已有词条沿用原 ID 和首次录入日期。
 
-```text
-提交单词和英文原句 → GitHub Actions 调用 DeepSeek
-→ 检查并合并词库 → 提交到 main → 发布 GitHub Pages
-```
+### 一次性配置
 
-### 首次配置
-
-1. 将本项目的录入表单、脚本和工作流推送到仓库的 `main` 分支，确保 GitHub Actions
-   已启用，并按上面的“第一次部署”完成 Pages 设置。
-2. 在 DeepSeek 平台创建本项目专用的 API Key，确保账户可调用 API。
-3. 打开仓库的 [Actions Secrets 设置](https://github.com/zhixingheyi666/AI-Terminology/settings/secrets/actions)，
-   点击 **New repository secret**，名称填 `DEEPSEEK_API_KEY`，值填该 API Key。
-   密钥只需要保存在这里，不要发到聊天、Issue、网页设置或提交到仓库。
-4. 默认使用 `deepseek-flash`。如需更换模型，在同一设置区域的 **Variables** 页添加
-   仓库变量 `DEEPSEEK_MODEL`，值为你的 DeepSeek 账户支持的模型名称。
-5. 按下面步骤提交第一个真实词汇，检查 Actions 运行结果。仅添加文件不会完成密钥配置；
-   未设置 `DEEPSEEK_API_KEY` 时，自动生成不能成功运行。
-
-生成接口按 [DeepSeek JSON Output 文档](https://api-docs.deepseek.com/guides/json_mode/)
-请求 JSON，并在保存前再次检查数据结构。API 调用使用你的 DeepSeek 账户额度。
-
-### 日常使用
-
-1. 使用仓库所有者账号登录 GitHub，打开 [词汇录入表单](https://github.com/zhixingheyi666/AI-Terminology/issues/new?template=vocabulary.yml)。
-2. 保留标题开头的 `[词汇录入]`，填写 **单词**、**英文原句**，可选填写 **出处**。
-3. **详细分析** 默认选“普通录入（不分析句子）”。只有选“详细分析（包含语法和语境）”
-   才生成例句标签、语境说明和语法拆解。
-4. 提交 Issue 后，在 [Actions](https://github.com/zhixingheyi666/AI-Terminology/actions)
-   查看 `vocabulary.yml` 对应的运行进度和摘要。词库提交与 Pages 发布都成功后，
-   打开 [词迹网站](https://zhixingheyi666.github.io/AI-Terminology/) 查看结果。
-
-自动录入会保留提交的英文原句，生成中文翻译、英文与中文释义以及简短词汇笔记。
-生成的释义标记为 **DeepSeek（AI 生成，待核对）**，不冒充词典原文，也不编造词典来源链接。
-已有同名单词会合并新增例句和释义，保留原词条的创建时间、学习状态和已有笔记。
-同一 Issue 已成功写入后，重复运行不会再次调用 API 或重复加入例句。
-
-这个入口只允许仓库所有者触发；工作流和脚本会检查 Issue 作者及发起运行的账号。
-它不会自动评论或关闭 Issue，处理状态以 Actions 的结果为准。当前仓库是公开仓库，
-Issue 的单词、原句、出处和生成后的词库也会公开；不要在表单里填写私密内容或 API Key。
-
-### 失败与重试
-
-- 生成失败时，先在 Actions 日志中查看原因，检查密钥、账户额度和表单字段。
-  修复后选择 **Re-run failed jobs**；也可以关闭后重新打开尚未成功录入的 Issue。
-- 如果词库已提交、但网站发布失败，重跑失败的发布任务即可，不需要新建相同的 Issue。
-- 如果同时在网页中编辑词库导致提交冲突，工作流会停止写入；取得最新版本后重新运行，
-  不会强行覆盖其他设备的修改。
-- 修改表单内容后，请关闭并重新打开 Issue 触发新请求；直接重跑会沿用原事件中的表单内容。
-- 连续提交时，排队中的发布可能被更新的发布任务替换而显示“已取消”。如果摘要已显示词条
-  保存成功，查看最新一次 Pages 部署即可；它会包含最新词库中已保存的全部词条。
-
-录入工作流通过 GitHub 自带的 `GITHUB_TOKEN` 提交数据，再显式调用可复用的 `pages.yml`
-发布。这里不能只等待 `push` 事件：由 `GITHUB_TOKEN` 产生的提交通常不会触发另一个工作流。
-因此不需要为自动录入另外保存一个 GitHub 个人令牌。相关机制见
-[GitHub 工作流触发说明](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)。
+- 在仓库的 [Actions Secrets 设置](https://github.com/zhixingheyi666/AI-Terminology/settings/secrets/actions) 保存 `DEEPSEEK_API_KEY`，确保账户可调用 DeepSeek API。可选仓库变量 `DEEPSEEK_MODEL` 用于更换模型，默认 `deepseek-flash`。
+- 在词迹右上角的同步设置中填写仓库所有者的 GitHub 令牌，权限见下节。DeepSeek 密钥只需保存在 GitHub Actions。
+- 自动填写会把本次目标词、原句和出处交给 GitHub Actions 与 DeepSeek 处理，并向词典服务查询目标词。草稿通过加密的运行结果传回发起请求的页面。生成期间请保持页面打开；刷新后需重新生成。保存后，公开词库中的内容可被他人查看。
 
 ## 在网页里编辑并同步
 
@@ -180,7 +132,7 @@ GitHub fine-grained personal access token：
 1. 在 GitHub 的 **Settings → Developer settings → Personal access tokens →
    Fine-grained tokens** 创建令牌。
 2. **Repository access** 只选择这个词汇仓库。
-3. **Permissions → Contents** 设为 **Read and write**。其他权限不需要。
+3. **Permissions → Contents** 设为 **Read and write**。私有仓库另需 **Checks → Read**。
 4. 在词迹页面点击右上角齿轮，填写仓库信息和令牌，然后测试连接并保存。
 5. 新建或修改词条后，页面会直接向 `data/vocabulary.json` 创建一个提交。
 
@@ -261,17 +213,15 @@ GitHub Free 可以使用 GitHub Pages 托管 **公开仓库**。标准个人词�
 │   └── vocabulary.json     # 唯一需要长期维护的词汇数据
 ├── scripts/
 │   ├── validate-data.mjs
-│   └── generate-vocabulary.mjs # 解析表单、调用 DeepSeek、校验并合并词条
+│   └── generate-draft.mjs  # 查询词典并生成可编辑的学习草稿
 ├── tests/
 │   ├── model.test.mjs
 │   └── generate-vocabulary.test.mjs
 ├── sw.js                   # 离线缓存
 └── .github/
-    ├── ISSUE_TEMPLATE/
-    │   └── vocabulary.yml  # 跨设备词汇录入表单
     └── workflows/
         ├── pages.yml       # 校验并部署 GitHub Pages
-        └── vocabulary.yml  # 仅所有者可触发的 DeepSeek 自动录入
+        └── draft.yml       # 仅所有者可触发的网页草稿生成
 ```
 
 首次打开会看到一条用于展示结构的 `grounding` 示例词条，可以直接删除或改成自己的记录。

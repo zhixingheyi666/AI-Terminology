@@ -11,8 +11,8 @@
     <title>词迹 · 我的 AI 术语库</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css?v=1.2.3" />
-    <script type="module" src="./assets/app.js?v=1.2.1"></script>
+    <link rel="stylesheet" href="./assets/styles.css?v=1.3.0" />
+    <script type="module" src="./assets/app.js?v=1.3.0"></script>
   </head>
   <body>
     <a class="skip-link" href="#searchInput">跳到词汇搜索</a>
@@ -141,9 +141,9 @@
                 <p class="eyebrow">MY LEXICON</p>
                 <h1>术语库</h1>
               </div>
-              <button class="primary-icon-button" id="newEntryButton" type="button" title="新建词条">
+              <button class="primary-icon-button" id="newEntryButton" type="button" title="记录新词">
                 <svg><use href="#icon-plus"></use></svg>
-                <span class="sr-only">新建词条</span>
+                <span class="sr-only">记录新词</span>
               </button>
             </div>
 
@@ -321,6 +321,51 @@
       </div>
     </div>
 
+    <dialog class="modal modal-wide intake-dialog" id="intakeDialog" aria-labelledby="intakeTitle">
+      <form class="modal-panel" id="intakeForm" novalidate>
+        <header class="modal-header">
+          <h2 id="intakeTitle" tabindex="-1">记录新词</h2>
+          <button class="icon-button" id="intakeClose" type="button" aria-label="关闭记录新词">
+            <svg><use href="#icon-x"></use></svg>
+          </button>
+        </header>
+        <div class="modal-body" id="intakeBody">
+          <fieldset class="form-section intake-inputs" id="intakeInputs">
+            <label class="field">
+              <span id="intakeTermsLabel">目标词</span>
+              <textarea name="terms" rows="2" placeholder='例如：fine-tuning  pace  "language model"' required aria-labelledby="intakeTermsLabel" aria-describedby="intakeTermsHint" autocomplete="off" spellcheck="false"></textarea>
+              <small id="intakeTermsHint">多个词用空格、逗号或换行分隔。短语用双引号括起来。</small>
+            </label>
+            <label class="field">
+              <span>英文原句</span>
+              <textarea name="sentence" rows="4" maxlength="10000" placeholder="粘贴包含这些目标词的完整原句" required></textarea>
+            </label>
+            <label class="field">
+              <span>出处（可选）</span>
+              <input name="source" maxlength="1500" placeholder="书名、章节或链接" />
+            </label>
+            <fieldset class="intake-mode">
+              <legend>句子处理方式</legend>
+              <label><input type="radio" name="analysis" value="ordinary" checked /> 只翻译原句</label>
+              <label><input type="radio" name="analysis" value="detailed" /> 翻译并分析语法</label>
+            </fieldset>
+          </fieldset>
+          <div id="intakeReview" hidden></div>
+        </div>
+        <div class="intake-notice" id="intakeProgress" role="status" aria-live="polite" hidden></div>
+        <div class="intake-notice intake-error" id="intakeError" hidden>
+          <span id="intakeErrorText" role="alert"></span>
+          <button class="link-button" id="intakeSettings" type="button" hidden>打开同步设置</button>
+        </div>
+        <footer class="modal-footer intake-footer">
+          <button class="link-button" id="intakeRevise" type="button" hidden>修改输入并重新生成</button>
+          <button class="secondary-button" id="intakeBack" type="button" hidden>返回现有草稿</button>
+          <button class="secondary-button" id="intakeStop" type="button" hidden>停止等待</button>
+          <button class="primary-button" id="intakeSubmit" type="submit">自动填写</button>
+        </footer>
+      </form>
+    </dialog>
+
     <dialog class="modal modal-wide" id="entryDialog">
       <form class="modal-panel" id="entryForm" method="dialog" novalidate>
         <header class="modal-header">
@@ -490,9 +535,10 @@
           </label>
 
           <div class="token-note">
-            <strong>令牌权限只选这个仓库的 Contents: Read and write。</strong>
+            <strong>令牌仅授权这个仓库，Contents 选择 Read and write。</strong>
             <p>
-              令牌只存放在浏览器本地，不会写进仓库。不要把令牌发到公开 Issue、截图或聊天中。
+              私有仓库使用自动填写时，还需授予 Checks 的 Read 权限，以便读取生成的草稿。
+              令牌只保存在当前浏览器，请勿分享到 Issue、截图或聊天中。
               公共电脑请取消“记住令牌”。
             </p>
           </div>
