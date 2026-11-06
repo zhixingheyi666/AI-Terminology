@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T13:45:13.397Z",
+  "updatedAt": "2026-11-06T14:06:05.186Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -2385,6 +2385,118 @@
       "notes": "autoregressive 常与 model 搭配，指模型按顺序逐步生成内容，此词是由 auto- 和 regressive 组合而成的技术术语。",
       "createdAt": "2026-11-06T13:45:13.397Z",
       "updatedAt": "2026-11-06T13:45:13.397Z"
+    },
+    {
+      "id": "entry-58a5fcbf-1246-4ef8-b2f6-eb6449ca963e",
+      "term": "perceptron",
+      "phonetic": "/pəˈsɛptrɒn/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "机器学习",
+        "深度学习",
+        "模型架构"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-3ea6ed6d-c33c-4145-a27a-890a768238d3",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A simple type of artificial neuron that takes several inputs and produces one output, forming a basic unit of early neural networks.",
+          "definitionZh": "感知机；一种简单的人工神经元，接收多个输入并产生一个输出，是早期神经网络的基本单元。",
+          "url": "",
+          "examples": [
+            {
+              "en": "A perceptron can classify simple linearly separable data.",
+              "zh": "感知机可以分类简单的线性可分数据。"
+            },
+            {
+              "en": "The basic perceptron uses a weighted sum followed by a step function.",
+              "zh": "基本感知机先计算加权和，再应用阶跃函数。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-86df2449-1cf7-4dc8-9190-75fca1da2368",
+          "en": "Each of these Transformer blocks includes an attention layer and a feedforward neural network (also known as an mlp or multilevel perceptron)",
+          "zh": "这些 Transformer 块中的每一个都包含一个注意力层和一个前馈神经网络（也称为 mlp 或多层感知机）。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "机器学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常与 multilayer 连用，multilayer perceptron 即“多层感知机”；译作“感知器”也可。",
+      "createdAt": "2026-11-06T14:06:05.186Z",
+      "updatedAt": "2026-11-06T14:06:05.186Z"
+    },
+    {
+      "id": "entry-6e03faa0-8b74-42f2-85dc-2fcaddae3fec",
+      "term": "feedforward neural network",
+      "phonetic": "/ˌfiːdˈfɔːwəd ˈnjʊərəl ˈnetwɜːk/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "机器学习",
+        "深度学习",
+        "模型架构"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-ff75ed56-bdf4-44c3-89a1-9a25617f254a",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A neural network in which information moves only forward, from input layer through hidden layers to output layer, without cycles.",
+          "definitionZh": "前馈神经网络；信息只从输入层经隐藏层向输出层单向传递、没有回路的神经网络。",
+          "url": "",
+          "examples": [
+            {
+              "en": "A feedforward neural network processes each input independently of previous inputs.",
+              "zh": "前馈神经网络处理每个输入时与之前的输入无关。"
+            },
+            {
+              "en": "This model adds a feedforward neural network after the attention layer.",
+              "zh": "该模型在注意力层之后接了一个前馈神经网络。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-3d4465ed-10ae-463d-b496-2246e7f930fa",
+          "en": "Each of these Transformer blocks includes an attention layer and a feedforward neural network (also known as an mlp or multilevel perceptron)",
+          "zh": "这些 Transformer 块中的每一个都包含一个注意力层和一个前馈神经网络（也称为 mlp 或多层感知机）。",
+          "source": "",
+          "encounteredAt": "2026-11-06",
+          "note": "",
+          "exampleTags": [
+            "模型架构"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常缩写为 FFN 或 FNN；与循环神经网络（RNN）相对，强调信息单向流动。",
+      "createdAt": "2026-11-06T14:06:05.186Z",
+      "updatedAt": "2026-11-06T14:06:05.186Z"
     }
   ]
 }
