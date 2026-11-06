@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T09:40:34.966Z",
+  "updatedAt": "2026-11-06T09:43:40.879Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -1695,7 +1695,7 @@
           "dictionary": "DeepSeek（AI 生成，待核对）",
           "partOfSpeech": "noun",
           "definitionEn": "A word2vec model architecture that predicts context words from a given center word.",
-          "definitionZh": "一种 word2vec 模型结构，用给定的中心词来预测其上下文词。",
+          "definitionZh": "**`gram` 来自 `n-gram`**，指一段由 `n` 个词组成的序列。比如在 `我 / 很 / 喜欢 / 音乐` 里，`很 喜欢` 就是一个 **bigram**（二元组）。\n\n**`skip` 是“可以跳过中间的词”**。还是这句话，取 `我` 和 `喜欢`，中间跳过了 `很`，这两个词也能组成一对。相邻的词同样可以配对。[早期 skip-gram 论文](https://aclanthology.org/L06-1210/)\n\n在 **Word2Vec** 里，这就变成了一个训练任务：**给定中心词，预测它附近的词**。比如以 `喜欢` 为中心、左右各看两个词，模型就会分别练习 `喜欢 → 很`、`喜欢 → 我`、`喜欢 → 音乐`。其中 `喜欢 → 我` 就体现了 **skip**。[Word2Vec 原论文 §3.2](https://arxiv.org/pdf/1301.3781)",
           "url": "",
           "examples": [
             {
@@ -1712,7 +1712,7 @@
       "personalExamples": [
         {
           "id": "encounter-fa68029c-d04b-4bbd-b15e-6a9c658839db",
-          "en": "The word2vec algorithm relies on two main ideas: skip-gram and negative sampling. ",
+          "en": "The word2vec algorithm relies on two main ideas: skip-gram and negative sampling.",
           "zh": "word2vec 算法依赖两个主要思想：skip-gram 和负采样。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -1731,7 +1731,7 @@
       ],
       "notes": "常写作 skip-gram，与 CBOW 相对；中间连字符不可省略。",
       "createdAt": "2026-11-06T09:40:34.966Z",
-      "updatedAt": "2026-11-06T09:40:34.966Z"
+      "updatedAt": "2026-11-06T09:43:40.879Z"
     },
     {
       "id": "entry-d7eb9745-1902-4795-8c5a-6d1b0640c3aa",
@@ -1768,7 +1768,7 @@
       "personalExamples": [
         {
           "id": "encounter-1ccc028f-5018-485f-a7fa-0506c231bca1",
-          "en": "The word2vec algorithm relies on two main ideas: skip-gram and negative sampling. ",
+          "en": "The word2vec algorithm relies on two main ideas: skip-gram and negative sampling.",
           "zh": "word2vec 算法依赖两个主要思想：skip-gram 和负采样。",
           "source": "",
           "encounteredAt": "2026-11-06",
