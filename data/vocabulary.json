@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T11:36:11.965Z",
+  "updatedAt": "2026-11-07T12:10:19.549Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -3663,6 +3663,319 @@
       "notes": "layer-normalization 是复合名词，常写作 layer normalization，指在神经网络中对每一层的激活值进行归一化的操作。",
       "createdAt": "2026-11-07T11:36:11.965Z",
       "updatedAt": "2026-11-07T11:36:11.965Z"
+    },
+    {
+      "id": "entry-c75a6bcf-bd5c-4266-be28-cd7528d7c564",
+      "term": "sentiment",
+      "phonetic": "/ˈsɛntɪmənt/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "情感分析",
+        "AI"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-d2693753-8faf-47c6-86a1-92ecbe601033",
+          "dictionary": "Open English WordNet 2025 · sentiment · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a personal belief or judgment that is not founded on proof or certainty",
+          "definitionZh": "个人的信念或判断，并非基于证据或确定性。",
+          "url": "https://en-word.net/view/lemma/sentiment",
+          "senseGuide": {
+            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+            "usage": "本句中的sentiment指“情感”，是情感分析中的术语，而词典中更通用的释义是“观点或态度”，两者相关但不完全相同。",
+            "fit": "general",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "tender, romantic, or nostalgic feeling or emotion",
+                "definitionZh": "温柔、浪漫或怀旧的情感或情绪。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "my opinion differs from yours",
+              "zh": "我的意见和你的不同。"
+            }
+          ]
+        },
+        {
+          "id": "definition-2365d73e-518f-46a2-a6cf-6cea68fecb36",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A view or attitude toward a situation or event; an opinion.",
+          "definitionZh": "对情况或事件的观点或态度；意见。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The sentiment analysis of customer reviews helps companies improve their products.",
+              "zh": "对客户评论的情感分析有助于公司改进产品。"
+            },
+            {
+              "en": "Public sentiment about the new policy is divided.",
+              "zh": "公众对新政策的情绪存在分歧。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-4da2773e-b1cc-4590-87c2-36508959d975",
+          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+          "zh": "文本分类在世界各地被用于广泛的应用中，从情感分析和意图检测到提取实体和检测语言。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "在NLP中常指“情感”，如情感分析（sentiment analysis）。",
+      "createdAt": "2026-11-07T12:10:19.549Z",
+      "updatedAt": "2026-11-07T12:10:19.549Z"
+    },
+    {
+      "id": "entry-93493e5e-86c8-4e4a-916e-cfd4c0f39484",
+      "term": "intent",
+      "phonetic": "/ɪnˈtɛnt/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "意图检测",
+        "AI"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-e439d00a-c52b-47bc-aa2a-9a2f8bacc677",
+          "dictionary": "Open English WordNet 2025 · intent · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "an anticipated outcome that is intended or that guides your planned actions",
+          "definitionZh": "预期结果，即有意达成或指导计划行动的目标。",
+          "url": "https://en-word.net/view/lemma/intent",
+          "senseGuide": {
+            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+            "usage": "本句中的intent指“意图”，是意图检测中的术语，而词典中更通用的释义是“预期结果或目的”，两者相关但不完全相同。",
+            "fit": "general",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "the intended meaning of a communication",
+                "definitionZh": "交流的预期含义。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "giving or marked by complete attention to",
+                "definitionZh": "给予或表现出完全注意的。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "his intent was to provide a new translation",
+              "zh": "他的意图是提供一个新的翻译。"
+            }
+          ]
+        },
+        {
+          "id": "definition-7bed717e-f58c-47db-a5e0-86a69b1bd7c0",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The intended meaning of a communication.",
+          "definitionZh": "交流的预期含义。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Intent detection is crucial for chatbots to understand user queries.",
+              "zh": "意图检测对于聊天机器人理解用户查询至关重要。"
+            },
+            {
+              "en": "The intent behind his words was unclear.",
+              "zh": "他话语背后的意图不明确。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-56b0b60e-aff0-4fd6-9a62-d89d422e8e16",
+          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+          "zh": "文本分类在世界各地被用于广泛的应用中，从情感分析和意图检测到提取实体和检测语言。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "在NLP中常指“意图”，如意图检测（intent detection）。",
+      "createdAt": "2026-11-07T12:10:19.549Z",
+      "updatedAt": "2026-11-07T12:10:19.549Z"
+    },
+    {
+      "id": "entry-fce858ad-556e-4011-9e05-523148bd1ecf",
+      "term": "extract",
+      "phonetic": "/ɪkˈstrækt/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "信息提取",
+        "AI"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-c6c4e87b-baf2-45af-8425-a7362f504bf7",
+          "dictionary": "Open English WordNet 2025 · extract · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "remove, usually with some force or effort; also used in an abstract sense",
+          "definitionZh": "移除，通常需要一些力量或努力；也用于抽象意义。",
+          "url": "https://en-word.net/view/lemma/extract",
+          "senseGuide": {
+            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+            "usage": "本句中的extracting指“提取”，与词典释义“移除或取出”一致，但更抽象。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a passage selected from a larger work",
+                "definitionZh": "从 larger work 中选出的段落。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "take out of a literary work in order to cite or copy",
+                "definitionZh": "从文学作品中取出以引用或复制。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a solution obtained by steeping or soaking a substance (usually in water)",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "get despite difficulties or obstacles",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "deduce (a principle) or construe (a meaning)",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "extract by the process of distillation",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "separate (a metal) from an ore",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "obtain from a substance, as by mechanical action",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "calculate the root of a number",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "pull weeds",
+              "zh": "拔杂草。"
+            }
+          ]
+        },
+        {
+          "id": "definition-c30bf050-21e4-4237-9534-2bf980162fa3",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To remove or take out, especially by effort or force.",
+          "definitionZh": "移除或取出，尤指通过努力或力量。",
+          "url": "",
+          "examples": [
+            {
+              "en": "We need to extract the key information from the document.",
+              "zh": "我们需要从文档中提取关键信息。"
+            },
+            {
+              "en": "The software can extract text from images.",
+              "zh": "该软件可以从图像中提取文本。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-ba1b7bb1-e1fe-4125-af19-3c1622f890ee",
+          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+          "zh": "文本分类在世界各地被用于广泛的应用中，从情感分析和意图检测到提取实体和检测语言。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          },
+          "wordForms": [
+            {
+              "text": "extracting",
+              "lemma": "extract",
+              "label": "-ing 形式（现在分词 / 动名词）"
+            }
+          ]
+        }
+      ],
+      "notes": "在NLP中常指“提取”，如实体提取（entity extraction）。",
+      "createdAt": "2026-11-07T12:10:19.549Z",
+      "updatedAt": "2026-11-07T12:10:19.549Z"
     }
   ]
 }
