@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T03:16:53.990Z",
+  "updatedAt": "2026-11-07T03:34:43.422Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -801,7 +801,7 @@
           "definitionZh": "与同时执行多个操作有关的；并行的。",
           "url": "https://en-word.net/view/lemma/parallel",
           "senseGuide": {
-            "sentence": "Each of these parallel applications of attention is conducted into an attention head. ",
+            "sentence": "Each of these parallel applications of attention is conducted into an attention head.",
             "usage": "本句中 parallel 修饰 applications，表示这些注意力应用是并行进行的。",
             "fit": "contextual",
             "alsoBasic": false,
@@ -895,7 +895,7 @@
         },
         {
           "id": "encounter-cf99b0b0-1eab-4cad-ae17-7b5a9a571269",
-          "en": "Each of these parallel applications of attention is conducted into an attention head. ",
+          "en": "Each of these parallel applications of attention is conducted into an attention head.",
           "zh": "这些并行的注意力应用中的每一个都被引导到一个注意力头中。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -2702,7 +2702,7 @@
           "definitionZh": "某事物的抽象组成部分。",
           "url": "https://en-word.net/view/lemma/ingredient",
           "senseGuide": {
-            "sentence": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+            "sentence": "Memorization is only one ingredient in the recipe of impressive text generation.",
             "usage": "本句中 ingredient 与 recipe 搭配，作比喻，指文本生成这一“配方”中的一个组成部分或要素，而非烹饪原料。",
             "fit": "contextual",
             "alsoBasic": false,
@@ -2750,7 +2750,7 @@
       "personalExamples": [
         {
           "id": "encounter-5fe5f820-a6a1-47f1-874e-e791bca20d6e",
-          "en": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+          "en": "Memorization is only one ingredient in the recipe of impressive text generation.",
           "zh": "记忆只是生成令人印象深刻的文本这一配方中的一个成分。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -2809,7 +2809,7 @@
           "definitionZh": "制作某物的说明或步骤。",
           "url": "https://en-word.net/view/lemma/recipe",
           "senseGuide": {
-            "sentence": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+            "sentence": "Memorization is only one ingredient in the recipe of impressive text generation.",
             "usage": "本句中 recipe 不是字面烹饪食谱，而是比喻“生成令人印象深刻文本”的整套构成要素或方法；词典义为“制作某物的说明”，此处取其比喻引申义。",
             "fit": "general",
             "alsoBasic": true,
@@ -2839,7 +2839,7 @@
       "personalExamples": [
         {
           "id": "encounter-0079c4ee-e5c0-48fa-a839-724adab7a794",
-          "en": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+          "en": "Memorization is only one ingredient in the recipe of impressive text generation.",
           "zh": "记忆只是生成令人印象深刻的文本这一配方中的一个成分。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -3202,6 +3202,158 @@
       "notes": "incorporate 后常接宾语，也可用 incorporate A into B 表示“把A纳入B”。",
       "createdAt": "2026-11-07T03:05:25.180Z",
       "updatedAt": "2026-11-07T03:05:25.180Z"
+    },
+    {
+      "id": "entry-c4d0fb29-ff41-47fa-8957-09ad06a31cd9",
+      "term": "projected",
+      "phonetic": "/prəˈdʒektɪd/",
+      "status": "learning",
+      "tags": [
+        "深度学习",
+        "机器学习",
+        "NLP",
+        "Transformer",
+        "数学"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-019a451b-bfc5-4aa2-a006-33535e8498a7",
+          "dictionary": "Open English WordNet 2025 · project · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "transfer (ideas or principles) from one domain into another",
+          "definitionZh": "将（思想或原理）从一个领域转移到另一个领域。",
+          "url": "https://en-word.net/view/lemma/project",
+          "senseGuide": {
+            "sentence": " These matrices contain the information of the input tokens projected to three different spaces that help carry out the two steps of attention",
+            "usage": "本句中 projected 指输入词元的表示被映射到三个不同的向量空间。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "project on a screen",
+                "definitionZh": "在屏幕上投影。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "extend out or project in space",
+                "definitionZh": "伸出或突出于空间。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "communicate vividly",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "cause to be heard",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "draw a projection of",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "make or work out a plan for; devise",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "present for consideration, examination, criticism, etc.",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "imagine; conceive of; see in one's mind",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "put or send forth",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "throw, send, or cast forward",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "regard as objective",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "any piece of work that is undertaken or attempted",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a planned undertaking",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-d8145a8c-a9fc-46ec-96a2-505e7141d86a",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb (past participle)",
+          "definitionEn": "Transformed or mapped into a different mathematical space.",
+          "definitionZh": "被投影到不同的数学空间；映射到另一空间。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The input vectors are projected into a lower-dimensional space.",
+              "zh": "输入向量被投影到一个低维空间。"
+            },
+            {
+              "en": "Each token is projected to a query, key, and value vector.",
+              "zh": "每个词元被投影为查询、键和值向量。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-2adf3094-5ab8-4b95-b9d3-6b570bf9198e",
+          "en": " These matrices contain the information of the input tokens projected to three different spaces that help carry out the two steps of attention",
+          "zh": "这些矩阵包含输入令牌被投影到三个不同空间的信息，这有助于执行注意力的两个步骤。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "深度学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "在机器学习中，projected 常指将向量通过线性变换映射到另一个表示空间。",
+      "createdAt": "2026-11-07T03:34:43.422Z",
+      "updatedAt": "2026-11-07T03:34:43.422Z"
     }
   ]
 }
