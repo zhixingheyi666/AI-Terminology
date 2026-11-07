@@ -19,7 +19,7 @@ import {
   sortEntriesByCreated,
   validateData,
 } from "./model.js?v=1.4.2";
-import { assertIntakeTargets, createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.2";
+import { assertIntakeTargets, createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.3";
 import { generateDraft } from "./draft-client.js?v=1.4.2";
 import { prepareDrafts, mergeDraftBatch } from "./draft-library.js?v=1.4.2";
 import { loadWordFormIndex } from "./word-forms.js?v=1.4.2";

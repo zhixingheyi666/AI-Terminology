@@ -2351,6 +2351,17 @@ details.sense-group > summary {
 .intake-match-choice { max-width: 100%; padding: 0.45rem; border: 1px solid var(--line); border-radius: 0.35rem; color: var(--ink); background: var(--surface); }
 .intake-match-summary { margin: 0.65rem 0 0; color: var(--accent-ink); }
 .intake-match-credit { display: inline-block; margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.75rem; }
+.intake-context-badge { padding: 0.1rem 0.5rem; border-radius: 1rem; color: var(--accent-ink); background: var(--accent-pale); font-size: 0.78rem; font-weight: 600; }
+.intake-context-badge.is-known { color: var(--ink-soft); background: var(--paper); border: 1px solid var(--line); }
+.intake-context-outcome { flex-basis: 100%; margin: 0; color: var(--ink-soft); }
+.intake-context-history { flex-basis: 100%; min-width: 0; }
+.intake-context-history summary { width: fit-content; cursor: pointer; color: var(--accent-ink); }
+.intake-context-list { margin: 0.65rem 0 0; padding-left: 1.5rem; max-height: 18rem; overflow-y: auto; overflow-wrap: anywhere; }
+.intake-context-list li { padding: 0.5rem 0.4rem; }
+.intake-context-list li + li { border-top: 1px solid var(--line); }
+.intake-context-list p { margin: 0.25rem 0; }
+.intake-context-en { white-space: pre-wrap; }
+.intake-context-meta { color: var(--ink-soft); font-size: 0.75rem; }
 .intake-entry-action { margin-left: 0.75rem; color: var(--ink-soft); font-size: 0.78rem; font-weight: 400; }
 .encounter-word-forms { color: var(--accent-ink); font-size: 0.86rem; line-height: 1.7; }
 

@@ -446,6 +446,7 @@ export function createIntakeUI({ generate, save, openSettings, getLibrary, getLi
   const duplicates = find("Duplicates");
   const choices = new Map();
   const formChoices = new Map();
+  const expandedEncounters = new Set();
   let wordFormIndex = null;
   let loadingForms = null;
   let formLoadFailed = false;
@@ -465,6 +466,7 @@ export function createIntakeUI({ generate, save, openSettings, getLibrary, getLi
     if (libraryKey !== key) {
       choices.clear();
       formChoices.clear();
+      expandedEncounters.clear();
       carriedForms = {};
       libraryKey = key;
     }
@@ -528,8 +530,11 @@ export function createIntakeUI({ generate, save, openSettings, getLibrary, getLi
         info.append(el("span", "intake-match-note", "匹配到多个已有词条，请使用词库中的准确拼写。已跳过。"));
       } else {
         const existing = item.match.entry;
-        info.append(el("span", "intake-match-note", "已收录" + (existing.term !== item.term ? "为「" + existing.term + "」" : "")
-          + (item.sameSentence ? " · 这句也已收录" : " · 已有 " + existing.personalExamples.length + " 条语境")));
+        const hasSentence = Boolean(controls.sentence.value.trim());
+        info.append(el("span", "intake-match-note", "已有词" + (existing.term !== item.term ? "「" + existing.term + "」" : "")));
+        if (hasSentence) info.append(el("span", "intake-context-badge" + (item.sameSentence ? " is-known" : ""),
+          item.sameSentence ? "这句已收录" : "新语境"));
+        else info.append(el("span", "intake-match-note", "填写原句后检查语境"));
         const link = el("a", "link-button", "查看已有词条 ↗");
         link.href = "#/entry/" + encodeURIComponent(existing.id);
         link.target = "_blank";
@@ -550,6 +555,33 @@ export function createIntakeUI({ generate, save, openSettings, getLibrary, getLi
           [...duplicates.querySelectorAll("select")].find(node => node.dataset.termKey === item.key)?.focus();
         });
         row.append(info, select);
+        if (hasSentence) row.append(el("p", "intake-context-outcome", item.action !== "update"
+          ? "当前跳过；选择「" + select.options[1].text + "」后才会更新。"
+          : item.sameSentence ? "保存后更新已有语境的译文等资料，语境条数不变。"
+          : "保存后追加到这个词条，语境由 " + existing.personalExamples.length + " 条变为 " + (existing.personalExamples.length + 1) + " 条。"));
+        if (existing.personalExamples.length) {
+          const details = el("details", "intake-context-history");
+          details.open = expandedEncounters.has(existing.id);
+          details.append(el("summary", "", "查看已有 " + existing.personalExamples.length + " 条语境"));
+          const list = el("ol", "intake-context-list");
+          for (const example of existing.personalExamples) {
+            const context = el("li");
+            if (hasEncounter({ personalExamples: [example] }, controls.sentence.value)) {
+              context.append(el("span", "intake-context-badge is-known", "与本次原句相同"));
+            }
+            context.append(el("p", "intake-context-en", example.en));
+            if (example.zh) context.append(el("p", "intake-match-note", example.zh));
+            context.append(el("p", "intake-context-meta", [example.source || "未记录出处", example.encounteredAt].filter(Boolean).join(" · ")));
+            list.append(context);
+          }
+          details.append(list);
+          details.addEventListener("toggle", () => {
+            if (!details.isConnected) return;
+            if (details.open) expandedEncounters.add(existing.id);
+            else expandedEncounters.delete(existing.id);
+          });
+          row.append(details);
+        }
       }
       if (!info.parentNode) row.append(info);
       duplicates.append(row);
@@ -823,6 +855,7 @@ export function createIntakeUI({ generate, save, openSettings, getLibrary, getLi
       saving = false;
       choices.clear();
       formChoices.clear();
+      expandedEncounters.clear();
       carriedForms = {};
       libraryKey = getLibraryKey();
       if (existingEntryId) {
