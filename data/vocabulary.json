@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T14:33:36.059Z",
+  "updatedAt": "2026-11-07T02:29:45.981Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -2520,7 +2520,7 @@
           "definitionZh": "专门研究统计学的数学家。",
           "url": "https://en-word.net/view/lemma/statistician",
           "senseGuide": {
-            "sentence": "The idea here is to basically sample from the probability distribution based on the probability score, as the statisticians would say.  ",
+            "sentence": "The idea here is to basically sample from the probability distribution based on the probability score, as the statisticians would say.",
             "usage": "本句指统计学家，即专门从事统计学研究的数学家。",
             "fit": "contextual",
             "alsoBasic": true,
@@ -2557,7 +2557,7 @@
       "personalExamples": [
         {
           "id": "encounter-a5e0741d-6f42-439d-b81c-a32b3c7cda0d",
-          "en": "The idea here is to basically sample from the probability distribution based on the probability score, as the statisticians would say.  ",
+          "en": "The idea here is to basically sample from the probability distribution based on the probability score, as the statisticians would say.",
           "zh": "这里的思路基本上是，按照统计学家会说的那样，根据概率分数从概率分布中采样。",
           "source": "",
           "encounteredAt": "2026-11-06",
@@ -2577,6 +2577,202 @@
       "notes": "statisticians 是 statistician 的复数形式，此处用“as the statisticians would say”表示“就像统计学家会说的那样”，带有类比或行话色彩。",
       "createdAt": "2026-11-06T14:33:36.059Z",
       "updatedAt": "2026-11-06T14:33:36.059Z"
+    },
+    {
+      "id": "entry-b88357e6-d6ee-47a5-b029-7feaf8548345",
+      "term": "ingredient",
+      "phonetic": "/ɪnˈɡriːdiənt/",
+      "status": "learning",
+      "tags": [
+        "认知",
+        "语义",
+        "比喻用法"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-c9bab177-b4f7-4e7f-8863-af1db2a05f4b",
+          "dictionary": "Open English WordNet 2025 · ingredient · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "an abstract part of something",
+          "definitionZh": "某事物的抽象组成部分。",
+          "url": "https://en-word.net/view/lemma/ingredient",
+          "senseGuide": {
+            "sentence": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+            "usage": "本句中 ingredient 与 recipe 搭配，作比喻，指文本生成这一“配方”中的一个组成部分或要素，而非烹饪原料。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "a component of a mixture or compound",
+                "definitionZh": "混合物或化合物的一个组成部分。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "food that is a component of a mixture in cooking",
+                "definitionZh": "烹饪中作为混合食材之一的一种食物。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "jealousy was a component of his character",
+              "zh": "嫉妒是他性格中的一个组成部分。"
+            }
+          ]
+        },
+        {
+          "id": "definition-3912e25a-3a4b-4393-9b4d-1f47fa7f3d79",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A component or part of something larger; here figuratively, one contributing element in a process.",
+          "definitionZh": "（比喻）组成部分；（整体中的）一个要素。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Good communication is a key ingredient in teamwork.",
+              "zh": "良好的沟通是团队合作的关键要素。"
+            },
+            {
+              "en": "Trust is one ingredient that every friendship needs.",
+              "zh": "信任是每段友谊都需要的要素之一。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-5fe5f820-a6a1-47f1-874e-e791bca20d6e",
+          "en": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+          "zh": "记忆只是生成令人印象深刻的文本这一配方中的一个成分。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "认知",
+            "AI"
+          ],
+          "contextAnalysis": "ingredient 在这里是比喻的核心名词，承接后面的 recipe，把“令人印象深刻的文本生成”比作一道菜，而记忆只是其中一味原料，强调它不是全部。",
+          "grammarAnalysis": {
+            "structure": "Memorization / is / only one ingredient / in the recipe of impressive text generation.",
+            "parts": [
+              {
+                "label": "Memorization",
+                "explanation": "主语，动名词，指“记忆（背诵）”这一行为或能力。"
+              },
+              {
+                "label": "is",
+                "explanation": "系动词，连接主语与表语。"
+              },
+              {
+                "label": "only one ingredient",
+                "explanation": "表语，说明主语只是众多成分中的一个，only 起限制强调作用。"
+              },
+              {
+                "label": "in the recipe of impressive text generation",
+                "explanation": "介词短语作后置修饰，用“配方”比喻说明文本生成的构成要素。"
+              }
+            ],
+            "core": "Memorization is one ingredient.",
+            "rewrite": "Memorization is just one component of what makes text generation impressive."
+          }
+        }
+      ],
+      "notes": "常与 in/of 连用，表示“某整体中的要素”；字面义指烹饪原料，此处为比喻用法。",
+      "createdAt": "2026-11-07T02:29:45.981Z",
+      "updatedAt": "2026-11-07T02:29:45.981Z"
+    },
+    {
+      "id": "entry-a7145794-46ad-4f7e-8b00-d48885bc6478",
+      "term": "recipe",
+      "phonetic": "/ˈresəpi/",
+      "status": "learning",
+      "tags": [
+        "认知",
+        "语义",
+        "比喻用法"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-87784f10-0d48-45c1-8614-c2a7c3e6436f",
+          "dictionary": "Open English WordNet 2025 · recipe · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "directions for making something",
+          "definitionZh": "制作某物的说明或步骤。",
+          "url": "https://en-word.net/view/lemma/recipe",
+          "senseGuide": {
+            "sentence": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+            "usage": "本句中 recipe 不是字面烹饪食谱，而是比喻“生成令人印象深刻文本”的整套构成要素或方法；词典义为“制作某物的说明”，此处取其比喻引申义。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-3d35125c-05c5-46f3-a84a-7a042f3a10e9",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A set of directions or, figuratively, a combination of elements for producing a result.",
+          "definitionZh": "（比喻）配方；构成某种结果的一套要素或方法。",
+          "url": "",
+          "examples": [
+            {
+              "en": "There is no simple recipe for success.",
+              "zh": "成功没有简单的配方。"
+            },
+            {
+              "en": "The recipe for a good essay includes clear structure and evidence.",
+              "zh": "写好文章的配方包括清晰的结构和证据。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-0079c4ee-e5c0-48fa-a839-724adab7a794",
+          "en": " Memorization is only one ingredient in the recipe of impressive text generation. ",
+          "zh": "记忆只是生成令人印象深刻的文本这一配方中的一个成分。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "认知",
+            "学术英语"
+          ],
+          "contextAnalysis": "recipe 与 ingredient 构成比喻搭配，指“令人印象深刻的文本生成”的配方或要素组合，与 only one ingredient 呼应，突出记忆只是其中一环而非全部。",
+          "grammarAnalysis": {
+            "structure": "Memorization / is / only one ingredient / in the recipe of impressive text generation.",
+            "parts": [
+              {
+                "label": "Memorization",
+                "explanation": "主语，动名词，指“记忆（背诵）”这一行为或能力。"
+              },
+              {
+                "label": "is",
+                "explanation": "系动词，连接主语与表语。"
+              },
+              {
+                "label": "only one ingredient",
+                "explanation": "表语，说明主语只是众多成分中的一个，only 起限制强调作用。"
+              },
+              {
+                "label": "in the recipe of impressive text generation",
+                "explanation": "介词短语作后置修饰，用“配方”比喻说明文本生成的构成要素。"
+              }
+            ],
+            "core": "Memorization is one ingredient.",
+            "rewrite": "Memorization is just one component of what makes text generation impressive."
+          }
+        }
+      ],
+      "notes": "除字面“烹饪食谱”外，常作比喻，表示产生某结果的“配方/诀窍”，多与 for 或 of 连用。",
+      "createdAt": "2026-11-07T02:29:45.981Z",
+      "updatedAt": "2026-11-07T02:29:45.981Z"
     }
   ]
 }
