@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T04:07:03.323Z",
+  "updatedAt": "2026-11-07T11:36:11.965Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -3428,6 +3428,241 @@
       "notes": "在机器学习语境中，inference 常译为“推理”，指模型训练完成后进行预测或生成的过程，与 training 相对。",
       "createdAt": "2026-11-07T04:07:03.323Z",
       "updatedAt": "2026-11-07T04:07:03.323Z"
+    },
+    {
+      "id": "entry-a450318b-8b46-4fc4-a2f1-3dd49c6b2cd0",
+      "term": "reveal",
+      "phonetic": "/rɪˈviːl/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "模型架构",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-5849f3c3-bc90-43f6-a07a-7fe7d53d0f9a",
+          "dictionary": "Open English WordNet 2025 · reveal · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "make manifest",
+          "definitionZh": "使显现；展示出。",
+          "url": "https://en-word.net/view/lemma/reveal",
+          "senseGuide": {
+            "sentence": "A more detailed view of the block would also reveal the residual connections and layer-normalization operations that we can see in Figure 3-29.",
+            "usage": "本句指更详细的视图会“展示出”残差连接和层归一化操作，使它们可见。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "make known to the public information that was previously known only to a few people or that was meant to be kept a secret",
+                "definitionZh": "揭露；公开（先前保密的信息）。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "disclose directly or through prophets",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "Summer brings out bright clothes",
+              "zh": "夏天使鲜艳的衣服显现出来。"
+            }
+          ]
+        },
+        {
+          "id": "definition-e0833755-6692-4ee8-a8ad-99aaaa3994c4",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To make visible or known something that was previously hidden or not obvious.",
+          "definitionZh": "揭示；使显现（先前隐藏或不明显的事物）。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The diagram reveals the internal structure of the model.",
+              "zh": "该图揭示了模型的内部结构。"
+            },
+            {
+              "en": "A closer look reveals several small errors.",
+              "zh": "仔细查看会发现几处小错误。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-5a2f0c94-dca5-463b-baf6-295957035700",
+          "en": "A more detailed view of the block would also reveal the residual connections and layer-normalization operations that we can see in Figure 3-29.",
+          "zh": "对块的更详细视图还会揭示我们在图3-29中看到的残差连接和层归一化操作。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "模型架构"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "本句中 reveal 表示“展示出、揭示”，宾语是 connections and operations，即通过更详细的视图使这些结构变得可见。",
+      "createdAt": "2026-11-07T11:36:11.965Z",
+      "updatedAt": "2026-11-07T11:36:11.965Z"
+    },
+    {
+      "id": "entry-8fa46c15-9995-460c-af99-2208060f98f2",
+      "term": "residual",
+      "phonetic": "/rɪˈzɪdjuəl/",
+      "status": "learning",
+      "tags": [
+        "模型架构",
+        "深度学习",
+        "数学"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-c6788108-76e8-46ac-8cf9-24119240a3bd",
+          "dictionary": "Open English WordNet 2025 · residual · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "relating to or indicating a remainder",
+          "definitionZh": "与剩余部分有关的；残余的。",
+          "url": "https://en-word.net/view/lemma/residual",
+          "senseGuide": {
+            "sentence": "A more detailed view of the block would also reveal the residual connections and layer-normalization operations that we can see in Figure 3-29.",
+            "usage": "本句中 residual 修饰 connections，指与“剩余量”相关的连接，即残差连接。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "something left after other parts have been taken away",
+                "definitionZh": "剩余物；残余部分。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "(often plural) a payment that is made to a performer or writer or director of a television show or commercial that is paid for every repeat showing",
+                "definitionZh": "（常复数）重播报酬； residual 也可指演员或编剧因节目重播而获得的报酬。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "residual quantity",
+              "zh": "残余量。"
+            }
+          ]
+        },
+        {
+          "id": "definition-8f79fefd-fcd5-4da6-8bbd-f3d18c821844",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Relating to or constituting a remainder; remaining.",
+          "definitionZh": "剩余的；残余的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Residual errors can accumulate over time.",
+              "zh": "残余误差会随时间累积。"
+            },
+            {
+              "en": "The residual signal was weak but still detectable.",
+              "zh": "残余信号很弱，但仍可检测到。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-a612a198-b219-4fab-b555-df18efef9d7c",
+          "en": "A more detailed view of the block would also reveal the residual connections and layer-normalization operations that we can see in Figure 3-29.",
+          "zh": "对块的更详细视图还会揭示我们在图3-29中看到的残差连接和层归一化操作。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "模型架构",
+            "深度学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "residual 在神经网络中常与 connection 搭配，表示“残差连接”，即把输入直接加到输出上的连接。",
+      "createdAt": "2026-11-07T11:36:11.965Z",
+      "updatedAt": "2026-11-07T11:36:11.965Z"
+    },
+    {
+      "id": "entry-86a4350e-40ac-436d-b010-3adc643d28ef",
+      "term": "layer-normalization",
+      "phonetic": "/ˈleɪə ˌnɔːməlaɪˈzeɪʃən/",
+      "status": "learning",
+      "tags": [
+        "模型架构",
+        "深度学习",
+        "NLP"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-7bb565b7-20f7-4d09-90df-562d42eb6217",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A technique in neural networks that normalizes the activations across features for each individual sample, stabilizing and accelerating training.",
+          "definitionZh": "层归一化：一种神经网络技术，对每个样本的特征维度进行归一化，以稳定并加速训练。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Layer normalization is often applied before the self-attention sublayer.",
+              "zh": "层归一化通常应用在自注意力子层之前。"
+            },
+            {
+              "en": "The model uses layer normalization to improve gradient flow.",
+              "zh": "该模型使用层归一化来改善梯度流动。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-00c5c0a3-8a11-4849-a1b3-400d01fcce69",
+          "en": "A more detailed view of the block would also reveal the residual connections and layer-normalization operations that we can see in Figure 3-29.",
+          "zh": "对块的更详细视图还会揭示我们在图3-29中看到的残差连接和层归一化操作。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "模型架构",
+            "深度学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "layer-normalization 是复合名词，常写作 layer normalization，指在神经网络中对每一层的激活值进行归一化的操作。",
+      "createdAt": "2026-11-07T11:36:11.965Z",
+      "updatedAt": "2026-11-07T11:36:11.965Z"
     }
   ]
 }
