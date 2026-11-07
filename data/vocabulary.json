@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T02:35:54.066Z",
+  "updatedAt": "2026-11-07T03:05:25.180Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -2994,6 +2994,110 @@
       "notes": "interpolate between A and B 表示在 A 与 B 之间插值；与 extrapolate（外推）相对。",
       "createdAt": "2026-11-07T02:35:54.066Z",
       "updatedAt": "2026-11-07T02:35:54.066Z"
+    },
+    {
+      "id": "entry-fbbe9fe0-9ede-472d-900e-bc396c1a8d95",
+      "term": "incorporate",
+      "phonetic": "/ɪnˈkɔːrpəreɪt/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "模型架构",
+        "学术英语"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
+      "definitions": [
+        {
+          "id": "definition-caf19cf8-fc0f-474d-b26c-a9284ce49801",
+          "dictionary": "Open English WordNet 2025 · incorporate · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "include or contain; have as a component",
+          "definitionZh": "包含或含有；作为组成部分。",
+          "url": "https://en-word.net/view/lemma/incorporate",
+          "senseGuide": {
+            "sentence": "Attention is a mechanism that helps the model incorporate context as it’s processing a specific token.",
+            "usage": "本句指模型在处理特定词元时把上下文信息包含进来，与“包含、作为组成部分”的词义一致。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "verb",
+                "definitionEn": "make into a whole or make part of a whole",
+                "definitionZh": "使成为整体或使成为整体的一部分。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "unite or merge with something already in existence",
+                "definitionZh": "与已存在的事物联合或合并。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "form a corporation",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "adjective",
+                "definitionEn": "formed or united into a whole",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "A totally new idea is comprised in this paper",
+              "zh": "这篇论文中蕴含着一个全新的想法。"
+            }
+          ]
+        },
+        {
+          "id": "definition-5ab0eb27-486e-43c1-96c9-dae305bb6f23",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To include or bring something in as part of a whole.",
+          "definitionZh": "把……纳入；将……作为整体的一部分包含进来。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The new design incorporates feedback from users.",
+              "zh": "新设计纳入了用户的反馈。"
+            },
+            {
+              "en": "Good note-taking incorporates examples and summaries.",
+              "zh": "好的笔记会把例子和总结融入其中。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-55da68f3-a302-4250-bf4c-2d20d18f093d",
+          "en": "Attention is a mechanism that helps the model incorporate context as it’s processing a specific token.",
+          "zh": "注意力是一种机制，帮助模型在处理特定词元时纳入上下文。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "机器学习",
+            "模型架构"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "incorporate 后常接宾语，也可用 incorporate A into B 表示“把A纳入B”。",
+      "createdAt": "2026-11-07T03:05:25.180Z",
+      "updatedAt": "2026-11-07T03:05:25.180Z"
     }
   ]
 }
