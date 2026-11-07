@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T03:05:25.180Z",
+  "updatedAt": "2026-11-07T03:16:53.990Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -756,7 +756,10 @@
       "tags": [
         "NLP",
         "Transformer",
-        "并行计算"
+        "并行计算",
+        "深度学习",
+        "模型架构",
+        "技术方案"
       ],
       "reviewTags": [
         "复习"
@@ -789,6 +792,88 @@
               "zh": "在训练过程中，Transformer 层可以并行处理序列中的各个位置。"
             }
           ]
+        },
+        {
+          "id": "definition-fdd8fd8f-2aaf-4cdb-aa92-f3cbe431eef9",
+          "dictionary": "Open English WordNet 2025 · parallel · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "of or relating to the simultaneous performance of multiple operations",
+          "definitionZh": "与同时执行多个操作有关的；并行的。",
+          "url": "https://en-word.net/view/lemma/parallel",
+          "senseGuide": {
+            "sentence": "Each of these parallel applications of attention is conducted into an attention head. ",
+            "usage": "本句中 parallel 修饰 applications，表示这些注意力应用是并行进行的。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "adjective",
+                "definitionEn": "being everywhere equidistant and not intersecting",
+                "definitionZh": "各处等距且不相交的；平行的。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "something having the property of being analogous to something else",
+                "definitionZh": "类似物；可相比拟的事物。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "an imaginary line around the Earth parallel to the equator",
+                "definitionZh": "纬线；与赤道平行的假想线。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "(mathematics) one of a set of parallel geometric figures (parallel lines or planes)",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "be parallel to",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "make or place parallel to something",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "duplicate or match",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "parallel processing",
+              "zh": "并行处理。"
+            }
+          ]
+        },
+        {
+          "id": "definition-ac1190e9-79cc-437a-b84a-b3b163380306",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Of or relating to the simultaneous performance of multiple operations.",
+          "definitionZh": "并行的，同时执行多个操作的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The model uses parallel attention heads to process different features.",
+              "zh": "该模型使用并行注意力头来处理不同特征。"
+            },
+            {
+              "en": "Parallel computation can greatly speed up training.",
+              "zh": "并行计算可以大大加快训练速度。"
+            }
+          ]
         }
       ],
       "personalExamples": [
@@ -807,11 +892,30 @@
             "core": "",
             "rewrite": ""
           }
+        },
+        {
+          "id": "encounter-cf99b0b0-1eab-4cad-ae17-7b5a9a571269",
+          "en": "Each of these parallel applications of attention is conducted into an attention head. ",
+          "zh": "这些并行的注意力应用中的每一个都被引导到一个注意力头中。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "模型架构",
+            "深度学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
-      "notes": "parallel 可作形容词、名词和动词；in parallel 是常用固定搭配。注意 parallel 本身不一定表示“速度更快”，是否更快取决于任务能否有效并行化以及硬件条件。",
+      "notes": "parallel 可作形容词、名词和动词；in parallel 是常用固定搭配。注意 parallel 本身不一定表示“速度更快”，是否更快取决于任务能否有效并行化以及硬件条件。\n\nparallel 作形容词时表示“并行的”，常用于描述同时进行的操作或结构。",
       "createdAt": "2026-10-31T04:29:00.000Z",
-      "updatedAt": "2026-10-31T04:29:00.000Z"
+      "updatedAt": "2026-11-07T03:16:53.990Z"
     },
     {
       "id": "entry-solely-20261031",
