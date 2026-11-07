@@ -48,9 +48,21 @@ export function createPersonalExample(values = {}) {
     encounteredAt: stringValue(values.encounteredAt),
     note: stringValue(values.note),
     exampleTags: normalizeTags(values.exampleTags),
+    ...(values.wordForms !== undefined ? { wordForms: normalizeWordForms(values.wordForms) } : {}),
     contextAnalysis: stringValue(values.contextAnalysis),
     grammarAnalysis: normalizeGrammarAnalysis(values.grammarAnalysis),
   };
+}
+
+export function normalizeWordForms(forms) {
+  // Keep malformed values visible to validation; importing or editing must not
+  // silently erase the learner's original-form metadata.
+  if (!Array.isArray(forms)) return forms;
+  return forms.map(form => {
+    if (!form || typeof form !== "object" || Array.isArray(form)) return form;
+    const field = key => typeof form[key] === "string" ? form[key].trim() : form[key];
+    return { text: field("text"), lemma: field("lemma"), label: field("label") };
+  });
 }
 
 export function createGrammarPart(values = {}) {
@@ -370,6 +382,8 @@ export function entrySearchText(entry) {
         example.note,
         example.encounteredAt,
         ...(Array.isArray(example.exampleTags) ? example.exampleTags : []),
+        ...(Array.isArray(example.wordForms)
+          ? example.wordForms.flatMap(form => [form?.text, form?.lemma, form?.label]) : []),
         example.contextAnalysis,
         example.grammarAnalysis?.structure,
         example.grammarAnalysis?.core,
@@ -583,6 +597,10 @@ function validatePersonalExample(example, path, allIds, errors) {
     errors.push(`${path}.contextAnalysis 必须是字符串。`);
   }
 
+  if (example.wordForms !== undefined) {
+    validateWordForms(example.wordForms, `${path}.wordForms`, errors);
+  }
+
   if (example.grammarAnalysis !== undefined) {
     validateGrammarAnalysis(example.grammarAnalysis, `${path}.grammarAnalysis`, errors);
   }
@@ -593,6 +611,26 @@ function validatePersonalExample(example, path, allIds, errors) {
   ) {
     errors.push(`${path}.encounteredAt 必须使用 YYYY-MM-DD 格式。`);
   }
+}
+
+function validateWordForms(forms, path, errors) {
+  if (!Array.isArray(forms) || forms.length > 16) {
+    errors.push(`${path} 必须是最多包含 16 项的词形数组。`);
+    return;
+  }
+  forms.forEach((form, index) => {
+    if (!form || typeof form !== "object" || Array.isArray(form)) {
+      errors.push(`${path}[${index}] 必须是词形对象。`);
+      return;
+    }
+    for (const [key, max] of [["text", 120], ["lemma", 120], ["label", 150]]) {
+      const value = form[key];
+      if (typeof value !== "string" || value.length > max ||
+          (key !== "label" && !value.trim()) || /[\u0000-\u001f\u007f]/u.test(value)) {
+        errors.push(`${path}[${index}].${key} 必须是${key === "label" ? "" : "非空的"}字符串，最多 ${max} 个字符且不能包含控制字符。`);
+      }
+    }
+  });
 }
 
 function validateGrammarAnalysis(analysis, path, errors) {

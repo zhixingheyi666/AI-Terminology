@@ -1,4 +1,4 @@
-import { normalizeSearch } from "./model.js?v=1.4.0";
+import { normalizeSearch } from "./model.js?v=1.4.2";
 
 const API = "https://api.github.com";
 const API_VERSION = "2022-11-28";

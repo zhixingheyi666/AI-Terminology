@@ -11,8 +11,8 @@
     <title>词迹 · 我的 AI 术语库</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css?v=1.4.1" />
-    <script type="module" src="./assets/app.js?v=1.4.1"></script>
+    <link rel="stylesheet" href="./assets/styles.css?v=1.4.2" />
+    <script type="module" src="./assets/app.js?v=1.4.2"></script>
   </head>
   <body>
     <a class="skip-link" href="#searchInput">跳到词汇搜索</a>
@@ -333,9 +333,10 @@
           <fieldset class="form-section intake-inputs" id="intakeInputs">
             <label class="field">
               <span id="intakeTermsLabel">目标词</span>
-              <textarea name="terms" rows="2" placeholder='例如：fine-tuning  pace  "language model"' required aria-labelledby="intakeTermsLabel" aria-describedby="intakeTermsHint" autocomplete="off" spellcheck="false"></textarea>
+              <textarea name="terms" rows="2" placeholder='例如：fine-tuning  pace  "language model"' required aria-labelledby="intakeTermsLabel" aria-describedby="intakeTermsHint intakeDuplicates" autocomplete="off" spellcheck="false"></textarea>
               <small id="intakeTermsHint">多个词用空格、逗号或换行分隔。短语用双引号括起来。</small>
             </label>
+            <div class="intake-duplicates" id="intakeDuplicates" aria-label="目标词收录情况" hidden></div>
             <label class="field">
               <span>英文原句</span>
               <textarea name="sentence" rows="4" maxlength="10000" placeholder="粘贴包含这些目标词的完整原句" required></textarea>

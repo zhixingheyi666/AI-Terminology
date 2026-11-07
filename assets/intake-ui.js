@@ -1,8 +1,10 @@
 import {
   STATUS_LABELS, createDefinition, createDefinitionExample, createGrammarAnalysis,
   createGrammarPart, normalizeSearch, normalizeTags,
-} from "./model.js?v=1.4.0";
-import { checkDraftCoverage } from "./draft-client.js?v=1.4.1";
+} from "./model.js?v=1.4.2";
+import { checkDraftCoverage } from "./draft-client.js?v=1.4.2";
+import { hasEncounter, termKey } from "./draft-library.js?v=1.4.2";
+import { findWordFormMatch, loadWordFormIndex, resolveWordForms } from "./word-forms.js?v=1.4.2";
 
 const separators = /[\s,，、;；]/u;
 
@@ -16,7 +18,7 @@ export function parseTargetTerms(text) {
     current = "";
     if (!term) return;
     if (term.length > 120) throw new Error("每个目标词或短语最多 120 个字符。");
-    const key = normalizeSearch(term);
+    const key = termKey(term);
     if (!seen.has(key)) terms.push(term);
     seen.add(key);
   }
@@ -38,6 +40,51 @@ export function parseTargetTerms(text) {
   if (!terms.length) throw new Error("请填写至少一个目标词。");
   if (terms.length > 8) throw new Error("一次最多填写 8 个不同的目标词。");
   return terms;
+}
+
+export function chooseWordForm(term, candidates, selectedLemma) {
+  const lemmas = [...new Set(candidates.map(item => item.lemma))];
+  const lemma = selectedLemma ?? (lemmas.length === 1 ? lemmas[0] : term);
+  if (termKey(lemma) === termKey(term)) return null;
+  const matches = candidates.filter(item => item.lemma === lemma && item.form !== "base");
+  if (!matches.length) return null;
+  return { text: term, lemma, label: [...new Set(matches.map(item => item.label))].join(" / ").slice(0, 150) };
+}
+
+export function buildIntakePlan({ terms, sentence, library, choices = new Map(), forms = new Map(), wordFormIndex }) {
+  const items = terms.map(term => {
+    const wordForm = forms.get(termKey(term));
+    const lookupTerm = wordForm?.lemma || term;
+    const key = termKey(lookupTerm);
+    const match = findWordFormMatch(library, lookupTerm, wordFormIndex);
+    const sameSentence = Boolean(match.entry && hasEncounter(match.entry, sentence));
+    const action = match.kind === "new" ? "new" : match.kind === "ambiguous" ? "blocked"
+      : choices.get(key) === match.entry.id ? "update" : "skip";
+    return { term, lookupTerm, wordForm, key, match, sameSentence, action };
+  });
+  const selected = [...new Map(items.filter(item => item.action === "new" || item.action === "update")
+    .map(item => [item.key, item])).values()];
+  const wordFormsByTerm = Object.create(null);
+  for (const selectedItem of selected) {
+    wordFormsByTerm[normalizeSearch(selectedItem.lookupTerm)] = items.filter(item => item.key === selectedItem.key && item.wordForm)
+      .map(item => item.wordForm);
+  }
+  return { items, terms: selected.map(item => item.lookupTerm),
+    existingEntryIds: selected.map(item => item.match.entry?.id || ""), wordFormsByTerm };
+}
+
+// Consent to updating an existing word is tied to its ID, never just its spelling.
+export function assertIntakeTargets(library, terms, existingEntryIds, wordFormIndex) {
+  if (!Array.isArray(existingEntryIds) || terms.length !== existingEntryIds.length) {
+    throw new Error("录入选择已失效，请返回输入框重新检查。");
+  }
+  terms.forEach((term, index) => {
+    const match = findWordFormMatch(library, term, wordFormIndex);
+    const expectedId = existingEntryIds[index];
+    if (match.kind === "ambiguous" || (expectedId ? match.entry?.id !== expectedId : match.kind !== "new")) {
+      throw new Error("「" + term + "」的已有词条或录入选择已变化，请返回输入框重新检查后生成。");
+    }
+  });
 }
 
 function formatTerm(term) {
@@ -240,14 +287,21 @@ function grammarEditor(grammar) {
   return section;
 }
 
-function entryCard(entry, detailed, index) {
+function entryCard(entry, detailed, index, existing = false) {
   const example = entry.personalExamples[0];
   const card = el("details", "intake-draft");
   card.open = index === 0;
   const summary = el("summary");
   const headword = el("strong", "", entry.term);
   summary.append(headword);
+  summary.append(el("span", "intake-entry-action", existing ? "补充已有词条" : "新词条"));
   const body = el("div", "intake-draft-body intake-stack");
+  if (example.wordForms?.length) {
+    body.append(editableList("原句词形 → 词条原形", example.wordForms,
+      () => ({ text: "", lemma: entry.term, label: "" }),
+      (wordForm, remove) => pair(field("原句词形", wordForm, "text"),
+        field("形式说明", wordForm, "label"), remove), "添加词形记录"));
+  }
   body.append(grid(
     field("目标词", entry, "term", { update: value => { headword.textContent = value || "未填写目标词"; } }),
     field("音标", entry, "phonetic"),
@@ -275,11 +329,17 @@ export function prepareDraft(result, request) {
       throw new Error("返回的词条或例句不完整，请重新生成。");
     }
     entry.definitions = orderedDefinitions(entry.definitions);
+    const forms = request.wordFormsByTerm?.[normalizeSearch(entry.term)];
+    if (Array.isArray(forms) && forms.length) entry.personalExamples[0].wordForms = structuredClone(forms);
   }
   const first = entries[0].personalExamples[0];
+  const selectedIds = new Map(request.terms.map((term, index) => [normalizeSearch(term), request.existingEntryIds?.[index] || ""]));
   return {
     entries, detailed: request.detailed, warnings: result.warnings, saveTarget: result.saveTarget,
     requestedTerms: [...request.terms], successfulTerms, missingTerms,
+    existingEntryIds: successfulTerms.map(term => selectedIds.get(normalizeSearch(term))),
+    skippedTerms: request.skippedTerms || [],
+    requestedWordForms: request.wordFormsByTerm || {},
     shared: { en: request.sentence, zh: first.zh, source: request.source,
       encounteredAt: first.encounteredAt, grammarAnalysis: createGrammarAnalysis(first.grammarAnalysis) },
   };
@@ -295,11 +355,14 @@ export function mergeRepair(previous, repaired) {
   }
   // Use the submitted terms as identities. The displayed headwords may already be edited.
   const byTerm = new Map();
+  const idsByTerm = new Map();
   for (const batch of [previous, repaired]) {
     batch.successfulTerms.forEach((term, index) => byTerm.set(normalizeSearch(term), batch.entries[index]));
+    batch.successfulTerms.forEach((term, index) => idsByTerm.set(normalizeSearch(term), batch.existingEntryIds?.[index] || ""));
   }
   const successfulTerms = previous.requestedTerms.filter(term => byTerm.has(normalizeSearch(term)));
   return { ...previous, successfulTerms, entries: successfulTerms.map(term => byTerm.get(normalizeSearch(term))),
+    existingEntryIds: successfulTerms.map(term => idsByTerm.get(normalizeSearch(term))),
     missingTerms: previous.requestedTerms.filter(term => !byTerm.has(normalizeSearch(term))),
     warnings: [...new Set([...previous.warnings, ...repaired.warnings])] };
 }
@@ -307,6 +370,7 @@ export function mergeRepair(previous, repaired) {
 function renderReview(container, draft, beginRepair) {
   const { shared, detailed, entries, warnings } = draft;
   container.replaceChildren();
+  if (draft.skippedTerms?.length) container.append(el("p", "intake-skipped", "本次已跳过：" + draft.skippedTerms.join("、")));
   if (draft.missingTerms.length) {
     const summary = el("section", "intake-partial");
     summary.setAttribute("aria-label", "部分词条待补录");
@@ -330,7 +394,7 @@ function renderReview(container, draft, beginRepair) {
     grid(field("出处", shared, "source"), field("遇见日期", shared, "encounteredAt", { type: "date" })));
   if (detailed) sharedEditor.append(grammarEditor(shared.grammarAnalysis));
   cards.append(el("h3", "intake-subheading", "词条草稿 · " + entries.length));
-  entries.forEach((entry, index) => cards.append(entryCard(entry, detailed, index)));
+  entries.forEach((entry, index) => cards.append(entryCard(entry, detailed, index, Boolean(draft.existingEntryIds?.[index]))));
   container.append(sharedEditor, cards);
 }
 
@@ -341,7 +405,7 @@ export function entriesForSave(draft) {
   const entries = structuredClone(draft.entries);
   for (const entry of entries) {
     entry.term = entry.term.trim();
-    const key = normalizeSearch(entry.term);
+    const key = termKey(entry.term);
     if (!key || entry.term.length > 120) throw new Error("请填写 1 至 120 个字符的目标词。");
     if (seen.has(key)) throw new Error("草稿中有重复的目标词，请修改后再保存。");
     seen.add(key);
@@ -357,6 +421,7 @@ export function entriesForSave(draft) {
       }
     }
     const example = entry.personalExamples[0];
+    if (example.wordForms) example.wordForms = example.wordForms.map(item => ({ ...item, lemma: entry.term }));
     Object.assign(example, shared, { grammarAnalysis: detailed ? createGrammarAnalysis(shared.grammarAnalysis) : createGrammarAnalysis() });
     if (!detailed) {
       example.note = "";
@@ -366,7 +431,7 @@ export function entriesForSave(draft) {
   return entries;
 }
 
-export function createIntakeUI({ generate, save, openSettings }) {
+export function createIntakeUI({ generate, save, openSettings, getLibrary, getLibraryKey }) {
   const dialog = document.getElementById("intakeDialog");
   const find = id => dialog.querySelector("#intake" + id);
   const form = find("Form");
@@ -378,6 +443,15 @@ export function createIntakeUI({ generate, save, openSettings }) {
   const stop = find("Stop");
   const back = find("Back");
   const revise = find("Revise");
+  const duplicates = find("Duplicates");
+  const choices = new Map();
+  const formChoices = new Map();
+  let wordFormIndex = null;
+  let loadingForms = null;
+  let formLoadFailed = false;
+  let carriedForms = {};
+  let libraryKey = "";
+  let plan = null;
   let draft = null;
   let review = false;
   let saving = false;
@@ -385,6 +459,130 @@ export function createIntakeUI({ generate, save, openSettings }) {
   let editedDraft = false;
   let repairing = false;
   let initial = { terms: "", sentence: "", source: "", detailed: false };
+
+  function updateDuplicates() {
+    const key = getLibraryKey();
+    if (libraryKey !== key) {
+      choices.clear();
+      formChoices.clear();
+      carriedForms = {};
+      libraryKey = key;
+    }
+    duplicates.replaceChildren();
+    plan = null;
+    duplicates.hidden = !controls.terms.value.trim();
+    if (duplicates.hidden) return;
+    const library = getLibrary();
+    if (!library) {
+      duplicates.append(el("p", "", "词库尚未读取完成，读取后会自动检查是否已收录。"));
+      return;
+    }
+    let terms;
+    try { terms = parseTargetTerms(controls.terms.value); }
+    catch (error) {
+      duplicates.append(el("p", "", error.message));
+      return;
+    }
+    if (!wordFormIndex && !formLoadFailed) {
+      duplicates.append(el("p", "", "正在检查词形和已有词条…"));
+      return;
+    }
+    const forms = new Map();
+    const candidatesByTerm = new Map();
+    for (const term of terms) {
+      const candidates = wordFormIndex ? resolveWordForms(term, wordFormIndex) : [];
+      candidatesByTerm.set(term, candidates);
+      const chosen = chooseWordForm(term, candidates, formChoices.get(termKey(term)));
+      if (chosen) forms.set(termKey(term), chosen);
+    }
+    plan = buildIntakePlan({ terms, sentence: controls.sentence.value, library, choices, forms, wordFormIndex });
+    if (formLoadFailed) duplicates.append(el("p", "intake-match-note", "词形表暂时未能读取，当前按输入拼写检查。可稍后重新打开录入框重试。"));
+    for (const item of plan.items) {
+      const row = el("div", "intake-match");
+      const info = el("div", "intake-match-info");
+      info.append(el("strong", "", item.term));
+      const candidates = candidatesByTerm.get(item.term);
+      const alternatives = [...new Set(candidates.map(candidate => candidate.lemma))]
+        .filter(lemma => termKey(lemma) !== termKey(item.term));
+      if (alternatives.length && !repairing) {
+        const formSelect = el("select", "intake-match-choice");
+        formSelect.setAttribute("aria-label", item.term + " 的词条原形");
+        formSelect.dataset.surfaceKey = termKey(item.term);
+        formSelect.add(new Option("保留输入词形 " + item.term, item.term));
+        for (const lemma of alternatives) {
+          const form = chooseWordForm(item.term, candidates, lemma);
+          formSelect.add(new Option("→ " + lemma + "（" + form.label + "）", lemma));
+        }
+        formSelect.value = item.lookupTerm;
+        formSelect.addEventListener("change", () => {
+          formChoices.set(termKey(item.term), formSelect.value);
+          updateDuplicates();
+          refresh();
+          [...duplicates.querySelectorAll("select")].find(node => node.dataset.surfaceKey === termKey(item.term))?.focus();
+        });
+        info.append(formSelect);
+        if (!item.wordForm) info.append(el("span", "intake-match-note", "有不同词义或原形，请按本句用法选择。"));
+      }
+      if (item.match.kind === "new") info.append(el("span", "intake-match-note", "新词 · 将录入"));
+      else if (item.match.kind === "ambiguous") {
+        info.append(el("span", "intake-match-note", "匹配到多个已有词条，请使用词库中的准确拼写。已跳过。"));
+      } else {
+        const existing = item.match.entry;
+        info.append(el("span", "intake-match-note", "已收录" + (existing.term !== item.term ? "为「" + existing.term + "」" : "")
+          + (item.sameSentence ? " · 这句也已收录" : " · 已有 " + existing.personalExamples.length + " 条语境")));
+        const link = el("a", "link-button", "查看已有词条 ↗");
+        link.href = "#/entry/" + encodeURIComponent(existing.id);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        info.append(link);
+        const select = el("select", "intake-match-choice");
+        select.setAttribute("aria-label", item.term + " 的录入方式");
+        select.dataset.termKey = item.key;
+        select.add(new Option("跳过，不重复录入", "skip"));
+        const rename = termKey(existing.term) !== termKey(item.lookupTerm);
+        select.add(new Option(rename ? "归为原形并补充语境" : item.sameSentence ? "更新这条语境 / 补全释义" : "补充本次语境", "update"));
+        select.value = item.action;
+        select.addEventListener("change", () => {
+          if (select.value === "update") choices.set(item.key, existing.id);
+          else choices.delete(item.key);
+          updateDuplicates();
+          refresh();
+          [...duplicates.querySelectorAll("select")].find(node => node.dataset.termKey === item.key)?.focus();
+        });
+        row.append(info, select);
+      }
+      if (!info.parentNode) row.append(info);
+      duplicates.append(row);
+    }
+    const count = type => new Set(plan.items.filter(item => item.action === type).map(item => item.key)).size;
+    const summary = el("p", "intake-match-summary", "本次：" + count("new") + " 个新词，补充 " + count("update")
+      + " 个已有词，跳过 " + (count("skip") + count("blocked")) + " 个。"
+      + (!plan.terms.length ? "可选择补充语境，或继续添加其他词。" : "同一原形只生成一个词条。"));
+    summary.setAttribute("role", "status");
+    duplicates.append(summary);
+    if (wordFormIndex) {
+      const credit = el("a", "intake-match-credit", "词形依据：Open English WordNet 2025");
+      credit.href = "https://en-word.net/";
+      credit.target = "_blank";
+      credit.rel = "noopener noreferrer";
+      duplicates.append(credit);
+    }
+  }
+
+  function ensureWordForms() {
+    if (wordFormIndex || loadingForms) return;
+    formLoadFailed = false;
+    loadingForms = loadWordFormIndex().then(index => { wordFormIndex = index; })
+      .catch(() => { formLoadFailed = true; })
+      .finally(() => {
+        loadingForms = null;
+        if (dialog.open && !review) { updateDuplicates(); refresh(); }
+      });
+  }
+
+  for (const control of [controls.terms, controls.sentence]) {
+    control.addEventListener("input", () => { carriedForms = {}; updateDuplicates(); refresh(); });
+  }
 
   function hasUnsavedInput() {
     return draft || pending || controls.terms.value !== initial.terms || controls.sentence.value !== initial.sentence ||
@@ -417,7 +615,7 @@ export function createIntakeUI({ generate, save, openSettings }) {
     revise.hidden = !review || saving;
     stop.hidden = !pending;
     find("Close").disabled = saving;
-    submit.disabled = saving || Boolean(pending);
+    submit.disabled = saving || Boolean(pending) || (!review && !plan?.terms.length);
     if (review) {
       const label = draft.missingTerms.length ? "保存已生成的 " : "保存全部 ";
       submit.textContent = saving ? "正在保存…" : label + draft.entries.length + " 个词条";
@@ -430,6 +628,7 @@ export function createIntakeUI({ generate, save, openSettings }) {
     review = showReview;
     clearError();
     status("");
+    if (!review) updateDuplicates();
     refresh();
     find("Body").scrollTop = 0;
     if (review) find("Title").focus({ preventScroll: true });
@@ -484,6 +683,7 @@ export function createIntakeUI({ generate, save, openSettings }) {
   });
   function editRequest(onlyMissing) {
     repairing = onlyMissing;
+    carriedForms = draft.requestedWordForms || {};
     const currentNames = new Map(draft.successfulTerms.map((term, i) => [normalizeSearch(term), draft.entries[i].term]));
     const terms = onlyMissing ? draft.missingTerms : draft.requestedTerms.map(term => currentNames.get(normalizeSearch(term)) || term);
     controls.terms.value = terms.map(formatTerm).join(", ");
@@ -501,8 +701,17 @@ export function createIntakeUI({ generate, save, openSettings }) {
   find("Settings").addEventListener("click", () => openSettings?.());
 
   async function fill() {
+    updateDuplicates();
+    if (!getLibrary()) throw new Error("请先成功读取词库，再自动填写。");
+    if (!plan) { parseTargetTerms(controls.terms.value); return; }
+    if (!plan.terms.length) throw new Error("这些词已收录且均已跳过。请选择补充语境，或添加其他词。");
     const request = {
-      terms: parseTargetTerms(controls.terms.value),
+      libraryKey,
+      terms: plan.terms,
+      existingEntryIds: plan.existingEntryIds,
+      skippedTerms: plan.items.filter(item => item.action === "skip" || item.action === "blocked").map(item => item.term),
+      wordFormsByTerm: Object.fromEntries(plan.terms.map(term => [normalizeSearch(term),
+        plan.wordFormsByTerm[normalizeSearch(term)] || carriedForms[normalizeSearch(term)] || []])),
       sentence: controls.sentence.value,
       source: controls.source.value.trim(),
       detailed: controls.analysis.value === "detailed",
@@ -558,7 +767,8 @@ export function createIntakeUI({ generate, save, openSettings }) {
     refresh();
     status("正在保存 " + entries.length + " 个词条…");
     try {
-      await save(entries, { saveTarget: draft.saveTarget, originalTerms: draft.successfulTerms });
+      await save(entries, { saveTarget: draft.saveTarget, originalTerms: draft.successfulTerms,
+        existingEntryIds: draft.existingEntryIds });
       if (!draft.missingTerms.length) {
         dialog.close();
         status("");
@@ -567,6 +777,7 @@ export function createIntakeUI({ generate, save, openSettings }) {
       // Leave the original sentence and only the unrecorded words ready for the next request.
       initial = { terms: draft.missingTerms.map(formatTerm).join(", "), sentence: draft.shared.en,
         source: draft.shared.source, detailed: draft.detailed };
+      carriedForms = draft.requestedWordForms || {};
       controls.terms.value = initial.terms;
       controls.sentence.value = initial.sentence;
       controls.source.value = initial.source;
@@ -599,7 +810,10 @@ export function createIntakeUI({ generate, save, openSettings }) {
   });
 
   return {
-    open({ term = "", sentence = "", source = "" } = {}) {
+    refreshLibrary() {
+      if (dialog.open && !review && !pending) { updateDuplicates(); refresh(); }
+    },
+    open({ term = "", sentence = "", source = "", existingEntryId = "" } = {}) {
       if (dialog.open) return;
       form.reset();
       abortWait();
@@ -607,12 +821,21 @@ export function createIntakeUI({ generate, save, openSettings }) {
       editedDraft = false;
       repairing = false;
       saving = false;
+      choices.clear();
+      formChoices.clear();
+      carriedForms = {};
+      libraryKey = getLibraryKey();
+      if (existingEntryId) {
+        choices.set(termKey(term), existingEntryId);
+        formChoices.set(termKey(term), term);
+      }
       reviewPanel.replaceChildren();
       initial = { terms: formatTerm(term), sentence, source, detailed: false };
       controls.terms.value = initial.terms;
       controls.sentence.value = sentence;
       controls.source.value = source;
       dialog.showModal();
+      ensureWordForms();
       switchView(false);
     },
   };

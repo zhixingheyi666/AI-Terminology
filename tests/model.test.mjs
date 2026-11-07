@@ -3,7 +3,10 @@ import assert from "node:assert/strict";
 import {
   collectTags,
   collectExampleTags,
+  createPersonalExample,
   filterEntries,
+  normalizeData,
+  normalizePersonalExample,
   normalizeTags,
   sortEntriesByCreated,
   validateData,
@@ -136,4 +139,70 @@ test("collects example tags with counts", () => {
       { label: "教材例句", count: 1 },
     ],
   );
+});
+
+test("original word forms survive export, reload and personal-example editing", () => {
+  const data = validData();
+  const forms = [
+    { text: "runs", lemma: "run", label: "第三人称单数" },
+    { text: "running", lemma: "run", label: "现在分词" },
+  ];
+  data.entries[0].personalExamples[0].wordForms = forms;
+  assert.equal(validateData(data).valid, true);
+  const restored = normalizeData(JSON.parse(JSON.stringify(data)));
+  const example = normalizePersonalExample(restored.entries[0].personalExamples[0]);
+  assert.deepEqual(example.wordForms, forms);
+  assert.equal(validateData(restored).valid, true);
+  example.wordForms[0].label = "人工修正";
+  assert.equal(forms[0].label, "第三人称单数");
+  assert.equal(restored.entries[0].personalExamples[0].wordForms[0].label, "第三人称单数");
+});
+
+test("legacy examples keep word-form metadata absent and new valid fields are trimmed", () => {
+  const legacy = validData();
+  assert.equal(validateData(legacy).valid, true);
+  assert.equal(Object.hasOwn(normalizeData(legacy).entries[0].personalExamples[0], "wordForms"), false);
+  assert.equal(Object.hasOwn(createPersonalExample(), "wordForms"), false);
+  const example = createPersonalExample({ wordForms: [{ text: "  went ", lemma: " go ", label: " 过去式 " }] });
+  assert.deepEqual(example.wordForms, [{ text: "went", lemma: "go", label: "过去式" }]);
+});
+
+test("search includes original forms, their lemmas and form labels", () => {
+  const data = validData();
+  data.entries[0].personalExamples[0].wordForms = [
+    { text: "understood", lemma: "understand", label: "不规则过去分词" },
+  ];
+  for (const query of ["understood", "understand", "不规则过去分词"]) {
+    assert.equal(filterEntries(data.entries, { query }).length, 1);
+  }
+  assert.equal(filterEntries(data.entries, { query: "unknown-form" }).length, 0);
+});
+
+test("word-form metadata rejects malformed objects, excessive lengths and control characters", () => {
+  const form = { text: "went", lemma: "go", label: "过去式" };
+  const invalid = [null, {}, "went", [null], [[]], [{}], [{ ...form, text: 5 }],
+    [{ ...form, text: " " }], [{ ...form, lemma: "" }], [{ text: "went", lemma: "go" }],
+    [{ ...form, text: "x".repeat(121) }], [{ ...form, lemma: "x".repeat(121) }],
+    [{ ...form, label: "x".repeat(151) }], [{ ...form, text: "went\n" }],
+    [{ ...form, label: "past\u0000tense" }], Array.from({ length: 17 }, () => ({ ...form }))];
+  for (const wordForms of invalid) {
+    const data = validData();
+    data.entries[0].personalExamples[0].wordForms = wordForms;
+    const result = validateData(data);
+    assert.equal(result.valid, false, JSON.stringify(wordForms));
+    assert.match(result.errors.join(" "), /wordForms/);
+  }
+  const malformed = validData();
+  malformed.entries[0].personalExamples[0].wordForms = [{ ...form, lemma: 42 }];
+  assert.equal(validateData(normalizeData(malformed)).valid, false);
+});
+
+test("bounded word-form lists allow empty labels and all sixteen original forms", () => {
+  const data = validData();
+  data.entries[0].personalExamples[0].wordForms = Array.from({ length: 16 }, (_, index) => ({
+    text: String(index).padEnd(120, "x"), lemma: "x".repeat(120), label: index ? "" : "x".repeat(150),
+  }));
+  assert.equal(validateData(data).valid, true);
+  assert.deepEqual(normalizeData(data).entries[0].personalExamples[0].wordForms,
+    data.entries[0].personalExamples[0].wordForms);
 });

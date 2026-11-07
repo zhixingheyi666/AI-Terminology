@@ -18,10 +18,11 @@ import {
   nowIso,
   sortEntriesByCreated,
   validateData,
-} from "./model.js?v=1.4.0";
-import { createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.1";
-import { generateDraft } from "./draft-client.js?v=1.4.1";
-import { prepareDrafts, mergeDraftBatch } from "./draft-library.js?v=1.4.0";
+} from "./model.js?v=1.4.2";
+import { assertIntakeTargets, createIntakeUI, orderedDefinitions, senseGuidePanel } from "./intake-ui.js?v=1.4.2";
+import { generateDraft } from "./draft-client.js?v=1.4.2";
+import { prepareDrafts, mergeDraftBatch } from "./draft-library.js?v=1.4.2";
+import { loadWordFormIndex } from "./word-forms.js?v=1.4.2";
 
 const STORAGE = Object.freeze({
   settings: "citrace.settings.v1",
@@ -132,22 +133,27 @@ const pronunciationAudioCache = new Map();
 
 const intake = createIntakeUI({
   openSettings,
+  getLibrary: () => state.loadSource && state.loadSource !== "empty" ? state.data : null,
+  getLibraryKey: () => repositoryTargetKey(state.settings),
   async generate(input, options) {
+    if (!state.loadSource || state.loadSource === "empty") throw new Error("请先成功读取词库，再自动填写。");
     const target = repositoryTargetKey(state.settings);
+    if (input.libraryKey !== target) throw new Error("仓库已切换，请重新检查录入选择。");
+    const wordFormIndex = await loadWordFormIndex().catch(() => null);
+    if (target !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新自动填写。");
+    assertIntakeTargets(state.data, input.terms, input.existingEntryIds, wordFormIndex);
     const draft = await generateDraft(state.settings, state.token, input, options);
     if (target !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新自动填写。");
-    return { ...draft, saveTarget: target, entries: prepareDrafts(state.data, draft.entries) };
+    assertIntakeTargets(state.data, input.terms, input.existingEntryIds, wordFormIndex);
+    const existingEntryIds = draft.entries.map(entry => input.existingEntryIds[input.terms.findIndex(term => normalizeSearch(term) === normalizeSearch(entry.term))]);
+    return { ...draft, saveTarget: target, entries: prepareDrafts(state.data, draft.entries, { existingEntryIds }) };
   },
-  save(drafts, { saveTarget, originalTerms }) {
+  async save(drafts, { saveTarget, existingEntryIds }) {
+    const wordFormIndex = await loadWordFormIndex().catch(() => null);
     if (saveTarget !== repositoryTargetKey(state.settings)) throw new Error("仓库已切换，请重新生成草稿。");
     if (!state.loadSource || state.loadSource === "empty") throw new Error("请先成功读取词库，再保存草稿。");
-    for (const [index, entry] of drafts.entries()) {
-      const key = normalizeSearch(entry.term);
-      if (key !== normalizeSearch(originalTerms[index]) && state.data.entries.some(old => normalizeSearch(old.term) === key)) {
-        throw new Error(`「${entry.term}」是已有词条。请用该词重新生成，以便核对已有笔记和学习状态。`);
-      }
-    }
-    const { data, firstId } = mergeDraftBatch(state.data, drafts);
+    assertIntakeTargets(state.data, drafts.map(entry => entry.term), existingEntryIds, wordFormIndex);
+    const { data, firstId } = mergeDraftBatch(state.data, drafts, nowIso(), { existingEntryIds });
     // Keep every part of the batch editable if this device cannot save it.
     writeLocalBackup(data, true);
     state.data = data;
@@ -175,6 +181,8 @@ function createEntryDataPlaceholder() {
 }
 
 async function loadLibrary() {
+  state.loadSource = "";
+  intake.refreshLibrary();
   setSync("saving", isConfigured() ? "正在读取 GitHub 词库" : "正在读取词库");
   renderSyncStatus();
 
@@ -466,6 +474,7 @@ function render() {
   renderContent(filteredEntries);
   renderSyncStatus();
   writeEntryHash();
+  intake.refreshLibrary();
 }
 
 function renderFilters(filteredCount) {
@@ -679,7 +688,7 @@ function renderSenseCompletion(entry) {
   button.textContent = "补全词典义项";
   button.addEventListener("click", () => {
     const example = candidates[Number(select.value) || 0];
-    intake.open({ term: entry.term, sentence: example.en, source: example.source });
+    intake.open({ term: entry.term, sentence: example.en, source: example.source, existingEntryId: entry.id });
   });
   tools.append(button);
   heading.append(tools);
@@ -780,6 +789,8 @@ function renderEncounterCard(example, index) {
           }
         </div>
         ${example.zh ? `<p class="encounter-translation">${escapeHtml(example.zh)}</p>` : ""}
+        ${example.wordForms?.length ? `<p class="encounter-word-forms">原句词形：${example.wordForms.map(item =>
+          `${escapeHtml(item.text)} → ${escapeHtml(item.lemma)}${item.label ? `（${escapeHtml(item.label)}）` : ""}`).join("；")}</p>` : ""}
         ${
           hasGrammar
             ? `<section class="example-analysis grammar-analysis">
@@ -1124,9 +1135,11 @@ function captureEditorFromForm() {
     }),
   );
 
+  const previousExamples = new Map(state.editor.personalExamples.map(example => [example.id, example]));
   state.editor.personalExamples = [
     ...elements.personalExampleEditorList.querySelectorAll("[data-personal-id]"),
   ].map((card) => ({
+    ...previousExamples.get(card.dataset.personalId),
     id: card.dataset.personalId,
     en: card.querySelector('[data-personal-field="en"]')?.value || "",
     zh: card.querySelector('[data-personal-field="zh"]')?.value || "",
@@ -2153,7 +2166,7 @@ function bindEvents() {
     if (!entry) {
       return;
     }
-    intake.open({ term: entry.term });
+    intake.open({ term: entry.term, existingEntryId: entry.id });
   });
 
   document.querySelector("#addDefinitionButton").addEventListener("click", () => {

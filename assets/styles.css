@@ -2327,6 +2327,33 @@ details.sense-group > summary {
   border: 0;
 }
 
+.intake-duplicates {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: var(--surface);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.intake-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 0;
+}
+
+.intake-match + .intake-match { border-top: 1px solid var(--line); }
+.intake-match-info { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.25rem 0.65rem; min-width: 0; overflow-wrap: anywhere; }
+.intake-match-note, .intake-skipped { color: var(--ink-soft); }
+.intake-match-choice { max-width: 100%; padding: 0.45rem; border: 1px solid var(--line); border-radius: 0.35rem; color: var(--ink); background: var(--surface); }
+.intake-match-summary { margin: 0.65rem 0 0; color: var(--accent-ink); }
+.intake-match-credit { display: inline-block; margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.75rem; }
+.intake-entry-action { margin-left: 0.75rem; color: var(--ink-soft); font-size: 0.78rem; font-weight: 400; }
+.encounter-word-forms { color: var(--accent-ink); font-size: 0.86rem; line-height: 1.7; }
+
 .intake-inputs,
 .intake-stack {
   display: grid;
