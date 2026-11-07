@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T03:34:43.422Z",
+  "updatedAt": "2026-11-07T04:07:03.323Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -3354,6 +3354,80 @@
       "notes": "在机器学习中，projected 常指将向量通过线性变换映射到另一个表示空间。",
       "createdAt": "2026-11-07T03:34:43.422Z",
       "updatedAt": "2026-11-07T03:34:43.422Z"
+    },
+    {
+      "id": "entry-4a42da73-45ee-4d32-ab8f-ced71775519a",
+      "term": "inference",
+      "phonetic": "/ˈɪnfərəns/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "机器学习",
+        "模型训练",
+        "深度学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-af00446b-f0bd-4f29-8eac-dc47dd9f2f5a",
+          "dictionary": "Open English WordNet 2025 · inference · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "the reasoning involved in drawing a conclusion or making a logical judgment on the basis of circumstantial evidence and prior conclusions rather than on the basis of direct observation",
+          "definitionZh": "基于证据和先前结论而非直接观察得出逻辑判断的推理过程。",
+          "url": "https://en-word.net/view/lemma/inference",
+          "senseGuide": {
+            "sentence": "Flash Attention is a popular method and implementation that provides significant speedups for both training and inference of Transformer LLMs on GPUs. ",
+            "usage": "本句中 inference 指模型训练后的推理阶段，而非逻辑推理；这是机器学习领域的专业用法。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-ecac3a6a-5e7e-49de-9b59-b3e0deb5f4ec",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The process of using a trained model to make predictions or generate outputs from new input data.",
+          "definitionZh": "使用训练好的模型对新输入数据进行预测或生成输出的过程。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The inference stage is often faster than training because it only involves forward passes.",
+              "zh": "推理阶段通常比训练更快，因为它只涉及前向传播。"
+            },
+            {
+              "en": "Optimizing inference on GPUs can greatly reduce latency in production.",
+              "zh": "在 GPU 上优化推理可以大大降低生产环境中的延迟。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-8bb38d76-646d-4cf9-bfe3-d0385124cb63",
+          "en": "Flash Attention is a popular method and implementation that provides significant speedups for both training and inference of Transformer LLMs on GPUs. ",
+          "zh": "Flash Attention 是一种流行的方法和实现，它为 GPU 上 Transformer LLM 的训练和推理都提供了显著的加速。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "AI",
+            "机器学习",
+            "深度学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "在机器学习语境中，inference 常译为“推理”，指模型训练完成后进行预测或生成的过程，与 training 相对。",
+      "createdAt": "2026-11-07T04:07:03.323Z",
+      "updatedAt": "2026-11-07T04:07:03.323Z"
     }
   ]
 }
