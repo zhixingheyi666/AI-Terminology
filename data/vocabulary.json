@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T02:29:45.981Z",
+  "updatedAt": "2026-11-07T02:35:54.066Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -2773,6 +2773,227 @@
       "notes": "除字面“烹饪食谱”外，常作比喻，表示产生某结果的“配方/诀窍”，多与 for 或 of 连用。",
       "createdAt": "2026-11-07T02:29:45.981Z",
       "updatedAt": "2026-11-07T02:29:45.981Z"
+    },
+    {
+      "id": "entry-f66d9c69-8aa2-4786-b581-2d8033aec606",
+      "term": "machinery",
+      "phonetic": "/məˈʃiːnəri/",
+      "status": "learning",
+      "tags": [
+        "比喻用法",
+        "机器学习",
+        "模型架构"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-0d4e0e8b-f038-4152-8e5a-a929497d725b",
+          "dictionary": "Open English WordNet 2025 · machinery · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a system of means and activities whereby a social institution functions",
+          "definitionZh": "使某机构或系统得以运转的一套手段与活动体系。",
+          "url": "https://en-word.net/view/lemma/machinery",
+          "senseGuide": {
+            "sentence": "The model is able to use this same machinery to interpolate between data points and more complex patterns to be able to generalize—which means doing well on inputs it hadn’t seen in the past and were not in its training dataset",
+            "usage": "本句中 machinery 并非指具体机器，而是比喻模型内部进行插值和泛化的一套运作机制，因此取“社会机构/系统赖以运作的手段与活动体系”这一引申义。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "machines or machine systems collectively",
+                "definitionZh": "机器或机器系统的总称。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "the complex machinery of negotiation",
+              "zh": "复杂的谈判机制。"
+            }
+          ]
+        },
+        {
+          "id": "definition-4927f399-c743-4bc6-a849-f8ba3e86b3dd",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "an internal system of means and activities by which something functions",
+          "definitionZh": "（比喻）使某事物运转的一套内部机制或运作方式",
+          "url": "",
+          "examples": [
+            {
+              "en": "The brain uses a similar machinery to recognize faces.",
+              "zh": "大脑使用类似的机制来识别人脸。"
+            },
+            {
+              "en": "The company built new machinery for handling customer requests.",
+              "zh": "公司建立了一套处理客户请求的新机制。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-b45b20df-2411-4b08-bf9d-beedf0fd42df",
+          "en": "The model is able to use this same machinery to interpolate between data points and more complex patterns to be able to generalize—which means doing well on inputs it hadn’t seen in the past and were not in its training dataset",
+          "zh": "该模型能够利用这同一套机制，在数据点之间以及更复杂的模式之间进行插值，从而能够泛化——也就是在它过去未曾见过、且不在其训练数据集中的输入上也能表现良好。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "机器学习",
+            "认知"
+          ],
+          "contextAnalysis": "machinery 在本句作 use 的宾语，指模型所运用的同一套内部机制，把抽象的算法能力比作机器装置。",
+          "grammarAnalysis": {
+            "structure": "The model / is able to use / this same machinery / to interpolate between data points and more complex patterns / to be able to generalize / —which means doing well on inputs / it hadn’t seen in the past and were not in its training dataset",
+            "parts": [
+              {
+                "label": "The model",
+                "explanation": "主语，指所讨论的模型。"
+              },
+              {
+                "label": "is able to use",
+                "explanation": "谓语结构，表示“能够使用”。"
+              },
+              {
+                "label": "this same machinery",
+                "explanation": "宾语，比喻模型内部的一套运作机制。"
+              },
+              {
+                "label": "to interpolate between data points and more complex patterns",
+                "explanation": "不定式短语，说明使用这套机制的目的：在数据点和更复杂模式之间做插值。"
+              },
+              {
+                "label": "to be able to generalize",
+                "explanation": "目的/结果不定式，说明插值带来的泛化能力。"
+              },
+              {
+                "label": "which means doing well on inputs",
+                "explanation": "非限制性定语从句，解释 generalize 的含义。"
+              },
+              {
+                "label": "it hadn’t seen in the past and were not in its training dataset",
+                "explanation": "定语从句修饰 inputs，说明这些输入是模型过去未见且不在训练集中的。"
+              }
+            ],
+            "core": "The model can use machinery to interpolate and generalize.",
+            "rewrite": "The model can use this same mechanism to interpolate among data points and more complex patterns, which lets it generalize—that is, perform well on inputs it has never encountered and that were absent from its training data."
+          }
+        }
+      ],
+      "notes": "machinery 本义是“机器（总称）”，此处为比喻用法，指模型内部运作的一套机制，不可数。",
+      "createdAt": "2026-11-07T02:35:54.066Z",
+      "updatedAt": "2026-11-07T02:35:54.066Z"
+    },
+    {
+      "id": "entry-1a545b39-e577-403b-923c-d4932b470c5d",
+      "term": "interpolate",
+      "phonetic": "/ɪnˈtɜːpəleɪt/",
+      "status": "learning",
+      "tags": [
+        "数学",
+        "统计学",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-03de5ee8-3778-4787-9e8c-7e9446c79a09",
+          "dictionary": "Open English WordNet 2025 · interpolate · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "estimate the value of something based on known values",
+          "definitionZh": "根据已知值估算某事物的值。",
+          "url": "https://en-word.net/view/lemma/interpolate",
+          "senseGuide": {
+            "sentence": "The model is able to use this same machinery to interpolate between data points and more complex patterns to be able to generalize—which means doing well on inputs it hadn’t seen in the past and were not in its training dataset",
+            "usage": "本句中 interpolate 指根据已知数据点估算其间未知取值，正是“基于已知值估计某值”的数学/统计义。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "insert words into texts, often falsifying it thereby",
+                "definitionZh": "往文本中插入词语（常指借此篡改）。"
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-0c7c0328-3b3a-4924-a783-8c0f14fc1180",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "to estimate unknown values from known surrounding values",
+          "definitionZh": "（在已知值之间）进行插值，估算中间值",
+          "url": "",
+          "examples": [
+            {
+              "en": "The software interpolates the missing points on the curve.",
+              "zh": "该软件对曲线上缺失的点进行插值。"
+            },
+            {
+              "en": "Scientists interpolated temperatures between the two measured readings.",
+              "zh": "科学家在两个测量读数之间对温度做了插值。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-366eb7dc-2786-43d5-87c5-c1953500efd6",
+          "en": "The model is able to use this same machinery to interpolate between data points and more complex patterns to be able to generalize—which means doing well on inputs it hadn’t seen in the past and were not in its training dataset",
+          "zh": "该模型能够利用这同一套机制，在数据点之间以及更复杂的模式之间进行插值，从而能够泛化——也就是在它过去未曾见过、且不在其训练数据集中的输入上也能表现良好。",
+          "source": "",
+          "encounteredAt": "2026-11-07",
+          "note": "",
+          "exampleTags": [
+            "数学",
+            "机器学习"
+          ],
+          "contextAnalysis": "interpolate 与 between 连用，说明模型利用同一套机制在数据点与复杂模式之间进行插值，是其泛化能力的基础。",
+          "grammarAnalysis": {
+            "structure": "The model / is able to use / this same machinery / to interpolate between data points and more complex patterns / to be able to generalize / —which means doing well on inputs / it hadn’t seen in the past and were not in its training dataset",
+            "parts": [
+              {
+                "label": "The model",
+                "explanation": "主语，指所讨论的模型。"
+              },
+              {
+                "label": "is able to use",
+                "explanation": "谓语结构，表示“能够使用”。"
+              },
+              {
+                "label": "this same machinery",
+                "explanation": "宾语，比喻模型内部的一套运作机制。"
+              },
+              {
+                "label": "to interpolate between data points and more complex patterns",
+                "explanation": "不定式短语，说明使用这套机制的目的：在数据点和更复杂模式之间做插值。"
+              },
+              {
+                "label": "to be able to generalize",
+                "explanation": "目的/结果不定式，说明插值带来的泛化能力。"
+              },
+              {
+                "label": "which means doing well on inputs",
+                "explanation": "非限制性定语从句，解释 generalize 的含义。"
+              },
+              {
+                "label": "it hadn’t seen in the past and were not in its training dataset",
+                "explanation": "定语从句修饰 inputs，说明这些输入是模型过去未见且不在训练集中的。"
+              }
+            ],
+            "core": "The model can use machinery to interpolate and generalize.",
+            "rewrite": "The model can use this same mechanism to interpolate among data points and more complex patterns, which lets it generalize—that is, perform well on inputs it has never encountered and that were absent from its training data."
+          }
+        }
+      ],
+      "notes": "interpolate between A and B 表示在 A 与 B 之间插值；与 extrapolate（外推）相对。",
+      "createdAt": "2026-11-07T02:35:54.066Z",
+      "updatedAt": "2026-11-07T02:35:54.066Z"
     }
   ]
 }
