@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T12:10:19.549Z",
+  "updatedAt": "2026-11-08T03:01:35.294Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -3225,7 +3225,7 @@
           "definitionZh": "将（思想或原理）从一个领域转移到另一个领域。",
           "url": "https://en-word.net/view/lemma/project",
           "senseGuide": {
-            "sentence": " These matrices contain the information of the input tokens projected to three different spaces that help carry out the two steps of attention",
+            "sentence": "These matrices contain the information of the input tokens projected to three different spaces that help carry out the two steps of attention",
             "usage": "本句中 projected 指输入词元的表示被映射到三个不同的向量空间。",
             "fit": "contextual",
             "alsoBasic": true,
@@ -3334,7 +3334,7 @@
       "personalExamples": [
         {
           "id": "encounter-2adf3094-5ab8-4b95-b9d3-6b570bf9198e",
-          "en": " These matrices contain the information of the input tokens projected to three different spaces that help carry out the two steps of attention",
+          "en": "These matrices contain the information of the input tokens projected to three different spaces that help carry out the two steps of attention",
           "zh": "这些矩阵包含输入令牌被投影到三个不同空间的信息，这有助于执行注意力的两个步骤。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -3376,7 +3376,7 @@
           "definitionZh": "基于证据和先前结论而非直接观察得出逻辑判断的推理过程。",
           "url": "https://en-word.net/view/lemma/inference",
           "senseGuide": {
-            "sentence": "Flash Attention is a popular method and implementation that provides significant speedups for both training and inference of Transformer LLMs on GPUs. ",
+            "sentence": "Flash Attention is a popular method and implementation that provides significant speedups for both training and inference of Transformer LLMs on GPUs.",
             "usage": "本句中 inference 指模型训练后的推理阶段，而非逻辑推理；这是机器学习领域的专业用法。",
             "fit": "general",
             "alsoBasic": true,
@@ -3406,7 +3406,7 @@
       "personalExamples": [
         {
           "id": "encounter-8bb38d76-646d-4cf9-bfe3-d0385124cb63",
-          "en": "Flash Attention is a popular method and implementation that provides significant speedups for both training and inference of Transformer LLMs on GPUs. ",
+          "en": "Flash Attention is a popular method and implementation that provides significant speedups for both training and inference of Transformer LLMs on GPUs.",
           "zh": "Flash Attention 是一种流行的方法和实现，它为 GPU 上 Transformer LLM 的训练和推理都提供了显著的加速。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -3684,7 +3684,7 @@
           "definitionZh": "个人的信念或判断，并非基于证据或确定性。",
           "url": "https://en-word.net/view/lemma/sentiment",
           "senseGuide": {
-            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language.",
             "usage": "本句中的sentiment指“情感”，是情感分析中的术语，而词典中更通用的释义是“观点或态度”，两者相关但不完全相同。",
             "fit": "general",
             "alsoBasic": false,
@@ -3726,7 +3726,7 @@
       "personalExamples": [
         {
           "id": "encounter-4da2773e-b1cc-4590-87c2-36508959d975",
-          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language.",
           "zh": "文本分类在世界各地被用于广泛的应用中，从情感分析和意图检测到提取实体和检测语言。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -3768,7 +3768,7 @@
           "definitionZh": "预期结果，即有意达成或指导计划行动的目标。",
           "url": "https://en-word.net/view/lemma/intent",
           "senseGuide": {
-            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language.",
             "usage": "本句中的intent指“意图”，是意图检测中的术语，而词典中更通用的释义是“预期结果或目的”，两者相关但不完全相同。",
             "fit": "general",
             "alsoBasic": false,
@@ -3816,7 +3816,7 @@
       "personalExamples": [
         {
           "id": "encounter-56b0b60e-aff0-4fd6-9a62-d89d422e8e16",
-          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language.",
           "zh": "文本分类在世界各地被用于广泛的应用中，从情感分析和意图检测到提取实体和检测语言。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -3858,7 +3858,7 @@
           "definitionZh": "移除，通常需要一些力量或努力；也用于抽象意义。",
           "url": "https://en-word.net/view/lemma/extract",
           "senseGuide": {
-            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+            "sentence": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language.",
             "usage": "本句中的extracting指“提取”，与词典释义“移除或取出”一致，但更抽象。",
             "fit": "contextual",
             "alsoBasic": true,
@@ -3948,7 +3948,7 @@
       "personalExamples": [
         {
           "id": "encounter-ba1b7bb1-e1fe-4125-af19-3c1622f890ee",
-          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language. ",
+          "en": "Classifying text is used across the world for a wide range of applications, from sentiment analysis and intent detection to extracting entities and detecting language.",
           "zh": "文本分类在世界各地被用于广泛的应用中，从情感分析和意图检测到提取实体和检测语言。",
           "source": "",
           "encounteredAt": "2026-11-07",
@@ -3957,25 +3957,126 @@
             "NLP",
             "AI"
           ],
-          "contextAnalysis": "",
-          "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
-          },
           "wordForms": [
             {
               "text": "extracting",
               "lemma": "extract",
               "label": "-ing 形式（现在分词 / 动名词）"
             }
-          ]
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "在NLP中常指“提取”，如实体提取（entity extraction）。",
       "createdAt": "2026-11-07T12:10:19.549Z",
       "updatedAt": "2026-11-07T12:10:19.549Z"
+    },
+    {
+      "id": "entry-2d30e322-2e82-4a8b-8b21-cf461d67592b",
+      "term": "tune",
+      "phonetic": "/tuːn/",
+      "status": "learning",
+      "tags": [
+        "模型训练",
+        "fine-tuning",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-31a730ad-e6d7-4be1-8e1c-aaa86d670593",
+          "dictionary": "Open English WordNet 2025 · tune · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "adjust for (better) functioning",
+          "definitionZh": "调整以（更好地）运作。",
+          "url": "https://en-word.net/view/lemma/tune",
+          "senseGuide": {
+            "sentence": "There might be times when you want to fine-tune the model yourself if you have sufficient computing available (see Chapter 11).",
+            "usage": "本句中 tune 是 fine-tune 的一部分，意为“调整（模型）”，并非音乐调音。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "adjust the pitches of (musical instruments)",
+                "definitionZh": "调整（乐器）的音高。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the property of producing accurately a note of a given pitch",
+                "definitionZh": "准确发出给定音高的特性。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a succession of notes forming a distinctive sequence",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the adjustment of a radio receiver or other circuit to a required frequency",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "tune the engine",
+              "zh": "调整引擎。"
+            }
+          ]
+        },
+        {
+          "id": "definition-74bbdd09-06b2-4fdf-b1fc-ab47f96f31c5",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To adjust or fine-tune something (here, a model) for better functioning.",
+          "definitionZh": "调整或微调某物（此处指模型）以使其更好地运行。",
+          "url": "",
+          "examples": [
+            {
+              "en": "You can tune the model's parameters to improve accuracy.",
+              "zh": "你可以调整模型的参数以提高准确率。"
+            },
+            {
+              "en": "Engineers often fine-tune their algorithms after testing.",
+              "zh": "工程师们常在测试后微调他们的算法。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-bb91e252-980b-48c4-8867-4bbc6265b261",
+          "en": "There might be times when you want to fine-tune the model yourself if you have sufficient computing available (see Chapter 11).",
+          "zh": "有时，如果你有足够的计算资源，你可能想自己微调模型（见第11章）。",
+          "source": "",
+          "encounteredAt": "2026-11-08",
+          "note": "",
+          "exampleTags": [
+            "模型训练"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "tune 最容易从“调音”来理解。\n\n它作名词是曲调、旋律；作动词是调音、调校。例如：\ntune a guitar：调整吉他琴弦的松紧，让音高准确。\n\n这个意思后来扩展到机器、系统：调整某些参数，让它达到合适的状态。\n\nfine-tune = fine（精细地）＋ tune（调校），意思就是“精细调整”，所以译成“微调”。",
+      "createdAt": "2026-11-08T03:01:35.294Z",
+      "updatedAt": "2026-11-08T03:01:35.294Z"
     }
   ]
 }
