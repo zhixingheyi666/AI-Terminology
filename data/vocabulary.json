@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T03:06:39.061Z",
+  "updatedAt": "2026-11-08T03:36:06.157Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4213,6 +4213,246 @@
       "notes": "常与 from a ... perspective 搭配，表示“从……角度”。",
       "createdAt": "2026-11-08T03:06:39.061Z",
       "updatedAt": "2026-11-08T03:06:39.061Z"
+    },
+    {
+      "id": "entry-b3d711ab-08f9-4943-8ea5-115755f5aff4",
+      "term": "cosine",
+      "phonetic": "/ˈkoʊsaɪn/",
+      "status": "learning",
+      "tags": [
+        "数学",
+        "统计学",
+        "词向量",
+        "embeddings"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
+      "definitions": [
+        {
+          "id": "definition-f5ea9641-751c-46c6-aaa7-d61a71a5b8f2",
+          "dictionary": "Open English WordNet 2025 · cosine · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "ratio of the adjacent side to the hypotenuse of a right-angled triangle",
+          "definitionZh": "直角三角形中邻边与斜边之比；余弦。",
+          "url": "https://en-word.net/view/lemma/cosine",
+          "senseGuide": {
+            "sentence": "This is the cosine of the angle between vectors, which is calculated through the dot product of the embeddings and divided by the product of their lengths, as illustrated in Figure 4-15.",
+            "usage": "本句中 cosine 指向量夹角的余弦值，是计算向量相似度的一个数学量。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-afde00ce-8dde-4c70-9fc3-a2a46738a138",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "In mathematics, the cosine of an angle in a right triangle is the ratio of the adjacent side to the hypotenuse; more generally, a trigonometric function used to measure the similarity between vectors.",
+          "definitionZh": "余弦；在直角三角形中为邻边与斜边之比，也用于衡量向量间的相似度。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The cosine similarity between two vectors measures how closely they point in the same direction.",
+              "zh": "两个向量之间的余弦相似度衡量它们指向同一方向的程度。"
+            },
+            {
+              "en": "In a right triangle, the cosine of an acute angle is the adjacent side divided by the hypotenuse.",
+              "zh": "在直角三角形中，锐角的余弦等于邻边除以斜边。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-cef6cbab-f290-4341-9b29-5c720ca6e712",
+          "en": "This is the cosine of the angle between vectors, which is calculated through the dot product of the embeddings and divided by the product of their lengths, as illustrated in Figure 4-15.",
+          "zh": "这是向量夹角的余弦值，它通过嵌入的点积计算，再除以它们长度的乘积，如图4-15所示。",
+          "source": "",
+          "encounteredAt": "2026-11-08",
+          "note": "",
+          "exampleTags": [
+            "数学",
+            "机器学习"
+          ],
+          "contextAnalysis": "cosine 在本句中是名词，作表语的核心词，指两个向量夹角的余弦值，用于衡量嵌入向量之间的相似性。",
+          "grammarAnalysis": {
+            "structure": "This / is / the cosine of the angle between vectors,\nwhich is calculated through the dot product of the embeddings\nand divided by the product of their lengths,\nas illustrated in Figure 4-15.",
+            "parts": [
+              {
+                "label": "This",
+                "explanation": "主语，指代前文提到的某个量。"
+              },
+              {
+                "label": "is",
+                "explanation": "系动词，连接主语和表语。"
+              },
+              {
+                "label": "the cosine of the angle between vectors",
+                "explanation": "表语，说明主语是什么；其中 of the angle between vectors 是后置定语。"
+              },
+              {
+                "label": "which is calculated through the dot product of the embeddings and divided by the product of their lengths",
+                "explanation": "非限制性定语从句，修饰 the cosine，说明其计算方式；包含两个并列的被动结构 is calculated 和 (is) divided。"
+              },
+              {
+                "label": "as illustrated in Figure 4-15",
+                "explanation": "as 引导的非限制性定语从句（或状语），补充说明，意为“如图4-15所示”。"
+              }
+            ],
+            "core": "This is the cosine of the angle between vectors.",
+            "rewrite": "This is the cosine of the angle between vectors; it is calculated by taking the dot product of the embeddings, then dividing by the product of their lengths, as shown in Figure 4-15."
+          }
+        }
+      ],
+      "notes": "cosine 常与 similarity 搭配表示“余弦相似度”，是向量空间模型中的常用度量。",
+      "createdAt": "2026-11-08T03:36:06.157Z",
+      "updatedAt": "2026-11-08T03:36:06.157Z"
+    },
+    {
+      "id": "entry-3ca75be2-fece-4486-a03a-47cb2f35825c",
+      "term": "dot",
+      "phonetic": "/dɑːt/",
+      "status": "learning",
+      "tags": [
+        "数学",
+        "词向量",
+        "embeddings",
+        "机器学习"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
+      "definitions": [
+        {
+          "id": "definition-74a5bd68-9425-4b53-a203-34b316eee56b",
+          "dictionary": "Open English WordNet 2025 · dot · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a very small circular shape",
+          "definitionZh": "小圆点；点状物。",
+          "url": "https://en-word.net/view/lemma/dot",
+          "senseGuide": {
+            "sentence": "This is the cosine of the angle between vectors, which is calculated through the dot product of the embeddings and divided by the product of their lengths, as illustrated in Figure 4-15.",
+            "usage": "本句中 dot 不是指“圆点”，而是构成数学术语 dot product（点积），指两个向量对应分量相乘再求和的运算；此处名词 dot 作定语修饰 product。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "make a dot or dots",
+                "definitionZh": "加小点；用小点标记。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the shorter of the two telegraphic signals used in Morse code",
+                "definitionZh": "（摩尔斯电码中的）短点信号。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the United States federal department that institutes and coordinates national transportation programs; created in 1966",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "street name for lysergic acid diethylamide",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "scatter or intersperse like dots or studs",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "distribute loosely",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "mark with a dot",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "a row of points",
+              "zh": "一行小圆点。"
+            }
+          ]
+        },
+        {
+          "id": "definition-6cad4769-8b16-451f-9c32-d4f7613bd919",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "In mathematics, the dot product (also called scalar product) is an algebraic operation that takes two equal-length sequences of numbers and returns a single number.",
+          "definitionZh": "点积（内积）；数学中将两个等长向量对应分量相乘后求和得到标量的运算。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The dot product of two vectors is the sum of the products of their corresponding components.",
+              "zh": "两个向量的点积是它们对应分量乘积之和。"
+            },
+            {
+              "en": "We use the dot product to compute the projection of one vector onto another.",
+              "zh": "我们用点积来计算一个向量在另一个向量上的投影。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-d0a68273-2837-4e35-ac30-5e4e06755b77",
+          "en": "This is the cosine of the angle between vectors, which is calculated through the dot product of the embeddings and divided by the product of their lengths, as illustrated in Figure 4-15.",
+          "zh": "这是向量夹角的余弦值，它通过嵌入的点积计算，再除以它们长度的乘积，如图4-15所示。",
+          "source": "",
+          "encounteredAt": "2026-11-08",
+          "note": "",
+          "exampleTags": [
+            "数学",
+            "词向量"
+          ],
+          "contextAnalysis": "dot 在本句中与 product 组成固定术语 dot product，表示“点积”，是计算余弦值的关键运算；不能按普通名词“圆点”理解。",
+          "grammarAnalysis": {
+            "structure": "This / is / the cosine of the angle between vectors,\nwhich is calculated through the dot product of the embeddings\nand divided by the product of their lengths,\nas illustrated in Figure 4-15.",
+            "parts": [
+              {
+                "label": "This",
+                "explanation": "主语，指代前文提到的某个量。"
+              },
+              {
+                "label": "is",
+                "explanation": "系动词，连接主语和表语。"
+              },
+              {
+                "label": "the cosine of the angle between vectors",
+                "explanation": "表语，说明主语是什么；其中 of the angle between vectors 是后置定语。"
+              },
+              {
+                "label": "which is calculated through the dot product of the embeddings and divided by the product of their lengths",
+                "explanation": "非限制性定语从句，修饰 the cosine，说明其计算方式；包含两个并列的被动结构 is calculated 和 (is) divided。"
+              },
+              {
+                "label": "as illustrated in Figure 4-15",
+                "explanation": "as 引导的非限制性定语从句（或状语），补充说明，意为“如图4-15所示”。"
+              }
+            ],
+            "core": "This is the cosine of the angle between vectors.",
+            "rewrite": "This is the cosine of the angle between vectors; it is calculated by taking the dot product of the embeddings, then dividing by the product of their lengths, as shown in Figure 4-15."
+          }
+        }
+      ],
+      "notes": "dot 在数学语境中常构成复合名词 dot product，不表示“点”或“圆点”。",
+      "createdAt": "2026-11-08T03:36:06.157Z",
+      "updatedAt": "2026-11-08T03:36:06.157Z"
     }
   ]
 }
