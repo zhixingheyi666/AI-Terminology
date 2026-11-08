@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T03:01:35.294Z",
+  "updatedAt": "2026-11-08T03:06:39.061Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4077,6 +4077,142 @@
       "notes": "tune 最容易从“调音”来理解。\n\n它作名词是曲调、旋律；作动词是调音、调校。例如：\ntune a guitar：调整吉他琴弦的松紧，让音高准确。\n\n这个意思后来扩展到机器、系统：调整某些参数，让它达到合适的状态。\n\nfine-tune = fine（精细地）＋ tune（调校），意思就是“精细调整”，所以译成“微调”。",
       "createdAt": "2026-11-08T03:01:35.294Z",
       "updatedAt": "2026-11-08T03:01:35.294Z"
+    },
+    {
+      "id": "entry-a6461be4-869c-4115-a6e0-b2aa32895f63",
+      "term": "ourselves",
+      "phonetic": "/aʊərˈsɛlvz/",
+      "status": "learning",
+      "tags": [
+        "强调",
+        "语法"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-6e8f0adf-35bd-4595-a163-d4c27732f78d",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "pronoun",
+          "definitionEn": "Used as the object of a verb or preposition when the subject is 'we', meaning 'we' without help from others.",
+          "definitionZh": "我们自己（作为动词或介词宾语，强调主语 we 亲自）。",
+          "url": "",
+          "examples": [
+            {
+              "en": "We built the model ourselves.",
+              "zh": "我们自己构建了模型。"
+            },
+            {
+              "en": "We can solve this problem ourselves.",
+              "zh": "我们可以自己解决这个问题。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-803def58-10a0-4be7-b415-a6e24c479c16",
+          "en": "Unlike the previous example, we can perform part of the training process ourselves by approaching it from a more classical perspective.",
+          "zh": "与之前的例子不同，我们可以通过从更经典的视角来看待它，从而自己完成部分训练过程。",
+          "source": "",
+          "encounteredAt": "2026-11-08",
+          "note": "",
+          "exampleTags": [
+            "强调"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "反身代词，在句中作 by 的宾语，强调“我们亲自”。",
+      "createdAt": "2026-11-08T03:06:39.061Z",
+      "updatedAt": "2026-11-08T03:06:39.061Z"
+    },
+    {
+      "id": "entry-cc209373-f6fc-4486-91dd-9407eef4939d",
+      "term": "perspective",
+      "phonetic": "/pərˈspɛktɪv/",
+      "status": "learning",
+      "tags": [
+        "认知",
+        "语言"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-036afbfd-3a32-45d7-9056-b91c74c77e98",
+          "dictionary": "Open English WordNet 2025 · perspective · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a way of regarding situations or topics etc.",
+          "definitionZh": "看待情况或话题的方式。",
+          "url": "https://en-word.net/view/lemma/perspective",
+          "senseGuide": {
+            "sentence": "Unlike the previous example, we can perform part of the training process ourselves by approaching it from a more classical perspective.",
+            "usage": "本句指从更经典的视角（角度）来看待训练过程。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the appearance of things relative to one another as determined by their distance from the viewer",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "consider what follows from the positivist view",
+              "zh": "考虑一下从实证主义观点出发会得出什么结论。"
+            }
+          ]
+        },
+        {
+          "id": "definition-d7ec1a75-6b56-4e21-993b-6bd2eb67c31f",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A particular way of viewing or thinking about something.",
+          "definitionZh": "（看待事物的）视角，观点。",
+          "url": "",
+          "examples": [
+            {
+              "en": "From a mathematical perspective, the problem is simple.",
+              "zh": "从数学的角度来看，这个问题很简单。"
+            },
+            {
+              "en": "We need a new perspective on this issue.",
+              "zh": "我们需要以新的视角来看待这个问题。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-4892a937-ecd0-4c93-8722-2e5a3be6d8c6",
+          "en": "Unlike the previous example, we can perform part of the training process ourselves by approaching it from a more classical perspective.",
+          "zh": "与之前的例子不同，我们可以通过从更经典的视角来看待它，从而自己完成部分训练过程。",
+          "source": "",
+          "encounteredAt": "2026-11-08",
+          "note": "",
+          "exampleTags": [
+            "认知"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常与 from a ... perspective 搭配，表示“从……角度”。",
+      "createdAt": "2026-11-08T03:06:39.061Z",
+      "updatedAt": "2026-11-08T03:06:39.061Z"
     }
   ]
 }
