@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T14:35:14.164Z",
+  "updatedAt": "2026-11-09T14:40:18.206Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4568,6 +4568,61 @@
       "notes": "aptly named 是常见搭配，表示“名字起得恰当”，此处说明模型名称与功能相符。\n\naptly 是 apt 的副词形式，常修饰 named、described、called 等，表示名称或说法与实际情况相符。",
       "createdAt": "2026-11-09T14:25:21.673Z",
       "updatedAt": "2026-11-09T14:35:14.164Z"
+    },
+    {
+      "id": "entry-e1ea227e-d56b-490f-b9fb-b0640d1c7e6c",
+      "term": "Iteratively",
+      "phonetic": "/ˈɪtərətɪvli/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "LLM",
+        "模型训练"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-40006106-d7df-4a18-b0e8-f96da42d581b",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adverb",
+          "definitionEn": "In a repeated, cyclical manner, each round building on the previous one.",
+          "definitionZh": "以反复迭代、循环改进的方式。",
+          "url": "",
+          "examples": [
+            {
+              "en": "She iteratively refined the design until it met the requirements.",
+              "zh": "她反复迭代地修改设计，直到满足要求。"
+            },
+            {
+              "en": "The team solved the problem iteratively, testing each version.",
+              "zh": "团队以迭代方式解决问题，逐一测试每个版本。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-23f57a43-b347-45f3-8f3e-c25fa29cfc03",
+          "en": "Iteratively improving your prompt to get your preferred output is called prompt engineering.",
+          "zh": "反复改进你的提示词以获得你偏好的输出，这种做法叫做提示工程。",
+          "source": "",
+          "encounteredAt": "2026-11-09",
+          "note": "",
+          "exampleTags": [
+            "模型训练"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常用于描述逐步反复改进的过程，如迭代改进提示词、设计或算法。",
+      "createdAt": "2026-11-09T14:40:18.206Z",
+      "updatedAt": "2026-11-09T14:40:18.206Z"
     }
   ]
 }
