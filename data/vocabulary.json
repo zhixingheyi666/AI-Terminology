@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T14:40:18.206Z",
+  "updatedAt": "2026-11-09T14:45:56.245Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4623,6 +4623,111 @@
       "notes": "常用于描述逐步反复改进的过程，如迭代改进提示词、设计或算法。",
       "createdAt": "2026-11-09T14:40:18.206Z",
       "updatedAt": "2026-11-09T14:40:18.206Z"
+    },
+    {
+      "id": "entry-bd2f6c0e-e975-4ff5-bdb8-3afa158b95c1",
+      "term": "leverage",
+      "phonetic": "/ˈlɛvərɪdʒ/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "机器学习",
+        "模型训练",
+        "技术方案",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-9f89407d-dc34-483f-b844-33e8f123aa3d",
+          "dictionary": "Open English WordNet 2025 · leverage · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "supplement with leverage",
+          "definitionZh": "利用（已有资源）来补充或增强效果。",
+          "url": "https://en-word.net/view/lemma/leverage",
+          "senseGuide": {
+            "sentence": "In this section, we will demonstrate how we can leverage different types of generative models to perform classification without our Rotten Tomatoes dataset.",
+            "usage": "本句指利用生成模型进行分类，不是字面“杠杆作用”，而是引申为借助资源。",
+            "fit": "general",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "strategic advantage; power to act effectively",
+                "definitionZh": "战略优势；有效行动的能力。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the mechanical advantage gained by being in a position to use a lever",
+                "definitionZh": "杠杆的机械优势。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "investing with borrowed money as a way to amplify potential gains (at the risk of greater losses)",
+                "definitionZh": "举债投资以放大潜在收益（伴随更大损失风险）。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "provide with leverage",
+                "definitionZh": "为……提供杠杆。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "leverage the money that is already available",
+              "zh": "利用已有的资金。"
+            }
+          ]
+        },
+        {
+          "id": "definition-0ec17d8b-a635-419e-befb-7193a4f07b01",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To use something (such as a resource or model) to achieve a goal or gain an advantage.",
+          "definitionZh": "利用（资源、模型等）来达成目标或获得优势。",
+          "url": "",
+          "examples": [
+            {
+              "en": "We can leverage pre-trained models to save training time.",
+              "zh": "我们可以利用预训练模型来节省训练时间。"
+            },
+            {
+              "en": "The team leveraged existing data to improve accuracy.",
+              "zh": "团队利用现有数据来提高准确率。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-38121257-b255-4832-af42-519eaff711f0",
+          "en": "In this section, we will demonstrate how we can leverage different types of generative models to perform classification without our Rotten Tomatoes dataset.",
+          "zh": "在本节中，我们将演示如何利用不同类型的生成模型来进行分类，而无需我们的烂番茄数据集。",
+          "source": "",
+          "encounteredAt": "2026-11-09",
+          "note": "",
+          "exampleTags": [
+            "模型训练",
+            "AI",
+            "技术方案"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "leverage 在技术语境中常表示“利用”，比 use 更强调借助优势或资源。",
+      "createdAt": "2026-11-09T14:45:56.245Z",
+      "updatedAt": "2026-11-09T14:45:56.245Z"
     }
   ]
 }
