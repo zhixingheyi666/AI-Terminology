@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-08T03:36:06.157Z",
+  "updatedAt": "2026-11-09T14:25:21.673Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4453,6 +4453,82 @@
       "notes": "dot 在数学语境中常构成复合名词 dot product，不表示“点”或“圆点”。",
       "createdAt": "2026-11-08T03:36:06.157Z",
       "updatedAt": "2026-11-08T03:36:06.157Z"
+    },
+    {
+      "id": "entry-9352dc28-c121-4f5e-bec7-255d02d01a6c",
+      "term": "aptly",
+      "phonetic": "/ˈæptli/",
+      "status": "learning",
+      "tags": [
+        "强调",
+        "学术英语",
+        "NLP"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-faa42956-0914-480b-8c21-86f1f689f38f",
+          "dictionary": "Open English WordNet 2025 · aptly · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adverb",
+          "definitionEn": "with competence; in a competent capable manner",
+          "definitionZh": "有能力地；胜任地。",
+          "url": "https://en-word.net/view/lemma/aptly",
+          "senseGuide": {
+            "sentence": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models. ",
+            "usage": "本句用 aptly 修饰 named，强调“序列到序列模型”这一名称与模型功能相符；词典释义侧重“有能力地”，而语境侧重“恰当、贴切”。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "they worked competently",
+              "zh": "他们干得很出色。"
+            }
+          ]
+        },
+        {
+          "id": "definition-44637e5d-038a-481b-a998-b6fb7ab3905f",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adverb",
+          "definitionEn": "In a way that is appropriate or well suited to the situation.",
+          "definitionZh": "恰当地；贴切地。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The project was aptly named after the river it runs along.",
+              "zh": "这个项目以它所沿的河流命名，十分贴切。"
+            },
+            {
+              "en": "She aptly summarized the report in one sentence.",
+              "zh": "她恰当地用一句话概括了这份报告。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-27a644ae-80a1-425b-832e-90844fa9c268",
+          "en": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models. ",
+          "zh": "这些模型以文本为输入并生成文本，因此被恰当地命名为序列到序列模型。",
+          "source": "",
+          "encounteredAt": "2026-11-09",
+          "note": "",
+          "exampleTags": [
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "aptly named 是常见搭配，表示“名字起得恰当”，此处说明模型名称与功能相符。",
+      "createdAt": "2026-11-09T14:25:21.673Z",
+      "updatedAt": "2026-11-09T14:25:21.673Z"
     }
   ]
 }
