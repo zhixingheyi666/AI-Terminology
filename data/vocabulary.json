@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T14:25:21.673Z",
+  "updatedAt": "2026-11-09T14:35:14.164Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4462,28 +4462,31 @@
       "tags": [
         "强调",
         "学术英语",
-        "NLP"
+        "NLP",
+        "程度副词"
       ],
-      "reviewTags": [],
+      "reviewTags": [
+        "复习"
+      ],
       "definitions": [
         {
           "id": "definition-faa42956-0914-480b-8c21-86f1f689f38f",
           "dictionary": "Open English WordNet 2025 · aptly · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
           "partOfSpeech": "adverb",
           "definitionEn": "with competence; in a competent capable manner",
-          "definitionZh": "有能力地；胜任地。",
+          "definitionZh": "以合适、恰当的方式；胜任地。",
           "url": "https://en-word.net/view/lemma/aptly",
           "senseGuide": {
             "sentence": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models. ",
-            "usage": "本句用 aptly 修饰 named，强调“序列到序列模型”这一名称与模型功能相符；词典释义侧重“有能力地”，而语境侧重“恰当、贴切”。",
-            "fit": "general",
+            "usage": "本句中 aptly 修饰被动结构 are named，表示“序列到序列模型”这一名称与模型“输入文本、输出文本”的特点完全相符，即“恰如其分地被称为”。",
+            "fit": "contextual",
             "alsoBasic": true,
             "senses": []
           },
           "examples": [
             {
               "en": "they worked competently",
-              "zh": "他们干得很出色。"
+              "zh": "他们干得很称职。"
             }
           ]
         },
@@ -4504,31 +4507,67 @@
               "zh": "她恰当地用一句话概括了这份报告。"
             }
           ]
+        },
+        {
+          "id": "definition-cc04e090-0a2c-4ef4-a48f-6175218e708d",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adverb",
+          "definitionEn": "In a fitting, appropriate, or suitable manner.",
+          "definitionZh": "恰当地；贴切地。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The term “helper” is aptly chosen, since the tool saves users hours of work.",
+              "zh": "“助手”这个名称选得很贴切，因为该工具能为用户节省数小时的工作。"
+            },
+            {
+              "en": "She aptly described the meeting as short but productive.",
+              "zh": "她恰如其分地把这次会议形容为简短而富有成效。"
+            }
+          ]
         }
       ],
       "personalExamples": [
         {
           "id": "encounter-27a644ae-80a1-425b-832e-90844fa9c268",
           "en": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models. ",
-          "zh": "这些模型以文本为输入并生成文本，因此被恰当地命名为序列到序列模型。",
+          "zh": "这些模型以一些文本为输入并生成文本，因此被恰如其分地称为序列到序列模型。",
           "source": "",
           "encounteredAt": "2026-11-09",
           "note": "",
           "exampleTags": [
-            "学术英语"
+            "学术英语",
+            "教材例句"
           ],
-          "contextAnalysis": "",
+          "contextAnalysis": "aptly 在本句中是程度/方式副词，作状语修饰 named，强调命名贴切，呼应前文“以文本为输入并生成文本”这一特点，使术语“sequence-to-sequence models”的由来显得自然合理。",
           "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
+            "structure": "These models / take as input / some text and generative text / and are thereby aptly named / sequence-to-sequence models.",
+            "parts": [
+              {
+                "label": "These models",
+                "explanation": "主语，指前文讨论的这类模型。"
+              },
+              {
+                "label": "take as input some text and generative text",
+                "explanation": "谓语部分，说明模型以文本为输入并产生文本；as input 为介词短语作补语。"
+              },
+              {
+                "label": "and are thereby aptly named",
+                "explanation": "并列谓语，被动语态，thereby 表示“因此”，aptly 修饰 named，说明命名很贴切。"
+              },
+              {
+                "label": "sequence-to-sequence models",
+                "explanation": "主语补足语，说明这些模型被称作什么。"
+              }
+            ],
+            "core": "These models are aptly named sequence-to-sequence models.",
+            "rewrite": "Because these models take text as input and produce text as output, the name “sequence-to-sequence models” suits them very well."
           }
         }
       ],
-      "notes": "aptly named 是常见搭配，表示“名字起得恰当”，此处说明模型名称与功能相符。",
+      "notes": "aptly named 是常见搭配，表示“名字起得恰当”，此处说明模型名称与功能相符。\n\naptly 是 apt 的副词形式，常修饰 named、described、called 等，表示名称或说法与实际情况相符。",
       "createdAt": "2026-11-09T14:25:21.673Z",
-      "updatedAt": "2026-11-09T14:25:21.673Z"
+      "updatedAt": "2026-11-09T14:35:14.164Z"
     }
   ]
 }
