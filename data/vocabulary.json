@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T15:19:58.775Z",
+  "updatedAt": "2026-11-11T15:29:37.031Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5171,6 +5171,121 @@
       "notes": "resemble 是及物动词，直接跟宾语，不用于进行时，表示“与……相似”。",
       "createdAt": "2026-11-11T15:19:58.775Z",
       "updatedAt": "2026-11-11T15:19:58.775Z"
+    },
+    {
+      "id": "entry-9583b156-a33d-4d9c-acfc-8ed55e122cdd",
+      "term": "glimpse",
+      "phonetic": "/ɡlɪmps/",
+      "status": "learning",
+      "tags": [
+        "比喻用法",
+        "认知",
+        "AI",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-fe12bff1-36fa-4fe3-abd5-efe038f4eb19",
+          "dictionary": "Open English WordNet 2025 · glimpse · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a vague indication",
+          "definitionZh": "模糊的迹象；初步的暗示。",
+          "url": "https://en-word.net/view/lemma/glimpse",
+          "senseGuide": {
+            "sentence": "The F1 score of 0.91 already gives a glimpse into the performance of the model that brought generative AI to the masses.",
+            "usage": "本句用名词 glimpse 表示 F1 分数让人对模型性能获得初步、不完整的了解，属于“模糊迹象”的比喻义，而非字面的一瞥。",
+            "fit": "general",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "a brief or incomplete view",
+                "definitionZh": "短暂或不完整的景象；一瞥。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a quick look",
+                "definitionZh": "迅速的一看；一瞥。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "catch a glimpse of or see briefly",
+                "definitionZh": "瞥见；短暂地看到。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "he caught only a glimpse of the professor's meaning",
+              "zh": "他只隐约领会了教授的意思。"
+            }
+          ]
+        },
+        {
+          "id": "definition-a49d51f3-31b1-4223-ae86-cdad60cd728c",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A brief or incomplete view or indication of something.",
+          "definitionZh": "对某事物的短暂或不完整的了解；一瞥，初步印象。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The early results offer a glimpse into how the new drug works.",
+              "zh": "早期结果让人得以一窥这种新药的作用方式。"
+            },
+            {
+              "en": "Through the open door she caught a glimpse of the busy kitchen.",
+              "zh": "透过敞开的门，她瞥见了忙碌的厨房。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-e6bd5a75-3576-44cb-b11b-58bc9ca5e15c",
+          "en": "The F1 score of 0.91 already gives a glimpse into the performance of the model that brought generative AI to the masses.",
+          "zh": "0.91 的 F1 分数已经让人得以一窥这个将生成式 AI 带给大众的模型的性能。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "AI",
+            "机器学习",
+            "论文例句"
+          ],
+          "contextAnalysis": "glimpse 在本句作名词，受 gives a glimpse into 这一搭配支配，把 F1 分数比作观察模型性能的一个窗口，强调只能看到部分而非全貌。",
+          "grammarAnalysis": {
+            "structure": "The F1 score of 0.91 / already gives / a glimpse into the performance of the model / that brought generative AI to the masses.",
+            "parts": [
+              {
+                "label": "The F1 score of 0.91",
+                "explanation": "主语，指 F1 分数及其具体取值。"
+              },
+              {
+                "label": "already gives",
+                "explanation": "谓语和状语，表示“已经给出”。"
+              },
+              {
+                "label": "a glimpse into the performance of the model",
+                "explanation": "宾语，glimpse 在此为名词，表示“一窥、初步了解”。"
+              },
+              {
+                "label": "that brought generative AI to the masses",
+                "explanation": "定语从句，修饰 the model，说明该模型的贡献。"
+              }
+            ],
+            "core": "The F1 score gives a glimpse into the model's performance.",
+            "rewrite": "The F1 score of 0.91 already offers a partial, preliminary look at how well the model performed—the same model that made generative AI widely accessible."
+          }
+        }
+      ],
+      "notes": "glimpse 常用搭配 give/catch a glimpse into/of，表示“得以一窥、初步了解”，多为比喻用法。",
+      "createdAt": "2026-11-11T15:29:37.031Z",
+      "updatedAt": "2026-11-11T15:29:37.031Z"
     }
   ]
 }
