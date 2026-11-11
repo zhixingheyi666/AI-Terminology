@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T14:46:05.712Z",
+  "updatedAt": "2026-11-11T15:19:58.775Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5087,6 +5087,90 @@
       "notes": "nuance 常指意义、态度或感受上的细微差异，在技术语境中可指数据所包含的微妙信息。",
       "createdAt": "2026-11-11T14:46:05.712Z",
       "updatedAt": "2026-11-11T14:46:05.712Z"
+    },
+    {
+      "id": "entry-f228ec40-1be5-4520-b21b-ca6a71d609f2",
+      "term": "resemble",
+      "phonetic": "/rɪˈzɛmbəl/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "机器学习",
+        "模型训练"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-31a1414a-a610-4fdf-9942-a77eb0b311b7",
+          "dictionary": "Open English WordNet 2025 · resemble · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "appear like; be similar or bear a likeness to",
+          "definitionZh": "类似于；与……相似。",
+          "url": "https://en-word.net/view/lemma/resemble",
+          "senseGuide": {
+            "sentence": "By demonstrating the difference between a good and better output the generative model learns to generate text that resembles human preference.",
+            "usage": "本句中 resemble 表示生成的文本与人类偏好相似。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "She resembles her mother very much",
+              "zh": "她非常像她的母亲。"
+            }
+          ]
+        },
+        {
+          "id": "definition-a983fab6-f48a-496e-879e-4c5ca87f2e1d",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To be similar to or look like something.",
+          "definitionZh": "类似于；与……相似。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The generated text resembles a human-written essay.",
+              "zh": "生成的文本类似于人类写的文章。"
+            },
+            {
+              "en": "Her painting resembles a famous masterpiece.",
+              "zh": "她的画作类似于一幅著名杰作。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-44844484-fa3e-44c8-a544-0738a6946a53",
+          "en": "By demonstrating the difference between a good and better output the generative model learns to generate text that resembles human preference.",
+          "zh": "通过展示好输出与更好输出之间的差异，生成模型学会生成类似人类偏好的文本。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "AI",
+            "机器学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          },
+          "wordForms": [
+            {
+              "text": "resembles",
+              "lemma": "resemble",
+              "label": "动词第三人称单数"
+            }
+          ]
+        }
+      ],
+      "notes": "resemble 是及物动词，直接跟宾语，不用于进行时，表示“与……相似”。",
+      "createdAt": "2026-11-11T15:19:58.775Z",
+      "updatedAt": "2026-11-11T15:19:58.775Z"
     }
   ]
 }
