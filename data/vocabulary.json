@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T14:43:04.560Z",
+  "updatedAt": "2026-11-11T14:46:05.712Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5010,6 +5010,83 @@
       "notes": "本句中 resulting 作定语，修饰 model，表示“由此得到的”；不同于动词 result 表示“导致”。",
       "createdAt": "2026-11-11T14:43:04.560Z",
       "updatedAt": "2026-11-11T14:43:04.560Z"
+    },
+    {
+      "id": "entry-39b0330a-6957-4632-8abb-3a563a476991",
+      "term": "nuance",
+      "phonetic": "/ˈnjuːɑːns/",
+      "status": "learning",
+      "tags": [
+        "语义",
+        "NLP",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-f23156bc-05a7-4d6e-b728-1f97b710c96a",
+          "dictionary": "Open English WordNet 2025 · nuance · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a subtle difference in meaning or opinion or attitude",
+          "definitionZh": "意义、意见或态度上的细微差别",
+          "url": "https://en-word.net/view/lemma/nuance",
+          "senseGuide": {
+            "sentence": "A major benefit of using preference data over instruction data is the nuance it represents.",
+            "usage": "本句指偏好数据所体现的细微差别，即数据中蕴含的微妙信息。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "without understanding the finer nuances you can't enjoy the humor",
+              "zh": "如果不理解更细微的差别，你就无法欣赏其中的幽默。"
+            }
+          ]
+        },
+        {
+          "id": "definition-14ce0c66-8330-43cd-a7a4-0511430b300b",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A subtle difference or distinction in meaning, expression, or response.",
+          "definitionZh": "意义上的细微差别或微妙之处。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The nuance in her tone suggested she was not entirely convinced.",
+              "zh": "她语气中的细微差别表明她并不完全信服。"
+            },
+            {
+              "en": "Preference data captures nuances that instruction data often misses.",
+              "zh": "偏好数据能捕捉指令数据常常忽略的细微差别。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-a65d4618-815b-433c-a0a0-9b8c7a619534",
+          "en": "A major benefit of using preference data over instruction data is the nuance it represents.",
+          "zh": "使用偏好数据而非指令数据的一个主要好处是它所体现的细微差别。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "机器学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "nuance 常指意义、态度或感受上的细微差异，在技术语境中可指数据所包含的微妙信息。",
+      "createdAt": "2026-11-11T14:46:05.712Z",
+      "updatedAt": "2026-11-11T14:46:05.712Z"
     }
   ]
 }
