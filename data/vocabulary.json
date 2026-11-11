@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T15:29:37.031Z",
+  "updatedAt": "2026-11-11T15:32:49.789Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5286,6 +5286,149 @@
       "notes": "glimpse 常用搭配 give/catch a glimpse into/of，表示“得以一窥、初步了解”，多为比喻用法。",
       "createdAt": "2026-11-11T15:29:37.031Z",
       "updatedAt": "2026-11-11T15:29:37.031Z"
+    },
+    {
+      "id": "entry-791c9c5d-3d03-4296-a86d-ad22373eac8e",
+      "term": "mass",
+      "phonetic": "/mæs/",
+      "status": "learning",
+      "tags": [
+        "比喻用法",
+        "认知"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-c24b0128-9b2b-4daa-b078-37ee16b90cac",
+          "dictionary": "Open English WordNet 2025 · mass · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "the common people generally",
+          "definitionZh": "普通民众；大众。",
+          "url": "https://en-word.net/view/lemma/mass",
+          "senseGuide": {
+            "sentence": "The F1 score of 0.91 already gives a glimpse into the performance of the model that brought generative AI to the masses.",
+            "usage": "本句中 the masses 指普通大众，说明生成式 AI 被推广到普通用户之中。",
+            "fit": "contextual",
+            "alsoBasic": false,
+            "senses": [
+              {
+                "role": "basic",
+                "partOfSpeech": "noun",
+                "definitionEn": "(often followed by ‘of’) a large number or amount or extent",
+                "definitionZh": "大量；大批（常后接 of）。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the property of a body that causes it to have weight in a gravitational field",
+                "definitionZh": "质量；物体因引力场而具有重量的属性。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "formed of separate units gathered into a mass or whole",
+                "definitionZh": "大量的；成批的；由多个单位聚集而成的。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "(Roman Catholic Church and Protestant Churches) the celebration of the Eucharist",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a musical setting for a Mass",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a sequence of prayers constituting the Christian Eucharistic rite",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "an ill-structured collection of similar things (objects or people)",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a body of matter without definite shape",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the property of something that is great in magnitude",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "join together into a mass or collect or form a mass",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "separate the warriors from the mass",
+              "zh": "把勇士与普通大众区分开来。"
+            }
+          ]
+        },
+        {
+          "id": "definition-ef20f7df-74d1-4a53-94bb-852063661be0",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The common people generally; ordinary people as a group.",
+          "definitionZh": "大众；普通民众。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Smartphones brought the internet to the masses.",
+              "zh": "智能手机把互联网带给了大众。"
+            },
+            {
+              "en": "The new service was designed for the masses, not just experts.",
+              "zh": "这项新服务是为大众设计的，而不只是为专家。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-5515d23c-393b-4361-8b4c-7744ef1a1009",
+          "en": "The F1 score of 0.91 already gives a glimpse into the performance of the model that brought generative AI to the masses.",
+          "zh": "F1 分数 0.91 已经让人得以一窥那个将生成式 AI 带给大众的模型的性能。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "认知"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          },
+          "wordForms": [
+            {
+              "text": "masses",
+              "lemma": "mass",
+              "label": "动词第三人称单数"
+            }
+          ]
+        }
+      ],
+      "notes": "the masses 指“大众、普通民众”，常用复数形式，多出现在 bring ... to the masses 这类搭配中。",
+      "createdAt": "2026-11-11T15:32:49.789Z",
+      "updatedAt": "2026-11-11T15:32:49.789Z"
     }
   ]
 }
