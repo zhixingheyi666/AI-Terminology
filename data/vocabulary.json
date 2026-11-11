@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T14:05:28.922Z",
+  "updatedAt": "2026-11-11T14:40:30.478Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4793,6 +4793,102 @@
       "notes": "leverage 在技术语境中常表示“利用”，比 use 更强调借助优势或资源。",
       "createdAt": "2026-11-09T14:45:56.245Z",
       "updatedAt": "2026-11-09T14:45:56.245Z"
+    },
+    {
+      "id": "entry-580f58ef-2ca7-466d-9275-ac665560c973",
+      "term": "preference",
+      "phonetic": "/ˈprefərəns/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "模型训练",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-753e4901-8f66-4aa8-9db0-e59bd28b8eed",
+          "dictionary": "Open English WordNet 2025 · preference · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a strong liking",
+          "definitionZh": "强烈的喜爱。",
+          "url": "https://en-word.net/view/lemma/preference",
+          "senseGuide": {
+            "sentence": "Fortunately, OpenAI shared an overview of the training procedure that involved an important component, namely preference tuning. ",
+            "usage": "本句中 preference tuning 指依据人类偏好对模型进行调优，preference 表示偏好这一含义。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the right or chance to choose",
+                "definitionZh": "选择的权利或机会。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a predisposition in favor of something",
+                "definitionZh": "偏向某事物的倾向。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "grant of favor or advantage to one over another (especially to a country or countries in matters of international trade, such as levying duties)",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "my own preference is for good literature",
+              "zh": "我本人的偏好是优秀的文学作品。"
+            }
+          ]
+        },
+        {
+          "id": "definition-8073b35b-05ff-40a7-aafc-6ae2156b205f",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A liking for or inclination toward one thing over another.",
+          "definitionZh": "对某事物的偏爱或倾向。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Her preference for tea over coffee has never changed.",
+              "zh": "她偏爱茶而不是咖啡，这一点从未改变。"
+            },
+            {
+              "en": "The system records each user's preference.",
+              "zh": "系统会记录每位用户的偏好。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-15e2a2d2-a4b6-4f5f-890f-583e465b8b6d",
+          "en": "Fortunately, OpenAI shared an overview of the training procedure that involved an important component, namely preference tuning. ",
+          "zh": "幸运的是，OpenAI 分享了一份训练流程概述，其中涉及一个重要组成部分，即偏好调优。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "模型训练",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "preference 常与 for 搭配，表示对……的偏爱；preference tuning 指按人类偏好进行调优。",
+      "createdAt": "2026-11-11T14:40:30.478Z",
+      "updatedAt": "2026-11-11T14:40:30.478Z"
     }
   ]
 }
