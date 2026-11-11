@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T14:40:30.478Z",
+  "updatedAt": "2026-11-11T14:43:04.560Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4889,6 +4889,127 @@
       "notes": "preference 常与 for 搭配，表示对……的偏爱；preference tuning 指按人类偏好进行调优。",
       "createdAt": "2026-11-11T14:40:30.478Z",
       "updatedAt": "2026-11-11T14:40:30.478Z"
+    },
+    {
+      "id": "entry-e44df29b-06c2-4144-bea3-12476653f247",
+      "term": "result",
+      "phonetic": "/rɪˈzʌlt/",
+      "status": "learning",
+      "tags": [
+        "AI",
+        "机器学习",
+        "模型训练"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-2a9e7c17-c709-4c6b-90d7-26ec30d48d35",
+          "dictionary": "Open English WordNet 2025 · result · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a phenomenon that follows and is caused by some previous phenomenon",
+          "definitionZh": "由先前现象引起并随之出现的事物。",
+          "url": "https://en-word.net/view/lemma/result",
+          "senseGuide": {
+            "sentence": "OpenAI used the resulting model to generate multiple outputs that were manually ranked from best to worst. ",
+            "usage": "本句的 resulting 是动词 result 的现在分词作定语，指“作为前一步骤的结果而产生的”；所选名词释义“由先前现象引起并随之出现的事物”在因果含义上最接近，但词性不同，因此为一般匹配。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a statement that solves a problem or explains how to solve the problem",
+                "definitionZh": "解决问题的办法或说明。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "something that results",
+                "definitionZh": "产生的结果或成果。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the semantic role of the noun phrase whose referent exists only by virtue of the activity denoted by the verb in the clause",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "issue or terminate (in a specified way, state, etc.); end",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "produce as a result or residue",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "come about or follow as a consequence",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "the magnetic effect was greater when the rod was lengthwise",
+              "zh": "当杆呈纵向时，磁效应更大。"
+            }
+          ]
+        },
+        {
+          "id": "definition-eca6b4d3-fa11-4a17-9fa1-14e605d46bdf",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective (present participle of the verb result)",
+          "definitionEn": "Following or produced as a consequence; in this sentence, the model that came about as a consequence of a previous process.",
+          "definitionZh": "作为结果产生的；本句指经过此前过程得出的模型。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The resulting data set was used to train a new classifier.",
+              "zh": "由此产生的数据集被用来训练一个新的分类器。"
+            },
+            {
+              "en": "They fixed the bug and tested the resulting build.",
+              "zh": "他们修复了缺陷，并测试了由此生成的构建版本。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-73439262-7323-49f5-a9ca-f99239fe87d7",
+          "en": "OpenAI used the resulting model to generate multiple outputs that were manually ranked from best to worst. ",
+          "zh": "OpenAI 使用由此得到的模型生成多个输出，并人工将这些输出从最好到最差进行排序。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "机器学习",
+            "模型训练"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          },
+          "wordForms": [
+            {
+              "text": "resulting",
+              "lemma": "result",
+              "label": "-ing 形式（现在分词 / 动名词）"
+            }
+          ]
+        }
+      ],
+      "notes": "本句中 resulting 作定语，修饰 model，表示“由此得到的”；不同于动词 result 表示“导致”。",
+      "createdAt": "2026-11-11T14:43:04.560Z",
+      "updatedAt": "2026-11-11T14:43:04.560Z"
     }
   ]
 }
