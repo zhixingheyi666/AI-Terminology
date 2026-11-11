@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T14:45:56.245Z",
+  "updatedAt": "2026-11-11T14:05:28.922Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -3721,6 +3721,52 @@
               "zh": "公众对新政策的情绪存在分歧。"
             }
           ]
+        },
+        {
+          "id": "definition-e5b9b084-a64e-4a9a-8cb9-d5a80e7d91d4",
+          "dictionary": "Open English WordNet 2025 · sentiment · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a personal belief or judgment that is not founded on proof or certainty",
+          "definitionZh": "不基于证据或确定性的个人信念或看法。",
+          "url": "https://en-word.net/view/lemma/sentiment",
+          "senseGuide": {
+            "sentence": "Compared to our task-specific model, we cannot just give the model some text and hope it will output the sentiment.",
+            "usage": "本句指模型输出的情感倾向；候选义项为“个人信念或看法”，与之相近，但本句更强调文本中表达的情感态度。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "tender, romantic, or nostalgic feeling or emotion",
+                "definitionZh": "温柔、浪漫或怀旧的情感或情绪。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "my opinion differs from yours",
+              "zh": "我的看法和你的不同。"
+            }
+          ]
+        },
+        {
+          "id": "definition-d653eaf5-2b42-4980-a74f-f1839daec708",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The emotional attitude or opinion expressed in a text or piece of language.",
+          "definitionZh": "文本或语言中表达的情感倾向或态度。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The tool analyzes the sentiment of customer reviews.",
+              "zh": "这个工具分析顾客评论的情感倾向。"
+            },
+            {
+              "en": "His speech carried a sentiment of hope.",
+              "zh": "他的讲话带着一种希望的情绪。"
+            }
+          ]
         }
       ],
       "personalExamples": [
@@ -3742,11 +3788,30 @@
             "core": "",
             "rewrite": ""
           }
+        },
+        {
+          "id": "encounter-2548cd0f-2fc4-47d4-addf-a78f38a635ae",
+          "en": "Compared to our task-specific model, we cannot just give the model some text and hope it will output the sentiment.",
+          "zh": "与我们的特定任务模型相比，我们不能只给模型一些文本，就指望它输出情感。",
+          "source": "",
+          "encounteredAt": "2026-11-11",
+          "note": "",
+          "exampleTags": [
+            "情感分析",
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
-      "notes": "在NLP中常指“情感”，如情感分析（sentiment analysis）。",
+      "notes": "在NLP中常指“情感”，如情感分析（sentiment analysis）。\n\n在文本分析语境中常指句子或评论所表达的情感倾向，多作不可数名词。",
       "createdAt": "2026-11-07T12:10:19.549Z",
-      "updatedAt": "2026-11-07T12:10:19.549Z"
+      "updatedAt": "2026-11-11T14:05:28.922Z"
     },
     {
       "id": "entry-93493e5e-86c8-4e4a-916e-cfd4c0f39484",
@@ -4477,7 +4542,7 @@
           "definitionZh": "以合适、恰当的方式；胜任地。",
           "url": "https://en-word.net/view/lemma/aptly",
           "senseGuide": {
-            "sentence": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models. ",
+            "sentence": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models.",
             "usage": "本句中 aptly 修饰被动结构 are named，表示“序列到序列模型”这一名称与模型“输入文本、输出文本”的特点完全相符，即“恰如其分地被称为”。",
             "fit": "contextual",
             "alsoBasic": true,
@@ -4530,7 +4595,7 @@
       "personalExamples": [
         {
           "id": "encounter-27a644ae-80a1-425b-832e-90844fa9c268",
-          "en": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models. ",
+          "en": "These models take as input some text and generative text and are thereby aptly named sequence-to-sequence models.",
           "zh": "这些模型以一些文本为输入并生成文本，因此被恰如其分地称为序列到序列模型。",
           "source": "",
           "encounteredAt": "2026-11-09",
