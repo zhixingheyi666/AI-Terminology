@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:25:30.998Z",
+  "updatedAt": "2026-11-12T08:33:14.667Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -6045,6 +6045,365 @@
       "notes": "reign supreme 为固定搭配，表示“占据至高地位、占主导”。",
       "createdAt": "2026-11-12T08:25:30.998Z",
       "updatedAt": "2026-11-12T08:25:30.998Z"
+    },
+    {
+      "id": "entry-049365d7-a779-4de5-9023-1922bba99c1c",
+      "term": "exploratory",
+      "phonetic": "/ɪkˈsplɒrətəri/",
+      "status": "learning",
+      "tags": [
+        "统计学",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-1599f05e-d83a-4085-96e5-187e0f33b337",
+          "dictionary": "Open English WordNet 2025 · exploratory · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "serving in or intended for exploration or discovery",
+          "definitionZh": "用于探索或发现的。",
+          "url": "https://en-word.net/view/lemma/exploratory",
+          "senseGuide": {
+            "sentence": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+            "usage": "此处 exploratory 修饰 data analysis，表示探索性的数据分析，即用于发现未知模式的分析。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "an exploratory operation",
+              "zh": "一项探索性手术。"
+            }
+          ]
+        },
+        {
+          "id": "definition-8a6fcad0-0acb-4f2b-a011-c9e0cc9df64e",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Serving in or intended for exploration or discovery.",
+          "definitionZh": "探索性的；用于探索或发现的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The team conducted an exploratory study before the main experiment.",
+              "zh": "团队在主要实验之前进行了一项探索性研究。"
+            },
+            {
+              "en": "Exploratory analysis helps reveal hidden patterns in the data.",
+              "zh": "探索性分析有助于揭示数据中的隐藏模式。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-efe88e87-8848-4f99-8cd6-1c509ab9ff43",
+          "en": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+          "zh": "如图5-1所示，由语义相似的文档生成的聚类不仅有助于高效地对大量非结构化文本进行分类，而且允许进行快速的探索性数据分析。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "exploratory 常修饰 analysis、study、research 等，表示初步的、探索性质的。",
+      "createdAt": "2026-11-12T08:33:14.667Z",
+      "updatedAt": "2026-11-12T08:33:14.667Z"
+    },
+    {
+      "id": "entry-c7b79baf-5cb5-4c18-86df-378ebbafb80c",
+      "term": "facilitate",
+      "phonetic": "/fəˈsɪlɪteɪt/",
+      "status": "learning",
+      "tags": [
+        "学术英语",
+        "技术方案"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-53098e00-5268-47bf-9d75-6ec1bd3a4eed",
+          "dictionary": "Open English WordNet 2025 · facilitate · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "make easier",
+          "definitionZh": "使更容易。",
+          "url": "https://en-word.net/view/lemma/facilitate",
+          "senseGuide": {
+            "sentence": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+            "usage": "本句中 facilitate 表示“使……更容易”，即聚类有助于使分类变得高效。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "be of use",
+                "definitionZh": "有用；起作用。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "increase the likelihood of (a response)",
+                "definitionZh": "增加（反应）的可能性。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "you could facilitate the process by sharing your knowledge",
+              "zh": "通过分享知识，你可以使这个过程更容易。"
+            }
+          ]
+        },
+        {
+          "id": "definition-05e7da41-d207-4f09-b88b-c68d827d247c",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To make easier or less difficult.",
+          "definitionZh": "使容易；促进；帮助。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Good tools facilitate collaboration among team members.",
+              "zh": "好的工具能促进团队成员之间的协作。"
+            },
+            {
+              "en": "The new software facilitates data processing.",
+              "zh": "新软件使数据处理更加容易。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-fac21f45-559d-458a-8c9b-4338fee7c6d3",
+          "en": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+          "zh": "如图5-1所示，由语义相似的文档生成的聚类不仅有助于高效地对大量非结构化文本进行分类，而且允许进行快速的探索性数据分析。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "技术方案"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "facilitate 后常接名词或动名词，表示使某事更容易或促进其发生。",
+      "createdAt": "2026-11-12T08:33:14.667Z",
+      "updatedAt": "2026-11-12T08:33:14.667Z"
+    },
+    {
+      "id": "entry-54fac53a-3cca-4bd8-b762-0e8201d1077b",
+      "term": "categorization",
+      "phonetic": "/ˌkætəɡəraɪˈzeɪʃən/",
+      "status": "learning",
+      "tags": [
+        "NLP",
+        "机器学习"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-3c75e529-b186-4eb4-80f7-cb629a99e363",
+          "dictionary": "Open English WordNet 2025 · categorization · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "the act of distributing things into classes or categories of the same type",
+          "definitionZh": "将事物分入同类类别的行为。",
+          "url": "https://en-word.net/view/lemma/categorization",
+          "senseGuide": {
+            "sentence": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+            "usage": "此处 categorization 指将大量非结构化文本按类别归类的行为。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a group of people or things arranged by class or category",
+                "definitionZh": "按类别安排的一组人或物。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the basic cognitive process of arranging into classes or categories",
+                "definitionZh": "将事物排列成类的基本认知过程。"
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-e7ae11db-55fc-45a9-bb25-63ed16b68384",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The act of distributing things into classes or categories of the same type.",
+          "definitionZh": "分类；归类。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Automatic categorization of emails saves time.",
+              "zh": "电子邮件的自动分类节省时间。"
+            },
+            {
+              "en": "The categorization of species is a fundamental task in biology.",
+              "zh": "物种分类是生物学的一项基本任务。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-c2073c93-fd26-4f9a-9225-78990cf35b1a",
+          "en": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+          "zh": "如图5-1所示，由语义相似的文档生成的聚类不仅有助于高效地对大量非结构化文本进行分类，而且允许进行快速的探索性数据分析。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "NLP"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "categorization 指将事物分门别类的过程，常与 of 连用。",
+      "createdAt": "2026-11-12T08:33:14.667Z",
+      "updatedAt": "2026-11-12T08:33:14.667Z"
+    },
+    {
+      "id": "entry-0a4f72a2-f751-45ae-bee2-28df8605ae3b",
+      "term": "volume",
+      "phonetic": "/ˈvɒljuːm/",
+      "status": "learning",
+      "tags": [
+        "统计学",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-4fc43287-75d1-4557-a092-5a9f501bc9dd",
+          "dictionary": "Open English WordNet 2025 · volume · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a relative amount",
+          "definitionZh": "相对数量。",
+          "url": "https://en-word.net/view/lemma/volume",
+          "senseGuide": {
+            "sentence": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+            "usage": "此处 volumes 指文本的数量或量，而非物理体积或音量。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the amount of 3-dimensional space occupied by an object",
+                "definitionZh": "物体占据的三维空间量。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "the property of something that is great in magnitude",
+                "definitionZh": "某物 magnitude 大的特性。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "physical objects consisting of a number of pages bound together",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "a publication that is one of a set of several similar publications",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the magnitude of sound (usually in a specified direction)",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "mix one volume of the solution with ten volumes of water",
+              "zh": "将一份溶液与十份水混合。"
+            }
+          ]
+        },
+        {
+          "id": "definition-95846cf4-677e-400d-8cde-13a0ee38916c",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A relative amount or quantity, especially a large amount.",
+          "definitionZh": "量；数量；大量。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The system handles a large volume of queries every day.",
+              "zh": "该系统每天处理大量查询。"
+            },
+            {
+              "en": "We need to reduce the volume of paperwork.",
+              "zh": "我们需要减少文书工作量。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-9f3ff69a-39ab-4b72-8814-627e61e8c895",
+          "en": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+          "zh": "如图5-1所示，由语义相似的文档生成的聚类不仅有助于高效地对大量非结构化文本进行分类，而且允许进行快速的探索性数据分析。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          },
+          "wordForms": [
+            {
+              "text": "volumes",
+              "lemma": "volume",
+              "label": "名词复数"
+            }
+          ]
+        }
+      ],
+      "notes": "volumes of 表示“大量的”，常用于描述文本、数据等。",
+      "createdAt": "2026-11-12T08:33:14.667Z",
+      "updatedAt": "2026-11-12T08:33:14.667Z"
     }
   ]
 }
