@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T07:15:33.382Z",
+  "updatedAt": "2026-11-12T08:21:49.363Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5600,6 +5600,268 @@
       "notes": "此处 cluster 作动词，指在数据分析中把相似对象归为一类；名词 clusters 指聚类得到的“簇”。",
       "createdAt": "2026-11-12T07:15:33.382Z",
       "updatedAt": "2026-11-12T07:15:33.382Z"
+    },
+    {
+      "id": "entry-20cb21b4-8349-4ed4-9523-24dc507e915b",
+      "term": "supervise",
+      "phonetic": "/ˈsuːpərvaɪz/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "AI"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-95ef1874-b6e6-49f1-a24a-2879699b5c74",
+          "dictionary": "Open English WordNet 2025 · supervise · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "watch and direct",
+          "definitionZh": "监督并指挥。",
+          "url": "https://en-word.net/view/lemma/supervise",
+          "senseGuide": {
+            "sentence": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+            "usage": "本句中 supervised 指“有监督的”，即用带标签数据训练；词典义为“监督、指导”，是其字面含义在机器学习领域的引申。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "keep tabs on; keep an eye on; keep under surveillance",
+                "definitionZh": "监视、密切注意。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "Who is overseeing this project?",
+              "zh": "谁来监督这个项目？"
+            }
+          ]
+        },
+        {
+          "id": "definition-b654cf04-5d73-4d1b-97fa-fea7e8ddad7d",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To watch over and direct an activity or process; in machine learning, to train a model using labeled data.",
+          "definitionZh": "监督、指导；在机器学习中指用带标签的数据训练模型。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Teachers supervise students during the exam.",
+              "zh": "考试期间老师监督学生。"
+            },
+            {
+              "en": "The model is trained on supervised data.",
+              "zh": "该模型用有监督的数据训练。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-40ae2c4e-27ae-414d-9d39-82c8dbcea574",
+          "en": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+          "zh": "尽管在过去几年里，分类等监督式技术在业界占据了主导地位，但文本聚类等无监督技术的潜力不容低估。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "机器学习",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "supervised 作定语表示“监督式的”，与 unsupervised（无监督的）相对，是机器学习领域的常见搭配。",
+      "createdAt": "2026-11-12T08:21:49.363Z",
+      "updatedAt": "2026-11-12T08:21:49.363Z"
+    },
+    {
+      "id": "entry-91fbfde3-11f3-46e8-afdc-5afea9acb09d",
+      "term": "reign",
+      "phonetic": "/reɪn/",
+      "status": "learning",
+      "tags": [
+        "比喻用法",
+        "程度副词"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-eb323dab-4ad5-4ca5-ba64-9ca58ca6c75e",
+          "dictionary": "Open English WordNet 2025 · reign · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "be larger in number, quantity, power, status or importance",
+          "definitionZh": "在数量、权力、地位或重要性上占优势。",
+          "url": "https://en-word.net/view/lemma/reign",
+          "senseGuide": {
+            "sentence": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+            "usage": "本句中 reigned supreme 表示监督式技术在业界“处于主导地位”，并非君主统治，而是引申为占优势、盛行。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a period during which something or somebody is dominant or powerful",
+                "definitionZh": "某事物或某人占主导或强势的时期。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "have sovereign power",
+                "definitionZh": "拥有统治权。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the period during which a monarch is sovereign",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "royal authority; the dominion of a monarch",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "Money reigns supreme here",
+              "zh": "金钱在这里起支配作用。"
+            }
+          ]
+        },
+        {
+          "id": "definition-50b32e77-06e9-4816-aaa8-86e8a67fc875",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To be dominant or predominant in importance, power, or status.",
+          "definitionZh": "占主导地位，处于支配地位。",
+          "url": "",
+          "examples": [
+            {
+              "en": "For years this brand reigned supreme in the market.",
+              "zh": "多年来这个品牌在市场上独占鳌头。"
+            },
+            {
+              "en": "Silence reigned in the empty hall.",
+              "zh": "空荡的大厅里一片寂静。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-4f67e2f8-d497-4474-8ae6-82904a28ed06",
+          "en": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+          "zh": "尽管在过去几年里，分类等监督式技术在业界占据了主导地位，但文本聚类等无监督技术的潜力不容低估。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "比喻用法",
+            "程度副词"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          },
+          "wordForms": [
+            {
+              "text": "reigned",
+              "lemma": "reign",
+              "label": "过去式 / 过去分词"
+            }
+          ]
+        }
+      ],
+      "notes": "reigned supreme 是固定搭配，意为“占绝对主导地位”，常用于比喻支配、盛行。",
+      "createdAt": "2026-11-12T08:21:49.363Z",
+      "updatedAt": "2026-11-12T08:21:49.363Z"
+    },
+    {
+      "id": "entry-e34bb9c4-d462-4d38-99ea-f48a6b62236d",
+      "term": "understated",
+      "phonetic": "/ˌʌndərˈsteɪtɪd/",
+      "status": "learning",
+      "tags": [
+        "强调",
+        "比喻用法"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-c1d498e3-280e-4d13-ab92-e95368ac4b98",
+          "dictionary": "Open English WordNet 2025 · understate · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "represent as less significant or important",
+          "definitionZh": "把……说得不如实际重要；低估。",
+          "url": "https://en-word.net/view/lemma/understate",
+          "senseGuide": {
+            "sentence": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+            "usage": "本句中 cannot be understated 表示无监督技术的潜力“不容低估、不可小觑”，此处取动词 understate 的“低估、轻描淡写”之义。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-b2068465-4251-4f86-85a8-f902634d2e83",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Presented as less important or significant than it is; not to be underestimated.",
+          "definitionZh": "被低估的，被轻描淡写的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The importance of regular practice cannot be understated.",
+              "zh": "规律练习的重要性不容低估。"
+            },
+            {
+              "en": "Her influence on the team should not be understated.",
+              "zh": "她对球队的影响不应被低估。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-8e77058c-03f1-4cd7-95b2-ce8d8d1b5a96",
+          "en": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+          "zh": "尽管在过去几年里，分类等监督式技术在业界占据了主导地位，但文本聚类等无监督技术的潜力不容低估。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "强调",
+            "比喻用法"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "cannot be understated 意为“再怎么强调也不为过”，实际表示“不容低估”。",
+      "createdAt": "2026-11-12T08:21:49.363Z",
+      "updatedAt": "2026-11-12T08:21:49.363Z"
     }
   ]
 }
