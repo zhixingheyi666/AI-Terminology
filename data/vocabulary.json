@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:33:14.667Z",
+  "updatedAt": "2026-11-12T08:39:24.279Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -6404,6 +6404,83 @@
       "notes": "volumes of 表示“大量的”，常用于描述文本、数据等。",
       "createdAt": "2026-11-12T08:33:14.667Z",
       "updatedAt": "2026-11-12T08:33:14.667Z"
+    },
+    {
+      "id": "entry-f9679086-891e-43a3-ae74-1c1ee0f2d243",
+      "term": "semantically",
+      "phonetic": "/səˈmæntɪkli/",
+      "status": "learning",
+      "tags": [
+        "语义",
+        "NLP",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-546bc875-4ebd-4e9a-985d-578060a74103",
+          "dictionary": "Open English WordNet 2025 · semantically · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adverb",
+          "definitionEn": "with regard to meaning",
+          "definitionZh": "就意义而言；在语义上。",
+          "url": "https://en-word.net/view/lemma/semantically",
+          "senseGuide": {
+            "sentence": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+            "usage": "本句修饰 similar，表示文档之间的相似是在语义层面上，而非仅凭字面重合。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "semantically empty messages",
+              "zh": "语义空洞的信息。"
+            }
+          ]
+        },
+        {
+          "id": "definition-560f5db2-33b8-4459-bddb-8e79868e3283",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adverb",
+          "definitionEn": "In a way that relates to meaning, especially the meaning of words or documents.",
+          "definitionZh": "在语义上；就意义而言。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The two search queries are semantically related even though they share no keywords.",
+              "zh": "这两个搜索查询虽然不含相同关键词，但在语义上相关。"
+            },
+            {
+              "en": "The system groups semantically similar sentences together for review.",
+              "zh": "系统把语义相近的句子归为一组供审阅。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-f375fa3d-78c7-47f5-9679-842cd888b8f7",
+          "en": "As illustrated in Figure 5-1, the resulting clusters of semantically similar documents not only facilitate efficient categorization of large volumes of unstructured text but also allow for quick exploratory data analysis.",
+          "zh": "如图5-1所示，由此得到的语义相似文档聚类不仅便于对大量非结构化文本进行高效分类，还支持快速探索性数据分析。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常与 similar、related 等形容词搭配，说明相似或关联发生在意义层面而非字面形式。",
+      "createdAt": "2026-11-12T08:39:24.279Z",
+      "updatedAt": "2026-11-12T08:39:24.279Z"
     }
   ]
 }
