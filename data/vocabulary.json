@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-11T15:32:49.789Z",
+  "updatedAt": "2026-11-12T07:13:41.282Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -4814,7 +4814,7 @@
           "definitionZh": "强烈的喜爱。",
           "url": "https://en-word.net/view/lemma/preference",
           "senseGuide": {
-            "sentence": "Fortunately, OpenAI shared an overview of the training procedure that involved an important component, namely preference tuning. ",
+            "sentence": "Fortunately, OpenAI shared an overview of the training procedure that involved an important component, namely preference tuning.",
             "usage": "本句中 preference tuning 指依据人类偏好对模型进行调优，preference 表示偏好这一含义。",
             "fit": "contextual",
             "alsoBasic": true,
@@ -4868,7 +4868,7 @@
       "personalExamples": [
         {
           "id": "encounter-15e2a2d2-a4b6-4f5f-890f-583e465b8b6d",
-          "en": "Fortunately, OpenAI shared an overview of the training procedure that involved an important component, namely preference tuning. ",
+          "en": "Fortunately, OpenAI shared an overview of the training procedure that involved an important component, namely preference tuning.",
           "zh": "幸运的是，OpenAI 分享了一份训练流程概述，其中涉及一个重要组成部分，即偏好调优。",
           "source": "",
           "encounteredAt": "2026-11-11",
@@ -4910,7 +4910,7 @@
           "definitionZh": "由先前现象引起并随之出现的事物。",
           "url": "https://en-word.net/view/lemma/result",
           "senseGuide": {
-            "sentence": "OpenAI used the resulting model to generate multiple outputs that were manually ranked from best to worst. ",
+            "sentence": "OpenAI used the resulting model to generate multiple outputs that were manually ranked from best to worst.",
             "usage": "本句的 resulting 是动词 result 的现在分词作定语，指“作为前一步骤的结果而产生的”；所选名词释义“由先前现象引起并随之出现的事物”在因果含义上最接近，但词性不同，因此为一般匹配。",
             "fit": "general",
             "alsoBasic": true,
@@ -4982,7 +4982,7 @@
       "personalExamples": [
         {
           "id": "encounter-73439262-7323-49f5-a9ca-f99239fe87d7",
-          "en": "OpenAI used the resulting model to generate multiple outputs that were manually ranked from best to worst. ",
+          "en": "OpenAI used the resulting model to generate multiple outputs that were manually ranked from best to worst.",
           "zh": "OpenAI 使用由此得到的模型生成多个输出，并人工将这些输出从最好到最差进行排序。",
           "source": "",
           "encounteredAt": "2026-11-11",
@@ -4991,20 +4991,20 @@
             "机器学习",
             "模型训练"
           ],
-          "contextAnalysis": "",
-          "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
-          },
           "wordForms": [
             {
               "text": "resulting",
               "lemma": "result",
               "label": "-ing 形式（现在分词 / 动名词）"
             }
-          ]
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "本句中 resulting 作定语，修饰 model，表示“由此得到的”；不同于动词 result 表示“导致”。",
@@ -5152,20 +5152,20 @@
             "AI",
             "机器学习"
           ],
-          "contextAnalysis": "",
-          "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
-          },
           "wordForms": [
             {
               "text": "resembles",
               "lemma": "resemble",
               "label": "动词第三人称单数"
             }
-          ]
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "resemble 是及物动词，直接跟宾语，不用于进行时，表示“与……相似”。",
@@ -5410,25 +5410,104 @@
           "exampleTags": [
             "认知"
           ],
-          "contextAnalysis": "",
-          "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
-          },
           "wordForms": [
             {
               "text": "masses",
               "lemma": "mass",
               "label": "动词第三人称单数"
             }
-          ]
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "the masses 指“大众、普通民众”，常用复数形式，多出现在 bring ... to the masses 这类搭配中。",
       "createdAt": "2026-11-11T15:32:49.789Z",
       "updatedAt": "2026-11-11T15:32:49.789Z"
+    },
+    {
+      "id": "entry-03d94b05-a9b6-45ec-ba88-abc509fea57b",
+      "term": "unsupervised",
+      "phonetic": "/ˌʌnˈsuːpərvaɪzd/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "模型训练",
+        "AI",
+        "统计学"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-cc7f4095-f442-4292-bef2-b83acac21188",
+          "dictionary": "Open English WordNet 2025 · unsupervised · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "not supervised or under constant observation",
+          "definitionZh": "无人监督或不受持续观察的。",
+          "url": "https://en-word.net/view/lemma/unsupervised",
+          "senseGuide": {
+            "sentence": "In the next chapter, we will continue with classification but focus instead on unsupervised classification.",
+            "usage": "本句中的 unsupervised 指无监督分类，即不依赖标注数据；词典释义侧重“无人监督或观察”，是字面义，不含机器学习的技术含义。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "the school maintains unsupervised study halls during free periods",
+              "zh": "学校在自由活动时间设有无人看管的自习室。"
+            }
+          ]
+        },
+        {
+          "id": "definition-594b6dee-e2b0-4ec6-a737-4c097a1d0d14",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Not requiring labeled training data or human guidance; used of machine learning in which the model finds patterns on its own.",
+          "definitionZh": "无监督的；不需要标注训练数据或人工指导，指模型自行发现数据模式。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Unsupervised learning can reveal hidden groups in customer data.",
+              "zh": "无监督学习可以发现客户数据中隐藏的分组。"
+            },
+            {
+              "en": "They used an unsupervised method to cluster the documents.",
+              "zh": "他们用一种无监督方法对文档进行聚类。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-077d157e-5823-48ab-a060-e521b1bb7f03",
+          "en": "In the next chapter, we will continue with classification but focus instead on unsupervised classification.",
+          "zh": "在下一章中，我们将继续讨论分类，但转而聚焦于无监督分类。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "机器学习",
+            "模型训练",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "常用于机器学习术语，如 unsupervised learning（无监督学习）、unsupervised classification（无监督分类），与 supervised 相对。",
+      "createdAt": "2026-11-12T07:13:41.282Z",
+      "updatedAt": "2026-11-12T07:13:41.282Z"
     }
   ]
 }
