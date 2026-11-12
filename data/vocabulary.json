@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T07:13:41.282Z",
+  "updatedAt": "2026-11-12T07:15:33.382Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5508,6 +5508,98 @@
       "notes": "常用于机器学习术语，如 unsupervised learning（无监督学习）、unsupervised classification（无监督分类），与 supervised 相对。",
       "createdAt": "2026-11-12T07:13:41.282Z",
       "updatedAt": "2026-11-12T07:13:41.282Z"
+    },
+    {
+      "id": "entry-14b689c1-1d30-4fa7-b13f-dcd441eeec34",
+      "term": "cluster",
+      "phonetic": "/ˈklʌstər/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "NLP",
+        "分词"
+      ],
+      "reviewTags": [
+        "复习"
+      ],
+      "definitions": [
+        {
+          "id": "definition-d4d207da-9caf-4751-984f-bdc221fe06b7",
+          "dictionary": "Open English WordNet 2025 · cluster · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "verb",
+          "definitionEn": "gather or cause to gather into a cluster",
+          "definitionZh": "聚集或使聚集为一簇。",
+          "url": "https://en-word.net/view/lemma/cluster",
+          "senseGuide": {
+            "sentence": "We will focus on clustering our data as well as naming the clusters with topic modeling techniques.",
+            "usage": "本句中 clustering 是动名词，指把数据按相似性归组；词典释义侧重“把……聚成一团”，此处特指数据分析中的聚类。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a grouping of a number of similar things",
+                "definitionZh": "一组相似事物的聚集。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "verb",
+                "definitionEn": "come together as in a cluster or flock",
+                "definitionZh": "像一群或一簇那样聚到一起。"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "She bunched her fingers into a fist",
+              "zh": "她把手指攥成一个拳头。"
+            }
+          ]
+        },
+        {
+          "id": "definition-7ca8eece-51c2-4c90-91b3-e464d41b6397",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "verb",
+          "definitionEn": "To group similar data points together, especially using an algorithm.",
+          "definitionZh": "把相似的数据点归为一组，尤指通过算法进行分组。",
+          "url": "",
+          "examples": [
+            {
+              "en": "We cluster the reviews by topic before labeling them.",
+              "zh": "在给评论打标签之前，我们先按主题把它们聚类。"
+            },
+            {
+              "en": "The script clusters the images according to color similarity.",
+              "zh": "这个脚本根据颜色相似度对图片进行聚类。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-7f749a7c-3fc5-4d86-8ab7-9e3543677fed",
+          "en": "We will focus on clustering our data as well as naming the clusters with topic modeling techniques.",
+          "zh": "我们将专注于对数据进行聚类，并使用主题建模技术为各个簇命名。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "机器学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "此处 cluster 作动词，指在数据分析中把相似对象归为一类；名词 clusters 指聚类得到的“簇”。",
+      "createdAt": "2026-11-12T07:15:33.382Z",
+      "updatedAt": "2026-11-12T07:15:33.382Z"
     }
   ]
 }
