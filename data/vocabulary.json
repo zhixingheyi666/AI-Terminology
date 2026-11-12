@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:55:55.430Z",
+  "updatedAt": "2026-11-12T08:58:20.817Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -6616,6 +6616,88 @@
       "notes": "scholarly 常修饰 articles、journal、work 等，强调学术性而非通俗性。",
       "createdAt": "2026-11-12T08:55:55.430Z",
       "updatedAt": "2026-11-12T08:55:55.430Z"
+    },
+    {
+      "id": "entry-1dbf4f4b-b0c2-4295-992a-60386e15aa15",
+      "term": "scholar",
+      "phonetic": "/ˈskɒlə(r)/",
+      "status": "learning",
+      "tags": [
+        "学术"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-8f72eaf7-fca7-4387-ab3b-0f72f054b101",
+          "dictionary": "Open English WordNet 2025 · scholar · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a learned person; someone who by long study has gained mastery in one or more disciplines",
+          "definitionZh": "有学问的人；通过长期钻研精通一门或多门学科的人。",
+          "url": "https://en-word.net/view/lemma/scholar",
+          "senseGuide": {
+            "sentence": "ArXiv is an open-access platform for scholarly articles, mostly in the fields of computer science, mathematics, and physics.",
+            "usage": "本句中 scholar 用于派生形容词 scholarly，修饰 articles，表示“学术性的”；所给释义指“有学问的人”，与句中形容词用法相近但词性不同。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "someone (especially a child) who learns (as from a teacher) or takes up knowledge or beliefs",
+                "definitionZh": "（尤指儿童）学习者；接受知识或信念的人。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a student who holds a scholarship",
+                "definitionZh": "获得奖学金的学生。"
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-1765189f-e37a-4e03-bf33-254e3f05eb46",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A learned person, especially one engaged in academic research.",
+          "definitionZh": "学者，尤其指从事学术研究的人。",
+          "url": "",
+          "examples": [
+            {
+              "en": "She is a respected scholar in the field of linguistics.",
+              "zh": "她是语言学领域一位受人尊敬的学者。"
+            },
+            {
+              "en": "The conference brought together scholars from around the world.",
+              "zh": "这次会议汇聚了来自世界各地的学者。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-b64c3a42-ff59-44b8-9655-8930363db1e4",
+          "en": "ArXiv is an open-access platform for scholarly articles, mostly in the fields of computer science, mathematics, and physics.",
+          "zh": "ArXiv 是一个开放获取平台，用于发布学术文章，主要涵盖计算机科学、数学和物理学领域。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "学术"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "形容词形式 scholarly 常与 articles、works 等搭配，表示“学术的、学者式的”。",
+      "createdAt": "2026-11-12T08:58:20.817Z",
+      "updatedAt": "2026-11-12T08:58:20.817Z"
     }
   ]
 }
