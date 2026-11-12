@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:41:10.702Z",
+  "updatedAt": "2026-11-12T08:55:55.430Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -6541,6 +6541,81 @@
       "notes": "常与 similar、related 等形容词搭配，说明相似或关联发生在意义层面而非字面形式。",
       "createdAt": "2026-11-12T08:39:24.279Z",
       "updatedAt": "2026-11-12T08:39:24.279Z"
+    },
+    {
+      "id": "entry-7b4584fa-51be-4b8d-bbfe-9d0e3853dbfc",
+      "term": "scholarly",
+      "phonetic": "/ˈskɒləli/",
+      "status": "learning",
+      "tags": [
+        "学术英语",
+        "学术"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-d7a5a068-ac8f-4749-bec8-0e78ae3aab31",
+          "dictionary": "Open English WordNet 2025 · scholarly · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "characteristic of scholars or scholarship",
+          "definitionZh": "具有学者或学术研究特征的。",
+          "url": "https://en-word.net/view/lemma/scholarly",
+          "senseGuide": {
+            "sentence": "ArXiv is an open-access platform for scholarly articles, mostly in the fields of computer science, mathematics, and physics. ",
+            "usage": "此处 scholarly articles 指学术性文章，符合“学者或学术研究特征”的含义。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "scholarly pursuits",
+              "zh": "学术追求"
+            }
+          ]
+        },
+        {
+          "id": "definition-0a3207ce-c051-4eab-968b-2367518113c1",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Relating to or characteristic of scholars or academic study.",
+          "definitionZh": "学术的；学者风格的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "She published her findings in a scholarly journal.",
+              "zh": "她在一本学术期刊上发表了她的研究结果。"
+            },
+            {
+              "en": "His writing style is clear and scholarly.",
+              "zh": "他的写作风格清晰且具学术性。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-640082c8-0498-4297-856c-f9f32b09b07d",
+          "en": "ArXiv is an open-access platform for scholarly articles, mostly in the fields of computer science, mathematics, and physics. ",
+          "zh": "ArXiv 是一个开放获取平台，用于学术文章，主要涵盖计算机科学、数学和物理学领域。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "scholarly 常修饰 articles、journal、work 等，强调学术性而非通俗性。",
+      "createdAt": "2026-11-12T08:55:55.430Z",
+      "updatedAt": "2026-11-12T08:55:55.430Z"
     }
   ]
 }
