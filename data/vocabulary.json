@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:21:49.363Z",
+  "updatedAt": "2026-11-12T08:25:30.998Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -5862,6 +5862,189 @@
       "notes": "cannot be understated 意为“再怎么强调也不为过”，实际表示“不容低估”。",
       "createdAt": "2026-11-12T08:21:49.363Z",
       "updatedAt": "2026-11-12T08:21:49.363Z"
+    },
+    {
+      "id": "entry-9f0a1a16-68fa-4349-9c8e-2af9763cee2a",
+      "term": "potential",
+      "phonetic": "/pəˈtenʃəl/",
+      "status": "learning",
+      "tags": [
+        "机器学习",
+        "认知"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-741eca70-4a0c-4f14-8e80-d89e5edc1d03",
+          "dictionary": "Open English WordNet 2025 · potential · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "the inherent capacity for coming into being",
+          "definitionZh": "固有的、可发展成现实的能力。",
+          "url": "https://en-word.net/view/lemma/potential",
+          "senseGuide": {
+            "sentence": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+            "usage": "本句指无监督技术尚未被充分利用的潜在能力，dictionary 释义“固有潜能”整体接近，但未直接覆盖“被低估的潜力”这一评价性用法。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "existing in possibility",
+                "definitionZh": "可能存在的；潜在的。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "expected to become or be; in prospect",
+                "definitionZh": "有望成为的；预期中的。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "noun",
+                "definitionEn": "the difference in electrical charge between two points in a circuit expressed in volts",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-cb4ed894-a9a4-46ca-9773-478c12431f96",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "The inherent capacity or possibility for something to develop or be used.",
+          "definitionZh": "潜力；潜在能力。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The new algorithm shows great potential for improving search results.",
+              "zh": "这种新算法在改进搜索结果方面显示出巨大潜力。"
+            },
+            {
+              "en": "We should not ignore the potential of small datasets.",
+              "zh": "我们不应忽视小型数据集的潜力。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-55b32ba7-dd8b-4f45-8bbb-58a6aacc4e26",
+          "en": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+          "zh": "尽管分类等监督技术在过去几年中一直在业界占据至高无上的地位，但文本聚类等无监督技术的潜力也不容低估。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "机器学习"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "此处作名词，指尚未发挥出来的能力；常用搭配 the potential of sth。",
+      "createdAt": "2026-11-12T08:25:30.998Z",
+      "updatedAt": "2026-11-12T08:25:30.998Z"
+    },
+    {
+      "id": "entry-d34baa40-3511-4782-9618-d569d59d7f8c",
+      "term": "supreme",
+      "phonetic": "/suːˈpriːm/",
+      "status": "learning",
+      "tags": [
+        "学术英语",
+        "比喻用法"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-cae9326d-bf16-492d-bd60-a0d2ce2f80ef",
+          "dictionary": "Open English WordNet 2025 · supreme · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "greatest in status or authority or power",
+          "definitionZh": "地位、权力或等级最高的。",
+          "url": "https://en-word.net/view/lemma/supreme",
+          "senseGuide": {
+            "sentence": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+            "usage": "本句与 reign 连用，表示监督技术在业界处于最高、主导地位；dictionary 释义强调地位或权力的最高，语境中引申为主导地位。",
+            "fit": "general",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "highest in excellence or achievement",
+                "definitionZh": "卓越程度最高的。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "greatest or maximal in degree; extreme",
+                "definitionZh": "程度最大的；极端的。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "adjective",
+                "definitionEn": "final or last in your life or progress",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": [
+            {
+              "en": "a supreme tribunal",
+              "zh": ""
+            }
+          ]
+        },
+        {
+          "id": "definition-a83daa23-f70a-4cbc-a3d4-cc8dccdbac59",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Highest in rank, authority, or degree; dominant.",
+          "definitionZh": "最高的；至高无上的；占主导地位的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "For years this method reigned supreme in the field.",
+              "zh": "多年来，这种方法在该领域占据主导地位。"
+            },
+            {
+              "en": "Efficiency is not the supreme goal of every system.",
+              "zh": "效率并非每个系统的最高目标。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-8563e12f-6913-4f17-95f2-c97562008ec6",
+          "en": "Although supervised techniques, such as classification, have reigned supreme over the last few years in the industry, the potential of unsupervised techniques such as text clustering cannot be understated.",
+          "zh": "尽管分类等监督技术在过去几年中一直在业界占据至高无上的地位，但文本聚类等无监督技术的潜力也不容低估。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "reign supreme 为固定搭配，表示“占据至高地位、占主导”。",
+      "createdAt": "2026-11-12T08:25:30.998Z",
+      "updatedAt": "2026-11-12T08:25:30.998Z"
     }
   ]
 }
