@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:58:20.817Z",
+  "updatedAt": "2026-11-12T12:54:37.135Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -6698,6 +6698,126 @@
       "notes": "形容词形式 scholarly 常与 articles、works 等搭配，表示“学术的、学者式的”。",
       "createdAt": "2026-11-12T08:58:20.817Z",
       "updatedAt": "2026-11-12T08:58:20.817Z"
+    },
+    {
+      "id": "entry-5b97ad0d-f4d2-4048-bcc4-a0c818309619",
+      "term": "abstract",
+      "phonetic": "/ˈæbstrækt/",
+      "status": "learning",
+      "tags": [
+        "学术",
+        "学术英语"
+      ],
+      "reviewTags": [],
+      "definitions": [
+        {
+          "id": "definition-0a02e939-02e2-4f7b-a100-8f3d8aac75b3",
+          "dictionary": "Open English WordNet 2025 · abstract · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "noun",
+          "definitionEn": "a sketchy summary of the main points of an argument or theory",
+          "definitionZh": "对论点或理论要点的概括性总结。",
+          "url": "https://en-word.net/view/lemma/abstract",
+          "senseGuide": {
+            "sentence": "The dataset contains 44,949 abstracts between 1991 and 2024 from ArXiv’s cs.CL (Computation and Language) section.",
+            "usage": "本句中 abstract 指学术论文的摘要，即对论文主要内容的简要总结。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": [
+              {
+                "role": "common",
+                "partOfSpeech": "noun",
+                "definitionEn": "a concept or idea not associated with any specific instance",
+                "definitionZh": "不涉及具体实例的概念或想法。"
+              },
+              {
+                "role": "common",
+                "partOfSpeech": "adjective",
+                "definitionEn": "existing only in the mind; separated from embodiment",
+                "definitionZh": "仅存在于头脑中的；脱离实体的。"
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "consider a concept without thinking of a specific example; consider abstractly or theoretically",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "make off with belongings of others",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "consider apart from a particular case or instance",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "verb",
+                "definitionEn": "give an abstract (of)",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "adjective",
+                "definitionEn": "not representing or imitating external reality or the objects of nature",
+                "definitionZh": ""
+              },
+              {
+                "role": "other",
+                "partOfSpeech": "adjective",
+                "definitionEn": "dealing with a subject in the abstract without practical purpose or intention",
+                "definitionZh": ""
+              }
+            ]
+          },
+          "examples": []
+        },
+        {
+          "id": "definition-d201b738-1516-4747-a1be-2d0ac2d77531",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "noun",
+          "definitionEn": "A summary of a paper or article.",
+          "definitionZh": "论文或文章的摘要。",
+          "url": "",
+          "examples": [
+            {
+              "en": "Please read the abstract before the main text.",
+              "zh": "请在正文之前阅读摘要。"
+            },
+            {
+              "en": "The abstract summarizes the key findings.",
+              "zh": "摘要总结了主要发现。"
+            }
+          ]
+        }
+      ],
+      "personalExamples": [
+        {
+          "id": "encounter-7e38d8e7-88b0-45a2-8c56-54769fed2849",
+          "en": "The dataset contains 44,949 abstracts between 1991 and 2024 from ArXiv’s cs.CL (Computation and Language) section.",
+          "zh": "该数据集包含1991年至2024年间来自ArXiv的cs.CL（计算与语言）板块的44,949篇摘要。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "学术",
+            "学术英语"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
+        }
+      ],
+      "notes": "abstract 作名词时指论文摘要，常用搭配为 write/submit an abstract。",
+      "createdAt": "2026-11-12T12:54:37.135Z",
+      "updatedAt": "2026-11-12T12:54:37.135Z"
     }
   ]
 }
