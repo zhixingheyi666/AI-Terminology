@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-12T08:39:24.279Z",
+  "updatedAt": "2026-11-12T08:41:10.702Z",
   "entries": [
     {
       "id": "seed-grounding",
@@ -203,7 +203,9 @@
       "tags": [
         "NLP",
         "word2vec",
-        "词向量"
+        "词向量",
+        "语义",
+        "AI"
       ],
       "reviewTags": [
         "复习"
@@ -236,6 +238,45 @@
               "zh": "具有相似语义属性的词，往往会有彼此接近的向量表示。"
             }
           ]
+        },
+        {
+          "id": "definition-1f5501c3-6bb6-4b82-8828-ac5f1ee1c5bd",
+          "dictionary": "Open English WordNet 2025 · semantic · CC BY 4.0 · Open English WordNet · derived from Princeton WordNet · 中文为 AI 翻译",
+          "partOfSpeech": "adjective",
+          "definitionEn": "of or relating to meaning or the study of meaning",
+          "definitionZh": "与意义或意义研究有关的。",
+          "url": "https://en-word.net/view/lemma/semantic",
+          "senseGuide": {
+            "sentence": "The recent evolution of language models, which enable contextual and semantic representations of text, has enhanced the effectiveness of text clustering. ",
+            "usage": "本句中修饰 representations，指文本的语义表征，即与意义相关的表示。",
+            "fit": "contextual",
+            "alsoBasic": true,
+            "senses": []
+          },
+          "examples": [
+            {
+              "en": "semantic analysis",
+              "zh": "语义分析。"
+            }
+          ]
+        },
+        {
+          "id": "definition-7f267c7f-cac1-4d72-a201-910d92ef2f32",
+          "dictionary": "DeepSeek（AI 生成，待核对）",
+          "partOfSpeech": "adjective",
+          "definitionEn": "Relating to meaning in language.",
+          "definitionZh": "与语言意义相关的；语义的。",
+          "url": "",
+          "examples": [
+            {
+              "en": "The model captures semantic relationships between words.",
+              "zh": "该模型捕捉词语之间的语义关系。"
+            },
+            {
+              "en": "Semantic differences can change the translation entirely.",
+              "zh": "语义差异可能完全改变译文。"
+            }
+          ]
         }
       ],
       "personalExamples": [
@@ -254,11 +295,30 @@
             "core": "",
             "rewrite": ""
           }
+        },
+        {
+          "id": "encounter-2b7002b6-aeeb-4dde-892e-45e2eda153d6",
+          "en": "The recent evolution of language models, which enable contextual and semantic representations of text, has enhanced the effectiveness of text clustering. ",
+          "zh": "语言模型的最新进化——其能够实现文本的语境与语义表征——提升了文本聚类的有效性。",
+          "source": "",
+          "encounteredAt": "2026-11-12",
+          "note": "",
+          "exampleTags": [
+            "NLP",
+            "AI"
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
-      "notes": "semantic 是形容词，名词形式是 semantics（语义学），副词形式是 semantically（在语义上）。",
+      "notes": "semantic 是形容词，名词形式是 semantics（语义学），副词形式是 semantically（在语义上）。\n\n常修饰 representations、analysis、meaning 等词，指“语义的”。",
       "createdAt": "2026-10-31T03:30:00.000Z",
-      "updatedAt": "2026-10-31T03:30:00.000Z"
+      "updatedAt": "2026-11-12T08:41:10.702Z"
     },
     {
       "id": "entry-utilized-20261031",
@@ -5772,20 +5832,20 @@
             "比喻用法",
             "程度副词"
           ],
-          "contextAnalysis": "",
-          "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
-          },
           "wordForms": [
             {
               "text": "reigned",
               "lemma": "reign",
               "label": "过去式 / 过去分词"
             }
-          ]
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "reigned supreme 是固定搭配，意为“占绝对主导地位”，常用于比喻支配、盛行。",
@@ -6385,20 +6445,20 @@
           "exampleTags": [
             "学术英语"
           ],
-          "contextAnalysis": "",
-          "grammarAnalysis": {
-            "structure": "",
-            "parts": [],
-            "core": "",
-            "rewrite": ""
-          },
           "wordForms": [
             {
               "text": "volumes",
               "lemma": "volume",
               "label": "名词复数"
             }
-          ]
+          ],
+          "contextAnalysis": "",
+          "grammarAnalysis": {
+            "structure": "",
+            "parts": [],
+            "core": "",
+            "rewrite": ""
+          }
         }
       ],
       "notes": "volumes of 表示“大量的”，常用于描述文本、数据等。",
